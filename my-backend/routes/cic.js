@@ -4,6 +4,7 @@ const { QueryTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const authenticateToken = require("../middleware/authenticateToken");
 
+// Ambil semua teams di lomba CIC
 router.get("/teams/cic", authenticateToken, async (req, res) => {
     try {
         const eventId = 4;
@@ -64,6 +65,63 @@ router.get("/teams/cic", authenticateToken, async (req, res) => {
     }
 });
 
+// Ambil team tertentu di lomba CIC
+router.get("/teams/cic/:teamId", authenticateToken, async (req, res) => {
+    try {
+        const { teamId } = req.params;
+        const eventId = 4;
+
+        const team = await sequelize.query(
+            `SELECT * FROM teams WHERE team_id = :teamId AND event_id = :eventId`,
+            {
+                replacements: { teamId, eventId },
+                type: QueryTypes.SELECT,
+            }
+        );
+
+        if (!team.length) {
+            return res
+                .status(404)
+                .json({ message: "No team found for this id and event" });
+        }
+
+        const members = await sequelize.query(
+            `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+            {
+                replacements: { teamId },
+                type: QueryTypes.SELECT,
+            }
+        );
+
+        if (!members.length) {
+            return res
+                .status(404)
+                .json({ message: "No members found for this team" });
+        }
+
+        const leader = members.find((member) => member.is_leader === 1);
+        const memberList = members.filter((member) => member.is_leader === 0);
+
+        const result = {
+            team: {
+                team_name: team[0].team_name,
+                institution_name: team[0].institution_name,
+                payment_proof: team[0].payment_proof,
+            },
+            leader,
+            members: memberList,
+        };
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            message: "An error occurred",
+            error: error.message,
+        });
+    }
+});
+
+// Buat team baru di lomba CIC
 router.post("/teams/cic/new", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members } = req.body;

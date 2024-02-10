@@ -6,32 +6,21 @@ module.exports = {
             "teams",
             [
                 {
-                    team_name: "Team Name",
+                    team_name: "Finnovate FCEC",
                     institution_name: "Institution Name",
                     payment_proof: "Payment Proof",
-                    event_id: 3,
-                    user_id: 1, // TODO: Replace with actual user_id
+                    event_id: 1,
+                    user_id: 1,
                 },
             ],
             {}
         );
 
         const team = await queryInterface.sequelize.query(
-            `SELECT * FROM \`teams\` WHERE team_name = 'Team Name'`,
+            `SELECT * FROM \`teams\` WHERE team_name = 'Finnovate FCEC'`,
             {
                 type: queryInterface.sequelize.QueryTypes.SELECT,
             }
-        );
-
-        await queryInterface.bulkInsert(
-            "sbc",
-            [
-                {
-                    team_id: team[0].team_id,
-                    bridge_name: "Bridge Name",
-                },
-            ],
-            {}
         );
 
         await queryInterface.bulkInsert(
@@ -84,15 +73,14 @@ module.exports = {
         );
 
         await queryInterface.bulkInsert(
-            "dosbim",
+            "fcec",
             [
                 {
                     team_id: team[0].team_id,
-                    full_name: "Advisor Full Name",
-                    nip: "Advisor NIPA",
-                    email: "Advisor Email",
-                    phone_number: "Advisor WhatsApp",
-                    photo: "Advisor Photo",
+                    originality_statement: "Originality Statement",
+                    abstract_title: "Abstract Title",
+                    abstract_file: "Abstract File",
+                    abstract_video_link: "Abstract Video Link",
                 },
             ],
             {}
@@ -100,9 +88,8 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.bulkDelete("sbc", null, {});
+        await queryInterface.bulkDelete("fcec", null, {});
         await queryInterface.bulkDelete("teams", null, {});
         await queryInterface.bulkDelete("members", null, {});
-        await queryInterface.bulkDelete("dosbim", null, {});
     },
 };

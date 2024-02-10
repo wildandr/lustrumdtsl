@@ -4,10 +4,10 @@ const { QueryTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const authenticateToken = require("../middleware/authenticateToken");
 
-// Ambil semua teams di lomba SBC
-router.get("/teams/sbc", authenticateToken, async (req, res) => {
+// Ambil semua teams di lomba FCEC
+router.get("/teams/fcec", authenticateToken, async (req, res) => {
     try {
-        const eventId = 3;
+        const eventId = 1;
 
         const teams = await sequelize.query(
             `SELECT * FROM teams WHERE event_id = :eventId`,
@@ -33,16 +33,8 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
                     }
                 );
 
-                const dosbim = await sequelize.query(
-                    `SELECT * FROM dosbim WHERE team_id = :teamId`,
-                    {
-                        replacements: { teamId: team.team_id },
-                        type: QueryTypes.SELECT,
-                    }
-                );
-
-                const sbc = await sequelize.query(
-                    `SELECT * FROM sbc WHERE team_id = :teamId`,
+                const fcec = await sequelize.query(
+                    `SELECT * FROM fcec WHERE team_id = :teamId`,
                     {
                         replacements: { teamId: team.team_id },
                         type: QueryTypes.SELECT,
@@ -68,8 +60,7 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
                     },
                     leader,
                     members: memberList,
-                    dosbim,
-                    sbc,
+                    fcec,
                 };
             })
         );
@@ -83,11 +74,11 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
     }
 });
 
-// Ambil team di lomba SBC berdasarkan teamId
-router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
+// Ambil team di lomba FCEC berdasarkan teamId
+router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
     try {
         const { teamId } = req.params;
-        const eventId = 3;
+        const eventId = 1;
 
         const team = await sequelize.query(
             `SELECT * FROM teams WHERE team_id = :teamId AND event_id = :eventId`,
@@ -111,16 +102,8 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
             }
         );
 
-        const dosbim = await sequelize.query(
-            `SELECT * FROM dosbim WHERE team_id = :teamId`,
-            {
-                replacements: { teamId },
-                type: QueryTypes.SELECT,
-            }
-        );
-
-        const sbc = await sequelize.query(
-            `SELECT * FROM sbc WHERE team_id = :teamId`,
+        const fcec = await sequelize.query(
+            `SELECT * FROM fcec WHERE team_id = :teamId`,
             {
                 replacements: { teamId },
                 type: QueryTypes.SELECT,
@@ -144,8 +127,7 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
             },
             leader,
             members: memberList,
-            dosbim,
-            sbc,
+            fcec,
         };
 
         res.json(result);
@@ -157,81 +139,48 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
     }
 });
 
-// Buat team baru di lomba SBC
-router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
+// Tambah team di lomba FCEC
+router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
+    const { team, leader, members, fcec } = req.body;
+    const eventId = 1;
+    const userId = 1;
+
     try {
-        const { team, leader, members, dosbim, sbc } = req.body;
-
-        const createdTeam = await sequelize.query(
-            `INSERT INTO teams (team_name, institution_name, payment_proof, user_id, event_id) VALUES (:team_name, :institution_name, :payment_proof, 1, 3)`,
+        const [teamId] = await sequelize.query(
+            `INSERT INTO teams (team_name, institution_name, payment_proof, event_id, user_id) VALUES (:team_name, :institution_name, :payment_proof, :event_id, :user_id)`,
             {
-                replacements: {
-                    team_name: team.team_name,
-                    institution_name: team.institution_name,
-                    payment_proof: team.payment_proof,
-                },
+                replacements: { ...team, eventId, userId },
                 type: QueryTypes.INSERT,
             }
         );
 
-        const teamId = createdTeam[0];
-
-        const createdLeader = await sequelize.query(
-            `INSERT INTO members (team_id, full_name, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, 1, :nim)`,
+        await sequelize.query(
+            `INSERT INTO Members (team_id, full_name, department, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :department, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader, :nim)`,
             {
-                replacements: {
-                    ...leader,
-                    team_id: teamId,
-                },
+                replacements: { ...leader, team_id: teamId },
                 type: QueryTypes.INSERT,
             }
         );
 
-        const createdMembers = await Promise.all(
-            members.map((member) =>
-                sequelize.query(
-                    `INSERT INTO members (team_id, full_name, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, 0, :nim)`,
-                    {
-                        replacements: {
-                            ...member,
-                            team_id: teamId,
-                        },
-                        type: QueryTypes.INSERT,
-                    }
-                )
-            )
-        );
+        for (const member of members) {
+            await sequelize.query(
+                `INSERT INTO Members (team_id, full_name, department, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :department, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader, :nim)`,
+                {
+                    replacements: { ...member, team_id: teamId },
+                    type: QueryTypes.INSERT,
+                }
+            );
+        }
 
-        const createdDosbim = await sequelize.query(
-            `INSERT INTO dosbim ( team_id, full_name, nip, email, phone_number, photo) VALUES (:team_id, :full_name, :nip, :email, :phone_number, :photo)`,
+        await sequelize.query(
+            `INSERT INTO fcec (team_id, originality_statement, abstract_title, abstract_file, abstract_video_link) VALUES (:team_id, :originality_statement, :abstract_title, :abstract_file, :abstract_video_link)`,
             {
-                replacements: {
-                    ...dosbim[0],
-                    team_id: teamId,
-                },
+                replacements: { ...fcec[0], team_id: teamId },
                 type: QueryTypes.INSERT,
             }
         );
 
-        const createdSbc = await sequelize.query(
-            `INSERT INTO sbc (team_id, bridge_name) VALUES (:team_id, :bridge_name)`,
-            {
-                replacements: {
-                    ...sbc[0],
-                    team_id: teamId,
-                },
-                type: QueryTypes.INSERT,
-            }
-        );
-
-        res.status(201).json({
-            message: "Team created successfully",
-            team: createdTeam,
-            leader: createdLeader,
-            members: createdMembers,
-            dosbim: createdDosbim,
-            sbc: createdSbc,
-        });
+        res.status(201).json({ message: "Team created successfully" });
     } catch (error) {
         res.status(500).json({
             message: "An error occurred",

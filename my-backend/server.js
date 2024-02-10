@@ -7,6 +7,7 @@ const userRouter = require("./routes/users");
 const teamRouter = require("./routes/teams");
 const cicRouter = require("./routes/cic");
 const sbcRouter = require("./routes/sbc");
+const fcecRouter = require("./routes/fcec");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ app.use("/", userRouter);
 app.use("/", cicRouter);
 app.use("/", teamRouter);
 app.use("/", sbcRouter);
+app.use("/", fcecRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
