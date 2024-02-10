@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 const {nextui} = require("@nextui-org/react");
+const defaultTheme = require('tailwindcss/defaultTheme')
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,11 +17,19 @@ const config: Config = {
       },
       colors: {
         'cia-green' : '#005A48',
-       
+      },
+      fontFamily: {
+        'sans': ['Poppins', ...defaultTheme.fontFamily.sans],
       },
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({addCommonColors: true,
+  themes: {
+    light:{
+      colors: {"primary": "#005A48"},
+    }
+  }
+  })],
 };
 export default config;

@@ -10,7 +10,7 @@ import {
   EyeSlashFilledIcon,
 } from "@/component/icons";
 import { Input } from "@nextui-org/react";
-export default function Register() {
+export default function Login() {
   const [isVisible1, setIsVisible1] = React.useState(false);
   const [isVisible2, setIsVisible2] = React.useState(false);
 
@@ -23,10 +23,10 @@ export default function Register() {
     console.log("Toggle visibility 2:", !isVisible2);
   };
   return (
-    <main className=" w-full max-[385px]:h-[180vh] h-[140vh] sm:[100vh] bg-[#058369] font-sans ">
+    <main className=" w-full max-[385px]:h-[180vh] h-[140vh] sm:[100vh] bg-[#058369] font-sans">
       <nav className="fixed w-full flex z-50 justify-between items-center h-16  bg-[#02745D]  text-white  shadow-sm ">
         <div className="pl-8">CIA</div>
-        <div className="pr-8">Register</div>
+        <div className="pr-8">Login</div>
       </nav>
       <Image
           src="/bgciamobile.png"
