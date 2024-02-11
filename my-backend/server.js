@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require("cors");
 const port = 5001;
 
 const userRouter = require("./routes/users");
@@ -11,6 +12,7 @@ const fcecRouter = require("./routes/fcec");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Hello from the backend!");
