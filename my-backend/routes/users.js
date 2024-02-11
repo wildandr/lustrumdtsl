@@ -7,6 +7,8 @@ const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const authenticateToken = require("../middleware/authenticateToken");
 
+const User = require("../models/user");
+
 // Ambil semua user
 router.get("/user", authenticateToken, async (req, res) => {
     try {
@@ -57,35 +59,14 @@ router.post("/user/register", async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const currentTimestamp = new Date()
-            .toISOString()
-            .slice(0, 19)
-            .replace("T", " ");
 
-        await sequelize.query(
-            "INSERT INTO users (username, email, password, createdAt) VALUES (?, ?, ?, ?)",
-            {
-                replacements: [
-                    username,
-                    email,
-                    hashedPassword,
-                    currentTimestamp,
-                ],
-                type: Sequelize.QueryTypes.INSERT,
-            }
-        );
+        const newUser = await User.create({
+            username,
+            email,
+            password: hashedPassword,
+        });
 
-        const users = await sequelize.query(
-            "SELECT * FROM users WHERE username = ? AND email = ?",
-            {
-                replacements: [username, email],
-                type: Sequelize.QueryTypes.SELECT,
-            }
-        );
-
-        const newUser = users[0];
-
-        delete newUser.password;
+        newUser.password = undefined;
 
         res.status(201).json({
             message: "User created successfully",
@@ -114,21 +95,20 @@ router.post("/user/login", async (req, res) => {
             });
         }
 
-        const users = await sequelize.query(
-            "SELECT * FROM users WHERE username = ? OR email = ?",
-            {
-                replacements: [username, username],
-                type: Sequelize.QueryTypes.SELECT,
-            }
-        );
+        const user = await User.findOne({
+            where: {
+                [Sequelize.Op.or]: [
+                    { username: username },
+                    { email: username },
+                ],
+            },
+        });
 
-        if (users.length === 0) {
+        if (!user) {
             return res.status(404).json({
                 message: "No user found with the provided username/email",
             });
         }
-
-        const user = users[0];
 
         const match = await bcrypt.compare(password, user.password);
 
@@ -142,7 +122,7 @@ router.post("/user/login", async (req, res) => {
             expiresIn: "60d",
         });
 
-        delete user.password;
+        user.password = undefined;
 
         res.json({
             message: "User logged in successfully",
