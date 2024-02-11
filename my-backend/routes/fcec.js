@@ -18,9 +18,7 @@ router.get("/teams/fcec", authenticateToken, async (req, res) => {
         );
 
         if (!teams.length) {
-            return res
-                .status(404)
-                .json({ message: "No teams found for this event" });
+            return res.status(404).json({ message: "No teams found for FCEC" });
         }
 
         const result = await Promise.all(
@@ -143,7 +141,7 @@ router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
 router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
     const { team, leader, members, fcec } = req.body;
     const eventId = 1;
-    const userId = 1;
+    const userId = 1; // ToDo: get userId
 
     try {
         const [teamId] = await sequelize.query(

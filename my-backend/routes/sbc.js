@@ -18,9 +18,7 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
         );
 
         if (!teams.length) {
-            return res
-                .status(404)
-                .json({ message: "No teams found for this event" });
+            return res.status(404).json({ message: "No teams found for SBC" });
         }
 
         const result = await Promise.all(
