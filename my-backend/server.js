@@ -1,11 +1,29 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 5001;
 
-app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
+const userRouter = require("./routes/users");
+const teamRouter = require("./routes/teams");
+const cicRouter = require("./routes/cic");
+const sbcRouter = require("./routes/sbc");
+const fcecRouter = require("./routes/fcec");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/", (req, res) => {
+    res.send("Hello from the backend!");
 });
 
+app.use("/", userRouter);
+app.use("/", cicRouter);
+app.use("/", teamRouter);
+app.use("/", sbcRouter);
+app.use("/", fcecRouter);
+
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
+
+module.export = app;

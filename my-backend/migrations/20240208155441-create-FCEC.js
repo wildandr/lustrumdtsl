@@ -15,14 +15,6 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            active_student_letter: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
-            twibbon_post: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
             abstract_title: {
                 type: Sequelize.STRING,
                 allowNull: false,
