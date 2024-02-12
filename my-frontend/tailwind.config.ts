@@ -11,6 +11,7 @@ const config: Config = {
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
+      
         extend: {
             animationDelay: ['responsive', 'hover', 'focus'],
             animationDuration: ['responsive', 'hover', 'focus'],
