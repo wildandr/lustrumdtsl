@@ -12,9 +12,7 @@ const User = require("../models/user");
 // Ambil semua user
 router.get("/user", authenticateToken, async (req, res) => {
     try {
-        const users = await sequelize.query("SELECT * FROM users", {
-            type: sequelize.QueryTypes.SELECT,
-        });
+        const users = await User.findAll();
         if (users.length === 0) {
             res.status(404).json({ message: "No users found" });
         } else {
@@ -27,16 +25,13 @@ router.get("/user", authenticateToken, async (req, res) => {
 });
 
 // Ambil user berdasarkan id
-router.get("/user/:id", authenticateToken, async (req, res) => {
+router.get("/user/:user_id", authenticateToken, async (req, res) => {
     try {
-        const id = req.params.id;
-        const user = await sequelize.query("SELECT * FROM users WHERE id = ?", {
-            replacements: [id],
-            type: sequelize.QueryTypes.SELECT,
-        });
-        if (user.length === 0) {
+        const user_id = req.params.user_id;
+        const user = await User.findByPk(user_id);
+        if (!user) {
             res.status(404).json({
-                message: "No user found with the provided id",
+                message: "No user found with the provided user_id",
             });
         } else {
             res.json(user);

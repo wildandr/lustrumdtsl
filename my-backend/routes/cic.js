@@ -32,9 +32,14 @@ router.get("/teams/cic", authenticateToken, async (req, res) => {
                 );
 
                 if (!members.length) {
-                    return res
-                        .status(404)
-                        .json({ message: "No members found for this team" });
+                    return {
+                        team: {
+                            team_name: team.team_name,
+                            institution_name: team.institution_name,
+                            payment_proof: team.payment_proof,
+                        },
+                        error: "No members found for this team",
+                    };
                 }
 
                 const leader = members.find((member) => member.is_leader === 1);
