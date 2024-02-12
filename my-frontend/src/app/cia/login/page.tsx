@@ -239,12 +239,12 @@ export default function Register() {
             className="md:hidden w-[40px] h-[40px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] absolute top-16 left-8 sm:top-32  md:top-[12rem] md:left-[5rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
-          <Image
+         <Image
             src="/ciaIcon4.png"
             alt="icon4"
             width={600}
             height={600}
-            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] lg:top-[34rem] lg:left-[6rem] xl:left-[8rem]"
+            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] lg:top-[34rem] xl:top-[30rem] lg:left-[6rem] xl:left-[8rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -276,7 +276,7 @@ export default function Register() {
             alt="icon6"
             width={600}
             height={600}
-            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[36rem] lg:top-[38rem]  md:left-[12rem] lg:left-[16rem] xl:left-[24rem]"
+            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[36rem] lg:top-[38rem] xl:top-[36rem]  md:left-[12rem] lg:left-[16rem] xl:left-[24rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
         </div>
