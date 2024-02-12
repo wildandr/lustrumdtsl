@@ -31,7 +31,6 @@ export default function Register() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
-                alert("Login Berhasil");
             } else {
                 alert("Login Gagal");
             }
