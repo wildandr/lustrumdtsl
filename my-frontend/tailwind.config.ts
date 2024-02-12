@@ -11,6 +11,20 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            animationDelay: ['responsive', 'hover', 'focus'],
+            animationDuration: ['responsive', 'hover', 'focus'],
+            animation: {
+              'twinkle-1s': 'twinkle 1s ease-in-out infinite',
+              'twinkle-2s': 'twinkle 2s ease-in-out infinite',
+              'twinkle-3s': 'twinkle 3s ease-in-out infinite',
+              'twinkle-4s': 'twinkle 4s ease-in-out infinite',
+            },
+            keyframes: {
+                twinkle: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.1' },
+                },
+            },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
@@ -18,8 +32,13 @@ const config: Config = {
             },
             colors: {
                 "cia-green": "#005A48",
+                chiasGreen: {
+                    500: '#058369',
+                  },
             },
             fontFamily: {
+                sfui: ['SFUIText-Regular'],
+                LibreBaskerville: ['LibreBaskerville-Regular'],
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
