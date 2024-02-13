@@ -37,6 +37,9 @@ const config: Config = {
                 chiasGreen: {
                     500: '#058369',
                   },
+                gold: {
+                    500: "#F2D87A"
+                }
             },
             fontFamily: {
                 sfui: ['SFUIText-Regular'],
