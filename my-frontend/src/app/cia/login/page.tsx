@@ -12,7 +12,7 @@ import {
 import { Input } from "@nextui-org/react";
 import axios from "axios";
 
-export default function Register() {
+export default function Login() {
   const [isVisible1, setIsVisible1] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
