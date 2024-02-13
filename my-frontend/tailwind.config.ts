@@ -6,6 +6,7 @@ const config: Config = {
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/component/module/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/component/layout/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
@@ -36,6 +37,9 @@ const config: Config = {
                 chiasGreen: {
                     500: '#058369',
                   },
+                gold: {
+                    500: "#F2D87A"
+                }
             },
             fontFamily: {
                 sfui: ['SFUIText-Regular'],

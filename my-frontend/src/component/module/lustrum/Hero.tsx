@@ -1,4 +1,5 @@
 'use client'
+import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -112,14 +113,14 @@ export function Hero() {
 
                 <Image
                     src={`/assets/lustrum/film.png`}
-                    className='h-20 lg:h-[11rem] w-auto absolute top-[5%] lg:top-[9%] right-[2%] lg:right-[10%] mix-blend-overlay'
+                    className='h-20 lg:h-[11rem] w-auto absolute top-[5%] md:top-[9%] right-[2%] md:right-[10%] mix-blend-overlay'
                     width={1000}
                     height={1000}
                     alt={''}
                 />
                 <Image
                     src={`/assets/lustrum/roll_film.png`}
-                    className='h-20 lg:h-[11rem] w-auto absolute top-[10%] lg:top-[45%] right-[-2%] lg:right-[3%] mix-blend-overlay'
+                    className='h-20 lg:h-[11rem] w-auto absolute top-[10%] md:top-[15%] lg:top-[45%] right-[-2%] md:right-[3%] mix-blend-overlay'
                     width={1000}
                     height={1000}
                     alt={''}
@@ -135,10 +136,11 @@ export function Hero() {
                         height={1000}
                         alt={''}
                     />
-                    <div className='flex flex-wrap flex-col lg:w-[45vw] gap-3 text-center mx-8'>
+                    <div className='flex flex-wrap flex-col lg:w-[45vw] gap-3 text-center mx-8 items-center lg:items-start'>
                         <p className=' text-4xl lg:text-7xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>LUSTRUM XI</p>
                         <p className=' text-base lg:text-xl font-LibreBaskerville font-semibold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Keluarga Mahasiswa Teknik Sipil & lingkungan</p>
                         <p className=' text-xs lg:text-sm font-sfui bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-balance text-justify'>Keluarga Mahasiswa Teknik Sipil dan Lingkungan (KMTSL) kini telah menginjak usia ke-55 tahun. Dalam perjalanannya, KMTSL telah mengabdikan diri terhadap perkembangan Indonesia terkhusus pada bidang infrastruktur yang bersinggungan secara langsung dengan pembelajaran yang terjadi di perkuliahan. Melalui anggota dan alumninya, KMTSL telah banyak memberikan warna bagi Indonesia dan masyarakat dengan berbagai karya sebagai bentuk kontribusi untuk kemajuan Indonesia, baik di bidang kemajuan infrastruktur maupun pengembangan sosial masyarakat.</p>
+                        <button style={{border: "1px solid var(--gold, #F2D87A)"}} className='w-fit border text-gold-500 px-4 py-2 mt-4 rounded-md font-bold text-xs lg:text-base hover:opacity-80'>Explore Event <span></span></button>
                     </div>
                 </div>
             </div>
