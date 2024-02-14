@@ -7,22 +7,29 @@ Craft.init(
     {
         participant_id: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
+            allowNull: false,
             autoIncrement: true,
+            primaryKey: true,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            unique: {
+                args: true,
+                msg: "Pengguna ini sudah terdaftar di CRAFT",
+            },
+            references: {
+                model: "users",
+                key: "user_id",
+            },
         },
         full_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
         },
-        instansi_name: {
+        institution_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
         },
         activity_choice: {
             type: DataTypes.ENUM("offline", "online"),
@@ -31,9 +38,6 @@ Craft.init(
         whatsapp_number: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
         },
         isMahasiswaDTSL: {
             type: DataTypes.BOOLEAN,
@@ -46,20 +50,20 @@ Craft.init(
         payment_proof: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
         },
     },
     {
         sequelize,
         modelName: "Craft",
-        indexes: [
-            {
-                unique: true,
-                fields: ["full_name", "instansi_name", "whatsapp_number"],
+        tableName: "craft",
+        timestamps: true,
+        hooks: {
+            beforeValidate: (craft, options) => {
+                if (craft.isMahasiswaDTSL && !craft.ktm) {
+                    throw new Error("KTM is required for Mahasiswa DTSL");
+                }
             },
-        ],
+        },
     }
 );
 
