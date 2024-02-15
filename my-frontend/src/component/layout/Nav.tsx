@@ -19,14 +19,9 @@ export default function Nav() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setIsMenuOpen(false);
+        setIsDropdownVisible(false);
       }
-      if (
-        menuLangRef.current &&
-        !menuLangRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuLangOpen(false);
-      }
+     
       
     };
 
@@ -94,7 +89,7 @@ export default function Nav() {
           ) : (
             <Image
               className="h-10 w-auto"
-              src="/ciaNavlogo.png"
+              src="/ciaLogo.png"
               alt="Logo"
               width={100}
               height={100}
@@ -106,7 +101,7 @@ export default function Nav() {
          
           <div className="group inline-block menu1" ref={dropdownRef}>
             <button
-              onClick={toggleMenu}
+              onClick={toggleDropdown}
               aria-haspopup="true"
               aria-controls="menu"
               className="outline-none focus:outline-none px-3 py-1 bg-transparent rounded-sm flex items-center min-w-32"
@@ -131,115 +126,180 @@ export default function Nav() {
                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </button>
-            <ul
-  id="menu"
-  aria-hidden="true"
-  className={` transform transition duration-150  origin-top min-w-32 p-3 shadow-lg ${
-    isMenuOpen
-      ? "absolute top-[4rem] right-[13rem] w-[15rem] p-3 scale-100 z-50"
-      : " hidden " // Menampilkan menu saat isMenuOpen true
-  } ${activeSegment === "lustrum" ? "bg-black " : "bg-white "}`}
->
-  <li className={` relative px-3 py-2  border-b  ${activeSegment === "lustrum" ? "border-yellow-400 " : "border-cia-green "} `} onMouseEnter={toggleMenuLang} onMouseLeave={toggleMenuLang}>
-    <Link
-      aria-haspopup="true"
-      aria-controls="menu-lang"
-      className="w-full text-left flex items-center outline-none focus:outline-none"
-      href="/cia"
-    >
-      {/* Civil in action */}
-      <span
-        className={`pr-1 flex-1 ${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`}
-      >
-        Civil in Action
-      </span>
-      <span className="mr-auto ">
-        <svg
+            <ul className={`shadow-lg text-cia-green w-[55%] sm:w-[45%] md:w-[28%] p-3 ${
+            isDropdownVisible ? "absolute top-16 right-0" : "hidden"
+          }  ${activeSegment === "lustrum" ? "bg-black " : "bg-white "}  ${
+            isVisible
+              ? "transition-transform"
+              : "-translate-y-[300%] transition-transform"
+          }`} >
+           
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <Link href="/cia" className="flex items-center">
+              <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400 border-yellow-400" : "text-cia-green "
+        }`}>Civil in Action </span>
+              <svg
          
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          className={`group-hover:rotate-180 transform 
-          transition duration-100 ease-in-out ${
-            activeSegment === "lustrum" ? "fill-yellow-400" : "fill-white"
-          }`}
-        >
-          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
-        </svg>
-      </span>
-    </Link>
-    <ul
-      id="menu-lang"
-      aria-hidden="true"
-      className={` absolute top-0 right-0 
-  transition duration-150 ease-in-out origin-top-left shadow-lg
-  min-w-32 ${activeSegment === "lustrum" ? "bg-black " : "bg-white "} ${isMenuLangOpen ? "block" : "hidden"}`}
-    >
-      {/* links3 */}
-      <li className={`px-3 py-1 ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green  hover:bg-gray-100"}`}>
-        Registrasi Peserta CRAFT
-      </li>
-      <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
-        Registrasi Peserta CIC
-      </li>
-      <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
-        Registrasi Peserta SBC
-      </li>
-      <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
-        Registrasi Peserta FBEC
-      </li>
-    </ul>
-  </li>
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={`ml-3 ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg>
+       </Link>
+              <ul className="pl-2 text-sm text-cia-green">
+                <li className="py-1 ">
+                <Link href="/cia/register" className="flex justify-between items-center">
+                  <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`} >Registrasi Peserta CRAFT </span>
+                  <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={` ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg></Link></li>
+                <li className="py-1 ">
+                <Link href="/lustrum" className="flex justify-between items-center">
+                  <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`}>Registrasi Peserta CIC </span>
+                  <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={` ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg></Link></li>
+                <li className="py-1 ">
+                <Link href="/lustrum" className="flex justify-between items-center">
+                  <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`}>Registrasi Peserta SBC </span>
+                  <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={` ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg></Link></li>
+                <li className="py-1 ">
+                <Link href="/lustrum" className="flex justify-between items-center">
+                  <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`} >Registrasi Peserta FCEC </span>
+                  <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={` ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg></Link></li>
+                
+              </ul>
+            </li>
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <Link href="/lustrum" className="flex items-center">
+              <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`}>Srawung Desa </span>
+              <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={`ml-3 ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg>
+       </Link>
+       </li>
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <Link href="/lustrum" className="flex items-center">
+              <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`} >Clayproyex </span>
+              <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={`ml-3 ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg>
+       </Link>
+       </li>
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <Link href="/lustrum" className="flex items-center">
+              <span className={`${
+          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        }`}>Ceremony </span>
+              <svg
+         
+         xmlns="http://www.w3.org/2000/svg"
+         x="0px"
+         y="0px"
+         width="12"
+         height="12"
+         viewBox="0 0 24 24"
+         className={`ml-3 ${
+           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+         }`}
+       >
+         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+       </svg>
+       </Link>
+       </li>
+           
 
-  <li className={` relative px-3 py-2  border-b  ${activeSegment === "lustrum" ? "border-yellow-400 " : "border-cia-green "}`}>
-    <Link
-      href="/event/srawung-desa"
-      className="w-full text-left flex items-center outline-none focus:outline-none"
-    >
-      <span
-        className={`pr-1 flex-1 ${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green"
-        }`}
-      >
-        Srawung Desa
-      </span>
-      <span className="mr-auto "></span>
-    </Link>
-  </li>
-  <li className={` relative px-3 py-2  border-b  ${activeSegment === "lustrum" ? "border-yellow-400 " : "border-cia-green "}`}>
-    <Link
-      href="/event/clayproyex"
-      className="w-full text-left flex items-center outline-none focus:outline-none"
-    >
-      <span
-        className={`pr-1 flex-1 ${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green"
-        }`}
-      >
-        Clayproyex
-      </span>
-    </Link>
-  </li>
-  <li className={` relative px-3 py-2  border-b  ${activeSegment === "lustrum" ? "border-yellow-400 " : "border-cia-green "}`}>
-    <Link
-      href="/event/ceremony"
-      className="w-full text-left flex items-center outline-none focus:outline-none"
-    >
-      <span
-        className={`pr-1 flex-1 ${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green"
-        }`}
-      >
-        Ceremony
-      </span>
-    </Link>
-  </li>
-</ul>
+          </ul>
 
 
           </div>
@@ -247,7 +307,7 @@ export default function Nav() {
             About
           </Link>
         </nav>
-        <div className="lg:hidden" ref={menuLangRef}>
+        <div className="lg:hidden"  ref={dropdownRef}>
          
           <button onClick={toggleDropdown}
             className="outline-none focus:outline-none">
