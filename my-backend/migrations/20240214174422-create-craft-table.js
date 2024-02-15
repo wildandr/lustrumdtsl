@@ -13,6 +13,19 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
+            user_id: {
+                type: Sequelize.INTEGER,
+                unique: {
+                    args: true,
+                    msg: "Pengguna ini sudah terdaftar di CRAFT",
+                },
+                references: {
+                    model: "users",
+                    key: "user_id",
+                },
+                onUpdate: "CASCADE",
+                onDelete: "SET NULL",
+            },
             institution_name: {
                 type: Sequelize.STRING,
                 allowNull: false,
