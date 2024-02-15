@@ -36,7 +36,7 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-auto h-28 top-0 right-[10%]'/>
+                        className='absolute w-auto h-28 top-0 right-[15%]'/>
                     <p className='absolute top-[15%] font-LibreBaskerville font-bold text-6xl text-chiasGreen-500'>
                         Civil In Action X PKTSL
                     </p>
