@@ -76,7 +76,7 @@ export default function Register() {
         return () => clearInterval(interval);
     }, [rotation, direction]);
     return (
-        <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
+        <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] lg:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
       <Image
         src="/bgciamobile.png"
         alt="bgcia"
@@ -92,13 +92,13 @@ export default function Register() {
         className="hidden sm:flex w-full h-full object-cover z-50"
       />
 
-      <div className=" w-full  max-[385px]:h-[160vh] h-[130vh] min-[475px]:h-[140vh] sm:h-[155vh] md:h-[100vh] hero absolute top-0 mt-20  z-0 ">
+      <div className=" w-full  max-[385px]:h-[160vh] h-[130vh] min-[475px]:h-[140vh] sm:h-[155vh] md:h-[100vh] mt-20 md:mt-0 hero absolute top-0  z-0 ">
         <Image
           src="/bgform.png"
           alt="form"
           width={500}
           height={500}
-          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-0 lg:top-10 md:h-[650px] lg:h-[640px] xl:h-[83%] "
+          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20  md:h-[650px] lg:h-[640px] xl:h-[83%] "
         />
         <Image
           src="/bgFormMobile.png"
@@ -110,7 +110,7 @@ export default function Register() {
 
         <div
           id="form"
-          className="flex-col absolute  bottom-0 z-30 px-2  right-5 left-3 sm:left-1 sm:right-8 max-[385px]:h-[45%] h-[55%] min-[475px]:h-[48%] sm:h-[46%]  md:w-[42%]   lg:w-[40%] min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-12    md:bottom-auto md:left-auto  md:right-0 md:top-[8%] lg:top-28 xl:top-[12%] justify-center  md:px-4 "
+          className="flex-col absolute  bottom-0 z-30 px-  right-5 left-3 sm:left-1 sm:right-8 max-[385px]:h-[45%] h-[55%] min-[475px]:h-[48%] sm:h-[46%]  md:w-[42%]   lg:w-[40%] min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-12    md:bottom-auto md:left-auto  md:right-0 md:top-[15%] lg:top-[7.5rem] xl:top-[16%] justify-center  md:px-4 "
         >
          <div className="px-8 ">
     <h1 className="text-3xl sm:text-4xl md:text-3xl  font-medium text-cia-green ">
@@ -300,7 +300,7 @@ export default function Register() {
             alt="cia"
             width={1000}
             height={1000}
-            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[28%] md:absolute md:top-40 md:left-20 lg:top-56 lg:left-32 xl:top-56 xl:left-56"
+            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[28%] md:absolute md:top-[23%] min-[920px]:top-[30%]  md:left-20 lg:top-56 lg:left-32 xl:top-56 xl:left-56"
           />
 
           <Image
@@ -308,7 +308,7 @@ export default function Register() {
             alt="icon1"
             width={600}
             height={600}
-            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-8 lg:top-14 lg:left-[24%]  xl:top-14 xl:left-[20rem]"
+            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[4rem] lg:left-[24%]  xl:top-14 xl:left-[20rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -316,7 +316,7 @@ export default function Register() {
             alt="icon2"
             width={600}
             height={600}
-            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-32 md:left-[42%] lg:left-[26rem] xl:top-[12rem] xl:left-[42%]"
+            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-[18%] md:left-[42%] lg:left-[26rem] xl:top-[12rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -340,7 +340,7 @@ export default function Register() {
             alt="icon4"
             width={600}
             height={600}
-            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] lg:top-[34rem] xl:top-[30rem] lg:left-[6rem] xl:left-[8rem]"
+            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] md:top-[53%] min-[920px]:top-[60%] lg:top-[32rem]  xl:top-[30rem]  xl:left-[8rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -356,7 +356,7 @@ export default function Register() {
             alt="icon5"
             width={600}
             height={600}
-            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%] md:left-[42%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
+            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -372,9 +372,10 @@ export default function Register() {
             alt="icon6"
             width={600}
             height={600}
-            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[36rem] lg:top-auto lg:bottom-[15%]  xl:top-auto xl:bottom-[15%] md:left-[12rem] lg:left-[16rem] xl:left-[26%]"
+            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[60%]  min-[920px]:top-[68%] lg:top-auto lg:bottom-[15%]  xl:top-auto xl:bottom-[15%] md:left-[12rem] lg:left-[16rem] xl:left-[26%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
+
         </div>
       </div>
     </main>

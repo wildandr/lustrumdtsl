@@ -10,6 +10,7 @@ export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuLangOpen, setIsMenuLangOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const menuLangRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Fungsi untuk menutup dropdown saat klik di luar dropdown
@@ -20,6 +21,13 @@ export default function Nav() {
       ) {
         setIsMenuOpen(false);
       }
+      if (
+        menuLangRef.current &&
+        !menuLangRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuLangOpen(false);
+      }
+      
     };
 
     // Menambahkan event listener ke elemen dokumen ketika komponen dimount
@@ -54,26 +62,6 @@ export default function Nav() {
   }, []);
 
   const activeSegment = useSelectedLayoutSegment();
-
-  const links2 = [
-    {
-      label: "Civil in Action",
-      path: "/event/civil-in-action",
-      targetSegment: "civil-in-action",
-    },
-    {
-      label: "Srawung Desa",
-      path: `/event/srawung-desa`,
-      targetSegment: "srawung-desa",
-    },
-    {
-      label: "Claproyex",
-      path: "/event/claproyek",
-      targetSegment: "claproyek",
-    },
-    { label: "Ceremony", path: "/event/ceremony", targetSegment: "ceremony" },
-  ];
-
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -259,9 +247,9 @@ export default function Nav() {
             About
           </Link>
         </nav>
-        <div className="lg:hidden">
+        <div className="lg:hidden" ref={menuLangRef}>
          
-          <Link href="#" onClick={toggleDropdown}
+          <button onClick={toggleDropdown}
             className="outline-none focus:outline-none">
           {/* Tampilkan image pertama jika segment aktif adalah "lustrum", jika tidak, tampilkan image kedua */}
           {activeSegment === "lustrum" ? (
@@ -271,13 +259,17 @@ export default function Nav() {
           ) : (
             <Image src="/ciaButtonNav.png" alt="menu" width={30} height={30} />
           )}
-        </Link>
+        </button>
           <ul className={`shadow-lg text-cia-green w-[55%] sm:w-[45%] md:w-[28%] p-3 ${
             isDropdownVisible ? "absolute top-16 right-0" : "hidden"
-          }  ${activeSegment === "lustrum" ? "bg-black " : "bg-white "}`}>
+          }  ${activeSegment === "lustrum" ? "bg-black " : "bg-white "}  ${
+            isVisible
+              ? "transition-transform"
+              : "-translate-y-[300%] transition-transform"
+          }`} >
            
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/cia" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400 border-yellow-400" : "text-cia-green "
         }`}>Civil in Action </span>
@@ -298,7 +290,7 @@ export default function Nav() {
        </Link>
               <ul className="pl-2 text-sm text-cia-green">
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/cia/register" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Registrasi Peserta CRAFT </span>
@@ -320,7 +312,7 @@ export default function Nav() {
                 <Link href="/lustrum" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`}>Registrasi Peserta CRAFT </span>
+        }`}>Registrasi Peserta CIC </span>
                   <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +331,7 @@ export default function Nav() {
                 <Link href="/lustrum" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`}>Registrasi Peserta CRAFT </span>
+        }`}>Registrasi Peserta SBC </span>
                   <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -358,7 +350,7 @@ export default function Nav() {
                 <Link href="/lustrum" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`} >Registrasi Peserta CRAFT </span>
+        }`} >Registrasi Peserta FCEC </span>
                   <svg
          
          xmlns="http://www.w3.org/2000/svg"
