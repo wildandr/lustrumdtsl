@@ -31,3 +31,38 @@ body {
     text-wrap: balance;
   }
 }
+
+.icon1 {
+  animation: spin 1s linear infinite;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(deg);
+  }
+}
+}
+
+
+.menu1 li > ul {
+  /* Gaya untuk submenu pertama */
+  /* Misalnya, untuk menggeser submenu ke kanan */
+  transform: translatex(100%);
+}
+
+.menu1 li:hover > ul {
+  /* Gaya saat submenu pertama ditampilkan */
+  transform: translatex(106%) scale(1);
+}
+
+.menu1 li > button svg {
+  /* Gaya ikon panah saat submenu pertama ditutup */
+  transform: rotate(-90deg);
+}
+
+.menu1 li:hover > button svg {
+  /* Gaya ikon panah saat submenu pertama dibuka */
+  transform: rotate(-270deg);
+}
