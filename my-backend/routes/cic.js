@@ -3,6 +3,8 @@ const router = express.Router();
 const { QueryTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const authenticateToken = require("../middleware/authenticateToken");
+const Team = require("../models/team");
+const Member = require("../models/member");
 
 // Ambil semua teams di lomba CIC
 router.get("/teams/cic", authenticateToken, async (req, res) => {
