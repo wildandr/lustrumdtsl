@@ -82,7 +82,7 @@ export default function Login() {
           alt="form"
           width={500}
           height={500}
-          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20 h-[70%] md:h-[56%] xl:h-[64%] "
+          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20 h-[70%] md:h-[56%] lg:h-[65%] xl:h-[70%] "
         />
         <Image
           src="/bgFormMobile.png"
@@ -94,7 +94,7 @@ export default function Login() {
 
         <div
           id="form"
-          className="flex-col absolute bottom-0 z-30 right-5 left-3 sm:left-1 sm:right-8 max-[385px]:h-[40%] h-[45%] sm:h-[40%]  lg:w-[40%] min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10    md:bottom-auto md:left-auto  md:right-0 md:top-40 justify-center md:w-[42%] md:px-4 md:h-[80%] "
+          className="flex-col absolute bottom-0 z-30 right-5 left-3 sm:left-1 sm:right-8 max-[385px]:h-[40%] h-[45%] sm:h-[40%]   lg:w-[40%]  min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10    md:bottom-auto md:left-auto  md:right-0 md:top-[16%]  justify-center md:w-[42%] md:px-4 md:h-[50%] "
         >
           <div className="px-8 md:px-2 ">
             <h1 className="text-3xl sm:text-4xl  font-medium text-cia-green ">
@@ -220,7 +220,7 @@ export default function Login() {
             alt="icon2"
             width={600}
             height={600}
-            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-4 sm:top-20 md:top-32 md:left-[20rem] lg:left-[26rem] xl:top-[12rem] xl:left-[36rem]"
+            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-32 md:left-[42%] lg:left-[26rem] xl:top-[12rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -260,7 +260,7 @@ export default function Login() {
             alt="icon5"
             width={600}
             height={600}
-            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[30rem] min-[820px]:top-[33rem] md:left-[20rem] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[38rem]"
+            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%] md:left-[42%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -276,9 +276,9 @@ export default function Login() {
             alt="icon6"
             width={600}
             height={600}
-            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[36rem] lg:top-[38rem] xl:top-[36rem]  md:left-[12rem] lg:left-[16rem] xl:left-[24rem]"
+            className="hidden xl:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[36rem] lg:top-auto lg:bottom-[15%]  xl:top-auto xl:bottom-[15%] md:left-[12rem] lg:left-[16rem] xl:left-[26%]"
             style={{ transform: `rotate(${rotation}deg)` }}
-          />
+            />
         </div>
       </div>
     </main>
