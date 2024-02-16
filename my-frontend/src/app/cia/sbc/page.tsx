@@ -12,7 +12,7 @@ export default function sbc() {
     };
 
     return (
-        <div className=" bg-chiasGreen-500" style={backgroundImage}>
+        <div className=" bg-sbc-orange" style={backgroundImage}>
             {/* <Hero /> */}
             <Form />
         </div>

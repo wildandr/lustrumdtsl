@@ -35,6 +35,9 @@ const config: Config = {
                 "cia-green": "#005A48",
                 "cia-green-placeholder": "#80ACA3",
                 "cia-green-border": "#18AB8E",
+                "sbc-orange": "#E25933",
+                "sbc-orange-placeholder": "#E25933",
+                "sbc-orange-border": "#ED4F23",
                 chiasGreen: {
                     500: "#058369",
                 },
