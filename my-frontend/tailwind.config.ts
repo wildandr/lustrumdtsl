@@ -34,6 +34,7 @@ const config: Config = {
             },
             colors: {
                 "cia-green": "#005A48",
+                "ciaGreen": "#058369",
                 chiasGreen: {
                     500: '#058369',
                   },
