@@ -299,6 +299,63 @@ export function Utama() {
                 </div>
                 <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[13%] md:top-[11%]'></div>
                 <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[14%] md:top-[11.5%]'></div>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[20%]'>
+
+                    <table className='text-center w-full border border-chiasGreen-500'>
+                        <thead>
+                            <tr className='w-full'>
+                                <th className='w-1/2 border border-black'>Nama Kegiatan</th>
+                                <th className='w-1/2 border border-black'>Tanggal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* <!-- Baris 1 --> */}
+                            <tr>
+                                <td colSpan={2} className='border-collapse border border-black text-center'>Penyisihan</td>
+                            </tr>
+                            {/* <!-- Baris 2 --> */}
+                            <tr>
+                                <td>Registrasi Peserta</td>
+                                <td>12 Februari - 24 Maret 2024</td>
+                            </tr>
+                            {/* <!-- Baris 3 --> */}
+                            <tr>
+                                <td>Pengerjaan Proposal</td>
+                                <td>11 Maret - 13 April 2024</td>
+                            </tr>
+                            {/* <!-- Baris 4 --> */}
+                            <tr>
+                                <td>Pengumuman Finalist</td>
+                                <td>12 Mei 2024</td>
+                            </tr>
+                            {/* <!-- Baris 5 --> */}
+                            <tr>
+                                <td colSpan={2} className='border-collapse border border-black text-center'>Tahap Final</td>
+                            </tr>
+                            {/* <!-- Baris 6 --> */}
+                            <tr>
+                                <td>Checking Area dan briefing Peserta</td>
+                                <td>24 Juli 2024</td>
+                            </tr>
+                            {/* <!-- Baris 7 --> */}
+                            <tr>
+                                <td>Presentasi</td>
+                                <td>25 Juli 2024</td>
+                            </tr>
+                            {/* <!-- Baris 8 --> */}
+                            <tr>
+                                <td>Perakitan dan Pengujian</td>
+                                <td>26 Juli 2024</td>
+                            </tr>
+                            {/* <!-- Baris 9 --> */}
+                            <tr>
+                                <td>Pengumuman Pemenang dan Closing Ceremony</td>
+                                <td>27 Juli 2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
 
         </div>

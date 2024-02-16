@@ -4,6 +4,7 @@ import Tema from "../../component/module/cia/Tema";
 import Utama from "../../component/module/cia/Utama";
 import Sponsorship from "../../component/module/cia/Sponsorship";
 import Mediapatner from "../../component/module/cia/Mediapatner";
+import Event from "../../component/module/cia/Event";
 
 export default function Home() {
 
@@ -20,6 +21,7 @@ export default function Home() {
        style={backgroundImage}>
           <Hero/>
           <Tema/>
+          <Event/>
           <Utama/>
           <Sponsorship/>
           <Mediapatner/>
