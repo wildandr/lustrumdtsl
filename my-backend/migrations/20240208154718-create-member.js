@@ -29,7 +29,7 @@ module.exports = {
                 allowNull: true,
             },
             phone_number: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: true,
             },
             line_id: {

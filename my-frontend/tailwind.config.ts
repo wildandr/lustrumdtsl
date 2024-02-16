@@ -11,20 +11,19 @@ const config: Config = {
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-      
         extend: {
-            animationDelay: ['responsive', 'hover', 'focus'],
-            animationDuration: ['responsive', 'hover', 'focus'],
+            animationDelay: ["responsive", "hover", "focus"],
+            animationDuration: ["responsive", "hover", "focus"],
             animation: {
-              'twinkle-1s': 'twinkle 1s ease-in-out infinite',
-              'twinkle-2s': 'twinkle 2s ease-in-out infinite',
-              'twinkle-3s': 'twinkle 3s ease-in-out infinite',
-              'twinkle-4s': 'twinkle 4s ease-in-out infinite',
+                "twinkle-1s": "twinkle 1s ease-in-out infinite",
+                "twinkle-2s": "twinkle 2s ease-in-out infinite",
+                "twinkle-3s": "twinkle 3s ease-in-out infinite",
+                "twinkle-4s": "twinkle 4s ease-in-out infinite",
             },
             keyframes: {
                 twinkle: {
-                    '0%, 100%': { opacity: '1' },
-                    '50%': { opacity: '0.1' },
+                    "0%, 100%": { opacity: "1" },
+                    "50%": { opacity: "0.1" },
                 },
             },
             backgroundImage: {
@@ -34,22 +33,25 @@ const config: Config = {
             },
             colors: {
                 "cia-green": "#005A48",
+                "cia-green-placeholder": "#80ACA3",
+                "cia-green-border": "#18AB8E",
                 chiasGreen: {
-                    500: '#058369',
-                  },
+                    500: "#058369",
+                },
                 gold: {
-                    500: "#F2D87A"
-                }
+                    500: "#F2D87A",
+                },
             },
             fontFamily: {
-                sfui: ['SFUIText-Regular'],
-                LibreBaskerville: ['LibreBaskerville-Regular'],
+                sfui: ["SFUIText-Regular"],
+                LibreBaskerville: ["LibreBaskerville-Regular"],
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
     },
     darkMode: "class",
     plugins: [
+        require("tailwindcss-list-style")(["responsive"]),
         nextui({
             addCommonColors: true,
             themes: {
