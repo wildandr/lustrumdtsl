@@ -26,11 +26,29 @@ export function Hero() {
         backgroundRepeat: "no-repeat",
     };
 
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+        }
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => {
+        window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    const md_width = 768
+    const lg_width = 1024
+
+    const isDeviceGreaterThanLg = windowWidth >= lg_width
+
     return (
         <>
             <Image
                 src={`/assets/cia/lustrum_logo.png`}
-                className='h-28 w-auto absolute top-[15%] left-[30%]'
+                className='h-20 md:h-28 w-auto absolute top-[10%] lg:top-[10%] left-[20%] md:left-[30%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -39,7 +57,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/craft_logo.png`}
-                className='h-28 w-auto absolute top-[15%] right-[30%]'
+                className='h-20 md:h-28 w-auto absolute top-[10%] lg:top-[10%] right-[20%] md:right-[30%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -48,7 +66,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/helm.png`}
-                className='h-28 w-auto absolute top-[35%] left-[3%]'
+                className='h-14 md:h-24 w-auto absolute top-[25%] lg:top-[35%] left-[5%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -57,7 +75,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/screw_key.png`}
-                className='h-28 w-auto absolute bottom-[15%] left-[14%]'
+                className='h-14 lg:h-28 w-auto absolute -bottom-[5%] lg:bottom-[15%] left-[14%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -66,7 +84,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/note.png`}
-                className='h-28 w-auto absolute bottom-[10%] left-[33%]'
+                className='h-14 md:h-24 w-auto absolute -bottom-[10%] lg:bottom-[5%] left-[33%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -75,7 +93,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/calculator.png`}
-                className='h-28 w-auto absolute bottom-[10%] right-[33%]'
+                className='h-14 md:h-24 w-auto absolute -bottom-[10%] lg:bottom-[5%] right-[33%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -84,7 +102,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/chart_down.png`}
-                className='h-24 w-auto absolute bottom-[15%] right-[10%]'
+                className='h-10 lg:h-24 w-auto absolute -bottom-[5%] lg:bottom-[15%] right-[10%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -92,7 +110,7 @@ export function Hero() {
             />
             <Image
                 src={`/assets/cia/magnifier.png`}
-                className='h-28 w-auto absolute top-[35%] right-[10%]'
+                className='h-20 md:h-28 w-auto absolute top-[25%] lg:top-[35%] right-[5%] lg:right-[10%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -103,21 +121,21 @@ export function Hero() {
                 className="min-h-screen w-full"
             >
                 <div className="flex min-h-screen w-full items-center justify-center py-2 px-8">
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center mt-[30%] lg:mt-4">
                         <Image
-                            src={`/assets/cia/title.png`}
-                            className='w-[769px] h-auto justify-center z-50'
+                            src={isDeviceGreaterThanLg ? `/assets/cia/title.png` : `/assets/cia/title_mobile.png`}
+                            className='w-[669px] h-auto justify-center z-50'
                             width={1000}
                             height={1000}
                             alt={''}
                         />
-                        <div className='text-white w-[70%] my-4'>
-                            <p className='mb-2 z-50'>12th Civil In Action x Craft x Lustrum XI KMTSL</p>
-                            <p className='z-50'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
+                        <div className='text-white w-full lg:w-[70%] my-4'>
+                            <p className='mb-2 z-50 text-xl lg:text-3xl font-LibreBaskerville'>12th Civil In Action x Craft x Lustrum XI KMTSL</p>
+                            <p className='z-50 text-xs lg:text-base font-sfui'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
                         </div>
-                        <div className='flex flex-row gap-4 w-[40%] justify-center font-sans'>
-                            <div className='relative w-full border border-white text-white px-4 py-2 rounded-md font-bold z-50'>Masuk</div>
-                            <div className='w-full border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50'>Daftar Sekarang !</div>
+                        <div className='flex flex-col lg:flex-row gap-4 w-full justify-center items-center font-sans'>
+                            <div className='w-full lg:w-[20%] relative border border-white text-white px-4 py-2 rounded-md font-bold z-50'>Masuk</div>
+                            <div className='w-full lg:w-[20%] border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50'>Daftar Sekarang !</div>
                         </div>
                     </div>
                 </div>
