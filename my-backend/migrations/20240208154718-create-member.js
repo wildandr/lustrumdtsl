@@ -25,7 +25,7 @@ module.exports = {
                 allowNull: true,
             },
             batch: {
-                type: Sequelize.STRING,
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             phone_number: {

@@ -11,11 +11,15 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "axios": "^1.6.7",
+    "formidable": "^3.5.1",
     "framer-motion": "^11.0.3",
+    "mv": "^2.1.1",
     "next": "14.1.0",
     "postcss-nesting": "^12.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "react-toastify": "^10.0.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -26,6 +30,7 @@
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
+    "tailwindcss-list-style": "^0.1.2",
     "typescript": "^5"
   }
 }
