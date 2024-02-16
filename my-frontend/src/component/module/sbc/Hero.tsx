@@ -75,7 +75,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/screw_key.png`}
-                className="h-14 lg:h-28 w-auto absolute bottom-[34%] lg:bottom-[15%] left-[14%] lg:hidden"
+                className="h-14 lg:h-28 w-auto absolute bottom-[42%] lg:bottom-[15%] left-[14%] lg:hidden"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -84,7 +84,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/chart_down.png`}
-                className="h-10 lg:h-24 w-auto absolute bottom-[34%] lg:bottom-[15%] right-[10%] lg:hidden"
+                className="h-10 lg:h-24 w-auto absolute bottom-[42%] lg:bottom-[15%] right-[10%] lg:hidden"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}

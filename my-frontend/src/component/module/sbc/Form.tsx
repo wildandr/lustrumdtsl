@@ -159,7 +159,7 @@ export function Form() {
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:hidden w-auto h-full z-0 pt-[1%]"
+                    className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
                 />
 
                 <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
@@ -168,7 +168,7 @@ export function Form() {
                         alt="cia"
                         width={1000}
                         height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:left-[13%] hidden lg:flex"
+                        className="lg:h-36 lg:w-36 absolute lg:left-[13%] h-14 w-14 left-[6%] lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
                     <div
@@ -182,7 +182,7 @@ export function Form() {
                         alt="cia"
                         width={1000}
                         height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:right-[13%] hidden lg:flex"
+                        className="lg:h-36 lg:w-36 absolute lg:right-[13%] h-14 w-14 right-[6%] lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
 
@@ -1695,7 +1695,7 @@ export function Form() {
                     </div>
 
                     <button
-                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-[6%] xl:mb-[8%]"
+                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
                         type="submit"
                         onClick={handleRegister}
                     >
