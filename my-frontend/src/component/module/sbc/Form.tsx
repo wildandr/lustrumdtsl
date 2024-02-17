@@ -6,12 +6,20 @@ import axios from "axios";
 import Image from "next/image";
 
 export function Form() {
+    const [userId, setUserId] = useState<number | null>(null);
+
+    useEffect(() => {
+        setUserId(parseInt(localStorage.getItem("user_id") || "0"));
+        console.log(userId);
+    }, []);
+
     const [teamData, setTeamData] = useState({
         team: {
             team_name: "",
             institution_name: "",
             payment_proof: "",
             team_email: "",
+            user_id: userId,
         },
         leader: {
             full_name: "",
