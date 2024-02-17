@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function Kegiatan() {
@@ -135,7 +136,7 @@ export function Kegiatan() {
                         </div>
                     </div>
                     <div className='flex flex-row w-full lg:w-[50%] h-[10rem] lg:h-[13.5rem] gap-8 justify-center'>
-                        <div className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6'>
+                        <Link href={`/cia`} className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6 transition-transform duration-300 transform hover:scale-110'>
                             <Image
                                 src={'/assets/lustrum/logo_ciaxpktsl.png'}
                                 width={1000}
@@ -144,7 +145,7 @@ export function Kegiatan() {
                                 alt=''/>
                             
                             <p className='text-base lg:text-lg font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-center'>CIA x PKTSL</p>
-                        </div>
+                        </Link>
                         <div className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6'>
                             <Image
                                 src={'/assets/lustrum/logo_ceremony.png'}

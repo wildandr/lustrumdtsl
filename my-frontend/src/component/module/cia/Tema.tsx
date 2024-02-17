@@ -50,8 +50,8 @@ export function Tema() {
                     alt=''
                     className='absolute w-[90%] lg:w-[80%] h-auto'/>
                 <div className='w-full md:w-[75%] relative mt-[30%] lg:mt-[7%]'>
-                    <p className='text-xs md:text-base font-LibreBaskerville font-bold text-white'>Tema 12th Civil In Action</p>
-                    <p className='text-xl md:text-4xl font-LibreBaskerville font-bold text-white'>“Wujudkan Ibu kota Impian, Akselerasi Pembangunan Berkelanjutan”</p>
+                    <p className='text-xs md:text-base font-LibreBaskerville font-bold text-white mt-[5%] md:mt-[2%]'>Tema 12th Civil In Action</p>
+                    <p className='text-xl md:text-4xl font-LibreBaskerville font-bold text-white mt-[5%] md:mt-[2%]'>“Wujudkan Ibu kota Impian, Akselerasi Pembangunan Berkelanjutan”</p>
                     <p className='text-xs md:text-base font-sfui text-white mt-[5%] md:mt-[2%]'>Melalui serangkaian kegiatan Lustrum-XI KMTSL dengan tema “Solidaritas Sipil untuk Pembangunan Negeri” yang melibatkan berbagai pihak, kami berharap dapat menciptakan pemahaman yang lebih baik tentang urgensi pembangunan berkelanjutan, meningkatkan kesadaran akan peran individu dalam mencapai tujuan bersama, serta menciptakan pembangunan berkelanjutan dan progresif menuju Indonesia yang emas, berkelanjutan, dan berkemajuan.</p>
                 </div>
             </div>
