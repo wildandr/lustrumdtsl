@@ -25,23 +25,13 @@ router.get("/teams", authenticateToken, async (req, res) => {
                     }
                 );
 
-                if (!members.length) {
-                    return res
-                        .status(404)
-                        .json({ message: "No members found for this team" });
-                }
-
                 const leader = members.find((member) => member.is_leader === 1);
                 const memberList = members.filter(
                     (member) => member.is_leader === 0
                 );
 
                 return {
-                    team: {
-                        team_name: team.team_name,
-                        institution_name: team.institution_name,
-                        payment_proof: team.payment_proof,
-                    },
+                    team,
                     leader,
                     members: memberList,
                 };
