@@ -39,7 +39,7 @@ export function Form() {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                "http://127.0.0.1:5001/crafts/register",
+                "http://lustrumkmtsl:5001/crafts/register",
                 craftData,
                 {
                     headers: {
