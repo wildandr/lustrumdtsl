@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, FormEvent } from "react";
 import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 export function Form() {
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-
     const [teamData, setTeamData] = useState({
         team: {
             team_name: "",
@@ -128,24 +125,8 @@ export function Form() {
         }
     };
 
-    const [rotation, setRotation] = useState(0);
-    const [direction, setDirection] = useState(1);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // Jika rotasi mencapai 30 atau 330 derajat, balik arah
-            if (rotation >= 30 || rotation <= 1) {
-                setDirection((prevDirection) => -prevDirection);
-            }
-            // Perbarui rotasi sesuai arah pergerakan
-            setRotation((prevRotation) => prevRotation + 30 * direction);
-        }, 500);
-
-        return () => clearInterval(interval);
-    }, [rotation, direction]);
-
     return (
-        <div className="relative px-[5%] lg:px-[13%] pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll  ">
+        <div className="relative px-[5%] lg:px-[13%] pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll  min-h-screen">
             <div className="flex flex-col lg:justify-center items-center relative min-w-full mt-[4%]">
                 <Image
                     src="/assets/sbc/bg_form_sbc.png"
@@ -155,38 +136,20 @@ export function Form() {
                     className="absolute sm:flex w-auto h-[2100px] z-0 pt-[6%] hidden"
                 />
                 <Image
-                    src="/assets/sbc/bg_form_sbc_mobile.png"
+                    src="/assets/sbc/bg_form_sbc_mobile1.png"
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
+                    className="absolute sm:hidden flex w-auto h-[700px] z-0 pt-[1%]"
                 />
-
-                <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
-                    <Image
-                        src="/assets/sbc/cia_logo.png"
-                        alt="cia"
-                        width={1000}
-                        height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:left-[13%] h-14 w-14 left-[6%] lg:flex"
-                        style={{ transform: `rotate(${rotation}deg)` }}
-                    />
+                <div className="lg:mt-[1%] mt-[8%] min-h-screen z-50">
                     <div
                         className="font-LibreBaskerville font-bold lg:text-2xl text-xs lg:py-6 py-2 w-[185px] lg:w-[406px] lg:h-[80px] h-auto text-center mt-[5%] left-0 right-0 mx-auto"
                         style={backgroundHeading}
                     >
                         Formulir Pendaftaran SBC
                     </div>
-                    <Image
-                        src="/assets/sbc/sbc_logo.png"
-                        alt="cia"
-                        width={1000}
-                        height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:right-[13%] h-14 w-14 right-[6%] lg:flex"
-                        style={{ transform: `rotate(${rotation}deg)` }}
-                    />
-
-                    <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
+                    <div className="font-LibreBaskerville text-sbc-orange lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
                                 Periode pendaftaran dimulai pada tanggal 17
@@ -249,8 +212,7 @@ export function Form() {
                             </li>
                         </ol>
                     </div>
-
-                    <form className="w-full lg:px-[15%] px-[20%] flex flex-col gap-4 font-sans ">
+                    <form className="w-full lg:px-[15%] px-[20%] flex flex-col gap-4 font-sans">
                         <Input
                             isRequired
                             label="Email"
@@ -269,13 +231,13 @@ export function Form() {
                             classNames={{
                                 label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                    "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
                                     "focus:shadow-none",
-                                    "border-b-2 border-cia-green-border",
+                                    "border-b-2 border-sbc-orange-border",
                                     "dark:group-data-[focused=true]:bg-default/60",
                                     "!cursor-text",
                                 ],
@@ -300,13 +262,13 @@ export function Form() {
                             classNames={{
                                 label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                    "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
                                     "focus:shadow-none",
-                                    "border-b-2 border-cia-green-border",
+                                    "border-b-2 border-sbc-orange-border",
                                     "dark:group-data-[focused=true]:bg-default/60",
                                     "!cursor-text",
                                 ],
@@ -331,13 +293,13 @@ export function Form() {
                             classNames={{
                                 label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                    "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
                                     "focus:shadow-none",
-                                    "border-b-2 border-cia-green-border",
+                                    "border-b-2 border-sbc-orange-border",
                                     "dark:group-data-[focused=true]:bg-default/60",
                                     "!cursor-text",
                                 ],
@@ -362,13 +324,13 @@ export function Form() {
                             classNames={{
                                 label: "text-black/50 dark:text-white/90",
                                 input: [
-                                    "text-cia-green dark:text-white/90",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60",
+                                    "text-sbc-orange dark:text-white/90",
+                                    "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
                                     "focus:shadow-none",
-                                    "border-b-2 border-cia-green-border",
+                                    "border-b-2 border-sbc-orange-border",
                                     "dark:group-data-[focused=true]:bg-default/60",
                                     "!cursor-text",
                                 ],
@@ -376,14 +338,12 @@ export function Form() {
                             placeholder="Nama jembatan anda"
                         />
                     </form>
-
                     <div className="flex flex-col w-full mt-[3%]">
                         <div className="max-w-full w-auto h-auto lg:mx-[15%] mx-[17%]">
                             <div className="overflow-hidden">
                                 <Tabs
                                     fullWidth
                                     variant="bordered"
-                                    color="primary"
                                     size="md"
                                     aria-label="Tabs form"
                                     selectedKey={selected}
@@ -422,13 +382,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -456,13 +416,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -491,13 +451,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -525,13 +485,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -562,13 +522,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -597,13 +557,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -635,13 +595,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -669,13 +629,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -707,13 +667,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -741,13 +701,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -790,13 +750,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -824,13 +784,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -861,13 +821,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -895,13 +855,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -933,13 +893,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -970,13 +930,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1008,13 +968,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1042,13 +1002,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1080,13 +1040,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1114,13 +1074,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1163,13 +1123,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1197,13 +1157,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1234,13 +1194,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1268,13 +1228,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1306,13 +1266,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1341,13 +1301,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1379,13 +1339,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1413,13 +1373,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1451,13 +1411,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1485,13 +1445,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1534,13 +1494,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1568,13 +1528,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1602,13 +1562,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1639,13 +1599,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1674,13 +1634,13 @@ export function Form() {
                                                 classNames={{
                                                     label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-sbc-orange dark:text-white/90 md:text-sm text-xs",
+                                                        "placeholder:text-sbc-orange-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
                                                         "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
+                                                        "border-b-2 border-sbc-orange-border",
                                                         "dark:group-data-[focused=true]:bg-default/60",
                                                         "!cursor-text",
                                                     ],
@@ -1693,13 +1653,12 @@ export function Form() {
                             </div>
                         </div>
                     </div>
-
                     <button
-                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-[6%] xl:mb-[8%]"
                         type="submit"
                         onClick={handleRegister}
                     >
-                        <div className="bg-[#18AB8E] w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-cia-green-border">
+                        <div className="bg-sbc-orange w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-sbc-orange-border">
                             Kirim Formulir
                         </div>
                     </button>

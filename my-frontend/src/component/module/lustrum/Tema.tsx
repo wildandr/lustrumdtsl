@@ -102,9 +102,9 @@ export function Tema() {
             </div>
 
             <div className='flex flex-col lg:w-[71vw] relative'>
-                <p className='text-xs lg:text-base font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Tema Lustrum-XI KMTSL</p>
-                <p className='text-2xl lg:text-5xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>“Solidaritas Sipil untuk Pembangunan Negeri”</p>
-                <p className='text-xs lg:text-xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-justify'>Melalui serangkaian kegiatan Lustrum-XI KMTSL dengan tema “Solidaritas Sipil untuk Pembangunan Negeri” yang melibatkan berbagai pihak, kami berharap dapat menciptakan pemahaman yang lebih baik tentang urgensi pembangunan berkelanjutan, meningkatkan kesadaran akan peran individu dalam mencapai tujuan bersama, serta menciptakan pembangunan berkelanjutan dan progresif menuju Indonesia yang emas, berkelanjutan, dan berkemajuan.</p>
+                <p className='text-xs lg:text-base font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Tema Lustrum-XI KMTSL</p>
+                <p className='text-2xl lg:text-5xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>“Solidaritas Sipil untuk Pembangunan Negeri”</p>
+                <p className='text-xs lg:text-xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620] text-justify'>Melalui serangkaian kegiatan Lustrum-XI KMTSL dengan tema “Solidaritas Sipil untuk Pembangunan Negeri” yang melibatkan berbagai pihak, kami berharap dapat menciptakan pemahaman yang lebih baik tentang urgensi pembangunan berkelanjutan, meningkatkan kesadaran akan peran individu dalam mencapai tujuan bersama, serta menciptakan pembangunan berkelanjutan dan progresif menuju Indonesia yang emas, berkelanjutan, dan berkemajuan.</p>
                 <Image
                     src={`/assets/lustrum/lighting.png`}
                     className='h-full w-auto lg:w-full lg:h-auto absolute -bottom-[100%] lg:-bottom-[110%]'
