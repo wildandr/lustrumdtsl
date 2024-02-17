@@ -9,7 +9,6 @@ import Galeri from "../../component/module/cia/Galeri";
 import Footer2 from "../../component/layout/Footer2";
 
 export default function Home() {
-
     const backgroundImage = {
         backgroundImage: `url(/assets/cia/bg_texture_cia.png)`,
         backgroundSize: "contain",
@@ -18,22 +17,22 @@ export default function Home() {
     };
 
     const innerShadowStyle = {
-      boxShadow: "inset 0 10px 0px rgba(0, 0, 0, 0.5);",
+        boxShadow: "inset 0 10px 0px rgba(0, 0, 0, 0.5);",
     };
 
     return (
-      <div
-       className=" bg-chiasGreen-500 shadow"
-       style={{ ...backgroundImage, ...innerShadowStyle }}
-       >
-          <Hero/>
-          <Tema/>
-          <Event/>
-          <Utama/>
-          <Galeri/>
-          <Sponsorship/>
-          <Mediapatner/>
-          <Footer2/>
-      </div>
-    )
-  }
+        <div
+            className=" bg-chiasGreen-500 shadow"
+            style={{ ...backgroundImage, ...innerShadowStyle }}
+        >
+            <Hero />
+            <Tema />
+            <Event />
+            <Utama />
+            <Galeri />
+            <Sponsorship />
+            <Mediapatner />
+            <Footer2 />
+        </div>
+    );
+}
