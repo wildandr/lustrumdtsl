@@ -7,7 +7,7 @@ import { Form } from "@/component/module/cia/login/Form";
 export default function Login() {
    
     return (
-        <main className=" w-full max-[385px]:h-[180vh] h-[140vh] md:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
+        <main className=" w-full max-[385px]:h-[180vh] h-[140vh] md:h-[100vh] bg-[#058369] font-poppins overflow-x-hidden">
             <nav className="fixed w-full flex z-50 justify-between items-center h-16  bg-[#02745D]  text-white  shadow-sm ">
                 <div className="pl-8">CIA</div>
                 <div className="pr-8">Register</div>
@@ -33,7 +33,7 @@ export default function Login() {
                     alt="form"
                     width={500}
                     height={500}
-                    className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20 h-[70%] md:h-[56%] lg:h-[60%] xl:h-[64%] "
+                    className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20 h-[70%] md:h-[56%] lg:h-[600px] xl:h-[64%] "
                 />
                 <Image
                     src="/bgFormMobile.png"

@@ -1158,7 +1158,7 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen w-1/3"
                         ></input>
                       </div>
                        <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
@@ -1168,7 +1168,7 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen w-1/3"
                         ></input>
                       </div>
                     </form>
