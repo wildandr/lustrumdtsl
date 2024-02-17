@@ -9,6 +9,14 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
     try {
         const eventId = 3;
 
+        const event = await sequelize.query(
+            `SELECT event_name FROM events WHERE event_id = :eventId`,
+            {
+                replacements: { eventId },
+                type: QueryTypes.SELECT,
+            }
+        );
+
         const teams = await sequelize.query(
             `SELECT * FROM teams WHERE event_id = :eventId`,
             {
@@ -58,6 +66,7 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
                     members: memberList,
                     dosbim,
                     sbc,
+                    event: event[0].event_name,
                 };
             })
         );
@@ -147,6 +156,7 @@ router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
                     team_name: team.team_name,
                     institution_name: team.institution_name,
                     payment_proof: team.payment_proof,
+                    user_id: user_id,
                 },
                 type: QueryTypes.INSERT,
             }

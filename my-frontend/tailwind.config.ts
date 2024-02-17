@@ -34,6 +34,10 @@ const config: Config = {
             colors: {
                 "cia-green": "#005A48",
                 "ciaGreen": "#058369",
+                "sbc": "#ED4F23",
+                "cic": "#FDB950",
+                "fcec": "#0173BC",
+                "craft": "#833434",
                 "cia-green-placeholder": "#80ACA3",
                 "cia-green-border": "#18AB8E",
                 "sbc-orange": "#E25933",
