@@ -112,7 +112,7 @@ export default function Nav() {
         <nav className="hidden lg:flex flex-row gap-1 justify-center items-center">
           <Link href="/lustrum">Home</Link>
          
-          <div className="group inline-block menu1" ref={dropdownRef}>
+          <div className="group  menu1" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
               aria-haspopup="true"
@@ -169,7 +169,7 @@ export default function Nav() {
        </Link>
               <ul className="pl-2 text-sm text-cia-green">
                 <li className="py-1 ">
-                <Link href="/cia/register" className="flex justify-between items-center">
+                <Link href="/craft" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Registrasi Peserta CRAFT </span>
@@ -188,7 +188,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/cic" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Registrasi Peserta CIC </span>
@@ -207,7 +207,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/sbc" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Registrasi Peserta SBC </span>
@@ -226,7 +226,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/fcec" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Registrasi Peserta FCEC </span>
@@ -248,7 +248,7 @@ export default function Nav() {
               </ul>
             </li>
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Srawung Desa </span>
@@ -269,7 +269,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Clayproyex </span>
@@ -290,7 +290,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Ceremony </span>
@@ -363,7 +363,7 @@ export default function Nav() {
        </Link>
               <ul className="pl-2 text-sm text-cia-green">
                 <li className="py-1 ">
-                <Link href="/cia/register" className="flex justify-between items-center">
+                <Link href="/craft" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Registrasi Peserta CRAFT </span>
@@ -382,7 +382,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/cic" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Registrasi Peserta CIC </span>
@@ -401,7 +401,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/sbc" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Registrasi Peserta SBC </span>
@@ -420,7 +420,7 @@ export default function Nav() {
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg></Link></li>
                 <li className="py-1 ">
-                <Link href="/lustrum" className="flex justify-between items-center">
+                <Link href="/fcec" className="flex justify-between items-center">
                   <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Registrasi Peserta FCEC </span>
@@ -442,7 +442,7 @@ export default function Nav() {
               </ul>
             </li>
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Srawung Desa </span>
@@ -463,7 +463,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Clayproyex </span>
@@ -484,7 +484,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/lustrum" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Ceremony </span>

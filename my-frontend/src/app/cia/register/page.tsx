@@ -21,7 +21,7 @@ export default function Register() {
         alt="bgcia"
         width={1000}
         height={1000}
-        className="hidden sm:flex w-full h-full object-cover z-50"
+        className="hidden sm:flex w-full h-full object-cover z-10"
       />
       <div className=" w-full  max-[385px]:h-[160vh] h-[130vh] min-[475px]:h-[140vh] sm:h-[155vh] md:h-[100vh] mt-20 md:mt-0 hero absolute top-0  z-0 ">
         <Image
