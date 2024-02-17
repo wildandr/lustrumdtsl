@@ -324,7 +324,7 @@ export function Utama() {
                 </div>
                 <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] lg:top-[11%]'></div>
                 <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[5.5%] lg:top-[11.5%]'></div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[10%] md:top-[10%] lg:top-[18%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[8.5%] md:top-[10%] lg:top-[18%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -392,7 +392,7 @@ export function Utama() {
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[31%] md:top-[23%] lg:top-[38%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[30%] md:top-[23%] lg:top-[38%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -480,7 +480,7 @@ export function Utama() {
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[62.5%] md:top-[40%] lg:top-[65%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[62%] md:top-[40%] lg:top-[65%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -571,7 +571,7 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[33%] md:-top-[80%] lg:-top-[100%]'/>
+                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[33%] md:-top-[80%] lg:-top-[110%]'/>
                     
                     <p className='absolute -top-[25%] md:-top-[72%] lg:-top-[70%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-2xl text-white'>
                     Civil Engineering Advance Software Training

@@ -4,6 +4,7 @@ import Timeline from "../../component/module/lustrum/Timeline";
 import Kegiatan from "../../component/module/lustrum/Kegiatan";
 import Isi from "../../component/module/lustrum/Isi";
 import Event from "../../component/module/lustrum/Event";
+import Footer from "../../component/layout/Footer";
 
 export default function Lustrum() {
 
@@ -14,6 +15,7 @@ export default function Lustrum() {
         <Kegiatan/>
         <Isi/>
         <Event/>
+        <Footer/>
     </div>
   )
 }
