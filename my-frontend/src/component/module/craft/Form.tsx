@@ -71,23 +71,23 @@ export function Form() {
         return () => clearInterval(interval);
     }, [rotation, direction]);
 
-<  return (
-    <div className="relative px-[5%] lg:px-[13%] pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll  ">
-      <div className="flex flex-col lg:justify-center items-center relative min-w-full mt-[4%]">
-        <Image
-          src="/assets/sbc/bg_form_sbc.png"
-          alt="bgcia"
-          width={1000}
-          height={1000}
-          className="absolute sm:flex sm:w-[800px] sm:h-[700px] md:h-[750px] lg:h-[900px] lg:w-[900px] z-0 pt-[6%] hidden"
-        />
-        <Image
-          src="/assets/sbc/bg_form_sbc_mobile.png"
-          alt="bgcia"
-          width={1000}
-          height={1000}
-          className="absolute sm:hidden w-full h-[80%] z-0 pt-[1%]"
-        />
+    return (
+        <div className="relative px-[5%] lg:px-[13%] pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll  ">
+            <div className="flex flex-col lg:justify-center items-center relative min-w-full mt-[4%]">
+                <Image
+                    src="/assets/sbc/bg_form_sbc.png"
+                    alt="bgcia"
+                    width={1000}
+                    height={1000}
+                    className="absolute sm:flex w-auto h-[1900px] lg:h-[900px] lg:w-[900px] z-0 pt-[6%] hidden"
+                />
+                <Image
+                    src="/assets/sbc/bg_form_sbc_mobile.png"
+                    alt="bgcia"
+                    width={1000}
+                    height={1000}
+                    className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
+                />
 
                 <div className="lg:mt-[8%] mt-[8%] min-h-screen w-full z-50 flex flex-col">
                     <Image
@@ -112,6 +112,7 @@ export function Form() {
                         className="lg:h-32 lg:w-32 absolute lg:right-[13%] h-14 w-14 right-[6%] lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
+
                     <div className="flex flex-col w-full mt-[3%]">
                         <div className="max-w-full w-auto h-auto lg:mx-[15%] mx-[17%]">
                             <div className="overflow-hidden">
@@ -285,14 +286,14 @@ export function Form() {
                     </div>
 
                     <div className="flex w-full mt-20 justify-center ">
-          <button
-            className="bg-[#18AB8E] z-50 lg:py-3 px-4 p-1 rounded-xl text-sm font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
-            type="submit"
-            onClick={handleRegister}
-          >
-            Kirim Formulir
-          </button>
-        </div>
+                        <button
+                            className="bg-[#18AB8E] z-50 lg:py-3 px-4 p-1 rounded-xl text-sm font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+                            type="submit"
+                            onClick={handleRegister}
+                        >
+                            Kirim Formulir
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
