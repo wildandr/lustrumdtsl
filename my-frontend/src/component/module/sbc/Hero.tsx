@@ -57,7 +57,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/craft_logo.png`}
-                className="h-20 md:h-28 w-auto absolute top-[10%] lg:top-[10%] right-[5%] top-[25%] md:right-[30%] md:flex"
+                className="h-20 md:h-28 w-auto absolute lg:top-[10%] right-[5%] top-[25%] md:right-[30%] md:flex"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
