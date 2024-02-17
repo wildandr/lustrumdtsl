@@ -38,7 +38,7 @@ export function Objects(){
             alt="icon2"
             width={600}
             height={600}
-            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-[18%] md:left-[42%] lg:left-[26rem] xl:top-[12rem] xl:left-[42%]"
+            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-[18%] md:left-[42%] lg:left-[40%] xl:top-[12rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -78,7 +78,7 @@ export function Objects(){
             alt="icon5"
             width={600}
             height={600}
-            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
+            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[32rem] lg:left-[40%] xl:top-[30rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
