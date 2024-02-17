@@ -57,7 +57,7 @@ Team.init(
             defaultValue: false,
         },
     },
-    { sequelize, modelName: "teams", tableName: "teams", timestamps: false }
+    { sequelize, modelName: "Team", tableName: "teams", timestamps: false }
 );
 
 module.exports = Team;
