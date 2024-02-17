@@ -36,3 +36,4 @@ module.exports = {
         await queryInterface.dropTable("Users");
     },
 };
+2;
