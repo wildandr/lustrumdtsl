@@ -18,7 +18,7 @@ export function Utama() {
         }
     }, [])
 
-    const md_width = 768
+    const md_width = 766
     const lg_width = 1024
 
     const isDeviceGreaterThanLg = windowWidth >= lg_width
@@ -261,7 +261,7 @@ export function Utama() {
             </div>
             <div className='relative flex flex-col w-[90%] lg:w-[40%] justify-center items-center mt-[10%] mb-[5%]'>
                 <Image
-                    src={ isDeviceGreaterThanLg ? `/assets/cia/bg_titel_3.png` : `/assets/cia/bg_titel_1.png`}
+                    src={ isDeviceGreaterThanMd ? `/assets/cia/bg_titel_3.png` : `/assets/cia/bg_titel_1.png`}
                     width={1000}
                     height={1000}
                     alt=''
@@ -297,12 +297,12 @@ export function Utama() {
             </div>
             <div className='relative flex flex-col w-[90%] md:w-[80%] mb-[10%] items-center'>
                 <Image
-                    src={ isDeviceGreaterThanLg ? `/assets/cia/bg_timeline_cia.png` : `/assets/cia/bg_tabel_mobile.png`}
+                    src={ isDeviceGreaterThanLg ? `/assets/cia/bg_timeline_cia.png` : isDeviceGreaterThanMd ? `/assets/cia/bg_timeline_baru.png` : `/assets/cia/bg_timeline_mobile_baru.png`}
                     width={1000}
                     height={1000}
                     alt=''
                     className='w-full h-auto'/>
-                <div className='absolute w-full px-[15%] top-[2%] lg:top-[6%] font-bold'>
+                <div className='absolute w-full px-[15%] top-[2%] md:top-[4%] lg:top-[6%] font-bold'>
                     <Image
                         src={`/assets/cia/cia_logo.png`}
                         width={1000}
@@ -322,18 +322,18 @@ export function Utama() {
                         12th Civil In Action x Craft x Lustrum XI KMTSL
                     </p>
                 </div>
-                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] lg:top-[11%]'></div>
-                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[5.5%] lg:top-[11.5%]'></div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[8.5%] md:top-[10%] lg:top-[18%]'>
+                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] md:top-[8%] lg:top-[11%]'></div>
+                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[5.5%] md:top-[8.5%] lg:top-[11.5%]'></div>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[9%] md:top-[14%] lg:top-[18%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[30%]'/>
+                        className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[23%] lg::-top-[30%]'/>
                     
-                    <p className='absolute -top-[10%] md:-top-[25%] lg:-top-[22%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[11%] md:-top-[18.5%] lg:-top-[23%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                         Sustainable Bridge Competition (SBC)
                     </p>
 
@@ -345,54 +345,56 @@ export function Utama() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* <!-- Baris 1 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center'>Penyisihan</td>
-                            </tr>
                             {/* <!-- Baris 2 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Registrasi Peserta</td>
-                                <td className='border border-black py-2'>12 Februari - 24 Maret 2024</td>
+                                <td className='border border-black py-2'>17 Februari - 17 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 3 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengerjaan Proposal</td>
-                                <td className='border border-black py-2'>11 Maret - 13 April 2024</td>
+                                <td className='border border-black py-2'>Rilis TOR Soal</td>
+                                <td className='border border-black py-2'>18 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 4 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman Finalist</td>
+                                <td className='border border-black py-2'>Pengerjaan Proposal</td>
+                                <td className='border border-black py-2'>18 Maret 2024 - 13 April 2024</td>
+                            </tr>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Pengumuman Finalis</td>
                                 <td className='border border-black py-2'>12 Mei 2024</td>
                             </tr>
-                            {/* <!-- Baris 5 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Final</td>
-                            </tr>
-                            {/* <!-- Baris 6 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Checking Area dan briefing Peserta</td>
-                                <td className='border border-black py-2'>24 Juli 2024</td>
-                            </tr>
                             {/* <!-- Baris 7 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Presentasi</td>
-                                <td className='border border-black py-2'>25 Juli 2024</td>
+                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Fabrikasi oleh Finalis</td>
+                                <td className='border border-black py-2'>12 Mei - 17 Juli 2024</td>
                             </tr>
                             {/* <!-- Baris 8 --> */}
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Opening Ceremony</td>
+                                <td className='border border-black py-2'>23 Juli 2024</td>
+                            </tr>
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Perakitan dan Pengujian</td>
-                                <td className='border border-black py-2'>26 Juli 2024</td>
+                                <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Final</td>
                             </tr>
                             {/* <!-- Baris 9 --> */}
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>
+                                    ● Checking Site dan Material <br/>
+                                    ● Presentasi Proposal <br/>
+                                    ● Perakitan danPengujian <br/>
+                                </td>
+                                <td className='border border-black py-2'>24 - 26 Juli 2024</td>
+                            </tr>
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman Pemenang dan Closing Ceremony</td>
+                                <td className='border border-black py-2'>Awarding Night dan Closing Ceremony</td>
                                 <td className='border border-black py-2'>27 Juli 2024</td>
                             </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[30%] md:top-[23%] lg:top-[38%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[32%] md:top-[35%] lg:top-[40%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -401,7 +403,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]'/>
                     
-                    <p className='absolute -top-[7.5%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[7.5%] md:-top-[18%] lg:-top-[19%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                         Civil Innovation Challenge (CIC)
                     </p>
 
@@ -413,74 +415,55 @@ export function Utama() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* <!-- Baris 1 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center'>Penyisihan</td>
-                            </tr>
                             {/* <!-- Baris 2 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Registrasi Peserta</td>
-                                <td className='border border-black py-2'>12 Februari - 10 Maret 2024</td>
+                                <td className='border border-black py-2'>Pembukaan Registrasi</td>
+                                <td className='border border-black py-2'>17 Februari 2024</td>
                             </tr>
                             {/* <!-- Baris 3 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Rilis Terms of Reference</td>
-                                <td className='border border-black py-2'>13 Maret 2024</td>
+                                <td className='border border-black py-2'>Penutupan Registrasi</td>
+                                <td className='border border-black py-2'>8 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 4 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengerjaan Proposal dan Video Desain</td>
-                                <td className='border border-black py-2'>13 Maret - 17 Mei 2024</td>
+                                <td className='border border-black py-2'>Rilis TOR Proposal dan Video Desain</td>
+                                <td className='border border-black py-2'>20 Maret 2024</td>
                             </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Technical Meeting Proposal dan Video Desain</td>
-                                <td className='border border-black py-2'>16 Maret 2024</td>
+                                <td className='border border-black py-2'>23 Maret 2024</td>
                             </tr>
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Penilaian Proposal dan Video Desain</td>
-                                <td className='border border-black py-2'>19 Mei - 4 Juni 2024</td>
+                                <td className='border border-black py-2'>Batas Maksimal Pengumpulan Proposal dan Video Desain</td>
+                                <td className='border border-black py-2'>17 Mei 2024</td>
+                            </tr>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Workshop CRAFT</td>
+                                <td className='border border-black py-2'>24 - 25 Mei 2024</td>
                             </tr>
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman Finalis</td>
+                                <td className='border border-black py-2'>Pengumuman Lolos Tahap Final</td>
                                 <td className='border border-black py-2'>5 Juni 2024</td>
                             </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Registrasi Ulang Peserta</td>
-                                <td className='border border-black py-2'>5 - 7 Juni 2024</td>
-                            </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Technical Meeting Finalis</td>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Technical Meeting Tahap Final</td>
                                 <td className='border border-black py-2'>8 Juni 2024</td>
                             </tr>
-                            {/* <!-- Baris 5 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Final</td>
-                            </tr>
-                            {/* <!-- Baris 6 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Site Visit dan Pembekalan Materi</td>
-                                <td className='border border-black py-2'>24 Juli 2024</td>
+                                <td className='border border-black py-2'>Final CIC</td>
+                                <td className='border border-black py-2'>24 - 26 Juli 2024</td>
                             </tr>
                             {/* <!-- Baris 7 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Perakitan Prototype dan Pengerjaan Final</td>
-                                <td className='border border-black py-2'>25 Juli 2024</td>
-                            </tr>
-                            {/* <!-- Baris 8 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Presentasi Final</td>
-                                <td className='border border-black py-2'>26 Juli 2024</td>
-                            </tr>
-                            {/* <!-- Baris 9 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman Pemenang dan Closing Ceremony</td>
+                                <td className='border border-black py-2'>Awarding Night dan Closing Ceremony</td>
                                 <td className='border border-black py-2'>27 Juli 2024</td>
                             </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[62%] md:top-[40%] lg:top-[65%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[58%] md:top-[56%] lg:top-[62.5%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -507,73 +490,73 @@ export function Utama() {
                             </tr>
                             {/* <!-- Baris 2 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Roadshow</td>
-                                <td className='border border-black py-2'>5 Februari - 3 Maret 2024</td>
+                                <td className='border border-black py-2'>Roadshow FCEC 2024</td>
+                                <td className='border border-black py-2'>19 Februari - 9 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 3 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Periode registrasi dan pengumpulan abstrak</td>
-                                <td className='border border-black py-2'>12 Februari -10 Maret 2024</td>
+                                <td className='border border-black py-2'>Periode registrasi dan pengumpulan Abstrak FCEC 2024</td>
+                                <td className='border border-black py-2'>17 Februari -10 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 4 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman lolos abstrak</td>
+                                <td className='border border-black py-2'>Pengumuman lolos Abstrak</td>
                                 <td className='border border-black py-2'>31 Maret 2024</td>
                             </tr>
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Periode daftar ulang peserta lolos tahap abstrak</td>
+                                <td className='border border-black py-2'>Periode daftar ulang peserta lolos tahap Abstrak</td>
                                 <td className='border border-black py-2'>1 April - 9 April 2024</td>
                             </tr>
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Technical meeting full paper</td>
+                                <td className='border border-black py-2'>Technical meeting Full Paper</td>
                                 <td className='border border-black py-2'>14 April 2024</td>
                             </tr>
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Pengumuman lolos final</td>
-                                <td className='border border-black py-2'>14 Juni 2024</td>
-                            </tr>
-                            {/* <!-- Baris 5 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Final</td>
+                                <td className='border border-black py-2'>Batas pengumpulan Full Paper</td>
+                                <td className='border border-black py-2'>19 Mei 2024</td>
                             </tr>
                             {/* <!-- Baris 6 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Technical meeting Final</td>
+                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Pengumuman lolos Final Presentation</td>
                                 <td className='border border-black py-2'>15 Juni 2024</td>
                             </tr>
                             {/* <!-- Baris 7 --> */}
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Technical meeting Final Presentation</td>
+                                <td className='border border-black py-2'>22 Juni 2024</td>
+                            </tr>
+                            {/* <!-- Baris 8 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Opening Ceremony</td>
                                 <td className='border border-black py-2'>23 Juli 2024</td>
                             </tr>
-                            {/* <!-- Baris 8 --> */}
+                            {/* <!-- Baris 9 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Presentasi Final</td>
+                                <td className='border border-black py-2'>Final Presentation</td>
                                 <td className='border border-black py-2'>25 Juli 2024</td>
                             </tr>
-                            {/* <!-- Baris 9 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Educational Session</td>
                                 <td className='border border-black py-2'>26 Juli 2024</td>
                             </tr>
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Awarding Day</td>
+                                <td className='border border-black py-2'>Awarding day</td>
                                 <td className='border border-black py-2'>27 Juli 2024</td>
                             </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[90%] md:top-[60%] lg:top-[90%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[87%] md:top-[82%] lg:top-[89%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[33%] md:-top-[80%] lg:-top-[110%]'/>
+                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[24%] md:-top-[45%] lg:-top-[60%]'/>
                     
-                    <p className='absolute -top-[25%] md:-top-[72%] lg:-top-[70%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-2xl text-white'>
+                    <p className='absolute -top-[20.5%] md:-top-[41%] lg:-top-[47%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-2xl text-white'>
                     Civil Engineering Advance Software Training
                     </p>
 
@@ -587,13 +570,28 @@ export function Utama() {
                         <tbody>
                             {/* <!-- Baris 1 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Hari ke-1 : BIM Basic dan BIM Workflow</td>
-                                <td className='border border-black py-2'>Jumat, 24 Mei 2024</td>
+                                <td className='border border-black py-2'>Pendaftaran Batch 1: Early Bird</td>
+                                <td className='border border-black py-2'>18 - 24 Maret 2024</td>
                             </tr>
                             {/* <!-- Baris 2 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
-                                <td className='border border-black py-2'>Hari ke-2 : BIM Management dan Student BIM Roadmap</td>
-                                <td className='border border-black py-2'>Sabtu, 25 Mei 2024</td>
+                                <td className='border border-black py-2'>Pendaftaran Batch 2</td>
+                                <td className='border border-black py-2'>25 Maret - 5 Mei 2024</td>
+                            </tr>
+                            {/* <!-- Baris 1 --> */}
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Pendaftaran Mahasiswa/i DTSL</td>
+                                <td className='border border-black py-2'>29 April - 5 Mei 2024</td>
+                            </tr>
+                            {/* <!-- Baris 2 --> */}
+                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Seminar CRAFT Day 1</td>
+                                <td className='border border-black py-2'>24 Mei 2024</td>
+                            </tr>
+                            {/* <!-- Baris 1 --> */}
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                                <td className='border border-black py-2'>Seminar CRAFT Day 2</td>
+                                <td className='border border-black py-2'>25 Mei 2024</td>
                             </tr>
                         </tbody>
                     </table>
