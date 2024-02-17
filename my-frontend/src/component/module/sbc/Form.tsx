@@ -4,11 +4,8 @@ import React, { useState, FormEvent, useEffect } from "react";
 import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 export function Form() {
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-
     const [teamData, setTeamData] = useState({
         team: {
             team_name: "",

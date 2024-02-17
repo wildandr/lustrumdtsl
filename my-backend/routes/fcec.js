@@ -51,11 +51,7 @@ router.get("/teams/fcec", authenticateToken, async (req, res) => {
                 );
 
                 return {
-                    team: {
-                        team_name: team.team_name,
-                        institution_name: team.institution_name,
-                        payment_proof: team.payment_proof,
-                    },
+                    team,
                     leader,
                     members: memberList,
                     fcec,
@@ -118,11 +114,7 @@ router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
         const memberList = members.filter((member) => member.is_leader === 0);
 
         const result = {
-            team: {
-                team_name: team[0].team_name,
-                institution_name: team[0].institution_name,
-                payment_proof: team[0].payment_proof,
-            },
+            team,
             leader,
             members: memberList,
             fcec,
