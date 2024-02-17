@@ -155,14 +155,14 @@ export function Form() {
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:flex w-auto h-[2100px] z-0 pt-[6%] hidden"
+                    className="absolute sm:flex w-auto lg:h-[2200px] h-[1750px]  z-0 pt-[6%] hidden"
                 />
                 <Image
                     src="/assets/sbc/bg_form_sbc_mobile.png"
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
+                    className="absolute sm:hidden w-full h-[1850px] min-[545px]:h-[1780px] z-0 pt-[1%]"
                 />
 
                 <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
@@ -1695,15 +1695,15 @@ export function Form() {
                         </div>
                     </div>
 
-                    <button
-                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
-                        type="submit"
-                        onClick={handleRegister}
-                    >
-                        <div className="bg-[#18AB8E] w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-cia-green-border">
-                            Kirim Formulir
-                        </div>
-                    </button>
+                    <div className="flex justify-center w-full mt-8 ">
+            <button
+              className=" bg-[#18AB8E] rounded-3xl z-50 lg:p-3 px-4 py-2 font-sans  font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+              type="submit"
+              onClick={handleRegister}
+            >
+             <p className="text-[12px] lg:text-[16px]">Kirim Formulir</p>
+            </button>
+          </div>
                 </div>
             </div>
         </div>

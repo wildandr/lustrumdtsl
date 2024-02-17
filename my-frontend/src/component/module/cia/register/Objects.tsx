@@ -16,13 +16,13 @@ export function Objects(){
         return () => clearInterval(interval);
     }, [rotation, direction]);
     return (
-        <div className="flex justify-between items-center mb-48 mt-20 sm:mt-32 ">
+        <div className="flex justify-between items-center mb-48 mt-20 sm:mt-48 ">
           <Image
             src="/logocia.png"
             alt="cia"
             width={1000}
             height={1000}
-            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[28%] md:absolute md:top-[23%] min-[920px]:top-[30%]  md:left-20 lg:top-56 lg:left-32 xl:top-56 xl:left-56"
+            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[30%] md:absolute md:top-[14rem] min-[920px]:top-[30%]  md:left-20 lg:top-64 lg:left-32 xl:top-64 xl:left-56"
           />
 
           <Image
@@ -30,7 +30,7 @@ export function Objects(){
             alt="icon1"
             width={600}
             height={600}
-            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[4rem] lg:left-[24%]  xl:top-14 xl:left-[20rem]"
+            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[5rem] lg:left-[22%]  xl:top-20 xl:left-[20rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image

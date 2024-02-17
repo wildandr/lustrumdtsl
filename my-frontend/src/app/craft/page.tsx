@@ -2,17 +2,20 @@
 
 import { Form } from "@/component/module/craft/Form";
 import { Hero } from "@/component/module/craft/Hero";
+import Image from "next/image";
 
 export default function sbc() {
-    const backgroundImage = {
-        backgroundImage: `url(/assets/cia/bg_texture_cia.png)`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
-    };
+   
 
     return (
-        <div className=" bg-craft" style={backgroundImage}>
+        <div className=" bg-craft" >
+             <Image
+        src="/bgcia.png"
+        alt="bgcia"
+        width={1000}
+        height={1000}
+        className="hidden fixed sm:flex w-full h-full object-cover z-10"
+      />
             <Hero />
             <Form />
         </div>

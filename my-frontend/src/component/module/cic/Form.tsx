@@ -64,9 +64,6 @@ export function Form() {
       semester: "",
       nim: "",
     },
-    
-
-   
   });
 
   const backgroundHeading = {
@@ -107,7 +104,6 @@ export function Form() {
           batch: null,
         },
       ],
-      
     };
 
     console.log(data);
@@ -154,14 +150,14 @@ export function Form() {
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:flex w-auto h-[2000px] z-0 pt-[6%] hidden"
+          className="absolute sm:flex w-auto sm:h-[1600px] lg:h-[2000px]  z-0 pt-[6%] hidden"
         />
         <Image
           src="/assets/sbc/bg_form_sbc_mobile.png"
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
+          className="absolute sm:hidden w-full h-[1700px] z-0 pt-[1%]"
         />
 
         <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
@@ -194,33 +190,40 @@ export function Form() {
                 Peserta diharapkan mengisi formulir pendaftaran dengan teliti.
               </li>
               <li className="mb-1">
-                Peserta mengunggah dokumen sesuai dengan ketentuan berikut. <br/> a.
-                Scan Kartu Tanda Mahasiswa (PDF) Format penamaan file: KTM_Nama
-                Tim_Nama Peserta Contoh: KTM_Komet Minor_Soke Bahtera <br/> b. Scan
-                surat keterangan mahasiswa aktif (PDF) Format penamaan file:
-                SKMA_Nama Tim_Nama Peserta Contoh: SKMA_Komet Minor_Soke Bahtera
-                <br/> c. Pas foto 3x4 (PDF) Format penamaan file: Pas Foto_Nama Tim
-                Contoh: Pas Foto_Komet Minor <br/> d. Scan bukti pembayaran (PDF)
-                Format penamaan file: Bukti Pembayaran_Nama Tim Contoh: Bukti
-                Pembayaran_Komet Minor
+                Peserta mengunggah dokumen sesuai dengan ketentuan berikut.{" "}
+                <br /> a. Scan Kartu Tanda Mahasiswa (PDF) Format penamaan file:
+                KTM_Nama Tim_Nama Peserta Contoh: KTM_Komet Minor_Soke Bahtera{" "}
+                <br /> b. Scan surat keterangan mahasiswa aktif (PDF) Format
+                penamaan file: SKMA_Nama Tim_Nama Peserta Contoh: SKMA_Komet
+                Minor_Soke Bahtera
+                <br /> c. Pas foto 3x4 (PDF) Format penamaan file: Pas Foto_Nama
+                Tim Contoh: Pas Foto_Komet Minor <br /> d. Scan bukti pembayaran
+                (PDF) Format penamaan file: Bukti Pembayaran_Nama Tim Contoh:
+                Bukti Pembayaran_Komet Minor
               </li>
               <li className="mb-1">
-              Surat Keterangan Mahasiswa Aktif (SKMA) dapat digantikan dengan data lain yang membuktikan peserta sebagai mahasiswa aktif. (Contoh : KRS, transkrip, atau bukti registrasi semester terbaru)
+                Surat Keterangan Mahasiswa Aktif (SKMA) dapat digantikan dengan
+                data lain yang membuktikan peserta sebagai mahasiswa aktif.
+                (Contoh : KRS, transkrip, atau bukti registrasi semester
+                terbaru)
               </li>
               <li className="mb-1">
-              Biaya pendaftaran yang harus dibayarkan sejumlah Rp 300.223,00/tim melalui rekening 1800013302668 (Mandiri) a.n. Balqis Sybil Buanawati.
+                Biaya pendaftaran yang harus dibayarkan sejumlah Rp
+                300.223,00/tim melalui rekening 1800013302668 (Mandiri) a.n.
+                Balqis Sybil Buanawati.
               </li>
               <li className="mb-1">
-              Apabila terjadi kendala dan kesalahan pada saat mengisi gform, segera hubungi CP : 081298215556 (Nafta), atau 087734852924 (Bagas)
+                Apabila terjadi kendala dan kesalahan pada saat mengisi gform,
+                segera hubungi CP : 081298215556 (Nafta), atau 087734852924
+                (Bagas)
               </li>
               <li className="mb-1">
-              Email balasan akan dikirimkan ke email team leader.
+                Email balasan akan dikirimkan ke email team leader.
               </li>
-              
             </ol>
           </div>
 
-          <form className="w-full lg:px-[15%] px-[20%] flex flex-col gap-4 font-sans ">
+          <form className="w-full lg:px-[15%] px-[16%] flex flex-col gap-4 font-sans ">
             <Input
               isRequired
               label="Email"
@@ -314,7 +317,6 @@ export function Form() {
               }}
               placeholder="Nama perguruan tinggi anda"
             />
-            
           </form>
 
           <div className="flex flex-col w-full mt-[3%]">
@@ -1332,7 +1334,6 @@ export function Form() {
                   >
                     <form className="w-full flex flex-col gap-4">
                       <Input
-                      
                         label="Nama Lengkap"
                         variant="underlined"
                         color="primary"
@@ -1364,7 +1365,6 @@ export function Form() {
                         placeholder="Nama lengkap anggota 4"
                       />
                       <Input
-                       
                         label="NIM"
                         variant="underlined"
                         color="primary"
@@ -1396,7 +1396,6 @@ export function Form() {
                         placeholder="Masukkan NIM anggota 4"
                       />
                       <Input
-                        
                         label="Semester"
                         variant="underlined"
                         color="primary"
@@ -1428,7 +1427,6 @@ export function Form() {
                         placeholder="Masukkan semester anggota 4"
                       />
                       <Input
-                       
                         label="Email"
                         variant="underlined"
                         color="primary"
@@ -1460,7 +1458,6 @@ export function Form() {
                         placeholder="Masukkan email anggota 4"
                       />
                       <Input
-                     
                         label="Nomor Whatsapp"
                         variant="underlined"
                         color="primary"
@@ -1492,7 +1489,6 @@ export function Form() {
                         placeholder="Masukkan nomor whatsapp anggota 4"
                       />
                       <Input
-                    
                         label="ID Line"
                         variant="underlined"
                         color="primary"
@@ -1524,7 +1520,6 @@ export function Form() {
                         placeholder="Masukkan ID Line anggota 4"
                       />
                       <Input
-                        
                         label="Link Bukti Upload Twibbon"
                         variant="underlined"
                         color="primary"
@@ -1556,7 +1551,6 @@ export function Form() {
                         placeholder="Masukkan link bukti upload twibbon anggota 4"
                       />
                       <Input
-                     
                         label="Kartu Tanda Mahasiswa (KTM)"
                         variant="underlined"
                         color="primary"
@@ -1588,7 +1582,6 @@ export function Form() {
                         placeholder="Sementara (Belum ada component file upload)"
                       />
                       <Input
-                     
                         label="Surat Keterangan Mahasiswa Aktif"
                         variant="underlined"
                         color="primary"
@@ -1620,7 +1613,6 @@ export function Form() {
                         placeholder="Sementara (Belum ada component file upload)"
                       />
                       <Input
-                     
                         label="Pas Foto 3x4"
                         variant="underlined"
                         color="primary"
@@ -1653,22 +1645,19 @@ export function Form() {
                       />
                     </form>
                   </Tab>
-
-                 
                 </Tabs>
               </div>
             </div>
           </div>
-
-          <button
-            className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
-            type="submit"
-            onClick={handleRegister}
-          >
-            <div className="bg-[#18AB8E] w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-cia-green-border">
-              Kirim Formulir
-            </div>
-          </button>
+          <div className="flex justify-center w-full mt-8 ">
+            <button
+              className=" bg-[#18AB8E] rounded-3xl z-50 lg:p-3 px-4 py-2 font-sans  font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+              type="submit"
+              onClick={handleRegister}
+            >
+             <p className="text-[12px] lg:text-[16px]">Kirim Formulir</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
