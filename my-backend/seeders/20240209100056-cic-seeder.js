@@ -17,7 +17,7 @@ module.exports = {
         );
 
         const team = await queryInterface.sequelize.query(
-            `SELECT team_id from Teams WHERE team_name = 'CIC Finnovate';`
+            `SELECT team_id from teams WHERE team_name = 'CIC Finnovate';`
         );
 
         if (!team || !team[0] || !team[0][0] || !team[0][0].team_id) {
@@ -99,7 +99,7 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.bulkDelete("Members", null, {});
-        return queryInterface.bulkDelete("Teams", null, {});
+        await queryInterface.bulkDelete("members", null, {});
+        return queryInterface.bulkDelete("teams", null, {});
     },
 };

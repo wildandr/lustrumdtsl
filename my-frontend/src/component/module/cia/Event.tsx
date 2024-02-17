@@ -29,61 +29,90 @@ export function Event() {
         backgroundRepeat: "no-repeat",
     };
 
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+        }
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => {
+        window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    const md_width = 768
+    const lg_width = 1024
+
+    const isDeviceGreaterThanLg = windowWidth >= lg_width
+    const isDeviceGreaterThanMd = windowWidth >= md_width
+
     return (
         <div className='w-full flex flex-col justify-center items-center py-[10%] bg-[#18AB8E]'>
             <div className='flex flex-row w-[80%] h-full relative justify-center items-center'>
                 <Image
-                    src={'/assets/cia/bg_title_mobile.png'}
+                    src={isDeviceGreaterThanMd ? '/assets/cia/bg_title_mobile.png' : '/assets/cia/bg_event_mobile.png'}
                     width={1000}
                     height={1000}
                     className={`h-auto w-full`}
                     alt=''/>
                 
-                <div className='w-full flex flex-col md:flex-row absolute items-center justify-center gap-8 p-[10%]'>
-                    <div className='flex flex-row w-[80%] gap-8'>
-                        <div className='flex flex-col w-[50%] justify-between bg-[#ED4F23] rounded-2xl pb-4'>
+                <div className='absolute w-[80%] h-[60%] gap-4 grid grid-cols-2 md:grid-cols-4 grid-rows-2 md:grid-rows-1'>
+
+                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#ED4F23]">
+                        <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_sbc}>
                             <Image
-                                src={'/assets/cia/logo_sbc.png'}
+                                src={`/assets/cia/logo_sbc.png`}
                                 width={1000}
                                 height={1000}
-                                className={`w-fit h-auto rounded-xl`}
                                 alt=''
-                                style={bg_sbc}/>
-                            <p className='w-full text-center'>SBC</p>
+                                className='w-full p-[20%] md:p-0'/>
                         </div>
-                        <div className='flex flex-col w-[50%] justify-between bg-[#0173BC] rounded-2xl pb-4'>
-                            <Image
-                                src={'/assets/cia/logo_fcec.png'}
-                                width={1000}
-                                height={1000}
-                                className={`w-fit h-auto rounded-xl`}
-                                alt=''
-                                style={bg_fcec}/>
-                            <p className='w-full text-center'>FCEF</p>
+                        <div className='flex w-full h-[15%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>SBC</p>
                         </div>
                     </div>
-                    <div className='flex flex-row w-[80%] gap-8'>
-                        <div className='flex flex-col w-[50%] justify-between items-center bg-[#BE8731] rounded-2xl pb-4'>
+                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#0173BC]">
+                        <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_fcec}>
                             <Image
-                                src={'/assets/cia/logo_cic.png'}
+                                src={`/assets/cia/logo_fcec.png`}
                                 width={1000}
                                 height={1000}
-                                className={`w-full h-auto rounded-xl`}
                                 alt=''
-                                style={bg_cic}/>
-                            <p className='w-full text-center'>CIC</p>
+                                className='w-full p-[25%] md:p-[10%]'/>
                         </div>
-                        <div className='flex flex-col w-[50%] justify-between items-center bg-[#833434] rounded-2xl pb-4'>
-                            <Image
-                                src={'/assets/cia/logo_craft.png'}
-                                width={1000}
-                                height={1000}
-                                className={`w-full h-auto rounded-xl`}
-                                alt=''
-                                style={bg_craft}/>
-                            <p className='w-full text-center'>Craft</p>
+                        <div className='flex w-full h-[15%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>FCEC</p>
                         </div>
                     </div>
+                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#BE8731]">
+                        <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_cic}>
+                            <Image
+                                src={`/assets/cia/logo_cic.png`}
+                                width={1000}
+                                height={1000}
+                                alt=''
+                                className='w-full p-[30%] md:p-[15%]'/>
+                        </div>
+                        <div className='flex w-full h-[15%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>CIC</p>
+                        </div>
+                    </div>
+                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#833434]">
+                        <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_craft}>
+                            <Image
+                                src={`/assets/cia/logo_craft.png`}
+                                width={1000}
+                                height={1000}
+                                alt=''
+                                className='w-full p-[30%] md:p-[15%]'/>
+                        </div>
+                        <div className='flex w-full h-[15%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>Craft</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

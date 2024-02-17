@@ -5,6 +5,7 @@ import Utama from "../../component/module/cia/Utama";
 import Sponsorship from "../../component/module/cia/Sponsorship";
 import Mediapatner from "../../component/module/cia/Mediapatner";
 import Event from "../../component/module/cia/Event";
+import Galeri from "../../component/module/cia/Galeri";
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
           <Tema/>
           <Event/>
           <Utama/>
+          <Galeri/>
           <Sponsorship/>
           <Mediapatner/>
       </div>

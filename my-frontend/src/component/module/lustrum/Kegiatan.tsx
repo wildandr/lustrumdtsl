@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 export function Kegiatan() {
 
     return (
-        <div className='min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-hidden'>
+        <div id='event' className='min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-hidden'>
 
             <div className='absolute min-h-screen w-full'>
                 <div

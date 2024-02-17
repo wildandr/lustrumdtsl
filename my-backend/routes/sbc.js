@@ -9,6 +9,14 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
     try {
         const eventId = 3;
 
+        const event = await sequelize.query(
+            `SELECT event_name FROM events WHERE event_id = :eventId`,
+            {
+                replacements: { eventId },
+                type: QueryTypes.SELECT,
+            }
+        );
+
         const teams = await sequelize.query(
             `SELECT * FROM teams WHERE event_id = :eventId`,
             {
@@ -53,16 +61,12 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
                 );
 
                 return {
-                    team: {
-                        team_name: team.team_name,
-                        institution_name: team.institution_name,
-                        payment_proof: team.payment_proof,
-                        voucher: team.voucher,
-                    },
+                    team,
                     leader,
                     members: memberList,
                     dosbim,
                     sbc,
+                    event: event[0].event_name,
                 };
             })
         );
@@ -124,11 +128,7 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
         const memberList = members.filter((member) => member.is_leader === 0);
 
         const result = {
-            team: {
-                team_name: team[0].team_name,
-                institution_name: team[0].institution_name,
-                payment_proof: team[0].payment_proof,
-            },
+            team,
             leader,
             members: memberList,
             dosbim,

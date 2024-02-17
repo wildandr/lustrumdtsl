@@ -83,14 +83,14 @@ export function Form() {
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:flex w-auto h-[1900px] lg:h-[900px] lg:w-[900px] z-0 pt-[6%] hidden"
+          className="absolute sm:flex sm:w-[800px] sm:h-[700px] md:h-[750px] lg:h-[900px] lg:w-[900px] z-0 pt-[6%] hidden"
         />
         <Image
           src="/assets/sbc/bg_form_sbc_mobile.png"
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:hidden w-full h-[1880px] z-0 pt-[1%]"
+          className="absolute sm:hidden w-full h-[80%] z-0 pt-[1%]"
         />
 
         <div className="lg:mt-[8%] mt-[8%] min-h-screen w-full z-50 flex flex-col">
@@ -295,16 +295,15 @@ export function Form() {
     </div>
 </div>
 
-
+<div className="flex w-full mt-20 justify-center ">
           <button
-            className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+            className="bg-[#18AB8E] z-50 lg:py-3 px-4 p-1 rounded-xl text-sm font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
             type="submit"
             onClick={handleRegister}
           >
-            <div className="bg-[#18AB8E] w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-cia-green-border">
-              Kirim Formulir
-            </div>
+            Kirim Formulir
           </button>
+        </div>
         </div>
       </div>
     </div>
