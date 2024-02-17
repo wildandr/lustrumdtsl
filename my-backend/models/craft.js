@@ -51,6 +51,10 @@ Craft.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        isVerified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
     },
     {
         sequelize,

@@ -146,7 +146,7 @@ export default function Nav() {
             <ul
   id="menu"
   aria-hidden="true"
-  className={` transform transition duration-150  origin-top min-w-32 p-3 shadow-lg ${
+  className={` transform transition duration-150  origin-top min-w-32  shadow-lg ${
     isMenuOpen
       ? "absolute top-[4rem] right-[13rem] w-[15rem] p-3 scale-100 z-50"
       : " hidden " // Menampilkan menu saat isMenuOpen true
@@ -178,7 +178,7 @@ export default function Nav() {
           viewBox="0 0 24 24"
           className={`group-hover:rotate-180 transform 
           transition duration-100 ease-in-out ${
-            activeSegment === "lustrum" ? "fill-yellow-400" : "fill-white"
+            activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
           }`}
         >
           <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -192,19 +192,26 @@ export default function Nav() {
   transition duration-150 ease-in-out origin-top-left shadow-lg
   min-w-32 ${activeSegment === "lustrum" ? "bg-black " : "bg-white "} ${isMenuLangOpen ? "block" : "hidden"}`}
     >
-      {/* links3 */}
+      <Link href="/cia/register" className="outline-none focus:outline-none">
       <li className={`px-3 py-1 ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green  hover:bg-gray-100"}`}>
         Registrasi Peserta CRAFT
       </li>
+      </Link>
+      <Link href="/cia/register" className="outline-none focus:outline-none">
       <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
         Registrasi Peserta CIC
       </li>
+      </Link>
+      <Link href="/cia/register" className="outline-none focus:outline-none">
       <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
         Registrasi Peserta SBC
       </li>
+      </Link>
+      <Link href="/cia/register" className="outline-none focus:outline-none">
       <li className={`px-3 py-1  ${activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green hover:bg-gray-100"}`}>
         Registrasi Peserta FBEC
       </li>
+      </Link>
     </ul>
   </li>
 
@@ -260,14 +267,23 @@ export default function Nav() {
           </Link>
         </nav>
         <div className="lg:hidden">
-         
-          <Link href="#" onClick={toggleDropdown}
-            className="outline-none focus:outline-none">
+          <button
+            onClick={toggleDropdown}
+            className="outline-none focus:outline-none"
+          >
+            
+
+          </button>
+          <Link href="/lustrum">
           {/* Tampilkan image pertama jika segment aktif adalah "lustrum", jika tidak, tampilkan image kedua */}
           {activeSegment === "lustrum" ? (
-           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50" className="fill-yellow-400 w-5 h-5">
-           <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
-           </svg>
+            <Image
+              className="h-10 w-auto"
+              src="/assets/lustrum/logo.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
           ) : (
             <Image src="/ciaButtonNav.png" alt="menu" width={30} height={30} />
           )}
