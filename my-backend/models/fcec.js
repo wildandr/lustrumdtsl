@@ -49,4 +49,4 @@ FCEC.init(
     { sequelize, modelName: "FCEC", tableName: "fcec" }
 );
 
-module.exports = Team;
+module.exports = FCEC;

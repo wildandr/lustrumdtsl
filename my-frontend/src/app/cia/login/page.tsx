@@ -32,6 +32,8 @@ export default function Login() {
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("user_id", response.data.user.user_id);
+                localStorage.setItem("isAdmin", response.data.user.isAdmin);
+                alert("Login Berhasil");
             } else {
                 alert("Login Gagal");
             }
