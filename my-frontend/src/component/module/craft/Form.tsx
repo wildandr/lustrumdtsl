@@ -82,11 +82,11 @@ export function Form() {
           className="absolute sm:flex sm:w-[800px] sm:h-[700px] md:h-[750px] lg:h-[900px] lg:w-[900px] z-0 pt-[6%] hidden"
         />
         <Image
-          src="/assets/sbc/bg_form_sbc_mobile.png"
-          alt="bgcia"
+          src="/craftBgFormMobile.png"
+          alt="bgcraft"
           width={1000}
           height={1000}
-          className="absolute sm:hidden w-full h-[80%] z-0 pt-[1%]"
+          className="absolute left-2 sm:hidden w-full h-[650px] z-0 pt-[1%]"
         />
 
                 <div className="lg:mt-[8%] mt-[8%] min-h-screen w-full z-50 flex flex-col">
