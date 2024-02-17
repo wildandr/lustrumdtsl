@@ -51,6 +51,11 @@ Team.init(
                 key: "user_id",
             },
         },
+        isVerified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
     },
     { sequelize, modelName: "teams", tableName: "teams", timestamps: false }
 );
