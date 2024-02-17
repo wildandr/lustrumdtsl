@@ -112,16 +112,16 @@ export default function DashboardUser() {
               
                 className={`text-left bg-[#B5E5DB]`}
               >
-                <td key={index} className={`bg-[#B5E5DB] px-2 py-2 border-r border-ciaGreen border-opacity-10 ${
+                <td key={index} className={`font-semibold bg-[#B5E5DB] px-2 py-2 border-r border-ciaGreen border-opacity-10 ${
                   index === 0
                     ? "rounded-tl-xl"
                     : index === registrations.length - 1
                     ? "rounded-bl-xl"
                     : ""
                 } ${length === 1 ? "rounded-l-xl" : "" }`} >{registration.nama}</td>
-                <td className="bg-[#B5E5DB] px-2 border-r border-ciaGreen border-opacity-10 ">{registration.event}</td>
-                <td className="bg-[#B5E5DB] px-2 boder-none" style={{color: registration.status === "Pendaftaran Belum Berhasil" ? "red" : "inherit"}}>{registration.status}</td>
-                <td className={`bg-[#B5E5DB] px-[0.6rem] py-2 ${
+                <td className="bg-[#B5E5DB] font-semibold px-2 border-r border-ciaGreen border-opacity-10 ">{registration.event}</td>
+                <td className="bg-[#B5E5DB] font-semibold px-2 boder-none" style={{color: registration.status === "Pendaftaran Belum Berhasil" ? "red" : "inherit"}}>{registration.status}</td>
+                <td className={`bg-[#B5E5DB]  px-[0.6rem] py-2 ${
                   index === 0
                     ? "rounded-tr-xl"
                     : index === registrations.length - 1
