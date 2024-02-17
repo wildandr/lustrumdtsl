@@ -41,7 +41,9 @@ export function Form() {
     return (  
         <div
           id="form"
-          className="flex-col absolute bottom-0 z-30 right-5 left-3 sm:left-1 sm:right-8 max-[385px]:h-[40%] h-[45%] sm:h-[40%]   lg:w-[40%]  min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10    md:bottom-auto md:left-auto  md:right-0 md:top-[16%]  justify-center md:w-[42%] md:px-4 md:h-[50%] "
+          className="flex-col absolute bottom-0 z-30 right-5 left-3 px-2 min-[385px]:px-4 sm:left-1 sm:right-8 max-[385px]:h-[40%] h-[45%] sm:h-[40%]
+             lg:w-[40%]  min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10 md:bottom-auto md:left-auto md:right-0 md:top-[16%] lg:top-[18%] xl:top-[19%]
+               justify-center md:w-[42%] md:px-4 md:h-[50%] lg:right-4"
         >
           <div className="px-8 md:px-2 ">
             <h1 className="text-3xl sm:text-4xl  font-medium text-cia-green ">
