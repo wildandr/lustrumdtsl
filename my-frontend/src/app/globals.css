@@ -54,7 +54,7 @@ body {
 
 .menu1 li:hover > ul {
   /* Gaya saat submenu pertama ditampilkan */
-  transform: translatex(106%) scale(1);
+  transform: translatex(101%) scale(1);
 }
 
 .menu1 li > button svg {

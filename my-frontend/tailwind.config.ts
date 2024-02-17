@@ -33,6 +33,7 @@ const config: Config = {
             },
             colors: {
                 "cia-green": "#005A48",
+                "ciaGreen": "#058369",
                 "cia-green-placeholder": "#80ACA3",
                 "cia-green-border": "#18AB8E",
                 "sbc-orange": "#E25933",
