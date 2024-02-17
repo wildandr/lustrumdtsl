@@ -1695,15 +1695,15 @@ export function Form() {
                         </div>
                     </div>
 
-                    <button
-                        className=" w-full z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
-                        type="submit"
-                        onClick={handleRegister}
-                    >
-                        <div className="bg-[#18AB8E] w-auto lg:mx-[35%] mx-[17%] lg:p-3 p-2 rounded-3xl shadow-lg hover:bg-cia-green-border">
-                            Kirim Formulir
-                        </div>
-                    </button>
+                    <div className="flex justify-center w-full">
+            <button
+              className=" bg-[#18AB8E] rounded-3xl z-50 lg:p-3 p-1 font-sans font-medium mt-2 mb-0 lg:mb-[6%] xl:mb-[8%]"
+              type="submit"
+              onClick={handleRegister}
+            >
+              Kirim Formulir
+            </button>
+          </div>
                 </div>
             </div>
         </div>

@@ -3,10 +3,12 @@ import React from "react";
 import Image from "next/image";
 import { Form } from "@/component/module/cia/register/Form";
 import { Objects } from "@/component/module/cia/register/Objects";
+import  toast, { Toaster } from 'react-hot-toast';
 
 export default function Register() {
   return (
     <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] lg:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
+
       <Image
         src="/bgciamobile.png"
         alt="bgcia"
