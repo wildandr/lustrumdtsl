@@ -45,15 +45,24 @@ body {
 }
 }
 
-li > ul {
-  transform: translatex(100%) scale(0);
+
+.menu1 li > ul {
+  /* Gaya untuk submenu pertama */
+  /* Misalnya, untuk menggeser submenu ke kanan */
+  transform: translatex(100%);
 }
-li:hover > ul {
+
+.menu1 li:hover > ul {
+  /* Gaya saat submenu pertama ditampilkan */
   transform: translatex(106%) scale(1);
 }
-li > button svg {
+
+.menu1 li > button svg {
+  /* Gaya ikon panah saat submenu pertama ditutup */
   transform: rotate(-90deg);
 }
-li:hover > button svg {
+
+.menu1 li:hover > button svg {
+  /* Gaya ikon panah saat submenu pertama dibuka */
   transform: rotate(-270deg);
 }

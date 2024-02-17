@@ -14,7 +14,7 @@ export function Hero() {
             }
             // Perbarui rotasi sesuai arah pergerakan
             setRotation(prevRotation => prevRotation + 30 * direction);
-        }, 1000);
+        }, 500);
 
         return () => clearInterval(interval);
     }, [rotation, direction]);
