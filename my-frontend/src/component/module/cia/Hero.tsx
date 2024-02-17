@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function Hero() {
@@ -134,8 +135,8 @@ export function Hero() {
                             <p className='z-50 text-xs lg:text-base font-sfui'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-4 w-full justify-center items-center font-sans'>
-                            <div className='w-full lg:w-[20%] relative border border-white text-white px-4 py-2 rounded-md font-bold z-50'>Masuk</div>
-                            <div className='w-full lg:w-[20%] border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50'>Daftar Sekarang !</div>
+                            <Link href={`/cia/login`} className='w-full lg:w-[20%] relative border border-white text-white px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Masuk</Link>
+                            <Link href={`/cia/register`} className='w-full lg:w-[20%] border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Daftar Sekarang !</Link>
                         </div>
                     </div>
                 </div>
