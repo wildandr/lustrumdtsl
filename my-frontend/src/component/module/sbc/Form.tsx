@@ -65,7 +65,6 @@ export function Form() {
         },
     });
 
-
     const backgroundHeading = {
         backgroundImage: `url(/assets/sbc/bg_heading_sbc.png)`,
         backgroundSize: "cover",
@@ -385,8 +384,6 @@ export function Form() {
                                     color="primary"
                                     size="md"
                                     aria-label="Tabs form"
-                                  
-                                    
                                 >
                                     <Tab
                                         key="ketua"
