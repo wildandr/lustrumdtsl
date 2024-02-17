@@ -6,61 +6,69 @@ import axios from "axios";
 import Image from "next/image";
 
 export function Form() {
-  const [teamData, setTeamData] = useState({
-    team: {
-      team_name: "",
-      institution_name: "",
-      payment_proof: "",
-      team_email: "",
-    },
-    leader: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    members1: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    member2: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    dosbim: {
-      full_name: "",
-      nip: "",
-      email: "",
-      phone_number: "",
-      photo: "",
-    },
+const [userId, setUserId] = useState<number | null>(null);
 
-    sbc: {
-      bridge_name: "",
-    },
-  });
+    useEffect(() => {
+        setUserId(parseInt(localStorage.getItem("user_id") || "0"));
+        console.log(userId);
+    }, []);
+
+    const [teamData, setTeamData] = useState({
+        team: {
+            team_name: "",
+            institution_name: "",
+            payment_proof: "",
+            team_email: "",
+            user_id: userId,
+        },
+        leader: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        members1: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        member2: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        dosbim: {
+            full_name: "",
+            nip: "",
+            email: "",
+            phone_number: "",
+            photo: "",
+        },
+
+        sbc: {
+            bridge_name: "",
+        },
+    });
 
   const backgroundHeading = {
     backgroundImage: `url(/assets/sbc/bg_heading_sbc.png)`,

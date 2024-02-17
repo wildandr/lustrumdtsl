@@ -156,6 +156,7 @@ router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
                     team_name: team.team_name,
                     institution_name: team.institution_name,
                     payment_proof: team.payment_proof,
+                    user_id: user_id,
                 },
                 type: QueryTypes.INSERT,
             }

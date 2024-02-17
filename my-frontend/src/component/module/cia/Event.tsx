@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function Event() {
@@ -49,7 +50,7 @@ export function Event() {
     const isDeviceGreaterThanMd = windowWidth >= md_width
 
     return (
-        <div className='w-full flex flex-col justify-center items-center py-[10%] bg-[#18AB8E]'>
+        <div className='w-full flex flex-col justify-center items-center py-[2%] bg-[#18AB8E]'>
             <div className='flex flex-row w-[80%] h-full relative justify-center items-center'>
                 <Image
                     src={isDeviceGreaterThanMd ? '/assets/cia/bg_title_mobile.png' : '/assets/cia/bg_event_mobile.png'}
@@ -60,7 +61,7 @@ export function Event() {
                 
                 <div className='absolute w-[80%] h-[60%] gap-4 grid grid-cols-2 md:grid-cols-4 grid-rows-2 md:grid-rows-1'>
 
-                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#ED4F23]">
+                    <Link href={`#sbc`} className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#ED4F23] transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_sbc}>
                             <Image
                                 src={`/assets/cia/logo_sbc.png`}
@@ -72,8 +73,8 @@ export function Event() {
                         <div className='flex w-full h-[15%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>SBC</p>
                         </div>
-                    </div>
-                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#0173BC]">
+                    </Link>
+                    <Link href={`#fcec`} className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#0173BC] transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_fcec}>
                             <Image
                                 src={`/assets/cia/logo_fcec.png`}
@@ -85,8 +86,8 @@ export function Event() {
                         <div className='flex w-full h-[15%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>FCEC</p>
                         </div>
-                    </div>
-                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#BE8731]">
+                    </Link>
+                    <Link href={`#cic`} className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#BE8731] transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_cic}>
                             <Image
                                 src={`/assets/cia/logo_cic.png`}
@@ -98,8 +99,8 @@ export function Event() {
                         <div className='flex w-full h-[15%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>CIC</p>
                         </div>
-                    </div>
-                    <div className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#833434]">
+                    </Link>
+                    <Link href={`#craft`} className="border border-gray-400 flex flex-col justify-center rounded-xl bg-[#833434] transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[85%] rounded-xl' style={bg_craft}>
                             <Image
                                 src={`/assets/cia/logo_craft.png`}
@@ -111,7 +112,7 @@ export function Event() {
                         <div className='flex w-full h-[15%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>Craft</p>
                         </div>
-                    </div>
+                    </Link>
                     
                 </div>
             </div>
