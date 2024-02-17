@@ -569,14 +569,14 @@ export function Form() {
                                                 }}
                                                 placeholder="Masukkan link bukti upload twibbon ketua tim"
                                             />
-                      <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                     <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
                         <p className="text-black text-[12px] ml-1">
                           {" "}
                           Surat Keterangan Mahasiswa Aktif
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
@@ -586,17 +586,17 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                        <p className="text-black text-[12px] ml-1">
+                        <p className="text-black  lg:text-[12px] ml-1">
                           {" "}
                           Pas Foto 3x4
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
                         ></input>
                       </div>
                     </form>
@@ -848,7 +848,7 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
@@ -858,17 +858,17 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                        <p className="text-black text-[12px] ml-1">
+                        <p className="text-black  lg:text-[12px] ml-1">
                           {" "}
                           Pas Foto 3x4
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
                         ></input>
                       </div>
                     </form>
@@ -1113,14 +1113,14 @@ export function Form() {
                                                 }}
                                                 placeholder="Masukkan link bukti upload twibbon ketua tim"
                                             />
-                      <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                     <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
                         <p className="text-black text-[12px] ml-1">
                           {" "}
                           Surat Keterangan Mahasiswa Aktif
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
@@ -1130,17 +1130,17 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                        <p className="text-black text-[12px] ml-1">
+                        <p className="text-black  lg:text-[12px] ml-1">
                           {" "}
                           Pas Foto 3x4
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
                         ></input>
                       </div>
                     </form>
@@ -1385,7 +1385,7 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
@@ -1395,17 +1395,17 @@ export function Form() {
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
                         ></input>
                       </div>
                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                        <p className="text-black text-[12px] ml-1">
+                        <p className="text-black  lg:text-[12px] ml-1">
                           {" "}
                           Pas Foto 3x4
                         </p>
                         <input
                           type="file"
-                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                          className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
                         ></input>
                       </div>
                     </form>

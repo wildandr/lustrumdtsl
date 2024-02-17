@@ -53,6 +53,7 @@ const config: Config = {
             fontFamily: {
                 sfui: ["SFUIText-Regular"],
                 LibreBaskerville: ["LibreBaskerville-Regular"],
+                Poppins: ["Poppins"],
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },

@@ -22,7 +22,7 @@ export function Objects(){
             alt="cia"
             width={1000}
             height={1000}
-            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[30%] md:absolute md:top-[14rem] min-[920px]:top-[30%]  md:left-20 lg:top-64 lg:left-32 xl:top-64 xl:left-56"
+            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[30%] md:absolute md:top-[14rem] min-[920px]:top-[30%]  md:left-20 lg:top-64 lg:left-32 xl:top-64 xl:left-56 2xl:left-64"
           />
 
           <Image
@@ -30,7 +30,7 @@ export function Objects(){
             alt="icon1"
             width={600}
             height={600}
-            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[5rem] lg:left-[22%]  xl:top-20 xl:left-[20rem]"
+            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[5rem] lg:left-[22%]  xl:top-20 xl:left-[20rem] 2xl:left-[24rem] 2xl:top-20" 
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -62,7 +62,8 @@ export function Objects(){
             alt="icon4"
             width={600}
             height={600}
-            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] md:top-[53%] min-[920px]:top-[60%] lg:top-[32rem]  xl:top-[30rem]  xl:left-[8rem]"
+            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] 
+            md:left-[4rem] md:top-[53%] min-[920px]:top-[60%] lg:top-[32rem] xl:top-[30rem]  xl:left-[8rem] 2xl:top-[35rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -78,7 +79,8 @@ export function Objects(){
             alt="icon5"
             width={600}
             height={600}
-            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
+            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[34rem]
+             lg:left-[28rem] xl:top-[30rem] xl:left-[42%] 2xl:top-[35rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image

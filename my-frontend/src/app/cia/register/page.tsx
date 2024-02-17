@@ -29,7 +29,7 @@ export default function Register() {
           alt="form"
           width={500}
           height={500}
-          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20  md:h-[650px] min-[800px]:h-[670px] lg:h-[640px] xl:h-[83%] "
+          className="hidden md:flex w-[45%] absolute right-0 top-10 md:top-20  md:h-[650px] min-[800px]:h-[670px] lg:h-[640px] xl:h-[620px] 2xl:h-[78%] "
         />
         <Image
           src="/bgFormMobile.png"

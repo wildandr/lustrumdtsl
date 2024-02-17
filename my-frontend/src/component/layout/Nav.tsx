@@ -112,7 +112,7 @@ export default function Nav() {
         <nav className="hidden lg:flex flex-row gap-1 justify-center items-center">
           <Link href="/lustrum">Home</Link>
          
-          <div className="group  menu1" >
+          <div className="group  menu1" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
               aria-haspopup="true"
