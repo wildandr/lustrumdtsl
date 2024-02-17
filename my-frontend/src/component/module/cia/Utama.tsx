@@ -302,7 +302,7 @@ export function Utama() {
                     height={1000}
                     alt=''
                     className='w-full h-auto'/>
-                <div className='absolute w-full px-[15%] top-[3%] lg:top-[7%] font-bold'>
+                <div className='absolute w-full px-[15%] top-[2%] lg:top-[6%] font-bold'>
                     <Image
                         src={`/assets/cia/cia_logo.png`}
                         width={1000}
@@ -322,8 +322,8 @@ export function Utama() {
                         12th Civil In Action x Craft x Lustrum XI KMTSL
                     </p>
                 </div>
-                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[6%] lg:top-[11%]'></div>
-                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[6.5%] lg:top-[11.5%]'></div>
+                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] lg:top-[11%]'></div>
+                <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[5.5%] lg:top-[11.5%]'></div>
                 <div className='w-[80%] justify-center items-center absolute text-black top-[10%] md:top-[10%] lg:top-[18%]'>
 
                     <Image
