@@ -22,7 +22,7 @@ export function Objects(){
             alt="cia"
             width={1000}
             height={1000}
-            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[30%]  md:absolute md:top-[14rem] min-[920px]:top-[30%]  md:left-20 lg:top-64 lg:left-32 xl:top-56 xl:left-56"
+            className="mx-auto w-[65%] h-[75%] md:w-[33%] md:h-[22%] min-[920px]:h-[28%]  lg:h-[23%] xl:w-[23%] xl:h-[30%]  md:absolute md:top-[14rem] min-[920px]:top-[30%]  md:left-20 lg:top-64 lg:left-32 xl:top-56 xl:left-56 2xl:left-60"
           />
 
           <Image
@@ -30,7 +30,7 @@ export function Objects(){
             alt="icon1"
             width={600}
             height={600}
-            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[5rem] lg:left-[22%]  xl:top-20 xl:left-[20rem]"
+            className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] absolute top-0 left-[43%] sm:left-[18rem] md:left-[20%] md:top-[10%] lg:top-[5rem] lg:left-[22%]  xl:top-20 xl:left-[20rem] 2xl:left-[24rem] "
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -38,7 +38,7 @@ export function Objects(){
             alt="icon2"
             width={600}
             height={600}
-            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-[18%] md:left-[42%] lg:left-[26rem] xl:top-[12rem] xl:left-[42%]"
+            className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[80px]  md:h-[80px] lg:w-[100px] lg:h-[100px] xl:w-[120px] xl:h-[120px] absolute top-14 right-[5%] sm:top-20 md:top-[18%] md:left-[42%] lg:left-[40%] xl:top-[12rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -62,7 +62,7 @@ export function Objects(){
             alt="icon4"
             width={600}
             height={600}
-            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] md:top-[53%] min-[920px]:top-[60%] lg:top-[32rem]  xl:top-[30rem]  xl:left-[8rem]"
+            className="sm:flex hidden w-[30px] h-[50px] sm:w-[80px] sm:h-[100px] md:w-[60px] md:h-[80px] xl:w-[80px] xl:h-[100px] absolute top-[18rem] left-20 sm:top-[32rem] md:left-[4rem] md:top-[53%] min-[920px]:top-[60%] lg:top-[30rem]  xl:top-[30rem]  xl:left-[8rem]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -78,7 +78,7 @@ export function Objects(){
             alt="icon5"
             width={600}
             height={600}
-            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[34rem] lg:left-[28rem] xl:top-[30rem] xl:left-[42%]"
+            className="hidden md:flex  sm:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[50%]  md:left-[42%] min-[920px]:top-[60%] lg:top-[30rem] lg:left-[40%] xl:top-[30rem] xl:left-[42%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
           <Image
@@ -94,7 +94,7 @@ export function Objects(){
             alt="icon6"
             width={600}
             height={600}
-            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[60%]  min-[920px]:top-[68%] lg:top-auto lg:bottom-[15%]  xl:top-auto xl:bottom-[15%] md:left-[12rem] lg:left-[16rem] xl:left-[26%]"
+            className="hidden md:flex md:w-[50px] md:h-[70px] xl:w-[70px] xl:h-[90px] absolute md:top-[60%]  min-[920px]:top-[68%] lg:top-[34rem]  xl:top-[38rem] md:left-[12rem] lg:left-[16rem] xl:left-[26%]"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
 

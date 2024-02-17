@@ -248,7 +248,7 @@ export default function Nav() {
               </ul>
             </li>
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Srawung Desa </span>
@@ -269,7 +269,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Clayproyex </span>
@@ -290,7 +290,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Ceremony </span>
@@ -316,7 +316,7 @@ export default function Nav() {
 
 
           </div>
-          <Link href="/cia" className="-ml-3">
+          <Link href="#" className="-ml-3">
             About
           </Link>
         </nav>
@@ -442,7 +442,7 @@ export default function Nav() {
               </ul>
             </li>
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Srawung Desa </span>
@@ -463,7 +463,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`} >Clayproyex </span>
@@ -484,7 +484,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
         }`}>Ceremony </span>

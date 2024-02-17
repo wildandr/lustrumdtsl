@@ -36,7 +36,7 @@ export default function DashboardUser() {
             const user_Id = "1";
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:5001/user/${user_Id}/events`,
+                    `http://lustrumkmtsl:5001/user/${user_Id}/events`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
