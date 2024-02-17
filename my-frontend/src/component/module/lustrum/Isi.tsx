@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function Isi() {
@@ -127,13 +128,13 @@ export function Isi() {
                 <p className='text-xs md:text-sm lg:text-base font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>CIA X PKTSL</p>
                 <p className='text-2xl md:text-3xl lg:text-5xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Civil in Action x Pelayanan Komputer Teknik Sipil dan Lingkungan</p>
                 <p className='text-xs md:text-sm lg:text-xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
-                <button style={{border: "1px solid var(--gold, #F2D87A)"}} className='w-fit flex flex-row items-center border bg-gradient-to-b bg-clip-text from-[#F2D87A] to-[#E0B620] text-gold-500 px-4 py-2 mt-5 md:mt-8 rounded-xl font-bold text-xs lg:text-base hover:opacity-80'>Website Resmi
+                <Link href={`cia`} style={{border: "1px solid var(--gold, #F2D87A)"}} className='w-fit flex flex-row items-center border bg-gradient-to-b bg-clip-text from-[#F2D87A] to-[#E0B620] text-gold-500 px-4 py-2 mt-5 md:mt-8 rounded-xl font-bold text-xs lg:text-base hover:opacity-80'>Website Resmi
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="100" viewBox="0 0 24 24" className="fill-current bg-gradient-to-b bg-clip-text from-[#F2D87A] to-[#E0B620] text-gold-500 h-5">
                             <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
                         </svg>
                     </span>
-                </button>
+                </Link>
             </div>
         </div>
         </>
