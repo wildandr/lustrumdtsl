@@ -65,8 +65,6 @@ export function Form() {
         },
     });
 
-    const [selected, setSelected] = useState("login");
-
     const backgroundHeading = {
         backgroundImage: `url(/assets/sbc/bg_heading_sbc.png)`,
         backgroundSize: "cover",
@@ -386,8 +384,6 @@ export function Form() {
                                     color="primary"
                                     size="md"
                                     aria-label="Tabs form"
-                                    selectedKey={selected}
-                                    onSelectionChange={setSelected}
                                 >
                                     <Tab
                                         key="ketua"
