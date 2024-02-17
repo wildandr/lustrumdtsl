@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Form } from "@/component/module/cia/register/Form";
 import { Objects } from "@/component/module/cia/register/Objects";
-import  toast, { Toaster } from 'react-hot-toast';
+
 
 export default function Register() {
   return (
