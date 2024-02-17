@@ -6,6 +6,7 @@ import Sponsorship from "../../component/module/cia/Sponsorship";
 import Mediapatner from "../../component/module/cia/Mediapatner";
 import Event from "../../component/module/cia/Event";
 import Galeri from "../../component/module/cia/Galeri";
+import Footer2 from "../../component/layout/Footer2";
 
 export default function Home() {
 
@@ -16,10 +17,15 @@ export default function Home() {
         backgroundRepeat: "repeat",
     };
 
+    const innerShadowStyle = {
+      boxShadow: "inset 0 10px 0px rgba(0, 0, 0, 0.5);",
+    };
+
     return (
       <div
-       className=" bg-chiasGreen-500"
-       style={backgroundImage}>
+       className=" bg-chiasGreen-500 shadow"
+       style={{ ...backgroundImage, ...innerShadowStyle }}
+       >
           <Hero/>
           <Tema/>
           <Event/>
@@ -27,6 +33,7 @@ export default function Home() {
           <Galeri/>
           <Sponsorship/>
           <Mediapatner/>
+          <Footer2/>
       </div>
     )
   }
