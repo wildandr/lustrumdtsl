@@ -6,6 +6,7 @@ import Isi from "../../component/module/lustrum/Isi";
 import Event from "../../component/module/lustrum/Event";
 import Footer from "../../component/layout/Footer";
 
+
 export default function Lustrum() {
 
   return (

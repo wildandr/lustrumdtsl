@@ -64,7 +64,7 @@ const config: Config = {
             addCommonColors: true,
             themes: {
                 light: {
-                    colors: { primary: "#005A48" },
+                    colors: { primary: "#18AB8E" },
                 },
             },
         }),
