@@ -64,7 +64,7 @@ export default function Footer2() {
           )}
         <div className="flex-col  flex items-start gap-4 mt-4 ">
           <p className={`  font-bold text-xl  ${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Event</p>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="/cia" className="flex items-center gap-3">
             <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Civil in action</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="#" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Srawung Desa</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="#" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Clayproyex</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="#" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Ceremony</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ export default function Footer2() {
           </div>
           <div className="flex-col flex items-start gap-4 mt-8  md:mt-4">
           <p className={`  font-bold text-xl  ${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Formulir</p>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="/craft" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Registrasi peserta CRAFT</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="/cic" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Registrasi peserta CIC</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
+          <Link href="/sbc" className="flex items-center gap-3">
           <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Registrasi peserta SBC</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -165,8 +165,8 @@ export default function Footer2() {
               <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
             </svg>
           </Link>
-          <Link href="/event" className="flex items-center gap-3">
-          <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Registrasi peserta PCEC</p>
+          <Link href="/fcec" className="flex items-center gap-3">
+          <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Registrasi peserta FCEC</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -187,7 +187,7 @@ export default function Footer2() {
           <div className="lg:flex justify-center lg:items-center lg:justify-between w-full">
           <div className="flex items-center gap-4 justify-center lg:justify-start w-full">
             <Link
-              href="/event"
+              href="#"
               className={`border-2 rounded-full p-4 border-opacity-20 ${activeSegment === "lustrum" ? "border-yellow-500 " : " border-white"}`}
             >
               <svg
@@ -203,7 +203,7 @@ export default function Footer2() {
               </svg>
             </Link>
             <Link
-              href="/event"
+              href="#"
               className={`border-2 rounded-full p-4 border-opacity-20 ${activeSegment === "lustrum" ? "border-yellow-500 " : " border-white"}`}
             >
               <svg
@@ -219,7 +219,7 @@ export default function Footer2() {
               </svg>
             </Link>
             <Link
-              href="/event"
+              href="#"
               className={`border-2 rounded-full p-4 border-opacity-20 ${activeSegment === "lustrum" ? "border-yellow-500 " : " border-white"}`}
             >
               <svg

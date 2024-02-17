@@ -339,37 +339,16 @@ export function Form() {
               }}
               placeholder="Judul abstrak anda"
             />
-            <Input
-              isRequired
-              label="File Abstrak"
-              variant="underlined"
-              color="primary"
-              value={teamData.fcec.abstract_file}
-              onChange={(e) =>
-                setTeamData((prevState) => ({
-                  ...prevState,
-                  team: {
-                    ...prevState.team,
-                    institution_name: e.target.value,
-                  },
-                }))
-              }
-              classNames={{
-                label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                input: [
-                  "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                  "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                ],
-                inputWrapper: [
-                  "shadow-none",
-                  "focus:shadow-none",
-                  "border-b-2 border-cia-green-border",
-                  "dark:group-data-[focused=true]:bg-default/60",
-                  "!cursor-text",
-                ],
-              }}
-              placeholder=" Nama Tim_Abstrak(upload file)"
-            />
+            <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                          File Abstrak
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
             <Input
               isRequired
               label="Link Video Abstrak"
@@ -399,39 +378,19 @@ export function Form() {
                   "!cursor-text",
                 ],
               }}
-              placeholder="Nama Tim_Judul Abstrak(upload file)"
+              placeholder="Link Video Abstrak"
             />
-            <Input
-              isRequired
-              label="Surat Pernyataan Orisinalitas"
-              variant="underlined"
-              color="primary"
-              value={teamData.fcec.originality_statement}
-              onChange={(e) =>
-                setTeamData((prevState) => ({
-                  ...prevState,
-                  team: {
-                    ...prevState.team,
-                    institution_name: e.target.value,
-                  },
-                }))
-              }
-              classNames={{
-                label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                input: [
-                  "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                  "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                ],
-                inputWrapper: [
-                  "shadow-none",
-                  "focus:shadow-none",
-                  "border-b-2 border-cia-green-border",
-                  "dark:group-data-[focused=true]:bg-default/60",
-                  "!cursor-text",
-                ],
-              }}
-              placeholder="Surat Pernyataan Orisinalitas(upload file)"
-            />
+             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                          Surat Pernyataan Orisinalitas
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
+                    
             
           </form>
 
@@ -678,70 +637,26 @@ export function Form() {
                         }}
                         placeholder="Masukkan link bukti upload twibbon ketua tim"
                       />
-                      <Input
-                        isRequired
-                        label="Surat Keterangan Siswa Aktif"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.leader.active_student_letter}
-                        onChange={(e) =>
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            leader: {
-                              ...prevState.leader,
-                              active_student_letter: e.target.value,
-                            },
-                          }))
-                        }
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
-                      <Input
-                        isRequired
-                        label="Pas Foto 3x4"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.leader.photo}
-                        onChange={(e) =>
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            leader: {
-                              ...prevState.leader,
-                              photo: e.target.value,
-                            },
-                          }))
-                        }
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
+                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                          Surat Keterangan Siswa Aktif
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
+                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                         Pas Foto 3x4
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
                     </form>
                   </Tab>
 
@@ -979,70 +894,26 @@ export function Form() {
                         placeholder="Masukkan link bukti upload twibbon anggota 2"
                       />
                      
-                      <Input
-                        isRequired
-                        label="Surat Keterangan Siswa"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.members1.active_student_letter}
-                        onChange={(e) => {
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            members1: {
-                              ...prevState.members1,
-                              active_student_letter: e.target.value,
-                            },
-                          }));
-                        }}
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
-                      <Input
-                        isRequired
-                        label="Pas Foto 3x4"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.members1.photo}
-                        onChange={(e) => {
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            members1: {
-                              ...prevState.members1,
-                              photo: e.target.value,
-                            },
-                          }));
-                        }}
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
+                     <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                          Surat Keterangan Siswa Aktif
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
+                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                         Pas Foto 3x4
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
                     </form>
                   </Tab>
 
@@ -1280,70 +1151,26 @@ export function Form() {
                         placeholder="Masukkan link bukti upload twibbon anggota 3"
                       />
                      
-                      <Input
-                        isRequired
-                        label="Surat Keterangan Siswa"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.member2.active_student_letter}
-                        onChange={(e) => {
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            member2: {
-                              ...prevState.member2,
-                              active_student_letter: e.target.value,
-                            },
-                          }));
-                        }}
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
-                      <Input
-                        isRequired
-                        label="Pas Foto 3x4"
-                        variant="underlined"
-                        color="primary"
-                        value={teamData.member2.photo}
-                        onChange={(e) => {
-                          setTeamData((prevState) => ({
-                            ...prevState,
-                            member2: {
-                              ...prevState.member2,
-                              photo: e.target.value,
-                            },
-                          }));
-                        }}
-                        classNames={{
-                          label:
-                            "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                          input: [
-                            "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                            "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                          ],
-                          inputWrapper: [
-                            "shadow-none",
-                            "focus:shadow-none",
-                            "border-b-2 border-cia-green-border",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                          ],
-                        }}
-                        placeholder="Sementara (Belum ada component file upload)"
-                      />
+                     <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                          Surat Keterangan Siswa Aktif
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
+                       <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                        <p className="text-black text-[12px] ml-1">
+                          {" "}
+                         Pas Foto 3x4
+                        </p>
+                        <input
+                          type="file"
+                          className="text-sx md:text-sm text-ciaGreen w-1/3"
+                        ></input>
+                      </div>
                     </form>
                   </Tab>
 
