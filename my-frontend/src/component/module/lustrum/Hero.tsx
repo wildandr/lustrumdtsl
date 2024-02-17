@@ -131,16 +131,29 @@ export function Hero() {
                 <div className='flex flex-col lg:flex-row gap-10 items-center z-50'>
                     <Image
                         src={`/assets/lustrum/logo.png`}
-                        className='h-32 w-24 lg:h-60 lg:w-auto'
+                        className='h-32 w-24 lg:h-60 lg:w-auto opacity-75'
                         width={1000}
                         height={1000}
                         alt={''}
                     />
                     <div className='flex flex-wrap flex-col lg:w-[45vw] gap-3 text-center mx-8 items-center lg:items-start'>
-                        <p className=' text-4xl lg:text-7xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>LUSTRUM XI</p>
-                        <p className=' text-base lg:text-xl font-LibreBaskerville font-semibold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Keluarga Mahasiswa Teknik Sipil & lingkungan</p>
-                        <p className=' text-xs lg:text-sm font-sfui bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-balance text-justify'>Keluarga Mahasiswa Teknik Sipil dan Lingkungan (KMTSL) kini telah menginjak usia ke-55 tahun. Dalam perjalanannya, KMTSL telah mengabdikan diri terhadap perkembangan Indonesia terkhusus pada bidang infrastruktur yang bersinggungan secara langsung dengan pembelajaran yang terjadi di perkuliahan. Melalui anggota dan alumninya, KMTSL telah banyak memberikan warna bagi Indonesia dan masyarakat dengan berbagai karya sebagai bentuk kontribusi untuk kemajuan Indonesia, baik di bidang kemajuan infrastruktur maupun pengembangan sosial masyarakat.</p>
-                        <button style={{border: "1px solid var(--gold, #F2D87A)"}} className='w-fit border text-gold-500 px-4 py-2 mt-4 rounded-md font-bold text-xs lg:text-base hover:opacity-80'>Explore Event <span></span></button>
+                        <p className=' text-4xl lg:text-7xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>LUSTRUM XI</p>
+                        <p className=' text-base lg:text-xl font-LibreBaskerville font-semibold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Keluarga Mahasiswa Teknik Sipil & lingkungan</p>
+                        <p className=' text-xs lg:text-sm font-sfui bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620] text-balance text-justify'>Keluarga Mahasiswa Teknik Sipil dan Lingkungan (KMTSL) kini telah menginjak usia ke-55 tahun. Dalam perjalanannya, KMTSL telah mengabdikan diri terhadap perkembangan Indonesia terkhusus pada bidang infrastruktur yang bersinggungan secara langsung dengan pembelajaran yang terjadi di perkuliahan. Melalui anggota dan alumninya, KMTSL telah banyak memberikan warna bagi Indonesia dan masyarakat dengan berbagai karya sebagai bentuk kontribusi untuk kemajuan Indonesia, baik di bidang kemajuan infrastruktur maupun pengembangan sosial masyarakat.</p>
+                        <div className='flex flex-col lg:flex-row w-full gap-4 mt-5 md:mt-8'>
+                            <button style={{border: "1px solid var(--gold, #F2D87A)"}} className='flex flex-row w-full lg:w-[40%] justify-center border text-gold-500 px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center'>Sponsorship 
+                                <span>
+                                
+                                </span>
+                            </button>
+                            <button style={{border: "1px solid var(--gold, #F2D87A)"}} className='flex flex-row w-full lg:w-[40%] justify-center border text-gold-500 px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center'>Explore Event 
+                                <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="100" viewBox="0 0 24 24" className="fill-current text-gold-500 h-5">
+                                    <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
+                                </svg>
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

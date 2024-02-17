@@ -37,14 +37,14 @@ export function Timeline() {
 
             <div className='lg:h-[38rem] w-full my-8'>
                 <div className='w-full flex flex-col items-start pe-[40%]'>
-                    <p className=' text-xs lg:text-base font-LibreBaskerville text-gold-500'>Lustrum-XI KMTSL</p>
-                    <p className=' text-5xl font-LibreBaskerville text-gold-500'>Rangkaian Kegiatan</p>
-                    <p className=' text-xs lg:text-base font-LibreBaskerville text-gold-500'>Ceremony Lustrum</p>
+                    <p className=' text-xs lg:text-base font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Lustrum-XI KMTSL</p>
+                    <p className=' text-5xl font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Rangkaian Kegiatan</p>
+                    <p className=' text-xs lg:text-base font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Ceremony Lustrum</p>
                     <div className='text-xs lg:text-sm'>
-                        <p className=' font-LibreBaskerville text-gold-500'>● Pameran Claproyek</p>
-                        <p className=' font-LibreBaskerville text-gold-500'>● NGOBRAL (Ngobrol Bareng Alumni)</p>
-                        <p className=' font-LibreBaskerville text-gold-500'>● Malam Reuni: Civil Reunion Night</p>
-                        <p className=' font-LibreBaskerville text-gold-500'>● Pentas Aksi Sipil “Renjana”</p>
+                        <p className=' font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>● Pameran Claproyek</p>
+                        <p className=' font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>● NGOBRAL (Ngobrol Bareng Alumni)</p>
+                        <p className=' font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>● Malam Reuni: Civil Reunion Night</p>
+                        <p className=' font-LibreBaskerville bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>● Pentas Aksi Sipil “Renjana”</p>
                     </div>
                 </div>
             </div>

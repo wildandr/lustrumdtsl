@@ -6,6 +6,7 @@ const Sequelize = require("sequelize");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const authenticateToken = require("../middleware/authenticateToken");
+const { QueryTypes } = require("sequelize");
 
 const User = require("../models/user");
 
@@ -127,6 +128,45 @@ router.post("/user/login", async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "An error occurred" });
+    }
+});
+
+// Ambil semua event yang diikuti oleh user
+router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
+    try {
+        const userEvents = await sequelize.query(
+            `
+    SELECT users.*, teams.*, sbc.*, fcec.*, craft.*
+    FROM users
+    LEFT JOIN teams ON users.user_id = teams.user_id
+    LEFT JOIN sbc ON teams.team_id = sbc.team_id
+    LEFT JOIN fcec ON teams.team_id = fcec.team_id
+    LEFT JOIN craft ON users.user_id = craft.user_id
+    WHERE users.user_id = :userId
+`,
+            {
+                replacements: { userId: req.params.user_id },
+                type: QueryTypes.SELECT,
+            }
+        );
+
+        if (!userEvents.length) {
+            return res.status(404).json({
+                status: "error",
+                message: "User not found",
+            });
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: userEvents,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            status: "error",
+            message: "An error occurred while retrieving the events",
+        });
     }
 });
 

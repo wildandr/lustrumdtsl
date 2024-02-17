@@ -4,6 +4,25 @@ import { useEffect, useState } from 'react';
 
 export function Tema() {
 
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+        }
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => {
+        window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    const md_width = 768
+    const lg_width = 1024
+
+    const isDeviceGreaterThanLg = windowWidth >= lg_width
+    const isDeviceGreaterThanMd = windowWidth >= lg_width
+
     const backgroundImage = {
         backgroundImage: `url(/assets/cia/bg_tema_cia.png)`,
         backgroundSize: "cover",
@@ -20,20 +39,20 @@ export function Tema() {
              width={1000}
              height={1000}
              alt=''
-             className='absolute -bottom-[10%] w-full h-auto'/>
+             className='absolute bottom-0 lg:-bottom-[10%] w-full h-auto'/>
 
             <div
              className='flex flex-col justify-center items-center px-8'>
                 <Image
-                    src={`/assets/cia/bg_tema_cia.png`}
+                    src={isDeviceGreaterThanMd ? `/assets/cia/bg_tema_cia.png` : `/assets/cia/bg_tema_mobile.png`}
                     width={1000}
                     height={1000}
                     alt=''
-                    className='absolute w-[80%] h-auto'/>
-                <div className='w-[75%] relative mt-[7%]'>
-                    <p className='text-xs lg:text-base font-LibreBaskerville font-bold text-white'>Tema 12th Civil In Action</p>
-                    <p className='text-2xl lg:text-4xl font-LibreBaskerville font-bold text-white'>“Wujudkan Ibu kota Impian, Akselerasi Pembangunan Berkelanjutan”</p>
-                    <p className='text-xs lg:text-base font-sfui text-white'>Dengan tema 12th Civil In Action yang berjudul “Wujudkan Ibu kota Impian, Akselerasi Pembangunan Berkelanjutan”, para mahasiswa dan pelajar yang berpartisipasi diharapkan dapat menumbuhkan rasa peka terhadap pemindahan ibu kota saat ini. Meskipun belum dapat memberikan dampak langsung secara materiil terhadap pembangunan Ibu Kota Negara, event ini diharapkan dapat membawa inovasi-inovasi maupun ide yang dapat memberikan solusi terhadap permasalahan yang dihadapi dalam pembangunan Ibu Kota Negara berlandaskan pembangunan berkelanjutan sesuai tujuan pembangunan berkelanjutan (TPB) atau SDGs poin 9 dan 11 yaitu industri, inovasi dan infrastruktur serta kota dan permukiman yang berkelanjutan.</p>
+                    className='absolute w-[90%] lg:w-[80%] h-auto'/>
+                <div className='w-full md:w-[75%] relative mt-[30%] lg:mt-[7%]'>
+                    <p className='text-xs md:text-base font-LibreBaskerville font-bold text-white'>Tema 12th Civil In Action</p>
+                    <p className='text-xl md:text-4xl font-LibreBaskerville font-bold text-white'>“Wujudkan Ibu kota Impian, Akselerasi Pembangunan Berkelanjutan”</p>
+                    <p className='text-xs md:text-base font-sfui text-white'>Melalui serangkaian kegiatan Lustrum-XI KMTSL dengan tema “Solidaritas Sipil untuk Pembangunan Negeri” yang melibatkan berbagai pihak, kami berharap dapat menciptakan pemahaman yang lebih baik tentang urgensi pembangunan berkelanjutan, meningkatkan kesadaran akan peran individu dalam mencapai tujuan bersama, serta menciptakan pembangunan berkelanjutan dan progresif menuju Indonesia yang emas, berkelanjutan, dan berkemajuan.</p>
                 </div>
             </div>
 

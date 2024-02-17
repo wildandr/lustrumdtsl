@@ -32,6 +32,11 @@ User.init(
         updatedAt: {
             type: DataTypes.DATE,
         },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
     },
     {
         sequelize,
