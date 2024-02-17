@@ -17,14 +17,14 @@ export default function Login() {
                 alt="bgcia"
                 width={1000}
                 height={1000}
-                className="fixed sm:hidden w-full h-full object-cover z-10"
+                className="fixed sm:hidden w-full h-full object-cover z-0"
             />
             <Image
                 src="/bgcia.png"
                 alt="bgcia"
                 width={1000}
                 height={1000}
-                className="hidden sm:flex w-full h-full object-cover z-50"
+                className="hidden sm:flex w-full h-full object-cover z-0"
             />
 
             <div className=" w-full md:fixed  max-[385px]:h-[160vh] h-[120vh] md:h-[100vh] hero absolute top-0 mt-20  z-0">

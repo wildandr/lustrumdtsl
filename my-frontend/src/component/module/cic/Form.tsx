@@ -658,6 +658,9 @@ export function Form() {
                         }}
                         placeholder="Sementara (Belum ada component file upload)"
                       />
+                      <input type="file" className="">
+
+                        </input>
                     </form>
                   </Tab>
 
