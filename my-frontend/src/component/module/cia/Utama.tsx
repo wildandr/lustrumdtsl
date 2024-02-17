@@ -71,6 +71,12 @@ export function Utama() {
                     </p> */}
                 </div>
                 <div className='w-full lg:w-[80%] items-start'>
+                    <Image
+                        src={`/assets/cia/logo_sbc.png`}
+                        width={1000}
+                        height={1000}
+                        alt=''
+                        className='w-full h-auto px-[25%] mt-[10%] lg:hidden'/>
                     <div className='flex flex-col relative w-full mt-[10%]'>
                         <Image
                             src={isDeviceGreaterThanMd ? '/assets/cia/bg_titel_1.png' : '/assets/cia/bg_title_mobile.png'}
@@ -79,12 +85,12 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[70%]'/>
                         <Image
-                            src={`/assets/cia/calculator.png`}
+                            src={`/assets/cia/logo_sbc.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-24 lg:h-36 top-[100%] -right-[25%] lg:-right-[20%]'/>
-                        <p className='absolute top-[15%] md:top-[25%] left-[16%] md:left-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl text-chiasGreen-500'>
+                            className='absolute w-auto h-16 lg:h-36 top-[-15%] -right-[10%] lg:-right-[25%] hidden lg:block'/>
+                        <p id={`sbc`} className='absolute top-[15%] md:top-[25%] left-[16%] md:left-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl text-chiasGreen-500'>
                             Sustainable Bridge Competition (SBC)
                         </p>
                     </div>
@@ -112,6 +118,12 @@ export function Utama() {
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] self-end'>
+                    <Image
+                        src={`/assets/cia/logo_cic.png`}
+                        width={1000}
+                        height={1000}
+                        alt=''
+                        className='w-full h-auto px-[30%] mt-[10%] lg:hidden'/>
                     <div className='flex flex-col relative w-full mt-[10%]'>
                         <Image
                             src={isDeviceGreaterThanMd ? '/assets/cia/bg_titel_2.png' : '/assets/cia/bg_title_mobile.png'}
@@ -120,12 +132,12 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[70%] self-end'/>
                         <Image
-                            src={`/assets/cia/screw_key.png`}
+                            src={`/assets/cia/logo_cic.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-24 lg:h-36 top-[100%] -left-[20%]'/>
-                        <p className='absolute top-[12%] md:top-[30%] left-[15%] md:left-[5%] lg:left-auto lg:right-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl px-4 text-chiasGreen-500'>
+                            className='absolute w-auto h-20 lg:h-36 top-[-10%] -left-[6%] lg:-left-[20%] hidden lg:block'/>
+                        <p id={`cic`} className='absolute top-[12%] md:top-[30%] left-[15%] md:left-[5%] lg:left-auto lg:right-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl px-4 text-chiasGreen-500'>
                             Civil Innovation Challenge (CIC)
                         </p>
                     </div>
@@ -153,6 +165,12 @@ export function Utama() {
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] items-start'>
+                    <Image
+                        src={`/assets/cia/logo_fcec.png`}
+                        width={1000}
+                        height={1000}
+                        alt=''
+                        className='w-full h-auto px-[30%] mt-[10%] lg:hidden'/>
                     <div className='flex flex-col relative w-full mt-[10%] text-center'>
                         <Image
                             src={isDeviceGreaterThanMd ? '/assets/cia/bg_titel_3.png' : '/assets/cia/bg_title_mobile.png'}
@@ -161,12 +179,12 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[80%]'/>
                         <Image
-                            src={`/assets/cia/note.png`}
+                            src={`/assets/cia/logo_fcec.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-24 lg:h-36 top-[100%] -right-[25%] lg:-right-[20%]'/>
-                        <p className='absolute top-[15%] md:top-[22%] left-[0%] md:left-[25%] lg:left-[12%] font-LibreBaskerville font-bold text-2xl md:text-4xl lg:text-5xl text-chiasGreen-500'>
+                            className='absolute w-auto h-16 lg:h-32 -top-[15%] lg:top-[100%] -right-[5%] lg:-right-[25%]  hidden lg:block'/>
+                        <p id={`fcec`} className='absolute top-[15%] md:top-[22%] left-[0%] md:left-[25%] lg:left-[12%] font-LibreBaskerville font-bold text-2xl md:text-4xl lg:text-5xl text-chiasGreen-500'>
                             Future Civil Engineering {isDeviceGreaterThanMd ? <br/> : undefined} Challenge (FCEC)
                         </p>
                     </div>
@@ -194,6 +212,12 @@ export function Utama() {
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] self-end'>
+                    <Image
+                        src={`/assets/cia/logo_craft.png`}
+                        width={1000}
+                        height={1000}
+                        alt=''
+                        className='w-full h-auto px-[30%] mt-[10%] lg:hidden'/>
                     <div className='flex flex-col relative w-full mt-[10%]'>
                         <Image
                             src={isDeviceGreaterThanMd ? '/assets/cia/bg_titel_3.png' : '/assets/cia/bg_title_mobile.png'}
@@ -206,8 +230,8 @@ export function Utama() {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-24 lg:h-36 top-[100%] -left-[25%] lg:-left-[20%]'/>
-                        <p className='absolute top-[15%] md:top-[22%] left-[0%] md:left-[5%] lg:left-0 lg:-right-[15%] font-LibreBaskerville font-bold text-xl md:text-4xl lg:text-5xl text-chiasGreen-500 text-center'>
+                            className='absolute w-auto h-20 lg:h-36 top-[-30%] lg:top-[100%] -left-[5%] lg:-left-[20%]  hidden lg:block'/>
+                        <p id={`craft`} className='absolute top-[15%] md:top-[22%] left-[5%] md:left-[5%] lg:left-0 lg:-right-[15%] font-LibreBaskerville font-bold text-lg md:text-4xl lg:text-5xl text-chiasGreen-500 text-center'>
                         Civil Engineering Advance {isDeviceGreaterThanLg ? <br/> : undefined}Software Training (CRAFT)
                         </p>
                     </div>
@@ -269,7 +293,7 @@ export function Utama() {
                     2. Masyarakat umum yang memiliki ketertarikan terhadap perangkat lunak di bidang ketekniksipilan dengan rincian jumlah 70 orang untuk offline dan 200 orang untuk online. <br/>
                     3. Mahasiswa/i aktif Departemen Teknik Sipil Universitas Gadjah Mada dengan jumlah 75 orang untuk online. <br/>
                 </p>
-                <button className='absolute bottom-[6%] md:bottom-[10%] w-[80%] bg-[#18AB8E] text-white py-2 px-16 rounded-2xl hover:opacity-50 text-center font-bold text-xs md:text-base'>Download ToR</button>
+                <Link href={`https://drive.google.com/drive/folders/1zhUIYxHD83-H_RoJq1y6s-3o552SQ9f_?usp=drive_link`} className='absolute bottom-[6%] md:bottom-[10%] lg:bottom-[15%] w-[80%] bg-[#18AB8E] text-white py-2 px-16 rounded-2xl hover:opacity-50 text-center font-bold text-xs md:text-base'>Download ToR</Link>
             </div>
             <div className='relative flex flex-col w-[90%] md:w-[80%] mb-[10%] items-center'>
                 <Image
@@ -309,7 +333,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[30%]'/>
                     
-                    <p className='absolute -top-[11%] md:-top-[25%] lg:-top-[22%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-xs md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[10%] md:-top-[25%] lg:-top-[22%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                         Sustainable Bridge Competition (SBC)
                     </p>
 
@@ -377,7 +401,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]'/>
                     
-                    <p className='absolute -top-[8%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-xs md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[7.5%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                         Civil Innovation Challenge (CIC)
                     </p>
 
@@ -456,7 +480,7 @@ export function Utama() {
                     </table>
 
                 </div>
-                <div className='w-[80%] justify-center items-center absolute text-black top-[64%] md:top-[40%] lg:top-[65%]'>
+                <div className='w-[80%] justify-center items-center absolute text-black top-[62.5%] md:top-[40%] lg:top-[65%]'>
 
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
@@ -465,7 +489,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]'/>
                     
-                    <p className='absolute -top-[8%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-xs md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[7%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                     Future Civil Engineering Challenge
                     </p>
 
@@ -479,7 +503,7 @@ export function Utama() {
                         <tbody>
                             {/* <!-- Baris 1 --> */}
                             <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
-                                <td colSpan={2} className='border-collapse border border-black text-center'>Tahap Penyisihan</td>
+                                <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Penyisihan</td>
                             </tr>
                             {/* <!-- Baris 2 --> */}
                             <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
@@ -496,7 +520,7 @@ export function Utama() {
                                 <td className='border border-black py-2'>Pengumuman lolos abstrak</td>
                                 <td className='border border-black py-2'>31 Maret 2024</td>
                             </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Periode daftar ulang peserta lolos tahap abstrak</td>
                                 <td className='border border-black py-2'>1 April - 9 April 2024</td>
                             </tr>
@@ -504,26 +528,26 @@ export function Utama() {
                                 <td className='border border-black py-2'>Technical meeting full paper</td>
                                 <td className='border border-black py-2'>14 April 2024</td>
                             </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Pengumuman lolos final</td>
                                 <td className='border border-black py-2'>14 Juni 2024</td>
                             </tr>
                             {/* <!-- Baris 5 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
                                 <td colSpan={2} className='border-collapse border border-black text-center py-2'>Tahap Final</td>
                             </tr>
                             {/* <!-- Baris 6 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Technical meeting Final</td>
                                 <td className='border border-black py-2'>15 Juni 2024</td>
                             </tr>
                             {/* <!-- Baris 7 --> */}
-                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Opening Ceremony</td>
                                 <td className='border border-black py-2'>23 Juli 2024</td>
                             </tr>
                             {/* <!-- Baris 8 --> */}
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Presentasi Final</td>
                                 <td className='border border-black py-2'>25 Juli 2024</td>
                             </tr>
@@ -532,7 +556,7 @@ export function Utama() {
                                 <td className='border border-black py-2'>Educational Session</td>
                                 <td className='border border-black py-2'>26 Juli 2024</td>
                             </tr>
-                            <tr className='bg-[#81c0b4] text-white font-bold font-LibreBaskerville'>
+                            <tr className='bg-[#44a18f] text-white font-bold font-LibreBaskerville'>
                                 <td className='border border-black py-2'>Awarding Day</td>
                                 <td className='border border-black py-2'>27 Juli 2024</td>
                             </tr>
@@ -547,9 +571,9 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[33%] md:-top-[80%] lg:-top-[85%]'/>
+                        className='absolute w-full px-[5%] md:px-[10%] h-auto -top-[33%] md:-top-[80%] lg:-top-[100%]'/>
                     
-                    <p className='absolute -top-[25%] md:-top-[72%] lg:-top-[60%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-xs md:text-lg lg::text-2xl text-white'>
+                    <p className='absolute -top-[25%] md:-top-[72%] lg:-top-[70%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-2xl text-white'>
                     Civil Engineering Advance Software Training
                     </p>
 

@@ -58,7 +58,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -66,7 +66,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -74,7 +74,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -82,7 +82,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -90,7 +90,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -98,7 +98,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -106,7 +106,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -114,7 +114,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             {/* <div className="bg-gray-200 border border-gray-400">9</div>
                             <div className="bg-gray-200 border border-gray-400">10</div>
@@ -156,7 +156,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -164,7 +164,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -172,7 +172,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -180,7 +180,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -188,7 +188,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -196,7 +196,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -204,7 +204,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -212,7 +212,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             {/* <div className="bg-gray-200 border border-gray-400">9</div>
                             <div className="bg-gray-200 border border-gray-400">10</div>
@@ -254,7 +254,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -262,7 +262,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -270,7 +270,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -278,7 +278,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -286,7 +286,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -294,7 +294,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -302,7 +302,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             <div className="bg-gray-200 border border-gray-400">
                                 <Image
@@ -310,7 +310,7 @@ export function Galeri() {
                                     width={1000}
                                     height={1000}
                                     alt=''
-                                    className='h-full w-auto'/>
+                                    className='h-full w-auto object-cover'/>
                             </div>
                             {/* <div className="bg-gray-200 border border-gray-400">9</div>
                             <div className="bg-gray-200 border border-gray-400">10</div>

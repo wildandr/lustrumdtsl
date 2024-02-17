@@ -27,7 +27,8 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "src/component/icons.jsx",
-        "src/app/api/upload.ts"
+        "src/app/api/upload.ts",
+        "src/middleware/middleware.js"
     ],
     "exclude": ["node_modules"]
 }

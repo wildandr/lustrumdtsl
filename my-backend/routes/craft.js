@@ -73,4 +73,5 @@ router.post("/crafts/register", authenticateToken, async (req, res) => {
         }
     }
 });
+
 module.exports = router;
