@@ -117,7 +117,7 @@ export default function DashboardUser() {
                         />
 
                         <Image
-                            src="/assets/cia/dashboard/logoCiaDashboard.png"
+                            src="/logociaDesktop.png"
                             alt="logo"
                             width={1000}
                             height={1000}
