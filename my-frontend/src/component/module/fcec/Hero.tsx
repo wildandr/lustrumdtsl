@@ -48,7 +48,7 @@ export function Hero() {
         <>
             <Image
                 src={`/assets/cia/lustrum_logo.png`}
-                className="h-20 md:h-28 w-auto absolute top-[10%] lg:top-[10%] lg:left-[20%] lg:right-[80%] left-0 right-0 mx-auto md:left-[30%]"
+                className="max-[385px]:h-10 h-14 sm:h-20 md:h-24 lg:h-28 w-auto absolute mx-auto max-[385px]:top-[10%] top-[8%] sm:top-[10%] lg:top-[12%]  lg:left-[20%] lg:right-[80%] left-0 right-0  "
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -57,7 +57,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/craft_logo.png`}
-                className="h-20 md:h-28 w-auto absolute lg:top-[10%] right-[5%] top-[25%] md:right-[30%] md:flex"
+                className="max-[385px]:h-10 max-[385px]:top-[15%] h-14 sm:h-20 md:h-24 lg:h-28 w-auto absolute right-[10%] lg:right-[20%]  top-[13%] sm:top-[18%] lg:top-[12%] md:flex"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -66,7 +66,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/helm.png`}
-                className="h-14 md:h-24 w-auto absolute top-[25%] lg:top-[35%] left-[5%]"
+                className="max-[385px]:h-8 max-[385px]:top-[15%] h-10 sm:h-[4rem] md:h-20 w-auto absolute top-[13%] sm:top-[18%] lg:top-[25%] left-[10%] lg:left-[5%] "
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -75,7 +75,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/screw_key.png`}
-                className="h-14 lg:h-28 w-auto absolute bottom-[42%] lg:bottom-[15%] left-[14%] lg:hidden"
+                className="max-[385px]:h-8 h-12 sm:h-[4rem] md:h-[4.5rem] lg:h-20 w-auto absolute max-[385px]:top-[35%] top-[30%] sm:top-[44%]  md:top-[50%] lg:bottom-[15%] left-[10%] md:hidden"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -84,7 +84,7 @@ export function Hero() {
 
             <Image
                 src={`/assets/cia/chart_down.png`}
-                className="h-10 lg:h-24 w-auto absolute bottom-[42%] lg:bottom-[15%] right-[10%] lg:hidden"
+                className="max-[385px]:h-8 w-8 h-8 sm:h-[2.5rem] md:h-[3rem] sm:w-auto lg:h-24 lg:w-auto absolute max-[385px]:top-[35%]% top-[30%] sm:top-[44%] md:top-[50%] lg:bottom-[15%] right-[10%] md:hidden"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
@@ -92,7 +92,7 @@ export function Hero() {
             />
             <Image
                 src={`/assets/cia/screw_key.png`}
-                className="h-20 md:h-28 w-auto absolute top-[25%] lg:top-[35%] right-[5%] lg:right-[10%] lg:flex hidden"
+                className="h-24 w-auto absolute top-[25%]  right-[5%] lg:flex hidden"
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
