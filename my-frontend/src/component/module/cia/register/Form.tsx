@@ -27,13 +27,16 @@ export function Form() {
       alert("Password tidak sama");
       return;
     }
+        try {
+            const response = await axios.post(
+                `http://lustrumkmtsl.com:5001/user/register`,
+                {
+                    username,
+                    email,
+                    password,
+                }
+            );
 
-    try {
-      const response = await axios.post(`http://127.0.0.1:5001/user/register`, {
-        username,
-        email,
-        password,
-      });
 
       alert("Register berhasil");
       router.push("/cia/login");
