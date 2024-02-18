@@ -3,8 +3,20 @@ import React from "react";
 import Image from "next/image";
 import { Form } from "@/component/module/cia/register/Form";
 import { Objects } from "@/component/module/cia/register/Objects";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("user_Id");
+
+        if (token && userId) {
+            router.push("/cia/dashboard/user");
+        }
+    }, []);
     return (
         <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] lg:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
             <Image

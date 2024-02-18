@@ -8,18 +8,18 @@ import { useMediaQuery } from "react-responsive";
 import { RadioGroup, Radio } from "@nextui-org/react";
 
 export function Form() {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
 
-  const [craftData, setCraftData] = useState({
-    full_name: "",
-    institution_name: "",
-    user_id: 1,
-    activity_choice: "online",
-    whatsapp_number: "",
-    isMahasiswaDTSL: true,
-    ktm: "",
-    payment_proof: "",
-  });
+    const [craftData, setCraftData] = useState({
+        full_name: "",
+        institution_name: "",
+        user_id: Number(userIdFromLocalStorage),
+        activity_choice: "online",
+        whatsapp_number: "",
+        isMahasiswaDTSL: true,
+        ktm: "",
+        payment_proof: "",
+    });
 
   const backgroundHeading = {
     backgroundImage: `url(/craftBgHeading.png)`,

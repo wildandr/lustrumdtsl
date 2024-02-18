@@ -5,8 +5,27 @@ import { useEffect, useState } from 'react';
 
 export function Kegiatan() {
 
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+        }
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => {
+        window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    const md_width = 768
+    const lg_width = 1024
+
+    const isDeviceGreaterThanLg = windowWidth >= lg_width
+    const isDeviceGreaterThanMd = windowWidth >= md_width
+
     return (
-        <div id='event' className='min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-hidden'>
+        <div id='event' className='min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-x-clip'>
 
             <div className='absolute min-h-screen w-full'>
                 <div
@@ -88,7 +107,7 @@ export function Kegiatan() {
                     }}
                 ></div>
                 <div
-                    className="-left-[100%] -top-[15%] md:top-auto md:-left-[35%] lg:-top-[20%] lg:-left-[20%] w-[36rem] h-[36rem] lg:w-[40rem] lg:h-[40rem] mix-blend-lighten"
+                    className="-left-[100%] -top-[15%] md:top-auto md:-left-[35%] lg:-top-[10%] lg:-left-[20%] w-[36rem] h-[36rem] lg:w-[40rem] lg:h-[40rem] mix-blend-lighten"
                     style={{
                         background: "radial-gradient(50% 50% at 50% 50%, rgba(137, 108, 0, 0.35) 0%, rgba(255, 235, 162, 0.00) 100%)",
                         filter: 'box-shadow(0px 0px 50px rgba(251, 222, 11, 1))',
@@ -109,80 +128,120 @@ export function Kegiatan() {
                 ></div>
             </div>
 
-            <div className='flex flex-col md:w-[80vw] lg:w-[71vw] relative'>
+            <div className='flex flex-col md:w-[80vw] lg:w-[71vw]'>
                 <p className='text-xs lg:text-base font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Lustrum-XI KMTSL</p>
                 <p className='text-2xl lg:text-5xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Rangkaian Kegiatan & Timeline</p>
-                <div className='w-full flex flex-col md:flex-row justify-center items-center gap-8'>
-                    <div className='flex flex-row w-full lg:w-[50%] h-[10rem] lg:h-[13.5rem] gap-8 justify-center'>
-                        <div className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6'>
+                <div className='w-full h-[60%] gap-5 grid grid-cols-2 md:grid-cols-4 grid-rows-2 md:grid-rows-1 mt-[5%] px-[10%]'>
+
+                    <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                        <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
                             <Image
-                                src={'/assets/lustrum/logo_srawung_desa.png'}
+                                src={`/assets/lustrum/logo_srawung_desa.png`}
                                 width={1000}
                                 height={1000}
-                                className={`h-auto w-[80%]`}
-                                alt=''/>
-                            
-                            <p className='text-base lg:text-lg font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-center'>Srawung Desa</p>
+                                alt=''
+                                className='w-full p-[0%] md:p-0'/>
                         </div>
-                        <div className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6'>
-                            <Image
-                                src={'/assets/lustrum/logo_claproyex.png'}
-                                width={1000}
-                                height={1000}
-                                className={`h-auto w-full`}
-                                alt=''/>
-                            
-                            <p className='text-base lg:text-lg font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-center'>Claproyex #8v</p>
+                        <div className='flex w-full h-[10%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>Srawung Desa</p>
                         </div>
-                    </div>
-                    <div className='flex flex-row w-full lg:w-[50%] h-[10rem] lg:h-[13.5rem] gap-8 justify-center'>
-                        <Link href={`/cia`} className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6 transition-transform duration-300 transform hover:scale-110'>
+                    </Link>
+                    <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                        <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
                             <Image
-                                src={'/assets/lustrum/logo_ciaxpktsl.png'}
+                                src={`/assets/lustrum/logo_claproyex.png`}
                                 width={1000}
                                 height={1000}
-                                className={`h-auto w-full md:my-4`}
-                                alt=''/>
-                            
-                            <p className='text-base lg:text-lg font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-center'>CIA x PKTSL</p>
-                        </Link>
-                        <div className='w-[50%] h-full flex flex-col justify-between items-center border border-gold-500 rounded-3xl p-4 lg:p-6 my-6'>
-                            <Image
-                                src={'/assets/lustrum/logo_ceremony.png'}
-                                width={1000}
-                                height={1000}
-                                className={`h-auto w-full md:my-4`}
-                                alt=''/>
-                            
-                            <p className='text-base lg:text-lg font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 text-center'>Ceremony</p>
+                                alt=''
+                                className='w-full p-[0%] md:p-[0%]'/>
                         </div>
-                    </div>
-                </div>
-                <div className='w-full flex flex-col md:flex-row mt-9 justify-between gap-6 md:gap-0 py-16 ps-[30%] md:ps-0 relative'>
+                        <div className='flex w-full h-[10%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>claproyex</p>
+                        </div>
+                    </Link>
+                    <Link href={`/cia`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                        <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
+                            <Image
+                                src={`/assets/lustrum/logo_ciaxpktsl.png`}
+                                width={1000}
+                                height={1000}
+                                alt=''
+                                className='w-full p-[0%] md:p-[0%]'/>
+                        </div>
+                        <div className='flex w-full h-[10%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>CIA x PKTSL</p>
+                        </div>
+                    </Link>
+                    <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                        <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
+                            <Image
+                                src={`/assets/lustrum/logo_ceremony.png`}
+                                width={1000}
+                                height={1000}
+                                alt=''
+                                className='w-full p-[0%] md:p-[0%]'/>
+                        </div>
+                        <div className='flex w-full h-[10%] justify-center items-center'>
+                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>Pentas Aksi Sipil</p>
+                        </div>
+                    </Link>
+                    
+                </div>                    
+                <div className='w-full flex flex-col md:flex-row justify-between gap-6 md:gap-0 py-16 ps-[30%] md:ps-0 relative'>
                     <Image
-                        src={'/assets/lustrum/timeline.png'}
+                        src={isDeviceGreaterThanMd ? '/assets/lustrum/line.png' : '/assets/lustrum/timeline.png'}
                         width={1000}
                         height={1000}
-                        className={`h-auto w-full absolute rotate-90 md:rotate-0 top-[50%] -left-[30%] md:top-[15%] md:left-auto`}
+                        className={`h-auto w-full absolute rotate-90 md:rotate-0 top-[50%] -left-[30%] md:top-[32%] lg:top-[34%] md:left-auto`}
                         alt=''/>
-                    <div className='flex flex-col justify-center md:text-center'>
-                        <p className='text-xl lg:text-2xl font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Opening</p>
+                    <div className='flex flex-col justify-center items-center md:text-center z-50'>
+                        <Image
+                            src={'/assets/lustrum/elipse.png'}
+                            width={1000}
+                            height={1000}
+                            className={`w-7 h-auto hidden md:block`}
+                            alt=''/>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Opening</p>
                         <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>26 April 2024</p>
                     </div>
-                    <div className='flex flex-col justify-center md:text-center'>
-                        <p className='text-xl lg:text-2xl font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Srawung Desa</p>
-                        <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>31 Juni - 22 Juli 2024</p>
+                    <div className='flex flex-col justify-center items-center md:text-center z-50'>
+                        <Image
+                            src={'/assets/lustrum/elipse.png'}
+                            width={1000}
+                            height={1000}
+                            className={`w-7 h-auto hidden md:block`}
+                            alt=''/>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Srawung Desa</p>
+                        <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>31 Juni - 2 Juli 2024</p>
                     </div>
-                    <div className='flex flex-col justify-center md:text-center'>
-                        <p className='text-xl lg:text-2xl font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Claporex</p>
+                    <div className='flex flex-col justify-center items-center md:text-center z-50'>
+                        <Image
+                            src={'/assets/lustrum/elipse.png'}
+                            width={1000}
+                            height={1000}
+                            className={`w-7 h-auto hidden md:block`}
+                            alt=''/>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>claproyex</p>
                         <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>4 Mei & 3-8 Juni 2024</p>
                     </div>
-                    <div className='flex flex-col justify-center md:text-center'>
-                        <p className='text-xl lg:text-2xl font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>CIA x PKTSL</p>
+                    <div className='flex flex-col justify-center items-center md:text-center z-50'>
+                        <Image
+                            src={'/assets/lustrum/elipse.png'}
+                            width={1000}
+                            height={1000}
+                            className={`w-7 h-auto hidden md:block`}
+                            alt=''/>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>CIA x PKTSL</p>
                         <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>23 Juli & 24-25 Mei 2024</p>
                     </div>
-                    <div className='flex flex-col justify-center md:text-center'>
-                        <p className='text-xl lg:text-2xl font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>PAS</p>
+                    <div className='flex flex-col justify-center items-center md:text-center z-50'>
+                        <Image
+                            src={'/assets/lustrum/elipse.png'}
+                            width={1000}
+                            height={1000}
+                            className={`w-7 h-auto hidden md:block`}
+                            alt=''/>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Pentas Aksi Sipil</p>
                         <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>27 Juli 2024</p>
                     </div>
                 </div>

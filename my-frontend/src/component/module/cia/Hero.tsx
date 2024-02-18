@@ -48,8 +48,8 @@ export function Hero() {
     return (
         <>
             <Image
-                src={`/assets/cia/lustrum_logo.png`}
-                className='h-20 md:h-28 w-auto absolute top-[10%] lg:top-[10%] left-[20%] md:left-[30%]'
+                src={`/assets/cia/cia_logo.png`}
+                className='h-16 md:h-24 w-auto absolute top-[10%] lg:top-[10%] left-[20%] md:left-[30%]'
                 width={1000}
                 height={1000}
                 style={{ transform: `rotate(${rotation}deg)` }}
