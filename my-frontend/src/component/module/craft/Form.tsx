@@ -188,7 +188,7 @@ export function Form() {
                       label="Apakah Mahasiswa DTSL FT UGM"
                       orientation="horizontal"
                     >
-                        <Radio value="true" className="text-xs">
+                      <Radio value="true" className="text-xs">
                         {" "}
                         Ya{" "}
                       </Radio>
@@ -196,7 +196,6 @@ export function Form() {
                         {" "}
                         Tidak{" "}
                       </Radio>
-                      
                     </RadioGroup>
                     <Input
                       isRequired
@@ -226,6 +225,35 @@ export function Form() {
                         ],
                       }}
                       placeholder={`Nama lengkap peserta`}
+                    />
+                    <Input
+                      isRequired
+                      label={`Email `}
+                      variant="underlined"
+                      color="primary"
+                      value={craftData.full_name}
+                      onChange={(e) =>
+                        setCraftData({
+                          ...craftData,
+                          full_name: e.target.value,
+                        })
+                      }
+                      classNames={{
+                        label:
+                          "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                        input: [
+                          "text-cia-green dark:text-white/90 md:text-sm text-xs",
+                          "placeholder:text-cia-green-placeholder dark:placeholder:text-white/60 md:text-sm text-xs",
+                        ],
+                        inputWrapper: [
+                          "shadow-none",
+                          "focus:shadow-none",
+                          "border-b-2 border-cia-green-border",
+                          "dark:group-data-[focused=true]:bg-default/60",
+                          "!cursor-text",
+                        ],
+                      }}
+                      placeholder={`Alamat email anda`}
                     />
                     <Input
                       isRequired
@@ -286,34 +314,26 @@ export function Form() {
                       }}
                       placeholder={`Nomor Whatsapp`}
                     />
-                    <Input
-                      label={`Kartu Tanda Mahasiswa(KTM)  `}
-                      variant="underlined"
-                      color="primary"
-                      value={craftData.ktm}
-                      onChange={(e) =>
-                        setCraftData({
-                          ...craftData,
-                          ktm: e.target.value,
-                        })
-                      }
-                      classNames={{
-                        label:
-                          "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                        input: [
-                          "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                          "placeholder:text-cia-green-placeholder dark:placeholder:text-white/60 md:text-sm text-xs",
-                        ],
-                        inputWrapper: [
-                          "shadow-none",
-                          "focus:shadow-none",
-                          "border-b-2 border-cia-green-border",
-                          "dark:group-data-[focused=true]:bg-default/60",
-                          "!cursor-text",
-                        ],
-                      }}
-                      placeholder={`Kartu Tanda Mahasiswa`}
-                    />
+                    <div className="flex flex-col gap-1 border-b-2 mt-2 pb-2 border-[#18AB8E]">
+                      <p className="text-black text-[0.7rem] lg:text-[12px] ml-1">
+                        Kartu Tanda Mahasiswa{" "}
+                        <span style={{ color: "red" }}>*</span>{" "}
+                        <span
+                          style={{
+                            color: "gray",
+                          }}
+                        >
+                          (Format Penamaan : KTM_Nama Tim_Nama Peserta)
+                        </span>
+                      </p>
+                      <input
+                        type="file"
+                        className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
+                       
+                        accept="image/*"
+                        required
+                      ></input>
+                    </div>
                     <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
                       <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                         Bukti Pembayaran <span style={{ color: "red" }}>*</span>{" "}
