@@ -30,7 +30,7 @@ export function Form() {
 
         try {
             const response = await axios.post(
-                `http://lustrumkmtsl:5001/user/register`,
+                `http://lustrumkmtsl.com:5001/user/register`,
                 {
                     username,
                     email,
