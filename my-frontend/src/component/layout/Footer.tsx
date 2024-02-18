@@ -5,8 +5,10 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer
-      className={` relative overflow-x-auto max-[385px]:h-[112vh] h-[92vh] min-[450px]:h-[80vh] md:h-[55vh] lg:h-[60vh] xl:h-[48vh] `}
-    >
+      className={`  relative overflow-x-auto max-[385px]:h-[112vh] h-[92vh] min-[450px]:h-[80vh] md:h-[55vh] lg:h-[60vh] xl:h-[48vh] overflow-hidden`}
+    ><div className="w-full md:px-8 lg:px-32">
+        <div className="w-1/2 h-[0.1rem] bg-gradient-to-b from-yellow-300 to-yellow-600 "/>
+        </div>
       <Image
         src="/logokmtsl.png"
         width={1000}
@@ -24,6 +26,7 @@ export default function Footer() {
       />
 
       <div className="h-[100%] w-full z-20 absolute bottom-0 p-8 lg:px-32">
+    
         <div className="md:flex md:flex-row md:gap-10 md:items-center md:justify-center lg:justify-start">
           <Image
             src="/assets/lustrum/logo.png"
