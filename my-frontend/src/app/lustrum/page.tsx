@@ -5,6 +5,7 @@ import Kegiatan from "../../component/module/lustrum/Kegiatan";
 import Isi from "../../component/module/lustrum/Isi";
 import Event from "../../component/module/lustrum/Event";
 import Footer from "../../component/layout/Footer";
+import Sponsorship from "../../component/module/lustrum/Sponsorship";
 
 
 export default function Lustrum() {
@@ -16,6 +17,7 @@ export default function Lustrum() {
         <Kegiatan/>
         <Isi/>
         <Event/>
+        <Sponsorship/>
         <Footer/>
     </div>
   )

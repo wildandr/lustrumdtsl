@@ -72,7 +72,7 @@ export function Utama() {
                 </div>
                 <div className='w-full lg:w-[80%] items-start'>
                     <Image
-                        src={`/assets/cia/logo_sbc.png`}
+                        src={`/assets/cia/logo_sbc_hard.png`}
                         width={1000}
                         height={1000}
                         alt=''
@@ -85,11 +85,11 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[70%]'/>
                         <Image
-                            src={`/assets/cia/logo_sbc.png`}
+                            src={`/assets/cia/logo_sbc_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-16 lg:h-36 top-[-15%] -right-[10%] lg:-right-[25%] hidden lg:block'/>
+                            className='absolute w-auto h-16 lg:h-52 top-[30%] -right-[10%] lg:-right-[35%] hidden lg:block'/>
                         <p id={`sbc`} className='absolute top-[15%] md:top-[25%] left-[16%] md:left-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl text-chiasGreen-500'>
                             Sustainable Bridge Competition (SBC)
                         </p>
@@ -108,18 +108,18 @@ export function Utama() {
                             </svg> */}
                             </span>
                         </Link>
-                        <button className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran SBC
+                        <Link href={`/sbc`} className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran SBC
                             <span>
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="100" viewBox="0 0 24 24" className="fill-current text-chiasGreen-500 h-3 lg:h-5">
                                 <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
                             </svg>
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] self-end'>
                     <Image
-                        src={`/assets/cia/logo_cic.png`}
+                        src={`/assets/cia/logo_cic_hard.png`}
                         width={1000}
                         height={1000}
                         alt=''
@@ -132,11 +132,11 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[70%] self-end'/>
                         <Image
-                            src={`/assets/cia/logo_cic.png`}
+                            src={`/assets/cia/logo_cic_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-20 lg:h-36 top-[-10%] -left-[6%] lg:-left-[20%] hidden lg:block'/>
+                            className='absolute w-auto h-20 lg:h-56 top-[50%] -left-[6%] lg:-left-[25%] hidden lg:block'/>
                         <p id={`cic`} className='absolute top-[12%] md:top-[30%] left-[15%] md:left-[5%] lg:left-auto lg:right-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl px-4 text-chiasGreen-500'>
                             Civil Innovation Challenge (CIC)
                         </p>
@@ -155,18 +155,18 @@ export function Utama() {
                             </svg> */}
                             </span>
                         </Link>
-                        <button className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran CIC
+                        <Link href={`cic`} className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran CIC
                             <span>
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="100" viewBox="0 0 24 24" className="fill-current text-chiasGreen-500 h-3 lg:h-5">
                                 <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
                             </svg>
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] items-start'>
                     <Image
-                        src={`/assets/cia/logo_fcec.png`}
+                        src={`/assets/cia/logo_fcec_hard.png`}
                         width={1000}
                         height={1000}
                         alt=''
@@ -179,11 +179,11 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[80%]'/>
                         <Image
-                            src={`/assets/cia/logo_fcec.png`}
+                            src={`/assets/cia/logo_fcec_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-16 lg:h-32 -top-[15%] lg:top-[100%] -right-[5%] lg:-right-[25%]  hidden lg:block'/>
+                            className='absolute w-auto h-16 lg:h-52 -top-[15%] lg:top-[100%] -right-[5%] lg:-right-[30%]  hidden lg:block'/>
                         <p id={`fcec`} className='absolute top-[15%] md:top-[22%] left-[0%] md:left-[25%] lg:left-[12%] font-LibreBaskerville font-bold text-2xl md:text-4xl lg:text-5xl text-chiasGreen-500'>
                             Future Civil Engineering {isDeviceGreaterThanMd ? <br/> : undefined} Challenge (FCEC)
                         </p>
@@ -202,18 +202,18 @@ export function Utama() {
                             </svg> */}
                             </span>
                         </Link>
-                        <button className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran FCEC
+                        <Link href={`/fcec`} className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran FCEC
                             <span>
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="100" viewBox="0 0 24 24" className="fill-current text-chiasGreen-500 h-3 lg:h-5">
                                 <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
                             </svg>
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full lg:w-[80%] self-end'>
                     <Image
-                        src={`/assets/cia/logo_craft.png`}
+                        src={`/assets/cia/logo_craft_hard.png`}
                         width={1000}
                         height={1000}
                         alt=''
@@ -226,17 +226,17 @@ export function Utama() {
                             alt=''
                             className='h-auto w-full lg:w-[80%] self-end'/>
                         <Image
-                            src={`/assets/cia/craft_logo.png`}
+                            src={`/assets/cia/logo_craft_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='absolute w-auto h-20 lg:h-36 top-[-30%] lg:top-[100%] -left-[5%] lg:-left-[20%]  hidden lg:block'/>
+                            className='absolute w-auto h-20 lg:h-64 top-[-30%] lg:top-[90%] -left-[5%] lg:-left-[30%]  hidden lg:block'/>
                         <p id={`craft`} className='absolute top-[15%] md:top-[22%] left-[5%] md:left-[5%] lg:left-0 lg:-right-[15%] font-LibreBaskerville font-bold text-lg md:text-4xl lg:text-5xl text-chiasGreen-500 text-center'>
                         Civil Engineering Advance {isDeviceGreaterThanLg ? <br/> : undefined}Software Training (CRAFT)
                         </p>
                     </div>
                     <p className='text-white text-justify my-4'>
-                    Workshop mengenai konsep Building Information Modelling (BIM), keterampilan dalam menggunakan perangkat lunak BIM disertai dengan pemahaman menyeluruh mengenai dampak BIM terhadap paradigma industri konstruksi secara keseluruhan.
+                    Suatu persembahan dari PKTSL FT UGM, yaitu CRAFT (Civil Engineering Advanced Software Training) berupa seminar yang membawa materi seputar BIM (Building Information Modelling) yang marak pada akhir-akhir ini.
                     </p>
                     <p className='text-white text-justify my-4'>
                     CRAFT mengambil tema “Digital Transformation in Construction: Implementation Building Information Modelling (BIM) for Sustainable Future”. Dalam era perkembangan teknologi dan industri, konsep Building Information Modelling (BIM) telah menjadi bagian dari industri konstruksi modern. BIM telah menjadi pendorong utama dalam mengubah landasan industri konstruksi, membuka peluang dalam cara mendesain, membangun, dan mengelola proyek-proyek yang kompleks.
@@ -249,13 +249,13 @@ export function Utama() {
                             </svg> */}
                             </span>
                         </Link>
-                        <button className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran Craft
+                        <Link href={`craft`} className=' justify-center bg-white flex flex-row w-full lg:w-auto border text-chiasGreen-500 py-2 my-2 px-6 rounded-lg text-xs lg:text-base hover:opacity-50 items-center'>Formulir Pendaftaran CRAFT
                             <span>
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="100" viewBox="0 0 24 24" className="fill-current text-chiasGreen-500 h-3 lg:h-5">
                                 <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
                             </svg>
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -281,19 +281,19 @@ export function Utama() {
                     height={1000}
                     alt=''
                     className='w-full h-auto'/>
-                <p className='absolute px-[15%] top-[6%] md:top-[10%] font-LibreBaskerville font-bold text-xs md:text-xl text-chiasGreen-500 '>
-                    ● SBC <br/>
-                    Tim beranggotakan tiga mahasiswa/i aktif D3, D4, atau S1 Teknik Sipil sebagai tim inti, satu hingga tiga mahasiswa/i sebagai tim support pada tahap perakitan, serta satu dosen pembimbing. <br/>
-                    ● CIC <br/>
-                    Lomba ini terbuka untuk mahasiswa dari berbagai program studi dengan syarat dalam satu tim wajib beranggotakan minimal satu mahasiswa teknik sipil.<br/>
-                    ● FCEC <br/>
-                    Peserta didik SMA, SMK, MA dan/atau sederajat dari seluruh sekolah di Indonesia <br/>
-                    ● CRAFT <br/>
-                    1. Peserta setiap sub-event CIA 12th yang telah melakukan registrasi. <br/>
-                    2. Masyarakat umum yang memiliki ketertarikan terhadap perangkat lunak di bidang ketekniksipilan dengan rincian jumlah 70 orang untuk offline dan 200 orang untuk online. <br/>
-                    3. Mahasiswa/i aktif Departemen Teknik Sipil Universitas Gadjah Mada dengan jumlah 75 orang untuk online. <br/>
-                </p>
-                <Link href={`https://drive.google.com/drive/folders/1zhUIYxHD83-H_RoJq1y6s-3o552SQ9f_?usp=drive_link`} className='absolute bottom-[6%] md:bottom-[10%] lg:bottom-[15%] w-[80%] bg-[#18AB8E] text-white py-2 px-16 rounded-2xl hover:opacity-50 text-center font-bold text-xs md:text-base'>Download ToR</Link>
+                <div className='absolute flex flex-col px-[15%] top-[6%] md:top-[10%] font-LibreBaskerville font-bold text-xs md:text-xl text-chiasGreen-500 '>
+                    <p>● SBC </p>
+                    <p>Tim beranggotakan tiga mahasiswa/i aktif D3, D4, atau S1 Teknik Sipil sebagai tim inti, nol hingga tiga mahasiswa/i sebagai tim support pada tahap perakitan, serta satu dosen pembimbing.</p>
+                    <p className='mt-1 md:mt-4'>● CIC</p>
+                    <p>Lomba ini terbuka untuk mahasiswa dari berbagai program studi dengan syarat dalam satu tim wajib beranggotakan minimal satu mahasiswa teknik sipil.</p>
+                    <p className='mt-1 md:mt-4'>● FCEC </p>
+                    <p>Peserta didik SMA, SMK, MA dan/atau sederajat dari seluruh sekolah di Indonesia </p>
+                    <p className='mt-1 md:mt-4'>● CRAFT </p>
+                    <p>1. Peserta setiap sub-event CIA 12th yang telah melakukan registrasi. </p>
+                    <p>2. Masyarakat umum yang memiliki ketertarikan terhadap perangkat lunak di bidang ketekniksipilan dengan rincian jumlah 50 orang untuk offline dan 150 orang untuk online. </p>
+                    <p>3. Mahasiswa/i aktif Departemen Teknik Sipil Universitas Gadjah Mada dengan jumlah 100 orang untuk online. </p>
+                    <Link href={`https://drive.google.com/drive/folders/1zhUIYxHD83-H_RoJq1y6s-3o552SQ9f_?usp=drive_link`} className='w-full md:mt-12 bg-[#18AB8E] text-white py-2 px-16 rounded-2xl hover:opacity-50 text-center font-bold text-xs md:text-base'>Download ToR</Link>
+                </div>
             </div>
             <div className='relative flex flex-col w-[90%] md:w-[80%] mb-[10%] items-center'>
                 <Image
@@ -319,7 +319,7 @@ export function Utama() {
                         Timeline Kegiatan
                     </p>
                     <p className='text-center w-full text-chiasGreen-500 font-LibreBaskerville text-[10px] lg:text-base'>
-                        12th Civil In Action x Craft x Lustrum XI KMTSL
+                        12th Civil In Action x CRAFT x Lustrum XI KMTSL
                     </p>
                 </div>
                 <div className='absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] md:top-[8%] lg:top-[11%]'></div>
