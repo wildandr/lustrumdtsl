@@ -9,11 +9,24 @@ import {
 } from "@/component/icons";
 import { Input } from "@nextui-org/react";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function Form() {
     const [isVisible1, setIsVisible1] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("user_Id");
+
+        if (token && userId) {
+            router.push("/cia/dashboard/user");
+        }
+    }, []);
 
     const handleLogin = async (event: FormEvent) => {
         event.preventDefault();
@@ -30,12 +43,13 @@ export function Form() {
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("user_Id", response.data.user.user_id);
-                alert("Login Berhasil");
+                toast.success("Login Berhasil");
+                router.push("/cia/dashboard/user");
             } else {
-                alert("Login Gagal");
+                toast.error("Username atau Password Salah!");
             }
         } catch (error) {
-            alert("Login Gagal");
+            toast.error("Login Gagal");
             console.error(error);
         }
     };

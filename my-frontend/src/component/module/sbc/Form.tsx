@@ -6,7 +6,8 @@ import axios from "axios";
 import Image from "next/image";
 
 export function Form() {
-  const [userId, setUserId] = useState<number | null>(null);
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
+
 
   const [file, setFile] = useState<File>();
 
@@ -89,64 +90,59 @@ export function Form() {
       }
     };
 
-  useEffect(() => {
-    setUserId(parseInt(localStorage.getItem("user_id") || "0"));
-    console.log(userId);
-  }, []);
+    const [teamData, setTeamData] = useState({
+        team: {
+            team_name: "",
+            institution_name: "",
+            payment_proof: "",
+            team_email: "",
+            user_id: Number(userIdFromLocalStorage),
 
-  const [teamData, setTeamData] = useState({
-    team: {
-      team_name: "",
-      institution_name: "",
-      payment_proof: "",
-      team_email: "",
-      user_id: 1,
-      voucher: "",
-    },
-    leader: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    member1: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    member2: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-      semester: "",
-      nim: "",
-    },
-    dosbim: {
-      full_name: "",
-      nip: "",
-      email: "",
-      phone_number: "",
-      photo: "",
-    },
-
+            voucher: "",
+        },
+        leader: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        member1: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        member2: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+            semester: "",
+            nim: "",
+        },
+        dosbim: {
+            full_name: "",
+            nip: "",
+            email: "",
+            phone_number: "",
+            photo: "",
+        },
     sbc: {
       bridge_name: "",
     },

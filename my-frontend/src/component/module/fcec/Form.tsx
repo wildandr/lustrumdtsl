@@ -6,51 +6,55 @@ import axios from "axios";
 import Image from "next/image";
 
 export function Form() {
-  const [teamData, setTeamData] = useState({
-    team: {
-      team_name: "",
-      institution_name: "",
-      payment_proof: "",
-      email: "",
-      user_id: 1,
-    },
-    leader: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-    },
-    member1: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-    },
-    member2: {
-      full_name: "",
-      phone_number: "",
-      line_id: "",
-      email: "",
-      ktm: "",
-      active_student_letter: "",
-      photo: "",
-      twibbon_and_poster_link: "",
-    },
-    fcec: {
-      originality_statement: "",
-      abstract_title: "",
-      abstract_file: "",
-      abstract_video_link: "",
-    },
-  });
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
+
+    const [teamData, setTeamData] = useState({
+        team: {
+            team_name: "",
+            institution_name: "",
+            payment_proof: "",
+            email: "",
+            user_id: Number(userIdFromLocalStorage),
+        },
+        leader: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+        },
+        member1: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+        },
+        member2: {
+            full_name: "",
+            phone_number: "",
+            line_id: "",
+            email: "",
+            ktm: "",
+            active_student_letter: "",
+            photo: "",
+            twibbon_and_poster_link: "",
+        },
+        fcec: {
+            originality_statement: "",
+            abstract_title: "",
+            abstract_file: "",
+            abstract_video_link: "",
+        },
+    });
+
+    const [file, setFile] = useState<File>();
 
   const [file, setFile] = useState<File>();
 
