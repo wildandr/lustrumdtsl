@@ -148,15 +148,17 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
 router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members, dosbim, sbc } = req.body;
+        const user_id = team.user_id; // get user_id from team object
 
         const createdTeam = await sequelize.query(
-            `INSERT INTO teams (team_name, institution_name, payment_proof, user_id, event_id) VALUES (:team_name, :institution_name, :payment_proof, 1, 3)`,
+            `INSERT INTO teams (team_name, institution_name, payment_proof, user_id, event_id) VALUES (:team_name, :institution_name, :payment_proof, :user_id, 3)`,
             {
                 replacements: {
                     team_name: team.team_name,
                     institution_name: team.institution_name,
                     payment_proof: team.payment_proof,
-                    user_id: user_id,
+                    user_id: user_id, // add user_id here
+                    voucher: team.voucher,
                 },
                 type: QueryTypes.INSERT,
             }
