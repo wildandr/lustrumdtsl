@@ -100,15 +100,15 @@ export function Hero() {
             />
 
             <div className="h-auto w-full">
-                <div className="flex h-auto w-full  justify-center py-2 px-8">
-                    <div className="flex flex-col items-center text-center mt-[30%] lg:mt-72">
+            <div className="flex h-auto w-full  justify-center py-2 px-8">
+                    <div className="flex flex-col items-center text-center  mt-[35%] sm:mt-[30%] lg:mt-[28%] xl:mt-[20%]">
                         <Image
                             src={
                                 isDeviceGreaterThanLg
-                                    ? `/assets/sbc/title.png`
-                                    : `/assets/sbc/title_mobile.png`
+                                    ? `/logociaDesktop.png`
+                                    : `/logocia.png`
                             }
-                            className="w-[669px] h-auto justify-center z-50"
+                            className="max-[380px]:w-[180px] w-[220px] sm:w-[300px] md:w-[340px] lg:w-[580px] xl:w-[600px] 2xl:w-[640px] h-auto justify-center z-50"
                             width={1000}
                             height={1000}
                             alt={""}
