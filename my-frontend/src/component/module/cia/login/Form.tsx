@@ -49,13 +49,13 @@ export function Form() {
              lg:w-[40%]  min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10 md:bottom-auto md:left-auto md:right-0 md:top-[16%] lg:top-[18%] xl:top-[19%]
                justify-center md:w-[42%] md:px-4 md:h-[50%] lg:right-4  font-sans"
         >
-          <div className="px-8 md:px-2 ">
-            <h1 className="text-3xl sm:text-4xl  font-medium text-cia-green ">
-              Masuk
-            </h1>
-            <p className="max-[375px]:text-sm text-base sm:text-base font-light text-cia-green mt-2 sm:mt-6">
-              Belum memiliki akun?
-            </p>
+            <div className="px-8 md:px-2 ">
+                <h1 className="text-3xl sm:text-4xl  font-medium text-cia-green ">
+                    Masuk
+                </h1>
+                <p className="max-[375px]:text-sm text-base sm:text-base font-light text-cia-green mt-2 sm:mt-6">
+                    Belum memiliki akun?
+                </p>
 
                 <p className="max-[375px]:text-sm text-base sm:text-base font-light text-cia-green ">
                     Kamu bisa{" "}

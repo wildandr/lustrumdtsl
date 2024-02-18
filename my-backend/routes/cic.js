@@ -131,8 +131,8 @@ router.post("/teams/cic/new", authenticateToken, async (req, res) => {
                     institution_name: team.institution_name,
                     payment_proof: team.payment_proof,
                     event_id: 4,
-                    user_id: 1,
-                }, // TODO: ganti user_id dengan user yang sedang login
+                    user_id: team.user_id,
+                },
                 type: QueryTypes.INSERT,
             }
         );
