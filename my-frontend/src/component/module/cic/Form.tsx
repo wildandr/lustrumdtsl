@@ -153,17 +153,17 @@ export function Form() {
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:flex w-auto sm:h-[1600px] lg:h-[2000px]  z-0 pt-[6%] hidden"
+          className="absolute sm:flex w-auto sm:h-[105%] lg:h-[105%]  z-0 pt-[6%] hidden"
         />
         <Image
           src="/assets/sbc/bg_form_sbc_mobile.png"
           alt="bgcia"
           width={1000}
           height={1000}
-          className="absolute sm:hidden w-full max-[385px]:h-[1800px] h-[105%] z-0 pt-[1%]"
+          className="absolute sm:hidden w-full max-[385px]:h-[105%] h-[105%] z-0 pt-[1%]"
         />
 
-        <div className="lg:mt-[8%] mt-[8%] min-[530px]:mt-6 sm:mt-12 md:mt-14 min-h-screen z-50 flex flex-col">
+        <div className="lg:mt-[8%] mt-[8%] min-[530px]:mt-6 sm:mt-12 md:mt-14 2xl:mt-[12%] min-h-screen z-50 flex flex-col">
           <Image
             src="/assets/sbc/cia_logo.png"
             alt="cia"
@@ -183,7 +183,7 @@ export function Form() {
             alt="cic"
             width={1000}
             height={1000}
-            className="lg:h-28 lg:w-28 absolute lg:right-[10%] 2xl:h-32 2xl:w-32 2xl:right-[20%] 2xl:mt-4 md:mt-6   h-14 w-14 right-[6%] min-[530px]:right-[17%] sm:right-[20%] sm:mt-2 lg:flex"
+            className="lg:h-28 lg:w-28 absolute lg:right-[10%] 2xl:right-[20%] 2xl:mt-6 md:mt-6   h-14 w-14 right-[6%] min-[530px]:right-[17%] sm:right-[20%] sm:mt-2 lg:flex"
             style={{ transform: `rotate(${rotation}deg)` }}
           />
 

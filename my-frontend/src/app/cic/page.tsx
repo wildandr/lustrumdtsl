@@ -13,7 +13,7 @@ export default function sbc() {
     };
 
     return (
-        <div className=" bg-cic md:h-[260vh] min-[820px]:h-[260vh] lg:h-[300vh] xl:h-[300vh] 2xl:h-[280vh]" >
+        <div className=" bg-cic md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[290vh]" >
              <Image
                 src="/bgciamobile.png"
                 alt="bgcia"
