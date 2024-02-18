@@ -8,7 +8,7 @@ export default function sbc() {
    
 
     return (
-        <div className=" bg-craft" >
+        <div className=" bg-craft md:h-[200vh] lg:h-[250vh] xl:h-auto" >
             <Image
                 src="/bgciamobile.png"
                 alt="bgcia"
