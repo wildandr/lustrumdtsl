@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer
-      className={` relative overflow-x-auto max-[385px]:h-[112vh] "h-[92vh] min-[450px]:h-[80vh] md:h-[55vh] lg:h-[60vh] xl:h-[48vh] `}
+      className={` relative overflow-x-auto max-[385px]:h-[112vh] h-[92vh] min-[450px]:h-[80vh] md:h-[55vh] lg:h-[60vh] xl:h-[48vh] `}
     >
       <Image
         src="/logokmtsl.png"

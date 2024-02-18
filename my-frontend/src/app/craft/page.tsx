@@ -18,14 +18,21 @@ export default function CRAFT() {
         }
     }, []);
     return (
-        <div className=" bg-craft">
+<div className=" bg-craft md:h-[200vh] lg:h-[250vh] xl:h-auto" >
             <Image
-                src="/bgcia.png"
+                src="/bgciamobile.png"
                 alt="bgcia"
                 width={1000}
                 height={1000}
-                className="hidden fixed sm:flex w-full h-full object-cover z-10"
+                className="fixed sm:hidden w-full h-full object-cover z-0"
             />
+             <Image
+        src="/bgcia.png"
+        alt="bgcia"
+        width={1000}
+        height={1000}
+        className="hidden fixed sm:flex w-full h-full object-cover z-10"
+      />
             <Hero />
             <Form />
         </div>
