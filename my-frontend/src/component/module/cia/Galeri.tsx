@@ -38,9 +38,9 @@ export function Galeri() {
                     width={1000}
                     height={1000}
                     alt=''
-                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] px-[5%] lg:w-[40%]'/>
+                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] md:w-[60%] px-[5%] lg:w-[40%]'/>
                 
-                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[3%] font-LibreBaskerville font-bold'>
+                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[2.5%] font-LibreBaskerville font-bold'>
                     Galeri Linimasa SBC
                 </p>
 
@@ -136,9 +136,9 @@ export function Galeri() {
                     width={1000}
                     height={1000}
                     alt=''
-                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] px-[5%] lg:w-[40%]'/>
+                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] md:w-[60%] px-[5%] lg:w-[40%]'/>
                 
-                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[3%] font-LibreBaskerville font-bold'>
+                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[2.5%] font-LibreBaskerville font-bold'>
                     Galeri Linimasa CIC
                 </p>
 
@@ -234,9 +234,9 @@ export function Galeri() {
                     width={1000}
                     height={1000}
                     alt=''
-                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] px-[5%] lg:w-[40%]'/>
+                    className='absolute top-[3%] md:top-[0%] h-auto w-[80%] md:w-[60%] px-[5%] lg:w-[40%]'/>
                 
-                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[3%] font-LibreBaskerville font-bold'>
+                <p className='w-[80%] lg:w-[40%] absolute text-center text-chiasGreen-500 text-xl lg:text-4xl top-[5%] md:top-[2.5%] font-LibreBaskerville font-bold'>
                     Galeri Linimasa FCEC
                 </p>
 

@@ -80,13 +80,23 @@ export default function Nav() {
               height={100}
             />
           ) : (
-            <Image
-              className="h-10 w-auto"
-              src="/ciaLogo.png"
-              alt="Logo"
-              width={100}
-              height={100}
-            />
+            <div className="flex flex-row items-center">
+              <Image
+                className="h-10 w-auto"
+                src="/ciaLogo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+              
+              <Image
+                className="h-10 w-auto"
+                src="/assets/lustrum/logo_lustrum_vektor.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+            </div>
           )}
         </Link>
         <nav className="hidden lg:flex flex-row gap-1 justify-center items-center">

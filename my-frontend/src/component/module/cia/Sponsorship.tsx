@@ -47,7 +47,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-auto h-28 top-0 right-[10%]'/> */}
                     <p id='sponsorship' className='absolute top-[10%] lg:top-[12%] font-LibreBaskerville font-bold text-lg md:text-4xl text-white'>
-                        Terimakasih Kepada : 
+                        Sponsor
                     </p>
                         <div className="h- w-[65%] lg:w-[70%] grid grid-cols-2 lg:grid-cols-5 grid-rows-3 gap-4 absolute top-[25%] h-[60%]">
                             {/* Baris 1 */}

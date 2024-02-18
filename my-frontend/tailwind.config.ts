@@ -51,7 +51,7 @@ const config: Config = {
                 },
             },
             fontFamily: {
-                sfui: ["SFUIText-Regular"],
+                sfui: ["PlusJakartaSans"],
                 LibreBaskerville: ["LibreBaskerville-Regular"],
                 Poppins: ["Poppins-Regular"],
                 PoppinsBold: ["Poppins-Bold"],
