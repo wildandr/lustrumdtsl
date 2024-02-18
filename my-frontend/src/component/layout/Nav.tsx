@@ -12,27 +12,7 @@ export default function Nav() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const menuLangRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Fungsi untuk menutup dropdown saat klik di luar dropdown
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownVisible(false);
-      }
-     
-      
-    };
-
-    // Menambahkan event listener ke elemen dokumen ketika komponen dimount
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Membersihkan event listener saat komponen dilepas
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+ 
 
   useEffect(() => {
     let prevScrollPos = window.scrollY;
@@ -112,7 +92,7 @@ export default function Nav() {
         <nav className="hidden lg:flex flex-row gap-1 justify-center items-center">
           <Link href="/lustrum">Home</Link>
          
-          <div className="group  menu1" ref={dropdownRef}>
+          <div className="group  menu1" >
             <button
               onClick={toggleDropdown}
               aria-haspopup="true"
@@ -320,7 +300,7 @@ export default function Nav() {
             About
           </Link>
         </nav>
-        <div className="lg:hidden"  ref={dropdownRef}>
+        <div className="lg:hidden"  >
          
           <button onClick={toggleDropdown}
             className="outline-none focus:outline-none">
