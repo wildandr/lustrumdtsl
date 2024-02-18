@@ -83,7 +83,7 @@ export function Utama() {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='h-auto w-full lg:w-[70%]'/>
+                            className='h-auto w-full lg:w-[70%] 2xl:w-[60%]'/>
                         <Image
                             src={`/assets/cia/logo_sbc_hard.png`}
                             width={1000}
@@ -130,14 +130,14 @@ export function Utama() {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='h-auto w-full lg:w-[70%] self-end'/>
+                            className='h-auto w-full lg:w-[70%] 2xl:w-[60%] self-end'/>
                         <Image
                             src={`/assets/cia/logo_cic_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
                             className='absolute w-auto h-20 lg:h-56 top-[50%] -left-[6%] lg:-left-[25%] hidden lg:block'/>
-                        <p id={`cic`} className='absolute top-[12%] md:top-[30%] left-[15%] md:left-[5%] lg:left-auto lg:right-[5%] font-LibreBaskerville font-bold text-2xl md:text-4xl px-4 text-chiasGreen-500'>
+                        <p id={`cic`} className='absolute top-[12%] md:top-[30%] left-[15%] md:left-[5%] lg:left-auto lg:right-[5%] xl:right-[8%] 2xl:right-[7%] font-LibreBaskerville font-bold text-2xl md:text-4xl px-4 text-chiasGreen-500'>
                             Civil Innovation Challenge (CIC)
                         </p>
                     </div>
@@ -177,7 +177,7 @@ export function Utama() {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='h-auto w-full lg:w-[80%]'/>
+                            className='h-auto w-full lg:w-[80%] 2xl:w-[70%]'/>
                         <Image
                             src={`/assets/cia/logo_fcec_hard.png`}
                             width={1000}
@@ -224,14 +224,14 @@ export function Utama() {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='h-auto w-full lg:w-[80%] self-end'/>
+                            className='h-auto w-full lg:w-[80%] 2xl:w-[70%] self-end'/>
                         <Image
                             src={`/assets/cia/logo_craft_hard.png`}
                             width={1000}
                             height={1000}
                             alt=''
                             className='absolute w-auto h-20 lg:h-64 top-[-30%] lg:top-[90%] -left-[5%] lg:-left-[30%]  hidden lg:block'/>
-                        <p id={`craft`} className='absolute top-[15%] md:top-[22%] left-[5%] md:left-[5%] lg:left-0 lg:-right-[15%] font-LibreBaskerville font-bold text-lg md:text-4xl lg:text-5xl text-chiasGreen-500 text-center'>
+                        <p id={`craft`} className='absolute top-[15%] md:top-[22%] left-[5%] md:left-[5%] lg:left-0 lg:-right-[15%] 2xl:-right-[25%] font-LibreBaskerville font-bold text-lg md:text-4xl lg:text-5xl text-chiasGreen-500 text-center'>
                         Civil Engineering Advance {isDeviceGreaterThanLg ? <br/> : undefined}Software Training (CRAFT)
                         </p>
                     </div>
@@ -403,7 +403,7 @@ export function Utama() {
                         alt=''
                         className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]'/>
                     
-                    <p className='absolute -top-[7.5%] md:-top-[18%] lg:-top-[19%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
+                    <p className='absolute -top-[7.5%] md:-top-[18%] lg:-top-[19%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl text-white'>
                         Civil Innovation Challenge (CIC)
                     </p>
 
