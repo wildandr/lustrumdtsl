@@ -29,6 +29,7 @@ export function Form() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user_Id", response.data.user.user_id);
                 alert("Login Berhasil");
             } else {
                 alert("Login Gagal");
