@@ -3,48 +3,38 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function DashboardUser() {
-    const registrations = [
-        { nama: "Wildan Dzaky", event: "SBC", status: "Menunggu Konfirmasi" },
-        {
-            nama: "Wildan Dzaky",
-            event: "SBC",
-            status: "Pendaftaran Belum Berhasil",
-        },
-        {
-            nama: "Wildan Dzaky",
-            event: "SBC",
-            status: "Pendaftaran Belum Berhasil",
-        },
-        {
-            nama: "Wildan Dzaky",
-            event: "SBC",
-            status: "Pendaftaran Belum Berhasil",
-        },
-    ];
+    const router = useRouter();
 
-    const length = registrations.length;
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("user_Id");
 
-    const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+        if (!token && !userId) {
+            router.push("/cia/login");
+        }
+    }, []);
+
+    const token = localStorage.getItem("token");
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
 
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const user_Id = "1";
+            const user_Id = userIdFromLocalStorage;
             try {
                 const response = await axios.get(
-                    `http://lustrumkmtsl:5001/user/${user_Id}/events`,
+                    `http://127.0.0.1:5001/user/${user_Id}/events`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
                     }
                 );
-                console.log(response.data);
-                setData(response.data.data); // Adjust this line
+                setData(response.data.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -179,11 +169,11 @@ export default function DashboardUser() {
                                                 index === 0
                                                     ? "rounded-tl-xl"
                                                     : index ===
-                                                      registrations.length - 1
+                                                      registration.length - 1
                                                     ? "rounded-bl-xl"
                                                     : ""
                                             } ${
-                                                registrations.length === 1
+                                                registration.length === 1
                                                     ? "rounded-l-xl"
                                                     : ""
                                             }`}
@@ -212,11 +202,11 @@ export default function DashboardUser() {
                                                 index === 0
                                                     ? "rounded-tr-xl"
                                                     : index ===
-                                                      registrations.length - 1
+                                                      registration.length - 1
                                                     ? "rounded-br-xl"
                                                     : ""
                                             } ${
-                                                registrations.length === 1
+                                                registration.length === 1
                                                     ? "rounded-r-xl"
                                                     : ""
                                             }`}

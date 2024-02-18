@@ -8,12 +8,12 @@ import { useMediaQuery } from "react-responsive";
 import { RadioGroup, Radio } from "@nextui-org/react";
 
 export function Form() {
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
 
     const [craftData, setCraftData] = useState({
         full_name: "",
         institution_name: "",
-        user_id: 1,
+        user_id: Number(userIdFromLocalStorage),
         activity_choice: "online",
         whatsapp_number: "",
         isMahasiswaDTSL: true,
