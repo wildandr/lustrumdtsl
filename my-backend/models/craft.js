@@ -55,6 +55,14 @@ Craft.init(
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: {
+                args: true,
+                msg: "Email ini sudah terdaftar di CRAFT",
+            },
+        },
     },
     {
         sequelize,
