@@ -12,7 +12,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                "http://127.0.0.1:5001/teams/sbc/",
+                "http://lustrumkmtsl:5001/teams/sbc/",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (teamId: string) => {
         try {
             const response = await axios.put(
-                `http://127.0.0.1:5001/teams/${teamId}/verify`,
+                `http://lustrumkmtsl:5001/teams/${teamId}/verify`,
                 {},
                 {
                     headers: {

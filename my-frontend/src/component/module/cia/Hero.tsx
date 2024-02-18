@@ -124,7 +124,7 @@ export function Hero() {
                 <div className="flex min-h-screen w-full items-center justify-center py-2 px-8">
                     <div className="flex flex-col items-center text-center mt-[30%] lg:mt-4">
                         <Image
-                            src={isDeviceGreaterThanLg ? `/assets/cia/title.png` : `/assets/cia/title_mobile.png`}
+                            src={isDeviceGreaterThanLg ? `/assets/cia/title_new.png` : `/assets/cia/title_mobile.png`}
                             className='w-[669px] h-auto justify-center z-50'
                             width={1000}
                             height={1000}
