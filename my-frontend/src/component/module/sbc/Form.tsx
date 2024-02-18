@@ -236,34 +236,34 @@ export function Form() {
     }, [rotation, direction]);
 
     return (
-        <div className="relative px-[5%] lg:px-[13%] pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll  ">
-            <div className="flex flex-col lg:justify-center items-center relative min-w-full mt-[4%]">
+        <div className="relative px-[5%] lg:px-[13%]  pt-4 pb-28 flex flex-col overflow-hidden sm:overflow-scroll ">
+            <div className="flex flex-col lg:justify-center items-center relative min-w-full mt-[2%] lg:mt-[2%]">
                 <Image
                     src="/assets/sbc/bg_form_sbc.png"
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:flex w-auto lg:h-[2200px] h-[1750px]  z-0 pt-[6%] hidden"
+                    className="absolute sm:flex w-auto lg:h-[105%] h-[1950px]  z-0 pt-[6%] hidden"
                 />
                 <Image
                     src="/assets/sbc/bg_form_sbc_mobile.png"
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:hidden w-full h-[1850px] min-[545px]:h-[1780px] z-0 pt-[1%]"
+                    className="absolute sm:hidden w-full max-[385px]:h-[2200px] left-1 h-[2150px]  min-[480px]:h-[103%] "
                 />
 
-                <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
+                <div className="lg:mt-[5%] 2xl:mt-[4%] mt-[8%] min-[530px]:mt-6 sm:mt-[8%] min-h-screen z-50 flex flex-col">
                     <Image
                         src="/assets/sbc/cia_logo.png"
                         alt="cia"
                         width={1000}
                         height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:left-[13%] h-14 w-14 left-[6%] lg:flex"
+                        className="lg:h-32 lg:w-32 absolute lg:left-[10%] 2xl:h-36 2xl:w-36 2xl:left-[20%] 2xl:mt-4 h-14 w-14 sm:w-20 sm:h-20 sm:left-[20%] left-[6%] min-[530px]:left-[17%] lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
                     <div
-                        className="font-LibreBaskerville font-bold lg:text-2xl text-xs lg:py-6 py-2 w-[185px] lg:w-[406px] lg:h-[80px] h-auto text-center mt-[5%] left-0 right-0 mx-auto"
+                        className="font-LibreBaskerville font-bold lg:text-2xl text-[0.7rem]  lg:py-6 py-2 w-[185px] lg:w-[406px] lg:h-[80px] h-auto text-center mt-[5%] left-0 right-0 mx-auto"
                         style={backgroundHeading}
                     >
                         Formulir Pendaftaran SBC
@@ -273,11 +273,11 @@ export function Form() {
                         alt="cia"
                         width={1000}
                         height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:right-[13%] h-14 w-14 right-[6%] lg:flex"
+                        className="lg:h-28 lg:w-28 absolute lg:right-[10%] 2xl:h-32 2xl:w-32 2xl:right-[20%] 2xl:mt-4  h-14 w-14 right-[6%] min-[530px]:right-[17%] sm:right-[20%] sm:mt-2 lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
 
-                    <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
+                    <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-[0.7rem] min-w-screen mx-[17%]">
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
                                 Periode pendaftaran dimulai pada tanggal 17
@@ -358,10 +358,10 @@ export function Form() {
                                 }))
                             }
                             classNames={{
-                                label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
@@ -389,10 +389,10 @@ export function Form() {
                                 }))
                             }
                             classNames={{
-                                label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
@@ -420,10 +420,10 @@ export function Form() {
                                 }))
                             }
                             classNames={{
-                                label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                 input: [
-                                    "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                    "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                    "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                 ],
                                 inputWrapper: [
                                     "shadow-none",
@@ -467,7 +467,7 @@ export function Form() {
                             placeholder="Nama jembatan anda"
                         />
                         <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                            <p className="text-black  lg:text-[12px] ml-1">
+                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                 Bukti Pembayaran{" "}
                                 <span style={{ color: "red" }}>*</span>{" "}
                                 <span
@@ -481,14 +481,14 @@ export function Form() {
                             </p>
                             <input
                                 type="file"
-                                className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                 onChange={onFileChange("payment_proof")}
                                 accept="image/*"
                                 required
                             ></input>
                         </div>
                         <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                            <p className="text-black  lg:text-[12px] ml-1">
+                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                 Bukti Voucher{" "}
                                 <span
                                     style={{
@@ -500,7 +500,7 @@ export function Form() {
                             </p>
                             <input
                                 type="file"
-                                className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                 onChange={onFileChange("team")}
                                 accept="image/*"
                             ></input>
@@ -548,10 +548,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -582,10 +582,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -617,10 +617,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -651,10 +651,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -688,10 +688,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -723,10 +723,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -761,10 +761,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -777,7 +777,7 @@ export function Form() {
                                                 placeholder="Masukkan link bukti upload twibbon ketua tim"
                                             />
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem] text-[12px] ml-1">
                                                     Surat Keterangan Mahasiswa
                                                     Aktif{" "}
                                                     <span
@@ -797,7 +797,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "leader"
                                                     )}
@@ -806,7 +806,7 @@ export function Form() {
                                                 ></input>
                                             </div>
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem] text-[12px] ml-1">
                                                     Kartu Tanda Mahasiswa{" "}
                                                     <span
                                                         style={{ color: "red" }}
@@ -825,7 +825,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "leader"
                                                     )}
@@ -834,7 +834,7 @@ export function Form() {
                                                 ></input>
                                             </div>
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
-                                                <p className="text-black  lg:text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     Pas Foto 3x4{" "}
                                                     <span
                                                         style={{ color: "red" }}
@@ -853,7 +853,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "leader"
                                                     )}
@@ -895,10 +895,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -929,10 +929,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -966,10 +966,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1000,10 +1000,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1038,10 +1038,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1073,10 +1073,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1111,10 +1111,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1147,7 +1147,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member1"
                                                     )}
@@ -1175,7 +1175,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member1"
                                                     )}
@@ -1203,7 +1203,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member1"
                                                     )}
@@ -1245,10 +1245,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1279,10 +1279,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1316,10 +1316,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1350,10 +1350,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1388,10 +1388,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1423,10 +1423,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1461,10 +1461,10 @@ export function Form() {
                                                     );
                                                 }}
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1497,7 +1497,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member2"
                                                     )}
@@ -1525,7 +1525,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member2"
                                                     )}
@@ -1553,7 +1553,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "member2"
                                                     )}
@@ -1595,10 +1595,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1629,10 +1629,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1663,10 +1663,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1700,10 +1700,10 @@ export function Form() {
                                                     )
                                                 }
                                                 classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
+                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-[0.7rem]",
                                                     input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
+                                                        "text-cia-green dark:text-white/90 md:text-sm text-[0.7rem]",
+                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-[0.7rem]",
                                                     ],
                                                     inputWrapper: [
                                                         "shadow-none",
@@ -1737,7 +1737,7 @@ export function Form() {
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen  xl:w-1/3"
+                                                    className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
                                                     onChange={onFileChange(
                                                         "dosbim"
                                                     )}
