@@ -9,18 +9,31 @@ import {
 } from "@/component/icons";
 import { Input } from "@nextui-org/react";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function Form() {
     const [isVisible1, setIsVisible1] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("user_Id");
+
+        if (token && userId) {
+            router.push("/cia/dashboard/user");
+        }
+    }, []);
 
     const handleLogin = async (event: FormEvent) => {
         event.preventDefault();
 
         try {
             const response = await axios.post(
-                "http://lustrumkmtsl:5001/user/login",
+                "http://lustrumkmtsl.com:5001/user/login",
                 {
                     username,
                     password,
@@ -29,11 +42,14 @@ export function Form() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user_Id", response.data.user.user_id);
+                toast.success("Login Berhasil");
+                router.push("/cia/dashboard/user");
             } else {
-                alert("Login Gagal");
+                toast.error("Username atau Password Salah!");
             }
         } catch (error) {
-            alert("Login Gagal");
+            toast.error("Login Gagal");
             console.error(error);
         }
     };
@@ -46,7 +62,7 @@ export function Form() {
             id="form"
             className="flex-col absolute bottom-0 z-30 right-5 left-3 px-2 min-[385px]:px-4 sm:left-1 sm:right-8 max-[385px]:h-[40%] h-[45%] sm:h-[40%]
              lg:w-[40%]  min-[450px]:px-8 min-[450px]:left-1 min-[600px]:px-10 md:bottom-auto md:left-auto md:right-0 md:top-[16%] lg:top-[18%] xl:top-[19%]
-               justify-center md:w-[42%] md:px-4 md:h-[50%] lg:right-4 font-Poppins "
+               justify-center md:w-[42%] md:px-4 md:h-[50%] lg:right-4  font-sans"
         >
             <div className="px-8 md:px-2 ">
                 <h1 className="text-3xl sm:text-4xl  font-medium text-cia-green ">

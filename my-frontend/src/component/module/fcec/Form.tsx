@@ -4,10 +4,9 @@ import React, { useState, FormEvent, useEffect } from "react";
 import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 export function Form() {
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const userIdFromLocalStorage = localStorage.getItem("user_Id");
 
     const [teamData, setTeamData] = useState({
         team: {
@@ -15,6 +14,7 @@ export function Form() {
             institution_name: "",
             payment_proof: "",
             email: "",
+            user_id: Number(userIdFromLocalStorage),
         },
         leader: {
             full_name: "",
@@ -25,10 +25,8 @@ export function Form() {
             active_student_letter: "",
             photo: "",
             twibbon_and_poster_link: "",
-            semester: "",
-            nim: "",
         },
-        members1: {
+        member1: {
             full_name: "",
             phone_number: "",
             line_id: "",
@@ -37,8 +35,6 @@ export function Form() {
             active_student_letter: "",
             photo: "",
             twibbon_and_poster_link: "",
-            semester: "",
-            nim: "",
         },
         member2: {
             full_name: "",
@@ -49,8 +45,6 @@ export function Form() {
             active_student_letter: "",
             photo: "",
             twibbon_and_poster_link: "",
-            semester: "",
-            nim: "",
         },
         fcec: {
             originality_statement: "",
@@ -59,6 +53,96 @@ export function Form() {
             abstract_video_link: "",
         },
     });
+
+    const [file, setFile] = useState<File>();
+
+    const onSubmit = async (file: File) => {
+        if (!file) return { success: false };
+
+        try {
+            const data = new FormData();
+            data.set("file", file);
+
+            const res = await fetch("/api/upload/fcec", {
+                method: "POST",
+                body: data,
+            });
+
+            if (!res.ok) throw new Error(await res.text());
+            const jsonResponse = await res.json();
+            console.log(jsonResponse);
+            return jsonResponse;
+        } catch (e: any) {
+            console.error(e);
+            return { success: false };
+        }
+    };
+
+    const onFileChange =
+        (field: string) => async (e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.target.files?.[0];
+            if (file) {
+                const fileSize = file.size / 1024 / 1024; // size in MB
+
+                if (
+                    (file.type === "application/pdf" ||
+                        file.type.startsWith("image/")) &&
+                    fileSize > 1
+                ) {
+                    alert("File size should not exceed 1MB");
+                    e.target.value = "";
+                } else if (
+                    !/^SKMA_.*_.*$|^ID_.*_.*$|^Pas Foto_.*_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^Identitas_.*_.*$/.test(
+                        file.name
+                    )
+                ) {
+                    alert(
+                        "Format penamaan file tidak sesuai. Silahkan sesuaikan dengan format yang telah ditentukan"
+                    );
+                    e.target.value = "";
+                } else {
+                    setFile(file);
+                    const response = await onSubmit(file);
+
+                    if (response.success) {
+                        setTeamData((prevState: any) => {
+                            let updatedField = field;
+                            if (file.name.startsWith("SKSA")) {
+                                updatedField = "active_student_letter";
+                            } else if (file.name.startsWith("ID")) {
+                                updatedField = "ktm";
+                            } else if (file.name.startsWith("Pas Foto")) {
+                                updatedField = "photo";
+                            } else if (
+                                file.name.startsWith("Bukti Pembayaran")
+                            ) {
+                                updatedField = "payment_proof";
+                            } else if (file.name.startsWith("Bukti Voucher")) {
+                                updatedField = "voucher";
+                            } else if (file.name.startsWith("Abstrak")) {
+                                updatedField = "abstract_file";
+                            } else if (file.name.startsWith("Orisinalitas")) {
+                                updatedField = "originality_statement";
+                            } else if (file.name.startsWith("Identitas")) {
+                                updatedField = "ktm";
+                            }
+
+                            const updatedTeamData = {
+                                ...prevState,
+                                [field]: {
+                                    ...(prevState[field] as any),
+                                    [updatedField]: response.path,
+                                },
+                            };
+
+                            console.log(updatedTeamData);
+
+                            return updatedTeamData;
+                        });
+                    }
+                }
+            }
+        };
 
     const backgroundHeading = {
         backgroundImage: `url(/fcecBgHeading.png)`,
@@ -74,28 +158,36 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
-        const data = {
+        const membersData = [
+            {
+                ...teamData.member1,
+                is_leader: 0,
+                batch: null,
+            },
+        ];
+
+        const isMember2Empty = Object.values(teamData.member2).every(
+            (value) => !value
+        );
+
+        if (!isMember2Empty) {
+            membersData.push({
+                ...teamData.member2,
+                is_leader: 0,
+                batch: null,
+            });
+        }
+
+        const postData = {
             team: teamData.team,
             leader: {
                 ...teamData.leader,
                 is_leader: 1,
                 batch: null,
             },
-            members: [
-                {
-                    ...teamData.members1,
-                    is_leader: 0,
-                    batch: null,
-                },
-                {
-                    ...teamData.member2,
-                    is_leader: 0,
-                    batch: null,
-                },
-            ],
+            members: membersData,
             fcec: [
                 {
-                    // Menggunakan team_id dari data tim
                     originality_statement: teamData.fcec.originality_statement,
                     abstract_title: teamData.fcec.abstract_title,
                     abstract_file: teamData.fcec.abstract_file,
@@ -104,14 +196,14 @@ export function Form() {
             ],
         };
 
-        console.log(data);
+        console.log(postData);
 
         try {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                "http://lustrumkmtsl:5001/teams/fcec/new",
-                data,
+                "http://localhost:5001/teams/fcec/new",
+                postData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -148,14 +240,14 @@ export function Form() {
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:flex w-auto h-[2100px] sm:h-[1800px] lg:h-[2100px] z-0 pt-[6%] hidden"
+                    className="absolute sm:flex w-auto h-[105%]  z-0 pt-[6%] hidden"
                 />
                 <Image
                     src="/assets/sbc/bg_form_sbc_mobile.png"
                     alt="bgcia"
                     width={1000}
                     height={1000}
-                    className="absolute sm:hidden w-full h-[1800px] z-0 pt-[1%]"
+                    className="absolute sm:hidden w-full h-[105%] z-0 pt-[1%]"
                 />
 
                 <div className="lg:mt-[8%] mt-[8%] min-h-screen z-50 flex flex-col">
@@ -164,7 +256,7 @@ export function Form() {
                         alt="cia"
                         width={1000}
                         height={1000}
-                        className="lg:h-36 lg:w-36 absolute lg:left-[13%] h-14 w-14 left-[6%] lg:flex"
+                        className="lg:h-32 lg:w-32 absolute lg:left-[10%] 2xl:h-36 2xl:w-36 2xl:left-[20%] 2xl:mt-4 md:mt-4 h-14 w-14 sm:w-20 sm:h-20 sm:left-[20%] left-[6%] min-[530px]:left-[17%] lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
                     <div
@@ -178,7 +270,7 @@ export function Form() {
                         alt="cic"
                         width={1000}
                         height={1000}
-                        className="lg:h-32 lg:w-32 absolute lg:right-[13%] h-14 w-14 right-[6%] lg:flex"
+                        className="lg:h-28 lg:w-28 absolute lg:right-[10%] 2xl:right-[20%] 2xl:mt-6 md:mt-6   h-14 w-14 right-[6%] min-[530px]:right-[17%] sm:right-[20%] sm:mt-2 lg:flex"
                         style={{ transform: `rotate(${rotation}deg)` }}
                     />
 
@@ -225,7 +317,7 @@ export function Form() {
                                     ...prevState,
                                     team: {
                                         ...prevState.team,
-                                        team_email: e.target.value,
+                                        email: e.target.value,
                                     },
                                 }))
                             }
@@ -316,9 +408,9 @@ export function Form() {
                             onChange={(e) =>
                                 setTeamData((prevState) => ({
                                     ...prevState,
-                                    team: {
-                                        ...prevState.team,
-                                        institution_name: e.target.value,
+                                    fcec: {
+                                        ...prevState.fcec,
+                                        abstract_title: e.target.value,
                                     },
                                 }))
                             }
@@ -339,13 +431,22 @@ export function Form() {
                             placeholder="Judul abstrak anda"
                         />
                         <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                            <p className="text-black text-[12px] ml-1">
-                                {" "}
-                                File Abstrak
+                            <p className="text-black text-[0.7rem] lg:text-[12px] ml-1">
+                                File Abstrak{" "}
+                                <span className="text-red-500">*</span>{" "}
+                                <span
+                                    style={{
+                                        color: "gray",
+                                    }}
+                                >
+                                    (Format Penamaan : Abstrak_Nama Tim)
+                                </span>
                             </p>
                             <input
                                 type="file"
-                                className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                accept="application/pdf, image/*"
+                                onChange={onFileChange("fcec")}
                             ></input>
                         </div>
                         <Input
@@ -357,9 +458,9 @@ export function Form() {
                             onChange={(e) =>
                                 setTeamData((prevState) => ({
                                     ...prevState,
-                                    team: {
-                                        ...prevState.team,
-                                        institution_name: e.target.value,
+                                    fcec: {
+                                        ...prevState.fcec,
+                                        abstract_video_link: e.target.value,
                                     },
                                 }))
                             }
@@ -380,13 +481,22 @@ export function Form() {
                             placeholder="Link Video Abstrak"
                         />
                         <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                            <p className="text-black text-[12px] ml-1">
-                                {" "}
-                                Surat Pernyataan Orisinalitas
+                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                Surat Pernyataan Orisinalitas{" "}
+                                <span className="text-red-500">*</span>{" "}
+                                <span
+                                    style={{
+                                        color: "gray",
+                                    }}
+                                >
+                                    (Format Penamaan : Orisinalitas_Nama Tim)
+                                </span>
                             </p>
                             <input
                                 type="file"
-                                className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                accept="application/pdf, image/*"
+                                onChange={onFileChange("fcec")}
                             ></input>
                         </div>
                     </form>
@@ -446,75 +556,6 @@ export function Form() {
                                                     ],
                                                 }}
                                                 placeholder="Nama lengkap ketua tim"
-                                            />
-                                            <Input
-                                                isRequired
-                                                label="NIM"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={teamData.leader.nim}
-                                                onChange={(e) =>
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            leader: {
-                                                                ...prevState.leader,
-                                                                nim: e.target
-                                                                    .value,
-                                                            },
-                                                        })
-                                                    )
-                                                }
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan NIM ketua tim"
-                                            />
-                                            <Input
-                                                isRequired
-                                                label="Semester"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={teamData.leader.semester}
-                                                onChange={(e) =>
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            leader: {
-                                                                ...prevState.leader,
-                                                                semester:
-                                                                    e.target
-                                                                        .value,
-                                                            },
-                                                        })
-                                                    )
-                                                }
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan semester ketua tim"
                                             />
                                             <Input
                                                 isRequired
@@ -661,33 +702,91 @@ export function Form() {
                                                 placeholder="Masukkan link bukti upload twibbon ketua tim"
                                             />
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Surat Keterangan Siswa Aktif
+                                                    Kartu Identitas{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        Identitas_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "leader"
+                                                    )}
                                                 ></input>
                                             </div>
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Pas Foto 3x4
+                                                    Surat Keterangan Siswa Aktif{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        SKSA_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "leader"
+                                                    )}
+                                                ></input>
+                                            </div>
+                                            <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                    {" "}
+                                                    Pas Foto 3x4{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan : Pas
+                                                        Foto_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
+                                                </p>
+                                                <input
+                                                    type="file"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    onChange={onFileChange(
+                                                        "leader"
+                                                    )}
+                                                    accept="application/pdf, image/*"
                                                 ></input>
                                             </div>
                                         </form>
                                     </Tab>
 
                                     <Tab
-                                        key="anggota2"
+                                        key="anggota1"
                                         title={
                                             <span className="font-LibreBaskerville lg:text-lg text-sm">
-                                                Anggota 2
+                                                Anggota 1
                                             </span>
                                         }
                                     >
@@ -698,14 +797,14 @@ export function Form() {
                                                 variant="underlined"
                                                 color="primary"
                                                 value={
-                                                    teamData.members1.full_name
+                                                    teamData.member1.full_name
                                                 }
                                                 onChange={(e) => {
                                                     setTeamData(
                                                         (prevState) => ({
                                                             ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
+                                                            member1: {
+                                                                ...prevState.member1,
                                                                 full_name:
                                                                     e.target
                                                                         .value,
@@ -727,91 +826,21 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Nama lengkap anggota 2"
+                                                placeholder="Nama lengkap anggota 1"
                                             />
-                                            <Input
-                                                isRequired
-                                                label="NIM"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={teamData.members1.nim}
-                                                onChange={(e) => {
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
-                                                                nim: e.target
-                                                                    .value,
-                                                            },
-                                                        })
-                                                    );
-                                                }}
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan NIM anggota 2"
-                                            />
-                                            <Input
-                                                isRequired
-                                                label="Semester"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={
-                                                    teamData.members1.semester
-                                                }
-                                                onChange={(e) => {
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
-                                                                semester:
-                                                                    e.target
-                                                                        .value,
-                                                            },
-                                                        })
-                                                    );
-                                                }}
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan semester anggota 2"
-                                            />
+
                                             <Input
                                                 isRequired
                                                 label="Email"
                                                 variant="underlined"
                                                 color="primary"
-                                                value={teamData.members1.email}
+                                                value={teamData.member1.email}
                                                 onChange={(e) => {
                                                     setTeamData(
                                                         (prevState) => ({
                                                             ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
+                                                            member1: {
+                                                                ...prevState.member1,
                                                                 email: e.target
                                                                     .value,
                                                             },
@@ -832,7 +861,7 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan email anggota 2"
+                                                placeholder="Masukkan email anggota 1"
                                             />
                                             <Input
                                                 isRequired
@@ -840,15 +869,15 @@ export function Form() {
                                                 variant="underlined"
                                                 color="primary"
                                                 value={
-                                                    teamData.members1
+                                                    teamData.member1
                                                         .phone_number
                                                 }
                                                 onChange={(e) => {
                                                     setTeamData(
                                                         (prevState) => ({
                                                             ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
+                                                            member1: {
+                                                                ...prevState.member1,
                                                                 phone_number:
                                                                     e.target
                                                                         .value,
@@ -870,22 +899,20 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan nomor whatsapp anggota 2"
+                                                placeholder="Masukkan nomor whatsapp anggota 1"
                                             />
                                             <Input
                                                 isRequired
                                                 label="ID Line"
                                                 variant="underlined"
                                                 color="primary"
-                                                value={
-                                                    teamData.members1.line_id
-                                                }
+                                                value={teamData.member1.line_id}
                                                 onChange={(e) => {
                                                     setTeamData(
                                                         (prevState) => ({
                                                             ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
+                                                            member1: {
+                                                                ...prevState.member1,
                                                                 line_id:
                                                                     e.target
                                                                         .value,
@@ -907,7 +934,7 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan ID Line anggota 2"
+                                                placeholder="Masukkan ID Line anggota 1"
                                             />
                                             <Input
                                                 isRequired
@@ -915,15 +942,15 @@ export function Form() {
                                                 variant="underlined"
                                                 color="primary"
                                                 value={
-                                                    teamData.members1
+                                                    teamData.member1
                                                         .twibbon_and_poster_link
                                                 }
                                                 onChange={(e) => {
                                                     setTeamData(
                                                         (prevState) => ({
                                                             ...prevState,
-                                                            members1: {
-                                                                ...prevState.members1,
+                                                            member1: {
+                                                                ...prevState.member1,
                                                                 twibbon_and_poster_link:
                                                                     e.target
                                                                         .value,
@@ -945,43 +972,99 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan link bukti upload twibbon anggota 2"
+                                                placeholder="Masukkan link bukti upload twibbon anggota 1"
                                             />
-
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Surat Keterangan Siswa Aktif
+                                                    Kartu Identitas{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        Identitas_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "member1"
+                                                    )}
                                                 ></input>
                                             </div>
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Pas Foto 3x4
+                                                    Surat Keterangan Siswa Aktif{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        SKSA_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-sx md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "member1"
+                                                    )}
+                                                ></input>
+                                            </div>
+                                            <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                    {" "}
+                                                    Pas Foto 3x4{" "}
+                                                    <span className="text-red-500">
+                                                        *
+                                                    </span>{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan : Pas
+                                                        Foto_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
+                                                </p>
+                                                <input
+                                                    type="file"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    onChange={onFileChange(
+                                                        "member1"
+                                                    )}
+                                                    accept="application/pdf, image/*"
                                                 ></input>
                                             </div>
                                         </form>
                                     </Tab>
 
                                     <Tab
-                                        key="anggota3"
+                                        key="anggota2"
                                         title={
                                             <span className="font-LibreBaskerville lg:text-lg text-sm">
-                                                Anggota 3
+                                                Anggota 2
                                             </span>
                                         }
                                     >
                                         <form className="w-full flex flex-col gap-4">
                                             <Input
-                                                isRequired
                                                 label="Nama Lengkap"
                                                 variant="underlined"
                                                 color="primary"
@@ -1015,81 +1098,10 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Nama lengkap anggota 3"
+                                                placeholder="Nama lengkap anggota 2"
                                             />
+
                                             <Input
-                                                isRequired
-                                                label="NIM"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={teamData.member2.nim}
-                                                onChange={(e) => {
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            member2: {
-                                                                ...prevState.member2,
-                                                                nim: e.target
-                                                                    .value,
-                                                            },
-                                                        })
-                                                    );
-                                                }}
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan NIM anggota 3"
-                                            />
-                                            <Input
-                                                isRequired
-                                                label="Semester"
-                                                variant="underlined"
-                                                color="primary"
-                                                value={
-                                                    teamData.member2.semester
-                                                }
-                                                onChange={(e) => {
-                                                    setTeamData(
-                                                        (prevState) => ({
-                                                            ...prevState,
-                                                            member2: {
-                                                                ...prevState.member2,
-                                                                semester:
-                                                                    e.target
-                                                                        .value,
-                                                            },
-                                                        })
-                                                    );
-                                                }}
-                                                classNames={{
-                                                    label: "text-black/50 dark:text-white/90 md:text-sm text-xs",
-                                                    input: [
-                                                        "text-cia-green dark:text-white/90 md:text-sm text-xs",
-                                                        "placeholder:text-cia-green-placeholder  dark:placeholder:text-white/60 md:text-sm text-xs",
-                                                    ],
-                                                    inputWrapper: [
-                                                        "shadow-none",
-                                                        "focus:shadow-none",
-                                                        "border-b-2 border-cia-green-border",
-                                                        "dark:group-data-[focused=true]:bg-default/60",
-                                                        "!cursor-text",
-                                                    ],
-                                                }}
-                                                placeholder="Masukkan semester anggota 3"
-                                            />
-                                            <Input
-                                                isRequired
                                                 label="Email"
                                                 variant="underlined"
                                                 color="primary"
@@ -1120,10 +1132,9 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan email anggota 3"
+                                                placeholder="Masukkan email anggota 2"
                                             />
                                             <Input
-                                                isRequired
                                                 label="Nomor Whatsapp"
                                                 variant="underlined"
                                                 color="primary"
@@ -1158,10 +1169,9 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan nomor whatsapp anggota 3"
+                                                placeholder="Masukkan nomor whatsapp anggota 2"
                                             />
                                             <Input
-                                                isRequired
                                                 label="ID Line"
                                                 variant="underlined"
                                                 color="primary"
@@ -1193,10 +1203,9 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan ID Line anggota 3"
+                                                placeholder="Masukkan ID Line anggota 2"
                                             />
                                             <Input
-                                                isRequired
                                                 label="Link Bukti Upload Twibbon"
                                                 variant="underlined"
                                                 color="primary"
@@ -1231,27 +1240,75 @@ export function Form() {
                                                         "!cursor-text",
                                                     ],
                                                 }}
-                                                placeholder="Masukkan link bukti upload twibbon anggota 3"
+                                                placeholder="Masukkan link bukti upload twibbon anggota 2"
                                             />
-
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Surat Keterangan Siswa Aktif
+                                                    Kartu Identitas{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        Identitas_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "member2"
+                                                    )}
                                                 ></input>
                                             </div>
                                             <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
-                                                <p className="text-black text-[12px] ml-1">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                     {" "}
-                                                    Pas Foto 3x4
+                                                    Surat Keterangan Siswa Aktif{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan :
+                                                        SKSA_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
                                                 </p>
                                                 <input
                                                     type="file"
-                                                    className="text-xs md:text-sm text-ciaGreen w-1/3"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    accept="application/pdf, image/*"
+                                                    onChange={onFileChange(
+                                                        "member2"
+                                                    )}
+                                                ></input>
+                                            </div>
+                                            <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E] ">
+                                                <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                    {" "}
+                                                    Pas Foto 3x4{" "}
+                                                    <span
+                                                        style={{
+                                                            color: "gray",
+                                                        }}
+                                                    >
+                                                        (Format Penamaan : Pas
+                                                        Foto_Nama Tim_Nama
+                                                        Lengkap)
+                                                    </span>
+                                                </p>
+                                                <input
+                                                    type="file"
+                                                    className="text-xs md:text-sm text-ciaGreen xl:w-1/3"
+                                                    onChange={onFileChange(
+                                                        "member2"
+                                                    )}
+                                                    accept="application/pdf, image/*"
                                                 ></input>
                                             </div>
                                         </form>

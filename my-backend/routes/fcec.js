@@ -133,7 +133,7 @@ router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
 router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
     const { team, leader, members, fcec } = req.body;
     const eventId = 1;
-    const userId = 1; // ToDo: get userId
+    const userId = team.user_id; // get userId from team
 
     try {
         const [teamId] = await sequelize.query(
@@ -145,7 +145,7 @@ router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
         );
 
         await sequelize.query(
-            `INSERT INTO Members (team_id, full_name, department, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :department, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader, :nim)`,
+            `INSERT INTO Members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
             {
                 replacements: { ...leader, team_id: teamId },
                 type: QueryTypes.INSERT,
@@ -154,7 +154,7 @@ router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
 
         for (const member of members) {
             await sequelize.query(
-                `INSERT INTO Members (team_id, full_name, department, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :department, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader, :nim)`,
+                `INSERT INTO Members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
                 {
                     replacements: { ...member, team_id: teamId },
                     type: QueryTypes.INSERT,
