@@ -9,6 +9,13 @@ export default function sbc() {
 
     return (
         <div className=" bg-craft" >
+            <Image
+                src="/bgciamobile.png"
+                alt="bgcia"
+                width={1000}
+                height={1000}
+                className="fixed sm:hidden w-full h-full object-cover z-0"
+            />
              <Image
         src="/bgcia.png"
         alt="bgcia"
