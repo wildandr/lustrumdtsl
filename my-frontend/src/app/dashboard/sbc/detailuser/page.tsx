@@ -1,12 +1,114 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+interface Team {
+  team_id: number;
+  event_id: number;
+  team_name: string;
+  institution_name: string;
+  payment_proof: string;
+  voucher: string | null;
+  user_id: number;
+  email: string | null;
+  isVerified: number;
+}
+
+interface Leader {
+  member_id: number;
+  team_id: number;
+  full_name: string;
+  department: string;
+  batch: null | string;
+  phone_number: string;
+  line_id: string;
+  email: string;
+  ktm: string;
+  active_student_letter: string;
+  photo: string;
+  twibbon_and_poster_link: string;
+  is_leader: number;
+  nim: null | string;
+  semester: null | string;
+}
+
+interface Member {
+  member_id: number;
+  team_id: number;
+  full_name: string;
+  department: string | null;
+  batch: string | null;
+  phone_number: string;
+  line_id: string;
+  email: string;
+  ktm: string;
+  active_student_letter: string;
+  photo: string;
+  twibbon_and_poster_link: string;
+  is_leader: number;
+  nim: string;
+  semester: string | null;
+}
+
+interface Advisor {
+  advisor_id: number;
+  team_id: number;
+  full_name: string;
+  nip: string;
+  email: string;
+  phone_number: string;
+  photo: string;
+}
+
+interface Sbc {
+  team_id: number;
+  bridge_name: string;
+}
+
+interface SbcData {
+  team: Team[];
+  leader: Leader;
+  members: Member[];
+  dosbim: Advisor[];
+  sbc: Sbc[];
+}
 export default function DetailUser() {
   const [teamMembers, setTeamMembers] = useState([
     { id: "ketua", role: "Ketua" },
     { id: "member1", role: "Anggota 1" },
-    { id: "member2", role: "Anggota 2" }, // tambahkan anggota lain di sini jika diperlukan
+    { id: "member2", role: "Anggota 2" }, 
   ]);
+
+  const [teamData, setTeamData] = useState<SbcData>({
+   team : [],
+   leader: {} as Leader,
+    members: [],
+    dosbim: [],
+    sbc: [],
+  });
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:5001/teams/sbc/30", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+      setTeamData(response.data); // Save data to state
+
+    
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="bg-[#058369] h-[120vh] font-LibreBaskerville">
       <Image
@@ -83,12 +185,105 @@ export default function DetailUser() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full">
-            {/* Loop through team members */}
-            {teamMembers.map((member) => (
-              <TeamMember key={member.id} role={member.role} />
-            ))}
-          </div>
+          <div className="mt-4 flex flex-col gap-2">
+      <p className="text-ciaGreen text-lg font-semibold">Ketua</p>
+      {/* Konten dinamis untuk setiap anggota */}
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Nama Lengkap
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          {teamData.leader.full_name || ""} 
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">NIM</p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Semester
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">Email</p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Nomor Whatsapp
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+         ID Line
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Link Bukti Upload Twibbon
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full ">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Surat Keterangan Mahasiswa Aktif
+        </p>
+        <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          <Image
+            src="/logocia.png"
+            alt="foto"
+            width={500}
+            height={500}
+            className="w-[300px] h-[300px] z-10"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col w-full ">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Kartu Tanda Mahasiswa
+        </p>
+        <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          <Image
+            src="/logocia.png"
+            alt="foto"
+            width={500}
+            height={500}
+            className="w-[300px] h-[300px] z-10"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col w-full ">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          Pas Foto 3x4
+        </p>
+        <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          <Image
+            src="/logocia.png"
+            alt="foto"
+            width={500}
+            height={500}
+            className="w-[300px] h-[300px] z-10"
+          />
+        </div>
+      </div>
+      {/* Tambahkan konten lain untuk setiap anggota di sini */}
+    </div>
           <div className="mt-4 flex flex-col gap-2">
             <p className="text-ciaGreen text-lg font-semibold">
               Dosen Pembimbing
@@ -187,6 +382,14 @@ function TeamMember({ role }: { role: string }) {
       <div className="flex flex-col w-full">
         <p className="text-black text-left text-lg font-medium px-6 ">
           Nomor Whatsapp
+        </p>
+        <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+          Test
+        </p>
+      </div>
+      <div className="flex flex-col w-full">
+        <p className="text-black text-left text-lg font-medium px-6 ">
+         ID Line
         </p>
         <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
           Test

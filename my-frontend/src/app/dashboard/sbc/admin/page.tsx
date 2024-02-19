@@ -76,7 +76,6 @@ export default function DashboardAdmin() {
                                 <tr className="text-black text-left">
                                     <th className="">Nama Peserta/Tim</th>
                                     <th>Status</th>
-                                    <th>Event</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -110,9 +109,7 @@ export default function DashboardAdmin() {
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
-                                        <td className="px-2">
-                                            {registration.event}
-                                        </td>
+                                      
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
