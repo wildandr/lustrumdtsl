@@ -10,12 +10,21 @@ export default function DashboardUser() {
 
     let token: string, userIdFromLocalStorage: string;
 
-    if (typeof window !== "undefined") {
-        token = localStorage.getItem("token") as string;
-        userIdFromLocalStorage = localStorage.getItem("user_Id") as string;
-    }
     useEffect(() => {
-        if (!token && !userIdFromLocalStorage) {
+        let token: string | null = null;
+        let userIdFromLocalStorage: string | null = null;
+
+        if (typeof localStorage !== "undefined") {
+            token = localStorage.getItem("token");
+            userIdFromLocalStorage = localStorage.getItem("user_Id");
+        } else if (typeof sessionStorage !== "undefined") {
+            token = sessionStorage.getItem("token");
+            userIdFromLocalStorage = sessionStorage.getItem("user_Id");
+        } else {
+            console.log("Web Storage is not supported in this environment.");
+        }
+
+        if (!token || !userIdFromLocalStorage) {
             router.push("/cia/login");
         }
     }, []);

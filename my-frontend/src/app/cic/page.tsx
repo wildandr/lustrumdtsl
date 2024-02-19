@@ -12,12 +12,19 @@ export default function CIC() {
     useEffect(() => {
         let token: string | null = null;
         let userId: string | null = null;
-
-        if (typeof window !== "undefined") {
+    
+        if (typeof localStorage !== 'undefined') {
             token = localStorage.getItem("token");
             userId = localStorage.getItem("user_Id");
+        } else if (typeof sessionStorage !== 'undefined') {
+            // Fallback to sessionStorage if localStorage is not supported
+            token = sessionStorage.getItem("token");
+            userId = sessionStorage.getItem("user_Id");
+        } else {
+            // If neither localStorage nor sessionStorage is supported
+            console.log('Web Storage is not supported in this environment.');
         }
-
+    
         if (!token || !userId) {
             router.push("/cia/login");
         }
