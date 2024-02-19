@@ -5,28 +5,17 @@ import { Hero } from "@/component/module/fcec/Hero";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function FCEC() {
     const router = useRouter();
 
-    // useEffect(() => {
-    //     let token: string | null = null;
-    //     let userId: string | null = null;
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
 
-    //     if (typeof localStorage !== "undefined") {
-    //         token = localStorage.getItem("token");
-    //         userId = localStorage.getItem("user_Id");
-    //     } else if (typeof sessionStorage !== "undefined") {
-    //         token = sessionStorage.getItem("token");
-    //         userId = sessionStorage.getItem("user_Id");
-    //     } else {
-    //         console.log("Web Storage is not supported in this environment.");
-    //     }
-
-    //     if (!token || !userId) {
-    //         router.push("/cia/login");
-    //     }
-    // }, []);
+    if (!userIdFromLocalStorage || !token) {
+        router.push("/cia/login");
+    }
 
     const backgroundImage = {
         backgroundImage: `url(/assets/cia/bg_texture_cia.png)`,

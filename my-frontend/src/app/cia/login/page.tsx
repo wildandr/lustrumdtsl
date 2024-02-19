@@ -3,9 +3,19 @@ import React, { useEffect, useState, FormEvent } from "react";
 import Image from "next/image";
 import { Objects } from "@/component/module/cia/login/Objects";
 import { Form } from "@/component/module/cia/login/Form";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Login() {
-   
+    const router = useRouter();
+
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
+
+    if (userIdFromLocalStorage || token) {
+        router.push("/cia/dashboard/user");
+    }
+
     return (
         <main className=" w-full max-[385px]:h-[180vh] h-[140vh] md:h-[100vh] bg-[#058369]  overflow-x-hidden">
             <nav className="fixed w-full flex z-50 justify-between items-center h-16  bg-[#02745D]  text-white  shadow-sm ">
@@ -43,7 +53,6 @@ export default function Login() {
                     className="z-20 md:hidden absolute bottom-0 right-5 left-5 max-[385px]:h-[45%] h-[53%] sm:h-[48%]  w-[92vw]"
                 />
 
-                
                 <Form />
                 <Objects />
             </div>
