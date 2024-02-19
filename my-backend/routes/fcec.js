@@ -24,7 +24,7 @@ router.get("/teams/fcec", authenticateToken, async (req, res) => {
         const result = await Promise.all(
             teams.map(async (team) => {
                 const members = await sequelize.query(
-                    `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+                    `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
                     {
                         replacements: { teamId: team.team_id },
                         type: QueryTypes.SELECT,
@@ -89,7 +89,7 @@ router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
         }
 
         const members = await sequelize.query(
-            `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+            `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
             {
                 replacements: { teamId },
                 type: QueryTypes.SELECT,
@@ -145,7 +145,7 @@ router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
         );
 
         await sequelize.query(
-            `INSERT INTO Members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
+            `INSERT INTO members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
             {
                 replacements: { ...leader, team_id: teamId },
                 type: QueryTypes.INSERT,
@@ -154,7 +154,7 @@ router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
 
         for (const member of members) {
             await sequelize.query(
-                `INSERT INTO Members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
+                `INSERT INTO members (team_id, full_name, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader) VALUES (:team_id, :full_name, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, :is_leader)`,
                 {
                     replacements: { ...member, team_id: teamId },
                     type: QueryTypes.INSERT,
