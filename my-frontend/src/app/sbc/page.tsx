@@ -9,24 +9,24 @@ import Image from "next/image";
 export default function SBC() {
     const router = useRouter();
 
-    useEffect(() => {
-        let token: string | null = null;
-        let userId: string | null = null;
+    // useEffect(() => {
+    //     let token: string | null = null;
+    //     let userId: string | null = null;
 
-        if (typeof localStorage !== "undefined") {
-            token = localStorage.getItem("token");
-            userId = localStorage.getItem("user_Id");
-        } else if (typeof sessionStorage !== "undefined") {
-            token = sessionStorage.getItem("token");
-            userId = sessionStorage.getItem("user_Id");
-        } else {
-            console.log("Web Storage is not supported in this environment.");
-        }
+    //     if (typeof localStorage !== "undefined") {
+    //         token = localStorage.getItem("token");
+    //         userId = localStorage.getItem("user_Id");
+    //     } else if (typeof sessionStorage !== "undefined") {
+    //         token = sessionStorage.getItem("token");
+    //         userId = sessionStorage.getItem("user_Id");
+    //     } else {
+    //         console.log("Web Storage is not supported in this environment.");
+    //     }
 
-        if (!token || !userId) {
-            router.push("/cia/login");
-        }
-    }, []);
+    //     if (!token || !userId) {
+    //         router.push("/cia/login");
+    //     }
+    // }, []);
 
     return (
         <div className=" bg-sbc-orange md:h-[290vh] min-[820px]:h-[300vh] lg:h-[340vh] xl:h-[330vh] 2xl:h-[305vh]">
