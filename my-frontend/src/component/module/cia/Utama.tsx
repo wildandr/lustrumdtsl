@@ -331,7 +331,7 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[23%] lg::-top-[30%]'/>
+                        className='absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[23%] lg:-top-[30%]'/>
                     
                     <p className='absolute -top-[11%] md:-top-[18.5%] lg:-top-[23%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white'>
                         Sustainable Bridge Competition (SBC)
