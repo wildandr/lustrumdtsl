@@ -12,6 +12,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 export function Form() {
     const [isVisible1, setIsVisible1] = useState(false);
@@ -20,8 +21,8 @@ export function Form() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+        const token = Cookies.get("token");
+        const userId = Cookies.get("user_Id");
 
         if (token && userId) {
             router.push("/cia/dashboard/user");
@@ -41,8 +42,8 @@ export function Form() {
             );
 
             if (response.data && response.data.token) {
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("user_Id", response.data.user.user_id);
+                Cookies.set("token", response.data.token);
+                Cookies.set("user_Id", response.data.user.user_id);
                 toast.success("Login Berhasil");
                 router.push("/cia/dashboard/user");
             } else {

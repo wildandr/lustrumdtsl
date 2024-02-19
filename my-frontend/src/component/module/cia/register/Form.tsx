@@ -11,6 +11,7 @@ import { Input } from "@nextui-org/react";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 export function Form() {
     const [isVisible1, setIsVisible1] = useState(false);

@@ -4,9 +4,10 @@ import React, { useState, FormEvent, useEffect } from "react";
 import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 export function Form() {
-    const userIdFromLocalStorage = localStorage.getItem("user_Id");
+    const userIdFromLocalStorage = Cookies.get("user_Id");
 
     const [file, setFile] = useState<File>();
 
@@ -197,10 +198,10 @@ export function Form() {
         console.log(data);
 
         try {
-            const token = localStorage.getItem("token");
+            const token = Cookies.get("token");
 
             const response = await axios.post(
-                "http://localhost:5001/teams/sbc/new",
+                "http://lustrumkmtsl.com:5001/teams/sbc/new",
                 data,
                 {
                     headers: {
