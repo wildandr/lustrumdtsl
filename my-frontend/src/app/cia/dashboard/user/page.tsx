@@ -8,17 +8,17 @@ import { useRouter } from "next/navigation";
 export default function DashboardUser() {
     const router = useRouter();
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+    let token: string, userIdFromLocalStorage: string;
 
-        if (!token && !userId) {
+    if (typeof window !== "undefined") {
+        token = localStorage.getItem("token") as string;
+        userIdFromLocalStorage = localStorage.getItem("user_Id") as string;
+    }
+    useEffect(() => {
+        if (!token && !userIdFromLocalStorage) {
             router.push("/cia/login");
         }
     }, []);
-
-    const token = localStorage.getItem("token");
-    const userIdFromLocalStorage = localStorage.getItem("user_Id");
 
     const [data, setData] = useState<any[]>([]);
 
@@ -39,7 +39,9 @@ export default function DashboardUser() {
                 console.error("Error fetching data:", error);
             }
         };
-        fetchData();
+        if (userIdFromLocalStorage) {
+            fetchData();
+        }
     }, []);
 
     return (

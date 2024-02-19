@@ -10,8 +10,13 @@ export default function FCEC() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+        let token: string | null = null;
+        let userId: string | null = null;
+
+        if (typeof window !== "undefined") {
+            token = localStorage.getItem("token");
+            userId = localStorage.getItem("user_Id");
+        }
 
         if (!token || !userId) {
             router.push("/cia/login");
@@ -26,21 +31,21 @@ export default function FCEC() {
     };
 
     return (
-        <div className=" bg-fcec md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]" >
-             <Image
+        <div className=" bg-fcec md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
+            <Image
                 src="/bgciamobile.png"
                 alt="bgcia"
                 width={1000}
                 height={1000}
                 className="fixed sm:hidden w-full h-full object-cover z-0"
             />
-             <Image
-        src="/bgcia.png"
-        alt="bgcia"
-        width={1000}
-        height={1000}
-        className="hidden fixed sm:flex w-full h-full object-cover z-10"
-      />
+            <Image
+                src="/bgcia.png"
+                alt="bgcia"
+                width={1000}
+                height={1000}
+                className="hidden fixed sm:flex w-full h-full object-cover z-10"
+            />
             <Hero />
             <Form />
         </div>
