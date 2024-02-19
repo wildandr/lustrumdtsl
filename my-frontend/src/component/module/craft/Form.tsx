@@ -149,6 +149,9 @@ export function Form() {
                     <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
+                                Link Guidebook : https://bit.ly/GuidebookPendaftaranCRAFT
+                            </li>
+                            <li className="mb-1">
                                 Peserta membaca Guidebook Pendaftaran CRAFT
                             </li>
                             <li className="mb-1">
