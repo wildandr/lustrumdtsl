@@ -12,7 +12,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                "http://lustrumkmtsl:5001/teams/sbc/",
+                "http://127.0.0.1:5001/teams/craft/",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ export default function DashboardAdmin() {
             <div className=" w-full h-[100vh] absolute z-40">
                 <div className="bg-white p-4 rounded-xl  w-[90%] mx-auto mt-28 ">
                     <p className="text-ciaGreen text-center text-2xl font-semibold px-6  z-20 ">
-                        Dashboard Panitia SBC
+                        Dashboard Panitia Craft
                     </p>
 
                     <div className="max-h-[400px] 2xl:max-h-[500px] overflow-y-auto mt-5">
