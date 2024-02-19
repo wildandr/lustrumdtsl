@@ -5,18 +5,18 @@ import { Form } from "@/component/module/cia/register/Form";
 import { Objects } from "@/component/module/cia/register/Objects";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Register() {
     const router = useRouter();
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
 
-        if (token && userId) {
-            router.push("/cia/dashboard/user");
-        }
-    }, []);
+    if (userIdFromLocalStorage || token) {
+        router.push("/cia/dashboard/user");
+    }
+
     return (
         <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] lg:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
             <Image
