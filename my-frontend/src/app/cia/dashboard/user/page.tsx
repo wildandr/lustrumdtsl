@@ -38,7 +38,7 @@ export default function DashboardUser() {
 
     return (
         <div
-            className={`bg-[#058369]  max-[385px]:h-[150vh] min-[525px]:h-[110vh] sm:h-[130vh] h-[100vh] `}
+            className={`bg-[#058369]  max-[385px]:h-[150vh] min-[525px]:h-[130vh] sm:h-[130vh] md:h-[100vh] `}
         >
             <Image
                 src="/bgciamobile.png"
@@ -62,14 +62,14 @@ export default function DashboardUser() {
                         alt="form"
                         width={500}
                         height={500}
-                        className={`z-[-99] lg:hidden absolute -mt-10 left-2 max-[385px]:h-[125%] min-[767px]:h-[100%] w-[98vw] `}
+                        className={`z-[-99] sm:hidden absolute -mt-10 left-2 max-[385px]:h-[125%] min-[767px]:h-[100%] w-[98vw] `}
                     />
                     <Image
                         src="/assets/cia/dashboard/bgForm.png"
                         alt="form"
                         width={500}
                         height={500}
-                        className={`z-[-99] hidden lg:flex absolute  left-4 h-[100%] w-[98vw] `}
+                        className={`z-[-99] hidden sm:flex absolute  left-4 h-[100%] w-[98vw] `}
                     />
 
                     <div className="flex items-center justify-center w-full z-20 lg:mt-4">

@@ -306,8 +306,8 @@ export default function Nav() {
 
 
           </div>
-          <Link href="#" className="-ml-3">
-            About
+          <Link href="/lustrum#contact" className="-ml-3">
+            Contact
           </Link>
         </nav>
         <div className="lg:hidden"  >

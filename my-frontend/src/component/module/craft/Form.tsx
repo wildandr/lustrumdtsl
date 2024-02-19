@@ -6,15 +6,17 @@ import axios from "axios";
 import Image from "next/image";
 import { RadioGroup, Radio } from "@nextui-org/react";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie"; // Import Cookies object
 
 export function Form() {
-    const userIdFromLocalStorage = localStorage.getItem("user_Id");
+    const userIdFromCookie = Cookies.get("user_Id"); // Retrieve user_Id from cookie
+
     const [file, setFile] = useState<File>();
 
     const [craftData, setCraftData] = useState({
         full_name: "",
         institution_name: "",
-        user_id: Number(userIdFromLocalStorage),
+        user_id: Number(userIdFromCookie), // Use user_Id from cookie
         activity_choice: "online",
         whatsapp_number: "",
         isMahasiswaDTSL: true,
@@ -68,7 +70,7 @@ export function Form() {
         event.preventDefault();
 
         try {
-            const token = localStorage.getItem("token");
+            const token = Cookies.get("token"); // Retrieve token from cookie
 
             const response = await axios.post(
                 "http://127.0.0.1:5001/crafts/register",
@@ -146,6 +148,9 @@ export function Form() {
                     />
                     <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
                         <ol className="list-decimal pl-2">
+                            <li className="mb-1">
+                                Link Guidebook : https://bit.ly/GuidebookPendaftaranCRAFT
+                            </li>
                             <li className="mb-1">
                                 Peserta membaca Guidebook Pendaftaran CRAFT
                             </li>

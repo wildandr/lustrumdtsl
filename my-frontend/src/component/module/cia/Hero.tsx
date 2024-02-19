@@ -131,7 +131,7 @@ export function Hero() {
                             alt={''}
                         />
                         <div className='text-white w-full lg:w-[70%] my-4'>
-                            <p className='mb-2 z-50 text-xl lg:text-3xl font-LibreBaskerville'>12th Civil In Action x Craft x Lustrum XI KMTSL</p>
+                            <p className='mb-2 z-50 text-xl lg:text-3xl font-LibreBaskerville'>12th Civil In Action x CRAFT x Lustrum XI KMTSL</p>
                             <p className='z-50 text-xs lg:text-base font-sfui'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-4 w-full justify-center items-center font-sans'>

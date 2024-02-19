@@ -10,12 +10,14 @@ import Cookies from "js-cookie";
 export default function CIC() {
     const router = useRouter();
 
-    const userIdFromLocalStorage = Cookies.get("user_Id");
-    const token = Cookies.get("token");
+    useEffect(() => {
+        const userIdFromLocalStorage = Cookies.get("user_Id");
+        const token = Cookies.get("token");
 
-    if (!userIdFromLocalStorage || !token) {
-        router.push("/cia/login");
-    }
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []); 
 
     return (
         <div className=" bg-cic md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
