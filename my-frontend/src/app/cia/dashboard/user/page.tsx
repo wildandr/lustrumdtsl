@@ -4,30 +4,13 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function DashboardUser() {
     const router = useRouter();
 
-    let token: string, userIdFromLocalStorage: string;
-
-    useEffect(() => {
-        let token: string | null = null;
-        let userIdFromLocalStorage: string | null = null;
-
-        if (typeof localStorage !== "undefined") {
-            token = localStorage.getItem("token");
-            userIdFromLocalStorage = localStorage.getItem("user_Id");
-        } else if (typeof sessionStorage !== "undefined") {
-            token = sessionStorage.getItem("token");
-            userIdFromLocalStorage = sessionStorage.getItem("user_Id");
-        } else {
-            console.log("Web Storage is not supported in this environment.");
-        }
-
-        if (!token || !userIdFromLocalStorage) {
-            router.push("/cia/login");
-        }
-    }, []);
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
 
     const [data, setData] = useState<any[]>([]);
 
