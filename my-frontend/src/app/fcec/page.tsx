@@ -10,13 +10,14 @@ import Cookies from "js-cookie";
 export default function FCEC() {
     const router = useRouter();
 
-    const userIdFromLocalStorage = Cookies.get("user_Id");
-    const token = Cookies.get("token");
+    useEffect(() => {
+        const userIdFromLocalStorage = Cookies.get("user_Id");
+        const token = Cookies.get("token");
 
-    if (!userIdFromLocalStorage || !token) {
-        router.push("/cia/login");
-    }
-
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []); 
     const backgroundImage = {
         backgroundImage: `url(/assets/cia/bg_texture_cia.png)`,
         backgroundSize: "contain",

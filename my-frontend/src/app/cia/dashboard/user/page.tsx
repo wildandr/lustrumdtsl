@@ -38,13 +38,7 @@ export default function DashboardUser() {
 
     return (
         <div
-            className={`bg-[#058369]  max-[385px]:h-[150vh] ${
-                length === 3 ? "h-[120vh] lg:h-[100vh]" : "h-[100vh]"
-            } ${
-                length === 4
-                    ? "h-[130vh]  max-[385px]:h-[170vh] lg:h-[100vh]"
-                    : "h-[100vh]"
-            }`}
+            className={`bg-[#058369]  max-[385px]:h-[150vh] min-[525px]:h-[130vh] sm:h-[130vh] md:h-[100vh] `}
         >
             <Image
                 src="/bgciamobile.png"
@@ -61,37 +55,21 @@ export default function DashboardUser() {
                 className="hidden sm:flex fixed w-full h-full object-cover z-10"
             />
 
-            <div className=" w-full h-[100vh] absolute z-40">
+            <div className=" w-full absolute z-40">
                 <div className="mt-[9rem] lg:mt-20 font-LibreBaskerville px-2 h-auto lg:px-10">
                     <Image
                         src="/assets/cia/dashboard/bgFormMobile.png"
                         alt="form"
                         width={500}
                         height={500}
-                        className={`z-[-99] lg:hidden absolute -mt-10 left-2 max-[385px]:h-[125%] min-[767px]:h-[630px]     w-[98vw] ${
-                            length === 1 ? "h-[80%]" : ""
-                        } ${length === 2 ? "h-[80%]" : ""} ${
-                            length === 3 ? "h-[100%]" : ""
-                        }  ${
-                            length === 4
-                                ? "h-[115%]  max-[385px]:h-[145%]"
-                                : "h-[100%]"
-                        } `}
+                        className={`z-[-99] sm:hidden absolute -mt-10 left-2 max-[385px]:h-[125%] min-[767px]:h-[100%] w-[98vw] `}
                     />
                     <Image
                         src="/assets/cia/dashboard/bgForm.png"
                         alt="form"
                         width={500}
                         height={500}
-                        className={`z-[-99] hidden lg:flex absolute  left-4 h-[700px] w-[98vw] ${
-                            length === 1 ? "h-[80%]" : ""
-                        } ${length === 2 ? "h-[80%]" : ""} ${
-                            length === 3 ? "h-[100%]" : ""
-                        }  ${
-                            length === 4
-                                ? "h-[115%]  max-[385px]:h-[145%]"
-                                : "h-[100%]"
-                        } `}
+                        className={`z-[-99] hidden sm:flex absolute  left-4 h-[100%] w-[98vw] `}
                     />
 
                     <div className="flex items-center justify-center w-full z-20 lg:mt-4">
