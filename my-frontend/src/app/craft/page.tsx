@@ -13,9 +13,15 @@ export default function CRAFT() {
         let token: string | null = null;
         let userId: string | null = null;
 
-        if (typeof window !== "undefined") {
+        if (typeof localStorage !== "undefined") {
             token = localStorage.getItem("token");
             userId = localStorage.getItem("user_Id");
+        } else if (typeof sessionStorage !== "undefined") {
+            token = sessionStorage.getItem("token");
+            userId = sessionStorage.getItem("user_Id");
+        } else {
+           
+            console.log("Web Storage is not supported in this environment.");
         }
 
         if (!token || !userId) {
