@@ -32,7 +32,7 @@ router.get("/teams/sbc", authenticateToken, async (req, res) => {
         const result = await Promise.all(
             teams.map(async (team) => {
                 const members = await sequelize.query(
-                    `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+                    `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
                     {
                         replacements: { teamId: team.team_id },
                         type: QueryTypes.SELECT,
@@ -101,7 +101,7 @@ router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
         }
 
         const members = await sequelize.query(
-            `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+            `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
             {
                 replacements: { teamId },
                 type: QueryTypes.SELECT,
@@ -177,7 +177,7 @@ router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
             }
         );
 
-        const createdMembers = await Promise.all(
+        const createdmembers = await Promise.all(
             members.map((member) =>
                 sequelize.query(
                     `INSERT INTO members (team_id, full_name, batch, phone_number, line_id, email, ktm, active_student_letter, photo, twibbon_and_poster_link, is_leader, nim) VALUES (:team_id, :full_name, :batch, :phone_number, :line_id, :email, :ktm, :active_student_letter, :photo, :twibbon_and_poster_link, 0, :nim)`,
@@ -218,7 +218,7 @@ router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
             message: "Team created successfully",
             team: createdTeam,
             leader: createdLeader,
-            members: createdMembers,
+            members: createdmembers,
             dosbim: createdDosbim,
             sbc: createdSbc,
         });

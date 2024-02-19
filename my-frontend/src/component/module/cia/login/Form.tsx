@@ -32,14 +32,13 @@ export function Form() {
     const handleLogin = async (event: FormEvent) => {
         event.preventDefault();
 
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL}:5001/user/login`;
+
         try {
-            const response = await axios.post(
-                "http://lustrumkmtsl.com:5001/user/login",
-                {
-                    username,
-                    password,
-                }
-            );
+            const response = await axios.post(url, {
+                username,
+                password,
+            });
 
             if (response.data && response.data.token) {
                 Cookies.set("token", response.data.token);
@@ -50,7 +49,7 @@ export function Form() {
                 toast.error("Username atau Password Salah!");
             }
         } catch (error) {
-            toast.error("Login Gagal");
+            toast.error(`Login Gagal. URL: ${url}`);
             console.error(error);
         }
     };
