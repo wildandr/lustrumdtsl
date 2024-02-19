@@ -19,7 +19,7 @@ export default function DashboardUser() {
             const user_Id = userIdFromLocalStorage;
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:5001/user/${user_Id}/events`,
+                    `http://lustrumkmtsl.com:5001/user/${user_Id}/events`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

@@ -25,7 +25,7 @@ export function Sponsorship() {
     const isDeviceGreaterThanMd = windowWidth >= md_width
 
     return (
-        <div className='w-full min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-x-clip'>
+        <div id='contact' className='w-full min-h-screen p-6 flex flex-col items-center justify-center bg-black relative overflow-x-clip'>
 
             {/* <div className='absolute min-h-screen w-full'>
                 <div
@@ -167,18 +167,18 @@ export function Sponsorship() {
                         <div className='w-full flex flex-col items-start justify-center gap-3 lg:gap-5'>
                             <p className='font-LibreBaskerville text-xl lg:text-4xl font-bold bg-gradient-to-b text-transparent bg-clip-text from-[#F2D87A] to-[#E0B620]'>Informasi Lebih Lanjut</p>
                             <div>
-                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Instagram: <Link className='hover:text-blue-400' href='https://www.instagram.com/lustrumkmtsl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='>@lustrumkmtsl</Link></p>
+                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Instagram: <Link className='hover:text-blue-400 underline' href='https://www.instagram.com/lustrumkmtsl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='>@lustrumkmtsl</Link></p>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Email: lustrum11kmtsl@gmail.com</p>
                             </div>
                             <div>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Rahma Putri Adila</p>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Email: rahmaputriadila@mail.ugm.ac.id</p>
-                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400' href='https://wa.me/6287738526722'>081285398072</Link></p>
+                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400 underline' href='https://wa.me/6287738526722'>081285398072</Link></p>
                             </div>
                             <div>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Adi Arrasyid</p>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Email: adiarrasyid@mail.ugm.ac.id</p>
-                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400' href='https://wa.me/6289693940129'>089693940129</Link></p>
+                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400 underline' href='https://wa.me/6289693940129'>089693940129</Link></p>
                             </div>
                         </div>
                         <div className='w-full h-full flex flex-col items-center justify-center mt-6 lg:mt-0'>

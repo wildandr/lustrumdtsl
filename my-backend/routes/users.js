@@ -43,10 +43,10 @@ router.get("/user/:user_id", authenticateToken, async (req, res) => {
     }
 });
 
-// Tambah user baru
+// Add new user
 router.post("/user/register", async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        let { username, email, password, isAdmin, eventId } = req.body;
 
         if (!username || !email || !password) {
             return res.status(400).json({
@@ -56,10 +56,22 @@ router.post("/user/register", async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+        // If eventId is not provided, set it to null
+        if (!eventId) {
+            eventId = null;
+        }
+
+        // If isAdmin is not provided, set it to false
+        if (!isAdmin) {
+            isAdmin = false;
+        }
+
         const newUser = await User.create({
             username,
             email,
             password: hashedPassword,
+            isAdmin,
+            eventId,
         });
 
         newUser.password = undefined;

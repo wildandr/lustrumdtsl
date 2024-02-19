@@ -128,7 +128,7 @@ export function Hero() {
                 />
                 <Image
                     src={`/assets/lustrum/panggung.png`}
-                    className='left-[4%] md:hidden lg:block lg:left-[2%] top-[30%] lg:bottom-[-20%] h-[12rem] lg:h-[19rem] w-auto absolute'
+                    className='left-[4%] md:hidden lg:block lg:left-[7%] top-[30%] lg:top-auto lg:bottom-[0%] h-[12rem] lg:h-[15rem] 2xl:h-[19rem] w-auto absolute'
                     width={1000}
                     height={1000}
                     alt={''}

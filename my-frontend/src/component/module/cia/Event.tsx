@@ -110,7 +110,7 @@ export function Event() {
                                 className='w-full p-[30%] md:p-[15%]'/>
                         </div>
                         <div className='flex w-full h-[15%] justify-center items-center'>
-                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>Craft</p>
+                            <p className='text-center font-sfui text-xs md:text-base text-white font-bold'>CRAFT</p>
                         </div>
                     </Link>
                     

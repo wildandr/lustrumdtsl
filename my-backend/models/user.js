@@ -37,6 +37,15 @@ User.init(
             allowNull: false,
             defaultValue: false,
         },
+        eventId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "events",
+                key: "event_id",
+            },
+            onUpdate: "CASCADE",
+            onDelete: "SET NULL",
+        },
     },
     {
         sequelize,
