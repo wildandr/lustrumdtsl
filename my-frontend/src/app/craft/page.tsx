@@ -5,28 +5,13 @@ import { Hero } from "@/component/module/craft/Hero";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function CRAFT() {
     const router = useRouter();
 
-    // useEffect(() => {
-    //     let token: string | null = null;
-    //     let userId: string | null = null;
-
-    //     if (typeof localStorage !== "undefined") {
-    //         token = localStorage.getItem("token");
-    //         userId = localStorage.getItem("user_Id");
-    //     } else if (typeof sessionStorage !== "undefined") {
-    //         token = sessionStorage.getItem("token");
-    //         userId = sessionStorage.getItem("user_Id");
-    //     } else {
-    //         console.log("Web Storage is not supported in this environment.");
-    //     }
-
-    //     if (!token || !userId) {
-    //         router.push("/cia/login");
-    //     }
-    // }, []);
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
 
     return (
         <div className=" bg-craft md:h-[200vh] lg:h-[250vh] xl:h-auto">
