@@ -26,7 +26,7 @@ router.get("/teams/cic", authenticateToken, async (req, res) => {
         const result = await Promise.all(
             teams.map(async (team) => {
                 const members = await sequelize.query(
-                    `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+                    `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
                     {
                         replacements: { teamId: team.team_id },
                         type: QueryTypes.SELECT,
@@ -87,7 +87,7 @@ router.get("/teams/cic/:teamId", authenticateToken, async (req, res) => {
         }
 
         const members = await sequelize.query(
-            `SELECT * FROM Members WHERE team_id = :teamId ORDER BY is_leader DESC`,
+            `SELECT * FROM members WHERE team_id = :teamId ORDER BY is_leader DESC`,
             {
                 replacements: { teamId },
                 type: QueryTypes.SELECT,
