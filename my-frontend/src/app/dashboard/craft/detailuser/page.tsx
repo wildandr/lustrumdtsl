@@ -1,13 +1,46 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import axios from "axios";
+interface Participant {
+    participant_id: number;
+    user_id: number | null;
+    full_name: string;
+    institution_name: string;
+    activity_choice: string;
+    whatsapp_number: string;
+    isMahasiswaDTSL: boolean;
+    ktm: string | null;
+    payment_proof: string;
+    isVerified: boolean;
+    email: string;
+    createdAt: string;
+    updatedAt: string;
+  }
 export default function DetailUser() {
-  const [teamMembers, setTeamMembers] = useState([
-    { id: "ketua", role: "Ketua" },
-    { id: "member1", role: "Anggota 1" },
-    { id: "member2", role: "Anggota 2" }, 
-    { id: "member3", role: "Anggota 3" }, 
-  ]);
+    const [participant, setParticipant] = useState<Participant | null>(null);
+    const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+  
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:5001/crafts", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      setParticipant(response.data[0]);
+      console.log(response.data[0]);
+     // Save data to state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="bg-[#058369] h-[120vh] font-LibreBaskerville">
       <Image
@@ -18,7 +51,9 @@ export default function DetailUser() {
         className="hidden sm:flex fixed w-full h-full object-cover z-10"
       />
       <div className=" w-full h-[100vh] absolute z-40">
+    
         <div className="bg-white p-4 rounded-xl  w-[90%] mx-auto mt-28 ">
+       
           <div className="flex flex-col gap-3">
             <p className="text-ciaGreen text-center text-2xl font-semibold px-6  z-20 ">
               Detail Tim
@@ -28,7 +63,7 @@ export default function DetailUser() {
                 Email
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                finnovate@gmail.com
+              {participant?.email || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -36,15 +71,15 @@ export default function DetailUser() {
                Pilihan Kegiatan
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                Offline
+                {participant?.activity_choice || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
-               Apakag Mahasiswa DTSL FT UGM?
+               Apakah Mahasiswa DTSL FT UGM?
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                Ya
+                {participant?.isMahasiswaDTSL ? "Ya" : "Tidak"}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -52,7 +87,7 @@ export default function DetailUser() {
                Asal Instansi
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                UGM
+                {participant?.institution_name || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -60,7 +95,7 @@ export default function DetailUser() {
                Nomor Whatsapp
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                UGM
+                {participant?.whatsapp_number || ""}
               </p>
             </div>
             <div className="flex flex-col w-full ">
@@ -92,13 +127,14 @@ export default function DetailUser() {
               </div>
             </div>
           </div>
-        
+ 
           <div className="flex justify-end mt-10">
             <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
               Unduh Data
             </button>
           </div>
         </div>
+   
       </div>
     </div>
   );

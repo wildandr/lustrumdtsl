@@ -3,22 +3,16 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-interface Member {
-  member_id: number;
+interface Team {
   team_id: number;
-  full_name: string;
-  department: string;
-  batch: null | string;
-  phone_number: string;
-  line_id: string;
-  email: string;
-  ktm: string;
-  active_student_letter: string;
-  photo: string;
-  twibbon_and_poster_link: string;
-  is_leader: number;
-  nim: null | string;
-  semester: null | string;
+  event_id: number;
+  team_name: string;
+  institution_name: string;
+  payment_proof: string;
+  voucher: string | null;
+  user_id: number;
+  email: string | null;
+  isVerified: number;
 }
 
 interface Leader {
@@ -39,63 +33,68 @@ interface Leader {
   semester: null | string;
 }
 
-interface Team {
+interface Member {
+  member_id: number;
   team_id: number;
-  event_id: number;
-  team_name: string;
-  institution_name: string;
-  payment_proof: string;
-  voucher: null | string;
-  user_id: number;
-  email: null | string;
-  isVerified: number;
+  full_name: string;
+  department: string | null;
+  batch: string | null;
+  phone_number: string;
+  line_id: string;
+  email: string;
+  ktm: string;
+  active_student_letter: string;
+  photo: string;
+  twibbon_and_poster_link: string;
+  is_leader: number;
+  nim: string;
+  semester: string | null;
 }
 
-interface TeamData {
+interface Advisor {
+  advisor_id: number;
+  team_id: number;
+  full_name: string;
+  nip: string;
+  email: string;
+  phone_number: string;
+  photo: string;
+}
+
+interface Sbc {
+  team_id: number;
+  bridge_name: string;
+}
+
+interface SbcData {
   team: Team[];
-  leader: Member;
+  leader: Leader;
   members: Member[];
+  dosbim: Advisor[];
+  sbc: Sbc[];
 }
+export default function DetailUser({params}: {params: any}) {
+  
 
-type TeamMember = {
-  id: string;
-  role: string;
-  data: any;
-};
-export default function DetailUser() {
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-
-  const [teamData, setTeamData] = useState<TeamData>({
+  const [teamData, setTeamData] = useState<SbcData>({
     team: [],
     leader: {} as Leader,
     members: [],
+    dosbim: [],
+    sbc: [],
   });
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:5001/teams/cic/16", {
+      const response = await axios.get(`http://127.0.0.1:5001/teams/sbc/${params.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data);
       setTeamData(response.data); // Save data to state
-
-      const leader = {
-        id: "ketua",
-        role: "Ketua",
-        data: response.data.leader,
-      };
-      const members = response.data.members.map(
-        (member: any, index: number) => ({
-          id: `member${index + 1}`,
-          role: `Anggota ${index + 1}`,
-          data: member,
-        })
-      );
-      setTeamMembers([leader, ...members]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -104,10 +103,8 @@ export default function DetailUser() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const memberLength = teamData.members.length;
   return (
-    <div className="bg-[#058369] h-[120vh] font-LibreBaskerville">
+    <div className="bg-[#058369] h-[730vh] font-LibreBaskerville">
       <Image
         src="/bgcia.png"
         alt="bgcia"
@@ -125,12 +122,10 @@ export default function DetailUser() {
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Email
               </p>
-
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.team[0]?.email || "Email not available"}
+                {teamData.team[0]?.email || ""}
               </p>
             </div>
-
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Nama Tim
@@ -145,6 +140,14 @@ export default function DetailUser() {
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
                 {teamData.team[0]?.institution_name || ""}
+              </p>
+            </div>
+            <div className="flex flex-col w-full">
+              <p className="text-black text-left text-lg font-medium px-6 ">
+                Nama Jembatan
+              </p>
+              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                {teamData.sbc[0]?.bridge_name || ""}
               </p>
             </div>
             <div className="flex flex-col w-full mt-5">
@@ -178,13 +181,13 @@ export default function DetailUser() {
           </div>
           <div className="mt-4 flex flex-col gap-2">
             <p className="text-ciaGreen text-lg font-semibold">Ketua</p>
-            {/* Konten dinamis untuk setiap anggota */}
+
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Nama Lengkap
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.full_name || ""}
+                {teamData.leader?.full_name || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -192,7 +195,7 @@ export default function DetailUser() {
                 NIM
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.nim || ""}
+                {teamData.leader?.nim || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -200,7 +203,7 @@ export default function DetailUser() {
                 Semester
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.semester || ""}
+                {teamData.leader?.semester || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -208,7 +211,7 @@ export default function DetailUser() {
                 Email
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.email || ""}
+                {teamData.leader?.email || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -216,7 +219,7 @@ export default function DetailUser() {
                 Nomor Whatsapp
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.phone_number || ""}
+                {teamData.leader?.phone_number || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -224,7 +227,7 @@ export default function DetailUser() {
                 ID Line
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.line_id || ""}
+                {teamData.leader?.line_id || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -232,7 +235,7 @@ export default function DetailUser() {
                 Link Bukti Upload Twibbon
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader.twibbon_and_poster_link || ""}
+                {teamData.leader?.twibbon_and_poster_link || ""}
               </p>
             </div>
             <div className="flex flex-col w-full ">
@@ -240,9 +243,13 @@ export default function DetailUser() {
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <p className="text-black text-left text-lg font-semibold  ">
-                  {teamData.leader.active_student_letter || ""}
-                </p>
+                <Image
+                  src="/logocia.png"
+                  alt="foto"
+                  width={500}
+                  height={500}
+                  className="w-[300px] h-[300px] z-10"
+                />
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -273,11 +280,10 @@ export default function DetailUser() {
                 />
               </div>
             </div>
-            {/* Tambahkan konten lain untuk setiap anggota di sini */}
           </div>
           <div className="mt-4 flex flex-col gap-2">
             <p className="text-ciaGreen text-lg font-semibold">Anggota 1</p>
-            {/* Konten dinamis untuk setiap anggota */}
+
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Nama Lengkap
@@ -339,9 +345,13 @@ export default function DetailUser() {
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <p className="text-black text-left text-lg font-semibold  ">
-                  {teamData.members[0]?.active_student_letter || ""}
-                </p>
+                <Image
+                  src="/logocia.png"
+                  alt="foto"
+                  width={500}
+                  height={500}
+                  className="w-[300px] h-[300px] z-10"
+                />
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -372,11 +382,10 @@ export default function DetailUser() {
                 />
               </div>
             </div>
-        
           </div>
           <div className="mt-4 flex flex-col gap-2">
             <p className="text-ciaGreen text-lg font-semibold">Anggota 2</p>
-          
+
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Nama Lengkap
@@ -438,9 +447,13 @@ export default function DetailUser() {
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <p className="text-black text-left text-lg font-semibold  ">
-                  {teamData.members[1]?.active_student_letter || ""}
-                </p>
+                <Image
+                  src="/logocia.png"
+                  alt="foto"
+                  width={500}
+                  height={500}
+                  className="w-[300px] h-[300px] z-10"
+                />
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -471,34 +484,25 @@ export default function DetailUser() {
                 />
               </div>
             </div>
-            
           </div>
-          {teamData.members.length === 3 && (
           <div className="mt-4 flex flex-col gap-2">
-            <p className="text-ciaGreen text-lg font-semibold">Anggota 3</p>
-          
+            <p className="text-ciaGreen text-lg font-semibold">
+              Dosen Pembimbing
+            </p>
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Nama Lengkap
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.full_name || ""}
+                {teamData.dosbim[0]?.full_name || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
-                NIM
+                NIP
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.nim || ""}
-              </p>
-            </div>
-            <div className="flex flex-col w-full">
-              <p className="text-black text-left text-lg font-medium px-6 ">
-                Semester
-              </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.semester || ""}
+                {teamData.dosbim[0]?.nip || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -506,7 +510,7 @@ export default function DetailUser() {
                 Email
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.email || ""}
+                {teamData.dosbim[0]?.email || ""}
               </p>
             </div>
             <div className="flex flex-col w-full">
@@ -514,48 +518,8 @@ export default function DetailUser() {
                 Nomor Whatsapp
               </p>
               <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.phone_number || ""}
+                {teamData.dosbim[0]?.phone_number || ""}
               </p>
-            </div>
-            <div className="flex flex-col w-full">
-              <p className="text-black text-left text-lg font-medium px-6 ">
-                ID Line
-              </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.line_id || ""}
-              </p>
-            </div>
-            <div className="flex flex-col w-full">
-              <p className="text-black text-left text-lg font-medium px-6 ">
-                Link Bukti Upload Twibbon
-              </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[2]?.twibbon_and_poster_link || ""}
-              </p>
-            </div>
-            <div className="flex flex-col w-full ">
-              <p className="text-black text-left text-lg font-medium px-6 ">
-                Surat Keterangan Mahasiswa Aktif
-              </p>
-              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <p className="text-black text-left text-lg font-semibold  ">
-                  {teamData.members[2]?.active_student_letter || ""}
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col w-full ">
-              <p className="text-black text-left text-lg font-medium px-6 ">
-                Kartu Tanda Mahasiswa
-              </p>
-              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
-              </div>
             </div>
             <div className="flex flex-col w-full ">
               <p className="text-black text-left text-lg font-medium px-6 ">
@@ -571,9 +535,7 @@ export default function DetailUser() {
                 />
               </div>
             </div>
-            
           </div>
-         )}
 
           <div className="flex justify-end mt-10">
             <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">

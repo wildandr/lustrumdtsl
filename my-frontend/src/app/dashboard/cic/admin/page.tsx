@@ -107,7 +107,7 @@ export default function DashboardAdmin() {
                     <td className="px-[0.6rem] py-2 rounded-r-xl">
                       <div className="flex-col flex gap-2 md:flex-row">
                         <Link
-                          href={`/dashboard/cic/detailuser/${registration.team.team_id}`} // menambahkan team_id ke URL
+                          href={`/dashboard/cic/admin/${registration.team.team_id}`} // menambahkan team_id ke URL
                           className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
                         >
                           Lihat Detail
