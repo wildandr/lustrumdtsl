@@ -10,8 +10,13 @@ export default function SBC() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+        let token: string | null = null;
+        let userId: string | null = null;
+
+        if (typeof window !== "undefined") {
+            token = localStorage.getItem("token");
+            userId = localStorage.getItem("user_Id");
+        }
 
         if (!token || !userId) {
             router.push("/cia/login");

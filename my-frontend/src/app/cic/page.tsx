@@ -10,13 +10,19 @@ export default function CIC() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const userId = localStorage.getItem("user_Id");
+        let token: string | null = null;
+        let userId: string | null = null;
+
+        if (typeof window !== "undefined") {
+            token = localStorage.getItem("token");
+            userId = localStorage.getItem("user_Id");
+        }
 
         if (!token || !userId) {
             router.push("/cia/login");
         }
     }, []);
+
     return (
         <div className=" bg-cic md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
             <Image
