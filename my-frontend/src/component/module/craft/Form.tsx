@@ -14,9 +14,11 @@ export function Form() {
     const userIdFromCookie = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    if (!userIdFromCookie || !token) {
-        router.push("/cia/login");
-    }
+    useEffect(() => {
+        if (!userIdFromCookie || !token) {
+            router.push("/cia/login");
+        }
+    }, []);
 
     const [file, setFile] = useState<File>();
 
