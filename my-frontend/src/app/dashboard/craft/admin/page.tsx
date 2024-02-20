@@ -12,7 +12,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                "http://127.0.0.1:5001/teams/craft/",
+                "http://127.0.0.1:5001/crafts",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

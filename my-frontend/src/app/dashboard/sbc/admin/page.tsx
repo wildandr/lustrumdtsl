@@ -76,7 +76,6 @@ export default function DashboardAdmin() {
                                 <tr className="text-black text-left">
                                     <th className="">Nama Peserta/Tim</th>
                                     <th>Status</th>
-                                    <th>Event</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -110,13 +109,11 @@ export default function DashboardAdmin() {
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
-                                        <td className="px-2">
-                                            {registration.event}
-                                        </td>
+                                      
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
-                                                    href={`/cia/dashboard/admin/detailuser/${registration.team.team_id}`}
+                                                    href={`/dashboard/sbc/admin/${registration.team.team_id}`}
                                                     className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
                                                 >
                                                     Lihat Detail

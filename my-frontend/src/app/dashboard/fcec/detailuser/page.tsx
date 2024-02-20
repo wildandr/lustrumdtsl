@@ -19,7 +19,7 @@ export default function DetailUser() {
       />
       <div className=" w-full h-[100vh] absolute z-40">
         <div className="bg-white p-4 rounded-xl  w-[90%] mx-auto mt-28 ">
-          <div>
+          <div className="flex flex-col gap-3">
             <p className="text-ciaGreen text-center text-2xl font-semibold px-6  z-20 ">
               Detail Tim
             </p>
@@ -55,9 +55,9 @@ export default function DetailUser() {
                 UGM
               </p>
             </div>
-            <div className="flex flex-col w-full mt-5">
+            <div className="flex flex-col w-full ">
               <p className="text-black text-left text-lg font-medium px-6 ">
-                Bukti Pembayaran
+               File Abstrak
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
                 <Image
@@ -69,9 +69,17 @@ export default function DetailUser() {
                 />
               </div>
             </div>
-            <div className="flex flex-col w-full mt-5">
+            <div className="flex flex-col w-full">
               <p className="text-black text-left text-lg font-medium px-6 ">
-                Bukti Voucher
+               Judul Abstrak
+              </p>
+              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                UGM
+              </p>
+            </div>
+            <div className="flex flex-col w-full ">
+              <p className="text-black text-left text-lg font-medium px-6 ">
+               Surat Pernyataan Orisinalitas
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
                 <Image
@@ -121,15 +129,15 @@ function TeamMember({ role }: { role: string }) {
         </p>
       </div>
       <div className="flex flex-col w-full">
-        <p className="text-black text-left text-lg font-medium px-6 ">
-          Semester
-        </p>
+        <p className="text-black text-left text-lg font-medium px-6 ">Email</p>
         <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
           Test
         </p>
       </div>
       <div className="flex flex-col w-full">
-        <p className="text-black text-left text-lg font-medium px-6 ">Email</p>
+        <p className="text-black text-left text-lg font-medium px-6 ">
+          ID Line
+        </p>
         <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
           Test
         </p>
@@ -152,7 +160,7 @@ function TeamMember({ role }: { role: string }) {
       </div>
       <div className="flex flex-col w-full ">
         <p className="text-black text-left text-lg font-medium px-6 ">
-          Surat Keterangan Mahasiswa Aktif
+          Kartu Identitas
         </p>
         <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
           <Image
@@ -166,7 +174,7 @@ function TeamMember({ role }: { role: string }) {
       </div>
       <div className="flex flex-col w-full ">
         <p className="text-black text-left text-lg font-medium px-6 ">
-          Kartu Tanda Mahasiswa
+          Surat Keterangan Siswa Aktif
         </p>
         <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
           <Image
@@ -178,6 +186,7 @@ function TeamMember({ role }: { role: string }) {
           />
         </div>
       </div>
+     
       <div className="flex flex-col w-full ">
         <p className="text-black text-left text-lg font-medium px-6 ">
           Pas Foto 3x4
