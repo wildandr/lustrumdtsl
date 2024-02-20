@@ -32,7 +32,7 @@ export function Form() {
     const handleLogin = async (event: FormEvent) => {
         event.preventDefault();
 
-        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`;
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/user/login/`;
 
         try {
             const response = await axios.post(url, {
