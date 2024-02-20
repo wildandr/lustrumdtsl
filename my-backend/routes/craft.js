@@ -105,4 +105,50 @@ router.put(
     }
 );
 
+// Update data peserta craft
+router.put(
+    "/crafts/edit/:participant_id",
+    authenticateToken,
+    async (req, res) => {
+        try {
+            const craft = await Craft.update(
+                {
+                    full_name: req.body.full_name,
+                    institution_name: req.body.institution_name,
+                    user_id: req.body.user_id,
+                    activity_choice: req.body.activity_choice,
+                    whatsapp_number: req.body.whatsapp_number,
+                    isMahasiswaDTSL: req.body.isMahasiswaDTSL,
+                    ktm: req.body.ktm,
+                    payment_proof: req.body.payment_proof,
+                    email: req.body.email,
+                    isVerified: req.body.isVerified,
+                },
+                {
+                    where: {
+                        participant_id: req.params.participant_id,
+                    },
+                }
+            );
+            if (craft[0] === 0) {
+                res.status(404).json({
+                    message: "Peserta craft dengan ID tersebut tidak ditemukan",
+                });
+            } else {
+                res.status(200).json({
+                    message: "Berhasil memperbarui data peserta craft",
+                    data: craft,
+                });
+            }
+        } catch (err) {
+            console.error(err);
+            if (err instanceof ValidationError) {
+                res.status(400).json({ message: err.message });
+            } else {
+                res.status(500).json({ message: "Internal Server Error" });
+            }
+        }
+    }
+);
+
 module.exports = router;

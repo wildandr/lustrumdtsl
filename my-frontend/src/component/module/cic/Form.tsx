@@ -87,7 +87,7 @@ export function Form() {
             const data = new FormData();
             data.set("file", file);
 
-            const res = await fetch("/api/upload/fcec", {
+            const res = await fetch("/api/upload/cic", {
                 method: "POST",
                 body: data,
             });
