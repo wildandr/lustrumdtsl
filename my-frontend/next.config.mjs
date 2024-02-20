@@ -5,7 +5,6 @@ const nextConfig = {
     assetPrefix: "/",
     trailingSlash: true,
     reactStrictMode: true,
-    output: "export",
 };
 
 export default nextConfig;
