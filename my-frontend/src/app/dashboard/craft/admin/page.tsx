@@ -12,14 +12,11 @@ export default function DashboardAdmin() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}:5001/craft/`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await axios.get(`http://127.0.0.1:5001/crafts/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             setRegistrations(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -30,10 +27,10 @@ export default function DashboardAdmin() {
         fetchData();
     }, []);
 
-    const verifyTeam = async (teamId: string) => {
+    const verifyTeam = async (participant_id: string) => {
         try {
             const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/${teamId}/verify`,
+                `http://127.0.0.1:5001/crafts/verify/${participant_id}`,
                 {},
                 {
                     headers: {
@@ -42,14 +39,16 @@ export default function DashboardAdmin() {
                 }
             );
 
-            if (response.data.status === "success") {
-                toast.success("Tim Berhasil Diverifikasi");
+            console.log(response.data);
+
+            if (response.data.message === "Participant has been verified") {
+                toast.success("Peserta Berhasil Diverifikasi");
                 fetchData();
             } else {
-                toast.error("Error: " + response.data.message);
+                toast.error("Gagal Memverifikasi");
             }
         } catch (error) {
-            console.error("Error verifying team:", error);
+            console.error("Error verifying team", error);
         }
     };
 
