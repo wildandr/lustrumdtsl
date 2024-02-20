@@ -11,13 +11,13 @@ export default function CRAFT() {
     const router = useRouter();
 
     useEffect(() => {
-    const userIdFromLocalStorage = Cookies.get("user_Id");
-    const token = Cookies.get("token");
+        const userIdFromLocalStorage = Cookies.get("user_Id");
+        const token = Cookies.get("token");
 
-    if (!userIdFromLocalStorage || !token) {
-        router.push("/cia/login");
-    }
-}, []);
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []);
 
     return (
         <div className=" bg-craft md:h-[200vh] lg:h-[250vh] xl:h-auto">

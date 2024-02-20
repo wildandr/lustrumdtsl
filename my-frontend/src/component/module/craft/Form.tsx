@@ -32,35 +32,85 @@ export function Form() {
         ktm: "",
         payment_proof: "",
         email: "",
+        isVerified: false,
     });
 
-    const onSubmit = async (file: File): Promise<string | null> => {
-        if (!file) return null;
+    const onSubmit = async (file: File) => {
+        if (!file) return { success: false };
 
         try {
             const data = new FormData();
             data.set("file", file);
 
-            const res = await fetch("/api/upload/craft", {
+            const res = await fetch("/api/upload/fcec", {
                 method: "POST",
                 body: data,
             });
 
             if (!res.ok) throw new Error(await res.text());
-
-            const fileUrl = await res.text();
-            return fileUrl;
+            const jsonResponse = await res.json();
+            return jsonResponse;
         } catch (e: any) {
             console.error(e);
-            return null;
+            return { success: false };
         }
     };
 
-    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        setFile(file);
         if (file) {
-            onSubmit(file);
+            const fileSize = file.size / 1024 / 1024; // size in MB
+
+            if (
+                (file.type === "application/pdf" ||
+                    file.type.startsWith("image/")) &&
+                fileSize > 1
+            ) {
+                toast.error("Ukuran file tidak boleh melebihi 1MB");
+                e.target.value = "";
+            } else if (
+                !/^SKMA_.*_.*$|^ID_.*_.*$|^Pas Foto_.*_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM.*_.*$/.test(
+                    file.name
+                )
+            ) {
+                toast.error(
+                    "Format penamaan file tidak sesuai. Silahkan sesuaikan dengan format yang telah ditentukan"
+                );
+                e.target.value = "";
+            } else {
+                setFile(file);
+                const response = await onSubmit(file);
+
+                if (response.success) {
+                    setCraftData((prevState: any) => {
+                        let updatedField = "";
+                        if (file.name.startsWith("SKMA")) {
+                            updatedField = "active_student_letter";
+                        } else if (file.name.startsWith("KTM")) {
+                            updatedField = "ktm";
+                        } else if (file.name.startsWith("Pas Foto")) {
+                            updatedField = "photo";
+                        } else if (file.name.startsWith("Bukti Pembayaran")) {
+                            updatedField = "payment_proof";
+                        } else if (file.name.startsWith("Bukti Voucher")) {
+                            updatedField = "voucher";
+                        } else if (file.name.startsWith("Abstrak")) {
+                            updatedField = "abstract_file";
+                        } else if (file.name.startsWith("Orisinalitas")) {
+                            updatedField = "originality_statement";
+                        } else if (file.name.startsWith("Identitas")) {
+                            updatedField = "ktm";
+                        }
+
+                        const updatedCraftData = {
+                            ...prevState,
+                            [updatedField]: response.path,
+                        };
+
+                        return updatedCraftData;
+                    });
+                }
+            }
         }
     };
 
@@ -405,7 +455,7 @@ export function Form() {
                                                 type="file"
                                                 name="ktm"
                                                 className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
-                                                accept="image/*"
+                                                accept="application/pdf"
                                                 required
                                             ></input>
                                         </div>
@@ -427,7 +477,7 @@ export function Form() {
                                             <input
                                                 type="file"
                                                 className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
-                                                accept="image/*"
+                                                accept="application/pdf"
                                                 required
                                                 onChange={onFileChange}
                                             ></input>
