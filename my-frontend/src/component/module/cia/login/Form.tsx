@@ -43,6 +43,7 @@ export function Form() {
             if (response.data && response.data.token) {
                 Cookies.set("token", response.data.token);
                 Cookies.set("user_Id", response.data.user.user_id);
+                Cookies.set("username", response.data.user.isAdmin);
                 toast.success("Login Berhasil");
 
                 if (response.data.user.isAdmin) {
