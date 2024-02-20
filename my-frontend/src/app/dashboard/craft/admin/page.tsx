@@ -12,11 +12,14 @@ export default function DashboardAdmin() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:5001/crafts/`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             setRegistrations(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -30,7 +33,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (participant_id: string) => {
         try {
             const response = await axios.put(
-                `http://127.0.0.1:5001/crafts/verify/${participant_id}`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/verify/${participant_id}`,
                 {},
                 {
                     headers: {

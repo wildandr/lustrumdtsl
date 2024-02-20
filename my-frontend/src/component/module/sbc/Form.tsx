@@ -36,6 +36,7 @@ export function Form() {
 
             if (!res.ok) throw new Error(await res.text());
             const jsonResponse = await res.json();
+
             return jsonResponse;
         } catch (e: any) {
             console.error(e);
@@ -207,7 +208,7 @@ export function Form() {
             const token = Cookies.get("token");
 
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}:5001/teams/sbc/new`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/new`,
                 data,
                 {
                     headers: {

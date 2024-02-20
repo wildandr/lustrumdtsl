@@ -19,7 +19,7 @@ export default function DashboardUser() {
             const user_Id = userIdFromLocalStorage;
             try {
                 const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}:5001/user/${user_Id}/events`,
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/user/${user_Id}/events`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

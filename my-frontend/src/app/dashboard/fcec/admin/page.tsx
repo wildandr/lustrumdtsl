@@ -13,7 +13,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/fcec/`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/fcec/`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -33,7 +33,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (teamId: string) => {
         try {
             const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/${teamId}/verify`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/${teamId}/verify`,
                 {},
                 {
                     headers: {
@@ -108,9 +108,7 @@ export default function DashboardAdmin() {
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
-                                        <td className="px-2">
-                                            {registration.event}
-                                        </td>
+                                        <td className="px-2">FCEC</td>
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
