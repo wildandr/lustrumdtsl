@@ -25,7 +25,7 @@ export function Form() {
         const userId = Cookies.get("user_Id");
 
         if (token && userId) {
-            router.push("/cia/dashboard/user");
+            router.push("/cia");
         }
     }, []);
 
@@ -44,7 +44,24 @@ export function Form() {
                 Cookies.set("token", response.data.token);
                 Cookies.set("user_Id", response.data.user.user_id);
                 toast.success("Login Berhasil");
-                router.push("/cia/dashboard/user");
+
+                if (response.data.user.isAdmin) {
+                    if (response.data.user.eventId === 1) {
+                        router.push("/dashboard/fcec/admin");
+                        console.log(response.data.user.eventId);
+                    } else if (response.data.user.eventId === 2) {
+                        router.push("/dashboard/craft/admin");
+                        console.log(response.data.user.eventId);
+                    } else if (response.data.user.eventId === 3) {
+                        router.push("/dashboard/sbc/admin");
+                        console.log(response.data.user.eventId);
+                    } else if (response.data.user.eventId === 4) {
+                        router.push("/dashboard/cic/admin");
+                        console.log(response.data.user.eventId);
+                    }
+                } else {
+                    router.push("/dashboard/user");
+                }
             } else {
                 toast.error("Username atau Password Salah!");
             }

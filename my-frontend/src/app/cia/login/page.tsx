@@ -13,7 +13,7 @@ export default function Login() {
     const token = Cookies.get("token");
 
     if (userIdFromLocalStorage || token) {
-        router.push("/cia/dashboard/user");
+        router.push("/cia/");
     }
 
     return (

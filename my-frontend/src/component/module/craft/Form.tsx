@@ -6,17 +6,24 @@ import axios from "axios";
 import Image from "next/image";
 import { RadioGroup, Radio } from "@nextui-org/react";
 import toast from "react-hot-toast";
-import Cookies from "js-cookie"; // Import Cookies object
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export function Form() {
-    const userIdFromCookie = Cookies.get("user_Id"); // Retrieve user_Id from cookie
+    const router = useRouter();
+    const userIdFromCookie = Cookies.get("user_Id");
+    const token = Cookies.get("token");
+
+    if (!userIdFromCookie || !token) {
+        router.push("/cia/login");
+    }
 
     const [file, setFile] = useState<File>();
 
     const [craftData, setCraftData] = useState({
         full_name: "",
         institution_name: "",
-        user_id: Number(userIdFromCookie), // Use user_Id from cookie
+        user_id: Number(userIdFromCookie),
         activity_choice: "online",
         whatsapp_number: "",
         isMahasiswaDTSL: true,
@@ -70,7 +77,7 @@ export function Form() {
         event.preventDefault();
 
         try {
-            const token = Cookies.get("token"); // Retrieve token from cookie
+            const token = Cookies.get("token");
 
             const response = await axios.post(
                 "http://127.0.0.1:5001/crafts/register",
@@ -83,9 +90,8 @@ export function Form() {
             );
             alert("Pendaftaran berhasil");
         } catch (error) {
-            alert("Pendaftaran gagal");
+            toast.error("Pendaftaran gagal");
             console.error("Error registering:", error);
-            console.log(craftData);
         }
     };
 
@@ -149,7 +155,8 @@ export function Form() {
                     <div className="font-LibreBaskerville text-cia-green lg:mx-[15%] mt-[3%] lg:mb-[1%] lg:text-lg text-xs min-w-screen mx-[17%]">
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
-                                Link Guidebook : https://bit.ly/GuidebookPendaftaranCRAFT
+                                Link Guidebook :
+                                https://bit.ly/GuidebookPendaftaranCRAFT
                             </li>
                             <li className="mb-1">
                                 Peserta membaca Guidebook Pendaftaran CRAFT

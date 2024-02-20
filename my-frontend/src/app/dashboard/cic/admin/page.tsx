@@ -3,24 +3,23 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
-    const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+    const token = Cookies.get("token");
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                "http://127.0.0.1:5001/teams/cic/",
+                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/cic/`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            console.log(response.data);
-            setRegistrations(response.data); // Menyimpan data ke state
+            setRegistrations(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -33,7 +32,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (teamId: string) => {
         try {
             const response = await axios.put(
-                `http://lustrumkmtsl:5001/teams/${teamId}/verify`,
+                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/${teamId}/verify`,
                 {},
                 {
                     headers: {

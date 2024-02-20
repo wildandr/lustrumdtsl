@@ -17,7 +17,8 @@ export default function FCEC() {
         if (!userIdFromLocalStorage || !token) {
             router.push("/cia/login");
         }
-    }, []); 
+    }, []);
+
     const backgroundImage = {
         backgroundImage: `url(/assets/cia/bg_texture_cia.png)`,
         backgroundSize: "contain",
