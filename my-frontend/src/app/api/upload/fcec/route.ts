@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     await writeFile(filePath, buffer);
     console.log(`open ${filePath} to see the uploaded file`);
 
-    const publicPath = `/uploads/sbc/${newFileName}`;
+    const publicPath = `/uploads/cic/${newFileName}`;
 
     return NextResponse.json({ success: true, path: publicPath });
 }

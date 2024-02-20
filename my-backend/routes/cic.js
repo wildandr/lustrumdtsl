@@ -181,4 +181,60 @@ router.post("/teams/cic/new", authenticateToken, async (req, res) => {
     }
 });
 
+router.put("/teams/cic/update", authenticateToken, async (req, res) => {
+    try {
+        const { team, leader, members } = req.body;
+
+        await sequelize.query(
+            `UPDATE teams SET team_name = :team_name, institution_name = :institution_name, payment_proof = :payment_proof, user_id = :user_id, email = :email WHERE team_id = :team_id`,
+            {
+                replacements: {
+                    team_name: team.team_name,
+                    institution_name: team.institution_name,
+                    payment_proof: team.payment_proof,
+                    user_id: team.user_id,
+                    email: team.email,
+                    team_id: team.team_id,
+                },
+                type: QueryTypes.UPDATE,
+            }
+        );
+
+        await sequelize.query(
+            `UPDATE members SET full_name = :full_name, department = :department, batch = :batch, phone_number = :phone_number, line_id = :line_id, email = :email, ktm = :ktm, active_student_letter = :active_student_letter, photo = :photo, twibbon_and_poster_link = :twibbon_and_poster_link WHERE member_id = :member_id`,
+            {
+                replacements: {
+                    ...leader,
+                    member_id: leader.member_id,
+                },
+                type: QueryTypes.UPDATE,
+            }
+        );
+
+        await Promise.all(
+            members.map(async (member) => {
+                await sequelize.query(
+                    `UPDATE members SET full_name = :full_name, department = :department, batch = :batch, phone_number = :phone_number, line_id = :line_id, email = :email, ktm = :ktm, active_student_letter = :active_student_letter, photo = :photo, twibbon_and_poster_link = :twibbon_and_poster_link WHERE member_id = :member_id`,
+                    {
+                        replacements: {
+                            ...member,
+                            member_id: member.member_id,
+                        },
+                        type: QueryTypes.UPDATE,
+                    }
+                );
+            })
+        );
+
+        res.status(200).json({
+            message: "Team and members updated successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "An error occurred",
+            error: error.message,
+        });
+    }
+});
+
 module.exports = router;
