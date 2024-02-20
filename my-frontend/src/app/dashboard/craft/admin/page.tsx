@@ -13,7 +13,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/craft/`,
+                `${process.env.NEXT_PUBLIC_API_URL}:5001/craft/`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -25,6 +25,7 @@ export default function DashboardAdmin() {
             console.error("Error fetching data:", error);
         }
     };
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -91,63 +92,58 @@ export default function DashboardAdmin() {
                                         <td
                                             className={`font-semibold px-2 py-2 border-r border-ciaGreen border-opacity-10 rounded-l-xl`}
                                         >
-                                            {registration.team.team_name}
+                                            {registration.full_name}
                                         </td>
                                         <td
                                             className="font-semibold px-2 border-r border-ciaGreen border-opacity-10"
                                             style={{
                                                 color:
-                                                    registration.team
-                                                        .isVerified === 0
+                                                    registration.isVerified ===
+                                                    false
                                                         ? "black"
                                                         : "#166534",
                                             }}
                                         >
-                                            {registration.team.isVerified === 0
+                                            {registration.isVerified === false
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
                                         <td className="px-2">
-                                            {registration.event}
+                                            {registration.activity_choice}
                                         </td>
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
-                                                    href={`/cia/dashboard/admin/detailuser/${registration.team.team_id}`}
+                                                    href={`/cia/dashboard/admin/detailuser/${registration.participant_id}`}
                                                     className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
                                                 >
                                                     Lihat Detail
                                                 </Link>
                                                 <button
                                                     className={`bg-ciaGreen text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     onClick={() =>
                                                         verifyTeam(
-                                                            registration.team
-                                                                .team_id
+                                                            registration.participant_id
                                                         )
                                                     }
                                                     disabled={
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                     }
                                                 >
                                                     Terima
                                                 </button>
                                                 <button
                                                     className={`bg-[#E25933] text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     disabled={
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                     }
                                                 >
                                                     Tolak
