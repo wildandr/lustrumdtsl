@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-    basePath: "/",
+    basePath: "",
     assetPrefix: "/",
     trailingSlash: true,
     reactStrictMode: true,
+    output: "export",
 };
 
-module.exports = nextConfig;
+export default nextConfig;
