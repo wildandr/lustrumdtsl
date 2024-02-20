@@ -169,7 +169,7 @@ export function Kegiatan() {
                                 className='w-full p-[0%] md:p-[0%]'/>
                         </div>
                         <div className='flex w-full h-[10%] justify-center items-center'>
-                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>CIA x PKTSL</p>
+                            <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>CIA x CRAFT</p>
                         </div>
                     </Link>
                     <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
@@ -231,7 +231,7 @@ export function Kegiatan() {
                             height={1000}
                             className={`w-7 h-auto hidden md:block`}
                             alt=''/>
-                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>CIA x PKTSL</p>
+                        <p className='text-base lg:text-2xl text-bold font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>CIA x CRAFT</p>
                         <p className='text-base font-sans font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>23 Juli & 24-25 Mei 2024</p>
                     </div>
                     <div className='flex flex-col justify-center items-center md:text-center z-50'>

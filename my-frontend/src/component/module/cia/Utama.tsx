@@ -46,7 +46,7 @@ export function Utama() {
              className='flex flex-col px-8'>
                 <div className='flex flex-col justify-center items-center relative w-full mt-[10%]'>
                     <Image
-                        src={`/assets/cia/prize_without_helm.png`}
+                        src={`/assets/cia/prize_without_helm.svg`}
                         width={1000}
                         height={1000}
                         alt=''
@@ -56,7 +56,7 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=''
-                        className='absolute w-auto h-12 lg:h-24 top-0 -right-[5%] lg:right-[17%]'/>
+                        className='absolute w-auto h-12 lg:h-24 top-0 -right-[8%] lg:right-[16%]'/>
                     {/* <p className='absolute top-[15%] font-LibreBaskerville font-bold text-6xl text-chiasGreen-500'>
                         Civil In Action X PKTSL
                     </p>
