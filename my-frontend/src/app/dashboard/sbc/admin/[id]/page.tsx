@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 interface Team {
   team_id: number;
@@ -83,12 +84,11 @@ export default function DetailUser({params}: {params: any}) {
     dosbim: [],
     sbc: [],
   });
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+  const token = Cookies.get("token");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5001/teams/sbc/${params.id}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/${params.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -70,7 +70,7 @@ export default function DetailUser({ params }: { params: any }) {
         try {
             console.log(params.id);
             const response = await axios.get(
-                `http://127.0.0.1:5001/teams/cic/${params.id}`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/cic/${params.id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

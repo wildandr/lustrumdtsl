@@ -116,7 +116,7 @@ export default function DashboardAdmin() {
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
-                                                    href={`/cia/dashboard/admin/detailuser/${registration.participant_id}`}
+                                                    href={`/dashboard/craft/admin/${registration.participant_id}`}
                                                     className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
                                                 >
                                                     Lihat Detail
