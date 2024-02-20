@@ -12,7 +12,7 @@ export default function DashboardAdmin() {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}/teams/cic/`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/cic/`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -32,7 +32,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (teamId: string) => {
         try {
             const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_API_URL}/teams/${teamId}/verify`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/${teamId}/verify`,
                 {},
                 {
                     headers: {
