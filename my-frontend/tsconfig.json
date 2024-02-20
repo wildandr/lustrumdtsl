@@ -28,7 +28,8 @@
         ".next/types/**/*.ts",
         "src/component/icons.jsx",
         "src/app/api/upload.ts",
-        "src/middleware/middleware.js"
+        "src/middleware/middleware.js",
+        "src/middleware.js"
     ],
     "exclude": ["node_modules"]
 }

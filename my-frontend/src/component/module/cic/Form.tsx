@@ -14,9 +14,11 @@ export function Form() {
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    if (!userIdFromLocalStorage || !token) {
-        router.push("/cia/login");
-    }
+    useEffect(() => {
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []);
 
     const [teamData, setTeamData] = useState({
         team: {
