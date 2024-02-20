@@ -40,7 +40,6 @@ router.get("/teams/cic", authenticateToken, async (req, res) => {
                             institution_name: team.institution_name,
                             payment_proof: team.payment_proof,
                         },
-                        error: "No members found for this team",
                     };
                 }
 

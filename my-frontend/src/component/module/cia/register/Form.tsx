@@ -45,9 +45,6 @@ export function Form() {
             toast.error("Register gagal");
             if (axios.isAxiosError(error)) {
                 const serverError = error as AxiosError;
-                if (serverError && serverError.response) {
-                    console.log(serverError.response.data);
-                }
             } else {
                 console.log(error);
             }
