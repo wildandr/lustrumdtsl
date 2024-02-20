@@ -21,7 +21,7 @@ router.get(
     async (req, res) => {
         try {
             const craft = await Craft.findOne({
-                where: { user_id: req.params.user_id },
+                where: { participant_id: req.params.participant_id },
             });
             if (craft === null) {
                 return res
