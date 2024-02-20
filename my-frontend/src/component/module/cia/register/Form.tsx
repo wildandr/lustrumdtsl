@@ -31,7 +31,7 @@ export function Form() {
         }
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}:5001/user/register`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/user/register`,
                 {
                     username,
                     email,

@@ -209,7 +209,7 @@ export function Form() {
             const token = Cookies.get("token");
 
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}:5001/teams/fcec/new`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/fcec/new`,
                 postData,
                 {
                     headers: {
