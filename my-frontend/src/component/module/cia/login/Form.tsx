@@ -32,7 +32,7 @@ export function Form() {
     const handleLogin = async (event: FormEvent) => {
         event.preventDefault();
 
-        const url = `${process.env.NEXT_PUBLIC_BASE_URL}:5001/user/login`;
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`;
 
         try {
             const response = await axios.post(url, {
@@ -67,8 +67,7 @@ export function Form() {
                 toast.error("Username atau Password Salah!");
             }
         } catch (error) {
-            toast.error(`Login Gagal. URL: ${url}`);
-            console.error(error);
+            toast.error("Username atau Password Salah!");
         }
     };
 
