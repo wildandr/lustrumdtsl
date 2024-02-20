@@ -26,6 +26,7 @@ export default function DashboardUser() {
                         },
                     }
                 );
+                console.log(response.data.data);
                 setData(response.data.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -38,7 +39,7 @@ export default function DashboardUser() {
 
     return (
         <div
-            className={`bg-[#058369]  max-[385px]:h-[150vh] min-[525px]:h-[130vh] sm:h-[130vh] md:h-[100vh] `}
+            className={`bg-[#058369]  max-[385px]:h-[150vh] h-[120vh] min-[525px]:h-[130vh] sm:h-[130vh] md:h-[100vh] `}
         >
             <Image
                 src="/bgciamobile.png"
