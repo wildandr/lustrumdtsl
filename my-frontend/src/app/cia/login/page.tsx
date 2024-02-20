@@ -12,9 +12,11 @@ export default function Login() {
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    if (userIdFromLocalStorage || token) {
-        router.push("/cia/");
-    }
+    useEffect(() => {
+        if (userIdFromLocalStorage || token) {
+            router.push("/cia/");
+        }
+    }, []);
 
     return (
         <main className=" w-full max-[385px]:h-[180vh] h-[140vh] md:h-[100vh] bg-[#058369]  overflow-x-hidden">

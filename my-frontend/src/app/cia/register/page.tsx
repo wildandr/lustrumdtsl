@@ -13,9 +13,11 @@ export default function Register() {
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    if (userIdFromLocalStorage || token) {
-        router.push("/cia/dashboard/user");
-    }
+    useEffect(() => {
+        if (userIdFromLocalStorage || token) {
+            router.push("/cia/");
+        }
+    }, []);
 
     return (
         <main className=" w-full max-[385px]:h-[180vh] h-[140vh] min-[475px]:h-[160vh] sm:h-[170vh] md:h-[100vh] lg:h-[100vh] bg-[#058369] font-sans overflow-x-hidden">
