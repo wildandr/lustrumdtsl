@@ -403,6 +403,7 @@ export function Form() {
                                             </p>
                                             <input
                                                 type="file"
+                                                name="ktm"
                                                 className="text-[0.7rem] md:text-sm text-ciaGreen xl:w-1/3"
                                                 accept="image/*"
                                                 required
