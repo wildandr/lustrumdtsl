@@ -11,13 +11,14 @@ export default function SBC() {
     const router = useRouter();
 
     useEffect(() => {
-    const userIdFromLocalStorage = Cookies.get("user_Id");
-    const token = Cookies.get("token");
+        const userIdFromLocalStorage = Cookies.get("user_Id");
+        const token = Cookies.get("token");
 
-    if (!userIdFromLocalStorage || !token) {
-        router.push("/cia/login");
-    }
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
     }, []);
+
     return (
         <div className=" bg-sbc-orange md:h-[290vh] min-[820px]:h-[300vh] lg:h-[340vh] xl:h-[330vh] 2xl:h-[305vh]">
             <Image

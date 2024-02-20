@@ -5,9 +5,19 @@ import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export function Form() {
+    const router = useRouter();
     const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
+
+    useEffect(() => {
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []);
 
     const [teamData, setTeamData] = useState({
         team: {
@@ -71,7 +81,6 @@ export function Form() {
 
             if (!res.ok) throw new Error(await res.text());
             const jsonResponse = await res.json();
-            console.log(jsonResponse);
             return jsonResponse;
         } catch (e: any) {
             console.error(e);
@@ -91,13 +100,14 @@ export function Form() {
                     fileSize > 1
                 ) {
                     alert("File size should not exceed 1MB");
+                    toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
                     !/^SKMA_.*_.*$|^ID_.*_.*$|^Pas Foto_.*_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^Identitas_.*_.*$/.test(
                         file.name
                     )
                 ) {
-                    alert(
+                    toast.error(
                         "Format penamaan file tidak sesuai. Silahkan sesuaikan dengan format yang telah ditentukan"
                     );
                     e.target.value = "";
@@ -135,8 +145,6 @@ export function Form() {
                                     [updatedField]: response.path,
                                 },
                             };
-
-                            console.log(updatedTeamData);
 
                             return updatedTeamData;
                         });
@@ -197,13 +205,11 @@ export function Form() {
             ],
         };
 
-        console.log(postData);
-
         try {
             const token = Cookies.get("token");
 
             const response = await axios.post(
-                "http://lustrumkmtsl.com:5001/teams/fcec/new",
+                `${process.env.NEXT_PUBLIC_BASE_URL}:5001/teams/fcec/new`,
                 postData,
                 {
                     headers: {
@@ -211,9 +217,10 @@ export function Form() {
                     },
                 }
             );
-            alert("Pendaftaran berhasil");
+            toast.success("Pendaftaran berhasil");
+            router.push("/dashboard/user");
         } catch (error) {
-            alert("Pendaftaran gagal");
+            toast.error("Pendaftaran gagal");
         }
     };
 

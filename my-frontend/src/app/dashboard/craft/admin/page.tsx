@@ -3,24 +3,24 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
-    const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMTIzMTAsImV4cCI6MTcxMzI5NjMxMH0.db2v2NM80xLldbtuE3vbEGiQxxTwMN-_ORPa72BdtYY";
+    const token = Cookies.get("token");
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                "http://127.0.0.1:5001/teams/craft/",
+                `${process.env.NEXT_PUBLIC_API_URL}:5001/craft/`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            console.log(response.data);
-            setRegistrations(response.data); // Menyimpan data ke state
+            setRegistrations(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -33,7 +33,7 @@ export default function DashboardAdmin() {
     const verifyTeam = async (teamId: string) => {
         try {
             const response = await axios.put(
-                `http://lustrumkmtsl:5001/teams/${teamId}/verify`,
+                `${process.env.NEXT_PUBLIC_API_URL}:5001/teams/${teamId}/verify`,
                 {},
                 {
                     headers: {
@@ -43,12 +43,10 @@ export default function DashboardAdmin() {
             );
 
             if (response.data.status === "success") {
-                alert("Tim Berhasil Diverifikasi");
-
-                // Refresh the data
+                toast.success("Tim Berhasil Diverifikasi");
                 fetchData();
             } else {
-                alert("Error: " + response.data.message);
+                toast.error("Error: " + response.data.message);
             }
         } catch (error) {
             console.error("Error verifying team:", error);
@@ -94,63 +92,58 @@ export default function DashboardAdmin() {
                                         <td
                                             className={`font-semibold px-2 py-2 border-r border-ciaGreen border-opacity-10 rounded-l-xl`}
                                         >
-                                            {registration.team.team_name}
+                                            {registration.full_name}
                                         </td>
                                         <td
                                             className="font-semibold px-2 border-r border-ciaGreen border-opacity-10"
                                             style={{
                                                 color:
-                                                    registration.team
-                                                        .isVerified === 0
+                                                    registration.isVerified ===
+                                                    false
                                                         ? "black"
                                                         : "#166534",
                                             }}
                                         >
-                                            {registration.team.isVerified === 0
+                                            {registration.isVerified === false
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
                                         <td className="px-2">
-                                            {registration.event}
+                                            {registration.activity_choice}
                                         </td>
                                         <td className="px-[0.6rem] py-2 rounded-r-xl">
                                             <div className="flex-col flex gap-2 md:flex-row">
                                                 <Link
-                                                    href={`/cia/dashboard/admin/detailuser/${registration.team.team_id}`}
+                                                    href={`/cia/dashboard/admin/detailuser/${registration.participant_id}`}
                                                     className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
                                                 >
                                                     Lihat Detail
                                                 </Link>
                                                 <button
                                                     className={`bg-ciaGreen text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     onClick={() =>
                                                         verifyTeam(
-                                                            registration.team
-                                                                .team_id
+                                                            registration.participant_id
                                                         )
                                                     }
                                                     disabled={
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                     }
                                                 >
                                                     Terima
                                                 </button>
                                                 <button
                                                     className={`bg-[#E25933] text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     disabled={
-                                                        registration.team
-                                                            .isVerified
+                                                        registration.isVerified
                                                     }
                                                 >
                                                     Tolak

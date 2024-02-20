@@ -5,9 +5,20 @@ import { Tabs, Tab, Input } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export function Form() {
+    const router = useRouter();
+
     const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
+
+    useEffect(() => {
+        if (!userIdFromLocalStorage || !token) {
+            router.push("/cia/login");
+        }
+    }, []);
 
     const [file, setFile] = useState<File>();
 
@@ -25,7 +36,6 @@ export function Form() {
 
             if (!res.ok) throw new Error(await res.text());
             const jsonResponse = await res.json();
-            console.log(jsonResponse);
             return jsonResponse;
         } catch (e: any) {
             console.error(e);
@@ -44,14 +54,14 @@ export function Form() {
                         file.type.startsWith("image/")) &&
                     fileSize > 1
                 ) {
-                    alert("File size should not exceed 1MB");
-                    e.target.value = ""; // reset the input
+                    toast.error("Ukuran file tidak boleh melebihi 1MB");
+                    e.target.value = "";
                 } else if (
                     !/^SKMA_.*_.*$|^KTM_.*_.*$|^Pasfoto_.*_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$/.test(
                         file.name
                     )
                 ) {
-                    alert(
+                    toast.error(
                         "Format penamaan file tidak sesuai. Silahkan sesuaikan dengan format yang telah ditentukan"
                     );
                     e.target.value = "";
@@ -83,8 +93,6 @@ export function Form() {
                                     [updatedField]: response.path,
                                 },
                             };
-
-                            console.log(updatedTeamData);
 
                             return updatedTeamData;
                         });
@@ -195,13 +203,11 @@ export function Form() {
             sbc: [teamData.sbc],
         };
 
-        console.log(data);
-
         try {
             const token = Cookies.get("token");
 
             const response = await axios.post(
-                "http://lustrumkmtsl.com:5001/teams/sbc/new",
+                `${process.env.NEXT_PUBLIC_BASE_URL}:5001/teams/sbc/new`,
                 data,
                 {
                     headers: {
@@ -209,9 +215,10 @@ export function Form() {
                     },
                 }
             );
-            alert("Pendaftaran berhasil");
+            toast.success("Pendaftaran berhasil");
+            router.push("/dashboard/user");
         } catch (error) {
-            alert("Pendaftaran gagal");
+            toast.error("Pendaftaran gagal");
         }
     };
 

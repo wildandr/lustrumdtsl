@@ -14,10 +14,13 @@ export default function CIC() {
         const userIdFromLocalStorage = Cookies.get("user_Id");
         const token = Cookies.get("token");
 
-        if (!userIdFromLocalStorage || !token) {
+        if (
+            typeof window !== "undefined" &&
+            (!userIdFromLocalStorage || !token)
+        ) {
             router.push("/cia/login");
         }
-    }, []); 
+    }, []);
 
     return (
         <div className=" bg-cic md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
