@@ -68,22 +68,7 @@ export default function DashboardUser() {
     }, []);
 
 
-useEffect(() => {
-    const events = data.map(item => {
-        if (item.event_id === 1) {
-            return "fcec";
-        } else if (item.event_id === 2) {
-            return "craft";
-        } else if (item.event_id === 3) {
-            return "sbc";
-        } else if (item.event_id === 4) {
-            return "cic";
-        } else {
-            return "";
-        }
-    });
-    console.log(events);
-}, [data]); 
+
 
     return (
         <div
