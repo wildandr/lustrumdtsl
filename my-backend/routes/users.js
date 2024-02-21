@@ -148,15 +148,12 @@ router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
     try {
         const userEvents = await sequelize.query(
             `
-    SELECT users.*, teams.*, sbc.*, fcec.*, craft.*, events.event_name,
-    CASE
-        WHEN events.event_id = 2 THEN craft.isVerified
-        ELSE teams.isVerified
-    END AS isVerified
+    SELECT 
+        teams.team_id, teams.event_id, teams.team_name, teams.isVerified AS teams_isVerified, teams.isRejected AS teams_isRejected,
+        craft.participant_id, craft.user_id, craft.full_name, craft.isVerified AS craft_isVerified, craft.isRejected AS craft_isRejected,
+        events.event_name
     FROM users
     LEFT JOIN teams ON users.user_id = teams.user_id
-    LEFT JOIN sbc ON teams.team_id = sbc.team_id
-    LEFT JOIN fcec ON teams.team_id = fcec.team_id
     LEFT JOIN craft ON users.user_id = craft.user_id
     LEFT JOIN events ON teams.event_id = events.event_id
     WHERE users.user_id = :userId
