@@ -504,7 +504,7 @@ export function Form() {
                             <input
                                 type="file"
                                 className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
-                                onChange={onFileChange("payment_proof")}
+                                onChange={onFileChange("team")}
                                 accept="image/*"
                                 required
                             ></input>
