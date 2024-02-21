@@ -23,7 +23,7 @@ export default function CIC() {
     }, []);
 
     return (
-        <div className=" bg-cic md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
+        <div className=" bg-cic h-auto">
             <Image
                 src="/bgciamobile.png"
                 alt="bgcia"
