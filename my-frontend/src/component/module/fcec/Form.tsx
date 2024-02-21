@@ -112,11 +112,10 @@ export function Form() {
                         file.type.startsWith("image/")) &&
                     fileSize > 1
                 ) {
-                    alert("File size should not exceed 1MB");
                     toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
-                    !/^.*_Surat Pernyataan Siswa Aktif$|^.*_Kartu Identitas$|^.*_Pas Foto$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^.*_Surat Pernyataan Orisinalitas$|^.*_Abstrak$|^Identitas_.*_.*$/.test(
+                    !/^.*_Abstrak\..*$|^.*_Surat Pernyataan Orisinalitas\..*$|^[^_]*_Kartu Identitas_[^_]*\..*$|^[^_]*_Surat Pernyataan Siswa Aktif_[^_]*\..*$|^[^_]*_Pas Foto_[^_]*\..*$|^.*_.*_CV\..*$|^.*_Proposal\..*$/.test(
                         file.name
                     )
                 ) {
@@ -132,31 +131,29 @@ export function Form() {
                         setTeamData((prevState: any) => {
                             let updatedField = field;
                             if (
-                                file.name.endsWith(
-                                    "Surat Pernyataan Siswa Aktif"
+                                /^[^_]*_Surat Pernyataan Siswa Aktif_[^_]*\..*$/.test(
+                                    file.name
                                 )
                             ) {
                                 updatedField = "active_student_letter";
-                            } else if (file.name.startsWith("ID")) {
-                                updatedField = "ktm";
-                            } else if (file.name.endsWith("Pas Foto")) {
-                                updatedField = "photo";
                             } else if (
-                                file.name.startsWith("Bukti Pembayaran")
+                                /^[^_]*_Kartu Identitas_[^_]*\..*$/.test(
+                                    file.name
+                                )
                             ) {
-                                updatedField = "payment_proof";
-                            } else if (file.name.startsWith("Bukti Voucher")) {
-                                updatedField = "voucher";
-                            } else if (file.name.endsWith("Abstrak")) {
+                                updatedField = "ktm";
+                            } else if (
+                                /^[^_]*_Pas Foto_[^_]*\..*$/.test(file.name)
+                            ) {
+                                updatedField = "photo";
+                            } else if (/^.*_Abstrak\..*$/.test(file.name)) {
                                 updatedField = "abstract_file";
                             } else if (
-                                file.name.endsWith(
-                                    "Surat Pernyataan Orisinalitas"
+                                /^.*_Surat Pernyataan Orisinalitas\..*$/.test(
+                                    file.name
                                 )
                             ) {
                                 updatedField = "originality_statement";
-                            } else if (file.name.endsWith("Identitas")) {
-                                updatedField = "ktm";
                             }
 
                             const updatedTeamData = {
@@ -749,7 +746,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Kartu Identitas )
+                                                        Tim_Kartu Identitas_Nama
+                                                        Lengkap )
                                                     </span>
                                                 </p>
                                                 <input
@@ -775,7 +773,8 @@ export function Form() {
                                                     >
                                                         (Format Penamaan : Nama
                                                         Tim_Surat Pernyataan
-                                                        Siswa Aktif)
+                                                        Siswa Aktif_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -800,7 +799,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Pas Foto )
+                                                        Tim_Pas Foto_Nama
+                                                        Lengkap )
                                                     </span>
                                                 </p>
                                                 <input
@@ -1020,7 +1020,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Kartu Identitas)
+                                                        Tim_Kartu Identitas_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1046,7 +1047,8 @@ export function Form() {
                                                     >
                                                         (Format Penamaan : Nama
                                                         Tim_Surat Pernyataan
-                                                        Siswa Aktif)
+                                                        Siswa Aktif_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1071,7 +1073,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Pas Foto)
+                                                        Tim_Pas Foto_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1283,7 +1286,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Kartu Identitas)
+                                                        Tim_Kartu Identitas_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1306,7 +1310,8 @@ export function Form() {
                                                     >
                                                         (Format Penamaan : Nama
                                                         Tim_Surat Pernyataan
-                                                        Siswa Aktif)
+                                                        Siswa Aktif_Nama
+                                                        Lengkap)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1328,7 +1333,8 @@ export function Form() {
                                                         }}
                                                     >
                                                         (Format Penamaan : Nama
-                                                        Tim_Pas Foto )
+                                                        Tim_Pas Foto_Nama
+                                                        Lengkap )
                                                     </span>
                                                 </p>
                                                 <input

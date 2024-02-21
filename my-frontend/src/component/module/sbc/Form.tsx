@@ -107,9 +107,8 @@ export function Form() {
             team_name: "",
             institution_name: "",
             payment_proof: "",
-            team_email: "",
+            email: "",
             user_id: Number(userIdFromLocalStorage),
-
             voucher: "",
         },
         leader: {
@@ -369,13 +368,13 @@ export function Form() {
                             label="Email"
                             variant="underlined"
                             color="primary"
-                            value={teamData.team.team_email}
+                            value={teamData.team.email}
                             onChange={(e) =>
                                 setTeamData((prevState) => ({
                                     ...prevState,
                                     team: {
                                         ...prevState.team,
-                                        team_email: e.target.value,
+                                        email: e.target.value,
                                     },
                                 }))
                             }

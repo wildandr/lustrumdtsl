@@ -164,10 +164,15 @@ router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
             }
         );
 
-        if (!userEvents.length) {
+        if (
+            !userEvents.length ||
+            userEvents.every((event) =>
+                Object.values(event).every((value) => value === null)
+            )
+        ) {
             return res.status(404).json({
                 status: "error",
-                message: "User not found",
+                message: "No events found for this user",
             });
         }
 
