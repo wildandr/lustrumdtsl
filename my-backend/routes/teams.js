@@ -52,7 +52,7 @@ router.get("/teams", authenticateToken, async (req, res) => {
 router.put("/teams/:team_id/verify", async (req, res) => {
     try {
         const team = await sequelize.query(
-            "SELECT * FROM Teams WHERE team_id = :team_id",
+            "SELECT * FROM teams WHERE team_id = :team_id",
             {
                 replacements: { team_id: req.params.team_id },
                 type: QueryTypes.SELECT,
@@ -67,7 +67,7 @@ router.put("/teams/:team_id/verify", async (req, res) => {
         }
 
         await sequelize.query(
-            "UPDATE Teams SET isVerified = true WHERE team_id = :team_id",
+            "UPDATE teams SET isVerified = true WHERE team_id = :team_id",
             {
                 replacements: { team_id: req.params.team_id },
                 type: QueryTypes.UPDATE,
