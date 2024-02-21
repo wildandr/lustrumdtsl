@@ -285,9 +285,9 @@ export function Form() {
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
                                 Periode pendaftaran dimulai pada tanggal 17
-                                Februari 2024 pukul 08.00 hingga 10 Maret 2024
+                                Februari 2024 pukul 08.00 hingga 17 Maret 2024
                                 pukul 23.59 dan TOR soal akan rilis pada tanggal
-                                11 Maret 2024;
+                                18 Maret 2024;
                             </li>
                             <li className="mb-1">
                                 Peserta diharapkan untuk membayar biaya
