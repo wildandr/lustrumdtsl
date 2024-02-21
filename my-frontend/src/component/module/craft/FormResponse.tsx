@@ -18,21 +18,23 @@ interface Participant {
     createdAt: string;
     updatedAt: string;
 }
-export default function DetailUser() {
+export default function DetailUser({params}: {params: any}) {
     const [participant, setParticipant] = useState<Participant | null>(null);
     const token = Cookies.get("token");
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:5001/crafts", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            setParticipant(response.data[0]);
-            console.log(response.data[0]);
-            // Save data to state
+            console.log(params.id);
+            const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${params.id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            console.log(response.data);
+            setParticipant(response.data); // Save data to state
         } catch (error) {
             console.error("Error fetching data:", error);
         }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -54,7 +55,7 @@ export default function DashboardUser() {
                         },
                     }
                 );
-              
+                console.log(response.data.data);
                 setData(response.data.data);
 
             } catch (error) {
@@ -232,9 +233,9 @@ useEffect(() => {
                                             }`}
                                         >
                                             <div className="flex-col flex gap-2 md:flex-row">
-                                                <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ">
+                                                <Link href={`/dashboard/user/${registration.event_id}&${registration.team_id}`} className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full">
                                                     Lihat Data
-                                                </button>
+                                                </Link>
                                                 <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px]  rounded-md px-1 py-1 w-full ">
                                                     Ubah Data
                                                 </button>
