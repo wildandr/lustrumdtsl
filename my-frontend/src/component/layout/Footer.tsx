@@ -76,7 +76,7 @@ export default function Footer() {
             </Link>
             <Link href="#" className="flex items-center gap-3">
               <p className="bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b">
-                Clayproyex
+                Claproyex
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

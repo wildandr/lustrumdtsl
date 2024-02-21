@@ -93,7 +93,7 @@ export default function Footer2() {
             </svg>
           </Link>
           <Link href="#" className="flex items-center gap-3">
-          <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Clayproyex</p>
+          <p className={`${activeSegment === "lustrum" ? "bg-clip-text from-yellow-300 to-yellow-600 z-30 text-transparent bg-gradient-to-b" : "text-white" }`}>Claproyex</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
