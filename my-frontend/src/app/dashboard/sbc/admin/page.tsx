@@ -5,10 +5,22 @@ import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import {
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Button,
+    useDisclosure,
+    Input,
+    Textarea,
+} from "@nextui-org/react";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
     const token = Cookies.get("token");
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const fetchData = async () => {
         try {
@@ -149,6 +161,7 @@ export default function DashboardAdmin() {
                                                         registration.team
                                                             .isVerified
                                                     }
+                                                    onClick={onOpen}
                                                 >
                                                     Tolak
                                                 </button>
@@ -165,6 +178,44 @@ export default function DashboardAdmin() {
                             Unduh Semua Data
                         </button>
                     </div>
+
+                    <Modal
+                        isOpen={isOpen}
+                        onOpenChange={onOpenChange}
+                        placement="top-center"
+                    >
+                        <ModalContent>
+                            {(onClose) => (
+                                <>
+                                    <ModalHeader className="flex flex-col gap-1">
+                                        Log in
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <Textarea
+                                            label="Penolakan"
+                                            placeholder="Masukkan alasan penolakan"
+                                        />
+                                        <div className="flex py-2 px-1 justify-between"></div>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button
+                                            color="danger"
+                                            variant="flat"
+                                            onPress={onClose}
+                                        >
+                                            Batal
+                                        </Button>
+                                        <Button
+                                            color="primary"
+                                            onPress={onClose}
+                                        >
+                                            Kirim
+                                        </Button>
+                                    </ModalFooter>
+                                </>
+                            )}
+                        </ModalContent>
+                    </Modal>
                 </div>
             </div>
         </div>
