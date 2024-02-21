@@ -20,7 +20,7 @@ export default function CRAFT() {
     }, []);
 
     return (
-        <div className=" bg-craft md:h-[200vh] lg:h-[250vh] xl:h-auto">
+        <div className=" bg-craft h-auto">
             <Image
                 src="/bgciamobile.png"
                 alt="bgcia"
