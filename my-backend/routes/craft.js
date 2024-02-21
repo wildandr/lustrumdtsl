@@ -105,6 +105,31 @@ router.put(
     }
 );
 
+// Update isRejected field to true
+router.put(
+    "/crafts/reject/:participant_id",
+    authenticateToken,
+    async (req, res) => {
+        try {
+            const craft = await Craft.findOne({
+                where: { participant_id: req.params.participant_id },
+            });
+            if (!craft) {
+                return res
+                    .status(404)
+                    .json({ message: "Participant not found" });
+            }
+            craft.isRejected = true;
+            craft.rejectMessage = req.body.rejectMessage;
+            await craft.save();
+            res.json({ message: "Participant has been rejected", data: craft });
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Internal Server Error" });
+        }
+    }
+);
+
 // Update data peserta craft
 router.put(
     "/crafts/edit/:participant_id",
