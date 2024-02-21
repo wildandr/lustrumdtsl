@@ -34,7 +34,7 @@ interface UserEvent {
     isMahasiswaDTSL: boolean | null;
     ktm: string | null;
     event_name: string;
-  }
+}
 
 export default function DashboardUser() {
     const router = useRouter();
@@ -57,7 +57,6 @@ export default function DashboardUser() {
                 );
                 console.log(response.data.data);
                 setData(response.data.data);
-
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -66,9 +65,6 @@ export default function DashboardUser() {
             fetchData();
         }
     }, []);
-
-
-
 
     return (
         <div
@@ -174,8 +170,7 @@ export default function DashboardUser() {
                                             className={`font-semibold bg-[#B5E5DB] px-2 py-2 border-r border-ciaGreen border-opacity-10 ${
                                                 index === 0
                                                     ? "rounded-tl-xl"
-                                                    : index ===
-                                                      data.length - 1
+                                                    : index === data.length - 1
                                                     ? "rounded-bl-xl"
                                                     : ""
                                             } ${
@@ -207,8 +202,7 @@ export default function DashboardUser() {
                                             className={`bg-[#B5E5DB]  px-[0.6rem] py-2 ${
                                                 index === 0
                                                     ? "rounded-tr-xl"
-                                                    : index ===
-                                                      data.length - 1
+                                                    : index === data.length - 1
                                                     ? "rounded-br-xl"
                                                     : ""
                                             } ${
@@ -218,7 +212,10 @@ export default function DashboardUser() {
                                             }`}
                                         >
                                             <div className="flex-col flex gap-2 md:flex-row">
-                                                <Link href={`/dashboard/user/${registration.event_id}&${registration.team_id}`} className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full">
+                                                <Link
+                                                    href={`/dashboard/user/${registration.event_id}&${registration.team_id}`}
+                                                    className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
+                                                >
                                                     Lihat Data
                                                 </Link>
                                                 <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px]  rounded-md px-1 py-1 w-full ">
@@ -235,7 +232,8 @@ export default function DashboardUser() {
                             <div className="p-4 bg-[#B5E5DB] rounded-xl">
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}
-                                    Untuk pendaftaran dapat dilakukan dengan pengisian formulir yang ada pada menu{" "}
+                                    Untuk pendaftaran dapat dilakukan dengan
+                                    pengisian formulir yang ada pada menu{" "}
                                 </p>
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}

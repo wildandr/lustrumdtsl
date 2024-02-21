@@ -88,12 +88,12 @@ export default function DashboardAdmin() {
             );
 
             if (response.data.status === "success") {
-                alert("Tim Berhasil Diverifikasi");
+                toast.success("Tim berhasil diverifikasi");
 
                 // Refresh the data
                 fetchData();
             } else {
-                alert("Error: " + response.data.message);
+                toast.error("Gagal memverifikasi tim");
             }
         } catch (error) {
             console.error("Error verifying team:", error);
