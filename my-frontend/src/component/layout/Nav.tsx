@@ -270,7 +270,7 @@ export default function Nav() {
             <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`} >Clayproyex </span>
+        }`} >Claproyex </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -485,7 +485,7 @@ export default function Nav() {
             <Link href="#" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-        }`} >Clayproyex </span>
+        }`} >Claproyex </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"

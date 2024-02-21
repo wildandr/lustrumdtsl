@@ -144,4 +144,33 @@ router.put("/teams/update", authenticateToken, async (req, res) => {
     }
 });
 
+// Update rejection status of a team
+router.put("/teams/:team_id/reject", authenticateToken, async (req, res) => {
+    try {
+        const { rejectMessage } = req.body;
+        const { team_id } = req.params;
+
+        await sequelize.query(
+            `UPDATE teams SET isRejected = :isRejected, rejectMessage = :rejectMessage WHERE team_id = :team_id`,
+            {
+                replacements: {
+                    isRejected: true,
+                    rejectMessage: rejectMessage,
+                    team_id: team_id,
+                },
+                type: QueryTypes.UPDATE,
+            }
+        );
+
+        res.status(200).json({
+            message: "Team rejection status updated successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "An error occurred",
+            error: error.message,
+        });
+    }
+});
+
 module.exports = router;

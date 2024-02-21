@@ -63,6 +63,15 @@ Craft.init(
                 msg: "Email ini sudah terdaftar di CRAFT",
             },
         },
+        isRejected: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false,
+        },
+        rejectMessage: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
     },
     {
         sequelize,
