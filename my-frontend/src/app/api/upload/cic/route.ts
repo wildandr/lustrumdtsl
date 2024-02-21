@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
         "cic",
         newFileName
     );
+
     await writeFile(filePath, buffer);
     console.log(`open ${filePath} to see the uploaded file`);
 
