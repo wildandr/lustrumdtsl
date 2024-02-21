@@ -35,6 +35,15 @@ export function Form() {
         isVerified: false,
     });
 
+    function validateCraftData(data: any): boolean {
+        for (let key in data) {
+            if (typeof data[key] === "string" && data[key] === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const onSubmit = async (file: File) => {
         if (!file) return { success: false };
 
@@ -119,6 +128,11 @@ export function Form() {
 
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
+
+        if (!validateCraftData(craftData)) {
+            toast.error("Semua field harus diisi");
+            return;
+        }
 
         try {
             const token = Cookies.get("token");

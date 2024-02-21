@@ -78,6 +78,52 @@ export function Form() {
         },
     });
 
+    interface Member {
+        full_name: string;
+        phone_number: string;
+        line_id: string;
+        email: string;
+        ktm: string;
+        active_student_letter: string;
+        photo: string;
+        twibbon_and_poster_link: string;
+        semester: string;
+        department: string;
+    }
+
+    interface TeamData {
+        team: {
+            team_name: string;
+            institution_name: string;
+            payment_proof: string;
+            user_id: number;
+            email: string;
+        };
+        leader: Member;
+        member1: Member;
+        member2: Member;
+        member3: Member;
+    }
+
+    const validateData = (data: TeamData) => {
+        for (let key in data) {
+            if (
+                key === "team" ||
+                key === "leader" ||
+                key === "member1" ||
+                key === "member2"
+            ) {
+                const memberData = data[key] as Member;
+                for (let subKey in memberData) {
+                    if (memberData[subKey as keyof Member] === "") {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    };
+
     const [file, setFile] = useState<File>();
 
     const onSubmit = async (file: File) => {
@@ -179,6 +225,11 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
+        if (!validateData(teamData)) {
+            toast.error("Data belum lengkap");
+            return;
+        }
+
         const members = [
             {
                 ...teamData.member1,
@@ -210,8 +261,6 @@ export function Form() {
             },
             members,
         };
-
-        console.log(data);
 
         try {
             const token = Cookies.get("token");

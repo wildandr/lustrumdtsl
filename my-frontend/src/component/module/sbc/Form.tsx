@@ -160,6 +160,19 @@ export function Form() {
         },
     });
 
+    function validateTeamData(data: any): boolean {
+        for (let key in data) {
+            if (data[key] === null) {
+                return false;
+            } else if (typeof data[key] === "object") {
+                if (!validateTeamData(data[key])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     const backgroundHeading = {
         backgroundImage: `url(/assets/sbc/bg_heading_sbc.png)`,
         backgroundSize: "cover",
@@ -173,6 +186,11 @@ export function Form() {
 
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
+
+        if (!validateTeamData(teamData)) {
+            toast.error("Data tidak boleh kosong");
+            return;
+        }
 
         const data = {
             team: {
