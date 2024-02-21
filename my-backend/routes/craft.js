@@ -176,4 +176,31 @@ router.put(
     }
 );
 
+router.delete(
+    "/crafts/delete/:participantId",
+    authenticateToken,
+    async (req, res) => {
+        const participantId = req.params.participantId;
+
+        try {
+            const craft = await Craft.destroy({
+                where: {
+                    participant_id: participantId,
+                },
+            });
+
+            if (craft) {
+                res.status(200).json({
+                    message: "Participant has been deleted.",
+                });
+            } else {
+                res.status(404).json({ message: "Participant not found." });
+            }
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Internal Server Error" });
+        }
+    }
+);
+
 module.exports = router;

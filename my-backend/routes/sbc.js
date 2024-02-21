@@ -230,4 +230,51 @@ router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
     }
 });
 
+router.delete(
+    "/teams/sbc/delete/:teamId",
+    authenticateToken,
+    async (req, res) => {
+        try {
+            const teamId = req.params.teamId;
+
+            await sequelize.query(
+                `DELETE FROM dosbim WHERE team_id = :team_id`,
+                {
+                    replacements: { team_id: teamId },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            await sequelize.query(`DELETE FROM sbc WHERE team_id = :team_id`, {
+                replacements: { team_id: teamId },
+                type: QueryTypes.DELETE,
+            });
+
+            await sequelize.query(
+                `DELETE FROM members WHERE team_id = :team_id`,
+                {
+                    replacements: { team_id: teamId },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            await sequelize.query(
+                `DELETE FROM teams WHERE team_id = :team_id`,
+                {
+                    replacements: { team_id: teamId },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            res.status(200).json({
+                message: "All related data has been deleted.",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "An error occurred",
+                error: error.message,
+            });
+        }
+    }
+);
 module.exports = router;
