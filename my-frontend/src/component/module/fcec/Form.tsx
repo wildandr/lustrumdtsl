@@ -65,6 +65,19 @@ export function Form() {
         },
     });
 
+    function validateTeamData(data: any): boolean {
+        for (let key in data) {
+            if (typeof data[key] === "object") {
+                if (!validateTeamData(data[key])) {
+                    return false;
+                }
+            } else if (data[key] !== "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const [file, setFile] = useState<File>();
 
     const onSubmit = async (file: File) => {
@@ -118,7 +131,11 @@ export function Form() {
                     if (response.success) {
                         setTeamData((prevState: any) => {
                             let updatedField = field;
-                            if (file.name.endsWith("Surat Pernyataan Siswa Aktif")) {
+                            if (
+                                file.name.endsWith(
+                                    "Surat Pernyataan Siswa Aktif"
+                                )
+                            ) {
                                 updatedField = "active_student_letter";
                             } else if (file.name.startsWith("ID")) {
                                 updatedField = "ktm";
@@ -132,7 +149,11 @@ export function Form() {
                                 updatedField = "voucher";
                             } else if (file.name.endsWith("Abstrak")) {
                                 updatedField = "abstract_file";
-                            } else if (file.name.endsWith("Surat Pernyataan Orisinalitas")) {
+                            } else if (
+                                file.name.endsWith(
+                                    "Surat Pernyataan Orisinalitas"
+                                )
+                            ) {
                                 updatedField = "originality_statement";
                             } else if (file.name.endsWith("Identitas")) {
                                 updatedField = "ktm";
@@ -166,6 +187,11 @@ export function Form() {
 
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
+
+        if (!validateTeamData(teamData)) {
+            toast.error("Harap isi semua data");
+            return;
+        }
 
         const membersData = [
             {
@@ -497,7 +523,8 @@ export function Form() {
                                         color: "gray",
                                     }}
                                 >
-                                    (Format Penamaan : Nama Tim_Surat Pernyataan Orisinalitas)
+                                    (Format Penamaan : Nama Tim_Surat Pernyataan
+                                    Orisinalitas)
                                 </span>
                             </p>
                             <input
@@ -721,8 +748,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                      Nama Tim_Kartu Identitas )
+                                                        (Format Penamaan : Nama
+                                                        Tim_Kartu Identitas )
                                                     </span>
                                                 </p>
                                                 <input
@@ -746,8 +773,9 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                        Nama Tim_Surat Pernyataan Siswa Aktif)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Surat Pernyataan
+                                                        Siswa Aktif)
                                                     </span>
                                                 </p>
                                                 <input
@@ -771,7 +799,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan : Nama Tim_Pas Foto )
+                                                        (Format Penamaan : Nama
+                                                        Tim_Pas Foto )
                                                     </span>
                                                 </p>
                                                 <input
@@ -990,8 +1019,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                        Nama Tim_Kartu Identitas)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Kartu Identitas)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1015,8 +1044,9 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                        Nama Tim_Surat Pernyataan Siswa Aktif)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Surat Pernyataan
+                                                        Siswa Aktif)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1040,7 +1070,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan : Nama Tim_Pas Foto)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Pas Foto)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1251,8 +1282,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                        Nama Tim_Kartu Identitas)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Kartu Identitas)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1273,8 +1304,9 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan :
-                                                        Nama Tim_Surat Pernyataan Siswa Aktif)
+                                                        (Format Penamaan : Nama
+                                                        Tim_Surat Pernyataan
+                                                        Siswa Aktif)
                                                     </span>
                                                 </p>
                                                 <input
@@ -1295,8 +1327,8 @@ export function Form() {
                                                             color: "gray",
                                                         }}
                                                     >
-                                                        (Format Penamaan : Nama Tim_Pas Foto
-                                                        )
+                                                        (Format Penamaan : Nama
+                                                        Tim_Pas Foto )
                                                     </span>
                                                 </p>
                                                 <input
