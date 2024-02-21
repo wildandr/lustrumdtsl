@@ -5,6 +5,35 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+interface UserEvent {
+    user_id: number | null;
+    email: string | null;
+    username: string;
+    password: string;
+    createdAt: string | null;
+    updatedAt: string | null;
+    isAdmin: number;
+    eventId: number | null;
+    team_id: number | null;
+    event_id: number;
+    team_name: string;
+    institution_name: string | null;
+    payment_proof: string | null;
+    voucher: string | null;
+    isVerified: number;
+    bridge_name: string | null;
+    originality_statement: string | null;
+    abstract_title: string | null;
+    abstract_file: string | null;
+    abstract_video_link: string | null;
+    participant_id: number | null;
+    full_name: string | null;
+    activity_choice: string | null;
+    whatsapp_number: string | null;
+    isMahasiswaDTSL: boolean | null;
+    ktm: string | null;
+    event_name: string;
+  }
 
 export default function DashboardUser() {
     const router = useRouter();
@@ -12,8 +41,7 @@ export default function DashboardUser() {
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    const [data, setData] = useState<any[]>([]);
-
+    const [data, setData] = useState<UserEvent[]>([]);
     useEffect(() => {
         const fetchData = async () => {
             const user_Id = userIdFromLocalStorage;
@@ -26,8 +54,9 @@ export default function DashboardUser() {
                         },
                     }
                 );
-                console.log(response.data.data);
+              
                 setData(response.data.data);
+
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -36,6 +65,24 @@ export default function DashboardUser() {
             fetchData();
         }
     }, []);
+
+
+useEffect(() => {
+    const events = data.map(item => {
+        if (item.event_id === 1) {
+            return "fcec";
+        } else if (item.event_id === 2) {
+            return "craft";
+        } else if (item.event_id === 3) {
+            return "sbc";
+        } else if (item.event_id === 4) {
+            return "cic";
+        } else {
+            return "";
+        }
+    });
+    console.log(events);
+}, [data]); 
 
     return (
         <div
@@ -142,11 +189,11 @@ export default function DashboardUser() {
                                                 index === 0
                                                     ? "rounded-tl-xl"
                                                     : index ===
-                                                      registration.length - 1
+                                                      data.length - 1
                                                     ? "rounded-bl-xl"
                                                     : ""
                                             } ${
-                                                registration.length === 1
+                                                data.length === 1
                                                     ? "rounded-l-xl"
                                                     : ""
                                             }`}
@@ -175,11 +222,11 @@ export default function DashboardUser() {
                                                 index === 0
                                                     ? "rounded-tr-xl"
                                                     : index ===
-                                                      registration.length - 1
+                                                      data.length - 1
                                                     ? "rounded-br-xl"
                                                     : ""
                                             } ${
-                                                registration.length === 1
+                                                data.length === 1
                                                     ? "rounded-r-xl"
                                                     : ""
                                             }`}
@@ -202,8 +249,7 @@ export default function DashboardUser() {
                             <div className="p-4 bg-[#B5E5DB] rounded-xl">
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}
-                                    Pendaftaran anda belum berhasil karena
-                                    kesalahan unggah data.{" "}
+                                    Untuk pendaftaran dapat dilakukan dengan pengisian formulir yang ada pada menu{" "}
                                 </p>
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}
