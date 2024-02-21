@@ -19,8 +19,41 @@ import {
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
-    const token = Cookies.get("token");
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [rejectMessage, setRejectMessage] = useState("");
+    const [currentTeamId, setCurrentTeamId] = useState(null);
+    const token = Cookies.get("token");
+
+    const handleRejectMessageChange: React.ChangeEventHandler<
+        HTMLInputElement
+    > = (event) => {
+        setRejectMessage(event.target.value);
+    };
+
+    const handleReject = async (team_id: number, rejectMessage: string) => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/${team_id}/reject`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ rejectMessage }),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            toast.success("Tim berhasil ditolak");
+            fetchData();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
 
     const fetchData = async () => {
         try {
@@ -110,14 +143,19 @@ export default function DashboardAdmin() {
                                         <td
                                             className="font-semibold px-2 border-r border-ciaGreen border-opacity-10"
                                             style={{
-                                                color:
-                                                    registration.team
-                                                        .isVerified === 0
-                                                        ? "black"
-                                                        : "#166534",
+                                                color: registration.team
+                                                    .isRejected
+                                                    ? "red"
+                                                    : registration.team
+                                                          .isVerified === 0
+                                                    ? "black"
+                                                    : "#166534",
                                             }}
                                         >
-                                            {registration.team.isVerified === 0
+                                            {registration.team.isRejected
+                                                ? "Tim telah ditolak"
+                                                : registration.team
+                                                      .isVerified === 0
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
@@ -133,7 +171,9 @@ export default function DashboardAdmin() {
                                                 <button
                                                     className={`bg-ciaGreen text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
                                                         registration.team
-                                                            .isVerified
+                                                            .isVerified ||
+                                                        registration.team
+                                                            .isRejected
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
@@ -145,7 +185,9 @@ export default function DashboardAdmin() {
                                                     }
                                                     disabled={
                                                         registration.team
-                                                            .isVerified
+                                                            .isVerified ||
+                                                        registration.team
+                                                            .isRejected
                                                     }
                                                 >
                                                     Terima
@@ -153,15 +195,25 @@ export default function DashboardAdmin() {
                                                 <button
                                                     className={`bg-[#E25933] text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
                                                         registration.team
-                                                            .isVerified
+                                                            .isVerified ||
+                                                        registration.team
+                                                            .isRejected
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     disabled={
                                                         registration.team
-                                                            .isVerified
+                                                            .isVerified ||
+                                                        registration.team
+                                                            .isRejected
                                                     }
-                                                    onClick={onOpen}
+                                                    onClick={() => {
+                                                        setCurrentTeamId(
+                                                            registration.team
+                                                                .team_id
+                                                        );
+                                                        onOpen();
+                                                    }}
                                                 >
                                                     Tolak
                                                 </button>
@@ -188,12 +240,14 @@ export default function DashboardAdmin() {
                             {(onClose) => (
                                 <>
                                     <ModalHeader className="flex flex-col gap-1">
-                                        Log in
+                                        Konfirmasi Penolakan
                                     </ModalHeader>
                                     <ModalBody>
                                         <Textarea
                                             label="Penolakan"
                                             placeholder="Masukkan alasan penolakan"
+                                            value={rejectMessage}
+                                            onChange={handleRejectMessageChange}
                                         />
                                         <div className="flex py-2 px-1 justify-between"></div>
                                     </ModalBody>
@@ -207,7 +261,15 @@ export default function DashboardAdmin() {
                                         </Button>
                                         <Button
                                             color="primary"
-                                            onPress={onClose}
+                                            onPress={() => {
+                                                if (currentTeamId !== null) {
+                                                    handleReject(
+                                                        currentTeamId,
+                                                        rejectMessage
+                                                    );
+                                                    onClose();
+                                                }
+                                            }}
                                         >
                                             Kirim
                                         </Button>
