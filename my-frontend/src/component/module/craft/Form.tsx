@@ -124,7 +124,7 @@ export function Form() {
             const token = Cookies.get("token");
 
             const response = await axios.post(
-                "http://127.0.0.1:5001/crafts/register",
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/register`,
                 craftData,
                 {
                     headers: {
@@ -302,7 +302,16 @@ export function Form() {
                                             size="sm"
                                             label="Apakah Mahasiswa DTSL FT UGM"
                                             orientation="horizontal"
+                                            value={craftData.isMahasiswaDTSL.toString()}
                                             isRequired
+                                            onChange={(e) =>
+                                                setCraftData({
+                                                    ...craftData,
+                                                    isMahasiswaDTSL:
+                                                        e.target.value ===
+                                                        "true",
+                                                })
+                                            }
                                         >
                                             <Radio
                                                 value="true"
