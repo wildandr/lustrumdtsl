@@ -237,4 +237,40 @@ router.put("/teams/cic/update", authenticateToken, async (req, res) => {
     }
 });
 
+router.delete(
+    "/teams/cic/delete/:teamId",
+    authenticateToken,
+    async (req, res) => {
+        const teamId = req.params.teamId;
+
+        try {
+            // Delete members first
+            await sequelize.query(
+                `DELETE FROM members WHERE team_id = :teamId`,
+                {
+                    replacements: {
+                        teamId: teamId,
+                    },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            // Then delete the team
+            await sequelize.query(`DELETE FROM teams WHERE team_id = :teamId`, {
+                replacements: {
+                    teamId: teamId,
+                },
+                type: QueryTypes.DELETE,
+            });
+
+            res.status(200).json({
+                message: "Team and members have been deleted.",
+            });
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Internal Server Error" });
+        }
+    }
+);
+
 module.exports = router;

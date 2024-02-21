@@ -167,4 +167,47 @@ router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
     }
 });
 
+router.delete(
+    "/teams/fcec/delete/:teamId",
+    authenticateToken,
+    async (req, res) => {
+        const teamId = req.params.teamId;
+
+        try {
+            // Delete from fcec table
+            await sequelize.query(`DELETE FROM fcec WHERE team_id = :team_id`, {
+                replacements: { team_id: teamId },
+                type: QueryTypes.DELETE,
+            });
+
+            // Delete from members table
+            await sequelize.query(
+                `DELETE FROM members WHERE team_id = :team_id`,
+                {
+                    replacements: { team_id: teamId },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            // Delete from teams table
+            await sequelize.query(
+                `DELETE FROM teams WHERE team_id = :team_id`,
+                {
+                    replacements: { team_id: teamId },
+                    type: QueryTypes.DELETE,
+                }
+            );
+
+            res.status(200).json({
+                message: "Team and related data have been deleted.",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "An error occurred",
+                error: error.message,
+            });
+        }
+    }
+);
+
 module.exports = router;
