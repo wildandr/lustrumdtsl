@@ -143,7 +143,6 @@ router.post("/user/login", async (req, res) => {
     }
 });
 
-// Ambil semua event yang diikuti oleh user
 router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
     try {
         const userEvents = await sequelize.query(
@@ -164,9 +163,33 @@ router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
             }
         );
 
+        const modifiedUserEvents = userEvents.map((event) => {
+            if (event.event_id === 2) {
+                return {
+                    ...event,
+                    craft: {
+                        participant_id: event.participant_id,
+                        user_id: event.user_id,
+                        full_name: event.full_name,
+                        isVerified: event.craft_isVerified,
+                        isRejected: event.craft_isRejected,
+                    },
+                };
+            } else {
+                const {
+                    participant_id,
+                    full_name,
+                    craft_isVerified,
+                    craft_isRejected,
+                    ...rest
+                } = event;
+                return rest;
+            }
+        });
+
         if (
-            !userEvents.length ||
-            userEvents.every((event) =>
+            !modifiedUserEvents.length ||
+            modifiedUserEvents.every((event) =>
                 Object.values(event).every((value) => value === null)
             )
         ) {
@@ -178,7 +201,7 @@ router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
 
         res.status(200).json({
             status: "success",
-            data: userEvents,
+            data: modifiedUserEvents,
         });
     } catch (error) {
         console.error(error);
