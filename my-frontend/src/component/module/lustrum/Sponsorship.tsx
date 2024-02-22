@@ -190,7 +190,7 @@ export function Sponsorship() {
                                 height={1000}
                                 alt={''}
                                 />
-                                <Link href={`https://publuu.com/flip-book/389096/912711`} style={{background: "var(--gold, linear-gradient(180deg, #F2D87A 0%, #E0B620 100%))"}} className='flex flex-row w-full lg:w-[40%] justify-center border text-black px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center'>Sponsorship 
+                                <Link href={`https://drive.google.com/file/d/11NhCcgID6pnfR-fz3hKWZpZ9P9iVC2V7/view?usp=drive_link`} style={{background: "var(--gold, linear-gradient(180deg, #F2D87A 0%, #E0B620 100%))"}} className='flex flex-row w-full lg:w-[40%] justify-center border text-black px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center'>Sponsorship 
                                 </Link>
                             </div>
                         </div>
