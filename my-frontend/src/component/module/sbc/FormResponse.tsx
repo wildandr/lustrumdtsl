@@ -74,9 +74,7 @@ interface SbcData {
   dosbim: Advisor[];
   sbc: Sbc[];
 }
-export default function DetailUser({params}: {params: any}) {
-  
-
+export default function DetailUser({ params }: { params: any }) {
   const [teamData, setTeamData] = useState<SbcData>({
     team: [],
     leader: {} as Leader,
@@ -88,12 +86,14 @@ export default function DetailUser({params}: {params: any}) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/${params.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/${params.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setTeamData(response.data); // Save data to state
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -104,14 +104,8 @@ export default function DetailUser({params}: {params: any}) {
     fetchData();
   }, []);
   return (
-    <div className="bg-[#058369] h-[730vh] font-LibreBaskerville">
-      <Image
-        src="/bgcia.png"
-        alt="bgcia"
-        width={1000}
-        height={1000}
-        className="hidden sm:flex fixed w-full h-full object-cover z-10"
-      />
+    <div className=" font-LibreBaskerville">
+    
       <div className=" w-full h-[100vh] absolute z-40">
         <div className="bg-white p-4 rounded-xl  w-[90%] mx-auto mt-28 ">
           <div>
@@ -155,13 +149,15 @@ export default function DetailUser({params}: {params: any}) {
                 Bukti Pembayaran
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+                {teamData.team[0]?.payment_proof && (
+                  <Image
+                    src={`${teamData.team[0]?.payment_proof}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full mt-5">
@@ -169,13 +165,15 @@ export default function DetailUser({params}: {params: any}) {
                 Bukti Voucher
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+                {teamData.team[0]?.voucher && (
+                  <Image
+                    src={`${teamData.team[0]?.voucher}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -234,22 +232,31 @@ export default function DetailUser({params}: {params: any}) {
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Link Bukti Upload Twibbon
               </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.leader?.twibbon_and_poster_link || ""}
-              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold  "
+                  href={`${teamData.leader?.twibbon_and_poster_link || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {teamData.leader?.twibbon_and_poster_link || ""}
+                </a>
+              </div>
             </div>
             <div className="flex flex-col w-full ">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+                {teamData.leader?.active_student_letter && (
+                  <Image
+                    src={`${teamData.leader?.active_student_letter}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -257,13 +264,15 @@ export default function DetailUser({params}: {params: any}) {
                 Kartu Tanda Mahasiswa
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+                {teamData.leader?.ktm && (
+                  <Image
+                    src={`${teamData.leader?.ktm}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className=" max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -271,13 +280,15 @@ export default function DetailUser({params}: {params: any}) {
                 Pas Foto 3x4
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+                {teamData.leader?.photo && (
+                  <Image
+                    src={`${teamData.leader?.photo}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -336,22 +347,31 @@ export default function DetailUser({params}: {params: any}) {
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Link Bukti Upload Twibbon
               </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[0]?.twibbon_and_poster_link || ""}
-              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold  "
+                  href={`${teamData.members[0]?.twibbon_and_poster_link || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {teamData.members[0]?.twibbon_and_poster_link || ""}
+                </a>
+              </div>
             </div>
             <div className="flex flex-col w-full ">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[0]?.active_student_letter && (
+                  <Image
+                    src={`${teamData.members[0]?.active_student_letter}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -359,13 +379,15 @@ export default function DetailUser({params}: {params: any}) {
                 Kartu Tanda Mahasiswa
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[0]?.ktm && (
+                  <Image
+                    src={`${teamData.members[0]?.ktm}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -373,13 +395,15 @@ export default function DetailUser({params}: {params: any}) {
                 Pas Foto 3x4
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[0]?.photo && (
+                  <Image
+                    src={`${teamData.members[0]?.photo}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -438,22 +462,31 @@ export default function DetailUser({params}: {params: any}) {
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Link Bukti Upload Twibbon
               </p>
-              <p className="text-black text-left text-lg font-semibold px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                {teamData.members[1]?.twibbon_and_poster_link || ""}
-              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold  "
+                  href={`${teamData.members[1]?.twibbon_and_poster_link || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {teamData.members[1]?.twibbon_and_poster_link || ""}
+                </a>
+              </div>
             </div>
             <div className="flex flex-col w-full ">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Surat Keterangan Mahasiswa Aktif
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[1]?.active_student_letter && (
+                  <Image
+                    src={`${teamData.members[1]?.active_student_letter}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -461,13 +494,15 @@ export default function DetailUser({params}: {params: any}) {
                 Kartu Tanda Mahasiswa
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[1]?.ktm && (
+                  <Image
+                    src={`${teamData.members[1]?.ktm}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col w-full ">
@@ -475,13 +510,15 @@ export default function DetailUser({params}: {params: any}) {
                 Pas Foto 3x4
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.members[1]?.photo && (
+                  <Image
+                    src={`${teamData.members[1]?.photo}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -526,13 +563,15 @@ export default function DetailUser({params}: {params: any}) {
                 Pas Foto 3x4
               </p>
               <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                <Image
-                  src="/logocia.png"
-                  alt="foto"
-                  width={500}
-                  height={500}
-                  className="w-[300px] h-[300px] z-10"
-                />
+              {teamData.dosbim[0]?.photo && (
+                  <Image
+                    src={`${teamData.dosbim[0]?.photo}`}
+                    alt="foto"
+                    width={500}
+                    height={500}
+                    className="max-w-[1080px] z-10"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -547,4 +586,3 @@ export default function DetailUser({params}: {params: any}) {
     </div>
   );
 }
-

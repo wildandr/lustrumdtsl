@@ -67,19 +67,19 @@ export default function DashboardUser() {
                     }
                 );
 
-                const responseCraft = await axios.get(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${user_Id}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
+                // const responseCraft = await axios.get(
+                //     `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${user_Id}`,
+                //     {
+                //         headers: {
+                //             Authorization: `Bearer ${token}`,
+                //         },
+                //     }
+                // );
 
                 setEventsData(responseEvents.data.data);
-                setCraftData(responseCraft.data);
+                // setCraftData(responseCraft.data);
                 console.log(responseEvents.data.data);
-                console.log(responseCraft.data);
+                // console.log(responseCraft.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }

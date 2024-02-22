@@ -16,7 +16,7 @@ const separated = params.id.split("%26");
        
 
     return (
-        <div>
+        <div className=''>
         {int1 === 1 && <DetailUserFcec params={{ id: int2 }} />}
         {int1 === 2 && <DetailUserCraft params={{ id: int2 }} />}
         {int1 === 3 && <DetailUserSbc params={{ id: int2 }} />}
