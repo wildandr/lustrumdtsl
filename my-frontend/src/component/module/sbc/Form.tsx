@@ -107,9 +107,8 @@ export function Form() {
             team_name: "",
             institution_name: "",
             payment_proof: "",
-            team_email: "",
+            email: "",
             user_id: Number(userIdFromLocalStorage),
-
             voucher: "",
         },
         leader: {
@@ -160,6 +159,19 @@ export function Form() {
         },
     });
 
+    function validateTeamData(data: any): boolean {
+        for (let key in data) {
+            if (data[key] === null) {
+                return false;
+            } else if (typeof data[key] === "object") {
+                if (!validateTeamData(data[key])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     const backgroundHeading = {
         backgroundImage: `url(/assets/sbc/bg_heading_sbc.png)`,
         backgroundSize: "cover",
@@ -174,6 +186,11 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
+        if (!validateTeamData(teamData)) {
+            toast.error("Data tidak boleh kosong");
+            return;
+        }
+
         const data = {
             team: {
                 ...teamData.team,
@@ -181,17 +198,20 @@ export function Form() {
             },
             leader: {
                 ...teamData.leader,
+                semester: Number(teamData.leader.semester), // Convert to number here
                 is_leader: 1,
                 batch: null,
             },
             members: [
                 {
                     ...teamData.member1,
+                    semester: Number(teamData.member1.semester), // Convert to number here
                     is_leader: 0,
                     batch: null,
                 },
                 {
                     ...teamData.member2,
+                    semester: Number(teamData.member2.semester), // Convert to number here
                     is_leader: 0,
                     batch: null,
                 },
@@ -285,9 +305,9 @@ export function Form() {
                         <ol className="list-decimal pl-2">
                             <li className="mb-1">
                                 Periode pendaftaran dimulai pada tanggal 17
-                                Februari 2024 pukul 08.00 hingga 10 Maret 2024
+                                Februari 2024 pukul 08.00 hingga 17 Maret 2024
                                 pukul 23.59 dan TOR soal akan rilis pada tanggal
-                                11 Maret 2024;
+                                18 Maret 2024;
                             </li>
                             <li className="mb-1">
                                 Peserta diharapkan untuk membayar biaya
@@ -351,13 +371,13 @@ export function Form() {
                             label="Email"
                             variant="underlined"
                             color="primary"
-                            value={teamData.team.team_email}
+                            value={teamData.team.email}
                             onChange={(e) =>
                                 setTeamData((prevState) => ({
                                     ...prevState,
                                     team: {
                                         ...prevState.team,
-                                        team_email: e.target.value,
+                                        email: e.target.value,
                                     },
                                 }))
                             }
@@ -486,7 +506,7 @@ export function Form() {
                             <input
                                 type="file"
                                 className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
-                                onChange={onFileChange("payment_proof")}
+                                onChange={onFileChange("team")}
                                 accept="image/*"
                                 required
                             ></input>

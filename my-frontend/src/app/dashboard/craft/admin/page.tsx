@@ -5,9 +5,23 @@ import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import {
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Button,
+    useDisclosure,
+    Input,
+    Textarea,
+} from "@nextui-org/react";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [rejectMessage, setRejectMessage] = useState("");
+    const [participantId, setParticipantId] = useState("");
     const token = Cookies.get("token");
 
     const fetchData = async () => {
@@ -55,6 +69,40 @@ export default function DashboardAdmin() {
         }
     };
 
+    const handleRejectMessageChange: React.ChangeEventHandler<
+        HTMLInputElement
+    > = (event) => {
+        setRejectMessage(event.target.value);
+    };
+
+    const handleReject = async (
+        participant_id: number,
+        rejectMessage: string
+    ) => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/reject/${participantId}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ rejectMessage }),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            toast.success("Peserta berhasil ditolak");
+            fetchData();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
     return (
         <div className="bg-[#058369] h-[100vh] font-LibreBaskerville">
             <Image
@@ -99,14 +147,18 @@ export default function DashboardAdmin() {
                                         <td
                                             className="font-semibold px-2 border-r border-ciaGreen border-opacity-10"
                                             style={{
-                                                color:
-                                                    registration.isVerified ===
-                                                    false
-                                                        ? "black"
-                                                        : "#166534",
+                                                color: registration.isRejected
+                                                    ? "red"
+                                                    : registration.isVerified ===
+                                                      false
+                                                    ? "black"
+                                                    : "#166534",
                                             }}
                                         >
-                                            {registration.isVerified === false
+                                            {registration.isRejected
+                                                ? "Pendaftaran Ditolak"
+                                                : registration.isVerified ===
+                                                  false
                                                 ? "Perlu Konfirmasi"
                                                 : "Sudah Terkonfirmasi"}
                                         </td>
@@ -123,7 +175,8 @@ export default function DashboardAdmin() {
                                                 </Link>
                                                 <button
                                                     className={`bg-ciaGreen text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.isVerified
+                                                        registration.isVerified ||
+                                                        registration.isRejected
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
@@ -133,20 +186,29 @@ export default function DashboardAdmin() {
                                                         )
                                                     }
                                                     disabled={
-                                                        registration.isVerified
+                                                        registration.isVerified ||
+                                                        registration.isRejected
                                                     }
                                                 >
                                                     Terima
                                                 </button>
                                                 <button
                                                     className={`bg-[#E25933] text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full ${
-                                                        registration.isVerified
+                                                        registration.isVerified ||
+                                                        registration.isRejected
                                                             ? "opacity-50 cursor-not-allowed"
                                                             : ""
                                                     }`}
                                                     disabled={
-                                                        registration.isVerified
+                                                        registration.isVerified ||
+                                                        registration.isRejected
                                                     }
+                                                    onClick={() => {
+                                                        setParticipantId(
+                                                            registration.participant_id
+                                                        );
+                                                        onOpen();
+                                                    }}
                                                 >
                                                     Tolak
                                                 </button>
@@ -163,6 +225,53 @@ export default function DashboardAdmin() {
                             Unduh Semua Data
                         </button>
                     </div>
+                    <Modal
+                        isOpen={isOpen}
+                        onOpenChange={onOpenChange}
+                        placement="top-center"
+                    >
+                        <ModalContent>
+                            {(onClose) => (
+                                <>
+                                    <ModalHeader className="flex flex-col gap-1">
+                                        Konfirmasi Penolakan
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <Textarea
+                                            label="Penolakan"
+                                            placeholder="Masukkan alasan penolakan"
+                                            value={rejectMessage}
+                                            onChange={handleRejectMessageChange}
+                                        />
+                                        <div className="flex py-2 px-1 justify-between"></div>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button
+                                            color="danger"
+                                            variant="flat"
+                                            onPress={onClose}
+                                        >
+                                            Batal
+                                        </Button>
+                                        <Button
+                                            color="primary"
+                                            onPress={() => {
+                                                if (participantId !== null) {
+                                                    handleReject(
+                                                        Number(participantId),
+                                                        rejectMessage
+                                                    );
+                                                    onClose();
+                                                }
+                                            }}
+                                        >
+                                            Kirim
+                                        </Button>
+                                    </ModalFooter>
+                                </>
+                            )}
+                        </ModalContent>
+                    </Modal>
                 </div>
             </div>
         </div>

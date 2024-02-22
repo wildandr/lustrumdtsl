@@ -143,20 +143,16 @@ router.post("/user/login", async (req, res) => {
     }
 });
 
-// Ambil semua event yang diikuti oleh user
 router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
     try {
         const userEvents = await sequelize.query(
             `
-    SELECT users.*, teams.*, sbc.*, fcec.*, craft.*, events.event_name,
-    CASE
-        WHEN events.event_id = 2 THEN craft.isVerified
-        ELSE teams.isVerified
-    END AS isVerified
+    SELECT 
+        teams.team_id, teams.event_id, teams.team_name, teams.isVerified AS teams_isVerified, teams.isRejected AS teams_isRejected,
+        craft.participant_id, craft.user_id, craft.full_name, craft.isVerified AS craft_isVerified, craft.isRejected AS craft_isRejected,
+        events.event_name
     FROM users
     LEFT JOIN teams ON users.user_id = teams.user_id
-    LEFT JOIN sbc ON teams.team_id = sbc.team_id
-    LEFT JOIN fcec ON teams.team_id = fcec.team_id
     LEFT JOIN craft ON users.user_id = craft.user_id
     LEFT JOIN events ON teams.event_id = events.event_id
     WHERE users.user_id = :userId
@@ -167,16 +163,45 @@ router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
             }
         );
 
-        if (!userEvents.length) {
+        const modifiedUserEvents = userEvents.map((event) => {
+            if (event.event_id === 2) {
+                return {
+                    ...event,
+                    craft: {
+                        participant_id: event.participant_id,
+                        user_id: event.user_id,
+                        full_name: event.full_name,
+                        isVerified: event.craft_isVerified,
+                        isRejected: event.craft_isRejected,
+                    },
+                };
+            } else {
+                const {
+                    participant_id,
+                    full_name,
+                    craft_isVerified,
+                    craft_isRejected,
+                    ...rest
+                } = event;
+                return rest;
+            }
+        });
+
+        if (
+            !modifiedUserEvents.length ||
+            modifiedUserEvents.every((event) =>
+                Object.values(event).every((value) => value === null)
+            )
+        ) {
             return res.status(404).json({
                 status: "error",
-                message: "User not found",
+                message: "No events found for this user",
             });
         }
 
         res.status(200).json({
             status: "success",
-            data: userEvents,
+            data: modifiedUserEvents,
         });
     } catch (error) {
         console.error(error);

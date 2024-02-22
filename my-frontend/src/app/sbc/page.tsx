@@ -20,7 +20,7 @@ export default function SBC() {
     }, []);
 
     return (
-        <div className=" bg-sbc-orange md:h-[290vh] min-[820px]:h-[300vh] lg:h-[340vh] xl:h-[330vh] 2xl:h-[305vh]">
+        <div className=" bg-sbc-orange h-auto">
             <Image
                 src="/bgciamobile.png"
                 alt="bgcia"

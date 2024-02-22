@@ -78,6 +78,52 @@ export function Form() {
         },
     });
 
+    interface Member {
+        full_name: string;
+        phone_number: string;
+        line_id: string;
+        email: string;
+        ktm: string;
+        active_student_letter: string;
+        photo: string;
+        twibbon_and_poster_link: string;
+        semester: string;
+        department: string;
+    }
+
+    interface TeamData {
+        team: {
+            team_name: string;
+            institution_name: string;
+            payment_proof: string;
+            user_id: number;
+            email: string;
+        };
+        leader: Member;
+        member1: Member;
+        member2: Member;
+        member3: Member;
+    }
+
+    const validateData = (data: TeamData) => {
+        for (let key in data) {
+            if (
+                key === "team" ||
+                key === "leader" ||
+                key === "member1" ||
+                key === "member2"
+            ) {
+                const memberData = data[key] as Member;
+                for (let subKey in memberData) {
+                    if (memberData[subKey as keyof Member] === "") {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    };
+
     const [file, setFile] = useState<File>();
 
     const onSubmit = async (file: File) => {
@@ -179,23 +225,31 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
+        if (!validateData(teamData)) {
+            toast.error("Data belum lengkap");
+            return;
+        }
+
         const members = [
             {
                 ...teamData.member1,
+                semester: Number(teamData.member1.semester),
                 is_leader: 0,
                 batch: null,
             },
             {
                 ...teamData.member2,
+                semester: Number(teamData.member2.semester),
                 is_leader: 0,
                 batch: null,
             },
         ];
 
-        // Cek apakah semua properti dalam teamData.member3 terisi
+        // Check if all properties in teamData.member3 are filled
         if (Object.values(teamData.member3).every((value) => value)) {
             members.push({
                 ...teamData.member3,
+                semester: Number(teamData.member3.semester),
                 is_leader: 0,
                 batch: null,
             });
@@ -205,13 +259,12 @@ export function Form() {
             team: teamData.team,
             leader: {
                 ...teamData.leader,
+                semester: Number(teamData.leader.semester),
                 is_leader: 1,
                 batch: null,
             },
             members,
         };
-
-        console.log(data);
 
         try {
             const token = Cookies.get("token");

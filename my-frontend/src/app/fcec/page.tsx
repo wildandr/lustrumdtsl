@@ -27,7 +27,7 @@ export default function FCEC() {
     };
 
     return (
-        <div className=" bg-fcec md:h-[280vh] min-[820px]:h-[280vh] lg:h-[325vh] xl:h-[315vh] 2xl:h-[300vh] min-[1720px]:h-[310vh]">
+        <div className=" bg-fcec h-auto">
             <Image
                 src="/bgciamobile.png"
                 alt="bgcia"

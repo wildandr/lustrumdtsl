@@ -35,6 +35,15 @@ export function Form() {
         isVerified: false,
     });
 
+    function validateCraftData(data: any): boolean {
+        for (let key in data) {
+            if (typeof data[key] === "string" && data[key] === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const onSubmit = async (file: File) => {
         if (!file) return { success: false };
 
@@ -71,7 +80,7 @@ export function Form() {
                     toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
-                    !/^SKMA_.*_.*$|^ID_.*_.*$|^Pas Foto_.*_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM_.*$/.test(
+                    !/^SKMA_.*$|^ID_.*$|^Pas Foto_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM_.*$/.test(
                         file.name
                     )
                 ) {
@@ -120,6 +129,11 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
+        if (!validateCraftData(craftData)) {
+            toast.error("Semua field harus diisi");
+            return;
+        }
+
         try {
             const token = Cookies.get("token");
 
@@ -133,6 +147,7 @@ export function Form() {
                 }
             );
             toast.success("Pendaftaran berhasil");
+            router.push("/dashboard/user");
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
                 if (error.response && error.response.status === 400) {
@@ -455,7 +470,7 @@ export function Form() {
                                                     }}
                                                 >
                                                     (Format Penamaan : KTM_Nama
-                                                    Tim_Nama Peserta)
+                                                    Peserta)
                                                 </span>
                                             </p>
                                             <input
