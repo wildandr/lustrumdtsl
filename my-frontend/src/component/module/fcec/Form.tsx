@@ -65,17 +65,41 @@ export function Form() {
         },
     });
 
-    function validateTeamData(data: any): boolean {
+    function validateTeamData(data: any): string[] {
+        let emptyFields: string[] = [];
         for (let key in data) {
+            if (key === "member2") {
+                continue;
+            }
             if (typeof data[key] === "object") {
-                if (!validateTeamData(data[key])) {
-                    return false;
-                }
-            } else if (data[key] !== "") {
-                return false;
+                const emptySubFields = validateTeamData(data[key]);
+                emptyFields = emptyFields.concat(
+                    emptySubFields.map((subField) => `${key}.${subField}`)
+                );
+            } else if (data[key] === "") {
+                emptyFields.push(key);
             }
         }
-        return true;
+        return emptyFields;
+    }
+
+    function formatEmptyFields(emptyFields: string[]): string {
+        const groupedFields: { [key: string]: string[] } = {};
+
+        for (let field of emptyFields) {
+            const [parent, child] = field.split(".");
+            if (!groupedFields[parent]) {
+                groupedFields[parent] = [];
+            }
+            groupedFields[parent].push(child);
+        }
+
+        let output = "";
+        for (let parent in groupedFields) {
+            output += `${parent}: ${groupedFields[parent].join(", ")}\n`;
+        }
+
+        return output;
     }
 
     const [file, setFile] = useState<File>();
@@ -185,8 +209,10 @@ export function Form() {
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault();
 
-        if (!validateTeamData(teamData)) {
-            toast.error("Harap isi semua data");
+        const emptyFields = validateTeamData(teamData);
+        if (emptyFields.length > 0) {
+            const formattedEmptyFields = formatEmptyFields(emptyFields);
+            toast.error("Harap isi semua data:\n" + formattedEmptyFields);
             return;
         }
 

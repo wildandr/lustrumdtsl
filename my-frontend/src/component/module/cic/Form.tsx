@@ -233,20 +233,23 @@ export function Form() {
         const members = [
             {
                 ...teamData.member1,
+                semester: Number(teamData.member1.semester),
                 is_leader: 0,
                 batch: null,
             },
             {
                 ...teamData.member2,
+                semester: Number(teamData.member2.semester),
                 is_leader: 0,
                 batch: null,
             },
         ];
 
-        // Cek apakah semua properti dalam teamData.member3 terisi
+        // Check if all properties in teamData.member3 are filled
         if (Object.values(teamData.member3).every((value) => value)) {
             members.push({
                 ...teamData.member3,
+                semester: Number(teamData.member3.semester),
                 is_leader: 0,
                 batch: null,
             });
@@ -256,6 +259,7 @@ export function Form() {
             team: teamData.team,
             leader: {
                 ...teamData.leader,
+                semester: Number(teamData.leader.semester),
                 is_leader: 1,
                 batch: null,
             },

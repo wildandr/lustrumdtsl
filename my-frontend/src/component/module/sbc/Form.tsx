@@ -198,17 +198,20 @@ export function Form() {
             },
             leader: {
                 ...teamData.leader,
+                semester: Number(teamData.leader.semester), // Convert to number here
                 is_leader: 1,
                 batch: null,
             },
             members: [
                 {
                     ...teamData.member1,
+                    semester: Number(teamData.member1.semester), // Convert to number here
                     is_leader: 0,
                     batch: null,
                 },
                 {
                     ...teamData.member2,
+                    semester: Number(teamData.member2.semester), // Convert to number here
                     is_leader: 0,
                     batch: null,
                 },
