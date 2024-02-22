@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
+import JSZip from 'jszip';
+import { parse } from 'json2csv';
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
@@ -28,6 +30,62 @@ export default function DashboardAdmin() {
     useEffect(() => {
         fetchData();
     }, []);
+
+    async function downloadFile(url: string) {
+        const fullUrl = `${url}`;
+        try {
+            const response = await axios.get(fullUrl, {
+                responseType: 'arraybuffer' // this is important
+            });
+            return response.data;
+        } catch (error) {
+            console.error(`Error downloading file from ${fullUrl}:`, error);
+            return null; // return null or some default value
+        }
+    }
+
+    async function downloadFilesAsZip() {
+        const zip = new JSZip();
+
+        const combinedData = registrations.flatMap(registration => {
+            const teamData = registration.team;
+            const leaderData = { ...teamData, ...registration.leader, is_leader: true };
+            const membersData = registration.members.map((member: any) => ({ ...teamData, ...member, is_leader: false }));
+            return [leaderData, ...membersData];
+        });
+
+        const combinedCsv = parse(combinedData, { fields: Object.keys(combinedData[0]) });
+
+        zip.file('combined.csv', combinedCsv);
+
+        // download and add files to zip
+        for (const data of combinedData) {
+            const { ktm, active_student_letter, photo, twibbon_and_poster_link } = data;
+            const ktmData = await downloadFile(ktm);
+            const activeStudentLetterData = await downloadFile(active_student_letter);
+            const photoData = await downloadFile(photo);
+            const twibbonAndPosterLinkData = await downloadFile(twibbon_and_poster_link);
+
+            const ktmFileName = ktm.split('/').pop();
+            const activeStudentLetterFileName = active_student_letter.split('/').pop();
+            const photoFileName = photo.split('/').pop();
+            const twibbonAndPosterLinkFileName = twibbon_and_poster_link.split('/').pop();
+
+            zip.file(ktmFileName, ktmData);
+            zip.file(activeStudentLetterFileName, activeStudentLetterData);
+            zip.file(photoFileName, photoData);
+            zip.file(twibbonAndPosterLinkFileName, twibbonAndPosterLinkData);
+        }
+
+        zip.generateAsync({ type: "blob" }).then(function(content) {
+            const url = window.URL.createObjectURL(content);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'files.zip';
+            link.click();
+            window.URL.revokeObjectURL(url);
+        });
+    }
 
     const verifyTeam = async (teamId: string) => {
         try {
@@ -160,7 +218,7 @@ export default function DashboardAdmin() {
                     </div>
 
                     <div className="flex justify-end mt-10">
-                        <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
+                        <button onClick={downloadFilesAsZip} className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
                             Unduh Semua Data
                         </button>
                     </div>
