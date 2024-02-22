@@ -91,7 +91,7 @@ export default function DetailUser({ params }: { params: any }) {
     }, []);
 
     return (
-        <div className="bg-[#058369] h-[700vh] font-LibreBaskerville">
+        <div className="bg-[#058369] h-[430vh] font-LibreBaskerville">
             <Image
                 src="/bgcia.png"
                 alt="bgcia"
@@ -137,27 +137,20 @@ export default function DetailUser({ params }: { params: any }) {
                                 Bukti Pembayaran
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
-                            </div>
+    <a className="text-blue-500 underline text-left text-lg font-semibold" href={`${teamData.team[0]?.payment_proof || ""}`} target="_blank" rel="noopener noreferrer">
+        {teamData.team[0]?.payment_proof || ""}
+    </a>
+</div>
                         </div>
                         <div className="flex flex-col w-full mt-5">
                             <p className="text-black text-left text-lg font-medium px-6 ">
                                 Bukti Voucher
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.team[0]?.voucher ||
+                                        ""}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -238,13 +231,10 @@ export default function DetailUser({ params }: { params: any }) {
                                 Kartu Tanda Mahasiswa
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.leader.ktm ||
+                                        ""}
+                                </p>
                             </div>
                         </div>
                         <div className="flex flex-col w-full ">
@@ -252,13 +242,10 @@ export default function DetailUser({ params }: { params: any }) {
                                 Pas Foto 3x4
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.leader.photo ||
+                                        ""}
+                                </p>
                             </div>
                         </div>
                         {/* Tambahkan konten lain untuk setiap anggota di sini */}
@@ -341,13 +328,10 @@ export default function DetailUser({ params }: { params: any }) {
                                 Kartu Tanda Mahasiswa
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.members[0]
+                                        ?.ktm|| ""}
+                                </p>
                             </div>
                         </div>
                         <div className="flex flex-col w-full ">
@@ -355,14 +339,11 @@ export default function DetailUser({ params }: { params: any }) {
                                 Pas Foto 3x4
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
-                            </div>
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.members[0]
+                                        ?.photo|| ""}
+                                </p>
+                                </div>
                         </div>
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
@@ -443,27 +424,22 @@ export default function DetailUser({ params }: { params: any }) {
                                 Kartu Tanda Mahasiswa
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
-                            </div>
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.members[1]
+                                        ?.ktm|| ""}
+                                </p>
+                                </div>
                         </div>
                         <div className="flex flex-col w-full ">
                             <p className="text-black text-left text-lg font-medium px-6 ">
                                 Pas Foto 3x4
                             </p>
                             <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                <Image
-                                    src="/logocia.png"
-                                    alt="foto"
-                                    width={500}
-                                    height={500}
-                                    className="w-[300px] h-[300px] z-10"
-                                />
+                                <p className="text-black text-left text-lg font-semibold  ">
+                                    {teamData.members[1]
+                                        ?.photo|| ""}
+                                </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -546,28 +522,22 @@ export default function DetailUser({ params }: { params: any }) {
                                     Kartu Tanda Mahasiswa
                                 </p>
                                 <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                    <Image
-                                        src="/logocia.png"
-                                        alt="foto"
-                                        width={500}
-                                        height={500}
-                                        className="w-[300px] h-[300px] z-10"
-                                    />
-                                </div>
+                                    <p className="text-black text-left text-lg font-semibold  ">
+                                        {teamData.members[2]
+                                            ?.ktm|| ""}
+                                    </p>
+                                    </div>
                             </div>
                             <div className="flex flex-col w-full ">
                                 <p className="text-black text-left text-lg font-medium px-6 ">
                                     Pas Foto 3x4
                                 </p>
                                 <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
-                                    <Image
-                                        src="/logocia.png"
-                                        alt="foto"
-                                        width={500}
-                                        height={500}
-                                        className="w-[300px] h-[300px] z-10"
-                                    />
-                                </div>
+                                    <p className="text-black text-left text-lg font-semibold  ">
+                                        {teamData.members[2]
+                                            ?.photo|| ""}
+                                    </p>
+                                    </div>
                             </div>
                         </div>
                     )}
