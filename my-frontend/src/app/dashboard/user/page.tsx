@@ -36,18 +36,29 @@ interface UserEvent {
     event_name: string;
 }
 
+interface Craft {
+    participant_id: number | null;
+    user_id: number | null;
+    full_name: string | null;
+    isVerified: boolean | null;
+    isRejected: boolean | null;
+}
+
 export default function DashboardUser() {
     const router = useRouter();
 
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
 
-    const [data, setData] = useState<UserEvent[]>([]);
+    const [eventsData, setEventsData] = useState<UserEvent[]>([]);
+    const [craftData, setCraftData] = useState<Craft | null>(null);
+    const combinedData = [...eventsData, craftData].filter(Boolean);
+
     useEffect(() => {
         const fetchData = async () => {
             const user_Id = userIdFromLocalStorage;
             try {
-                const response = await axios.get(
+                const responseEvents = await axios.get(
                     `${process.env.NEXT_PUBLIC_BASE_URL}/user/${user_Id}/events`,
                     {
                         headers: {
@@ -55,12 +66,25 @@ export default function DashboardUser() {
                         },
                     }
                 );
-                console.log(response.data.data);
-                setData(response.data.data);
+
+                const responseCraft = await axios.get(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${user_Id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                setEventsData(responseEvents.data.data);
+                setCraftData(responseCraft.data);
+                console.log(responseEvents.data.data);
+                console.log(responseCraft.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
+
         if (userIdFromLocalStorage) {
             fetchData();
         }
@@ -161,70 +185,118 @@ export default function DashboardUser() {
                                 </tr>
                             </thead>
                             <tbody className="text-black rounded-xl">
-                                {data.map((registration, index) => (
-                                    <tr
-                                        key={index}
-                                        className={`text-left bg-[#B5E5DB]`}
-                                    >
-                                        <td
-                                            className={`font-semibold bg-[#B5E5DB] px-2 py-2 border-r border-ciaGreen border-opacity-10 ${
-                                                index === 0
-                                                    ? "rounded-tl-xl"
-                                                    : index === data.length - 1
-                                                    ? "rounded-bl-xl"
-                                                    : ""
-                                            } ${
-                                                data.length === 1
-                                                    ? "rounded-l-xl"
-                                                    : ""
-                                            }`}
-                                        >
-                                            {registration.team_name}
-                                        </td>
-                                        <td className="bg-[#B5E5DB] font-semibold px-2 border-r border-ciaGreen border-opacity-10 ">
-                                            {registration.event_name}
-                                        </td>
-                                        <td
-                                            className="bg-[#B5E5DB] font-semibold px-2 border-none"
-                                            style={{
-                                                color:
-                                                    registration.isVerified ===
-                                                    1
-                                                        ? "#166534"
-                                                        : "red",
-                                            }}
-                                        >
-                                            {registration.isVerified === 1
-                                                ? "Pendaftaran Berhasil"
-                                                : "Pendaftaran Belum Berhasil"}
-                                        </td>
-                                        <td
-                                            className={`bg-[#B5E5DB]  px-[0.6rem] py-2 ${
-                                                index === 0
-                                                    ? "rounded-tr-xl"
-                                                    : index === data.length - 1
-                                                    ? "rounded-br-xl"
-                                                    : ""
-                                            } ${
-                                                data.length === 1
-                                                    ? "rounded-r-xl"
-                                                    : ""
-                                            }`}
-                                        >
-                                            <div className="flex-col flex gap-2 md:flex-row">
-                                                <Link
-                                                    href={`/dashboard/user/${registration.event_id}&${registration.team_id}`}
-                                                    className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
+                                {combinedData.map((registration, index) => {
+                                    if (registration) {
+                                        return (
+                                            <tr
+                                                key={index}
+                                                className={`text-left bg-[#B5E5DB]`}
+                                            >
+                                                <td
+                                                    className={`font-semibold bg-[#B5E5DB] px-2 py-2 border-r border-ciaGreen border-opacity-10 ${
+                                                        index === 0
+                                                            ? "rounded-tl-xl"
+                                                            : index ===
+                                                              combinedData.length -
+                                                                  1
+                                                            ? "rounded-bl-xl"
+                                                            : ""
+                                                    } ${
+                                                        combinedData.length ===
+                                                        1
+                                                            ? "rounded-l-xl"
+                                                            : ""
+                                                    }`}
                                                 >
-                                                    Lihat Data
-                                                </Link>
-                                                <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px]  rounded-md px-1 py-1 w-full ">
-                                                    Ubah Data
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
+                                                    {"event_name" in
+                                                    registration
+                                                        ? registration.team_name
+                                                        : registration.full_name}
+                                                </td>
+                                                <td className="bg-[#B5E5DB] font-semibold px-2 border-r border-ciaGreen border-opacity-10 ">
+                                                    {"event_name" in
+                                                        registration &&
+                                                    registration.event_name
+                                                        ? registration.event_name
+                                                        : "CRAFT"}
+                                                </td>
+
+                                                <td
+                                                    className="bg-[#B5E5DB] font-semibold px-2 border-none"
+                                                    style={{
+                                                        color:
+                                                            ("teams_isRejected" in
+                                                                registration &&
+                                                                registration.teams_isRejected) ||
+                                                            ("isRejected" in
+                                                                registration &&
+                                                                registration.isRejected)
+                                                                ? "red"
+                                                                : ("teams_isVerified" in
+                                                                      registration &&
+                                                                      registration.teams_isVerified ===
+                                                                          1) ||
+                                                                  ("isVerified" in
+                                                                      registration &&
+                                                                      registration.isVerified)
+                                                                ? "#166534"
+                                                                : "red",
+                                                    }}
+                                                >
+                                                    {("teams_isRejected" in
+                                                        registration &&
+                                                        registration.teams_isRejected) ||
+                                                    ("isRejected" in
+                                                        registration &&
+                                                        registration.isRejected)
+                                                        ? "Pendaftaran Ditolak"
+                                                        : ("teams_isVerified" in
+                                                              registration &&
+                                                              registration.teams_isVerified ===
+                                                                  1) ||
+                                                          ("isVerified" in
+                                                              registration &&
+                                                              registration.isVerified)
+                                                        ? "Berhasil Verifikasi"
+                                                        : "Pendaftaran Belum Berhasil"}
+                                                </td>
+                                                <td
+                                                    className={`bg-[#B5E5DB]  px-[0.6rem] py-2 ${
+                                                        index === 0
+                                                            ? "rounded-tr-xl"
+                                                            : index ===
+                                                              combinedData.length -
+                                                                  1
+                                                            ? "rounded-br-xl"
+                                                            : ""
+                                                    } ${
+                                                        combinedData.length ===
+                                                        1
+                                                            ? "rounded-r-xl"
+                                                            : ""
+                                                    }`}
+                                                >
+                                                    <div className="flex-col flex gap-2 md:flex-row">
+                                                        {"event_id" in
+                                                            registration &&
+                                                        "team_id" in
+                                                            registration ? (
+                                                            <Link
+                                                                href={`/dashboard/user/${registration.event_id}&${registration.team_id}`}
+                                                                className="bg-ciaGreen text-white text-[13px] lg:text-[16px] text-center rounded-md px-3 py-1 w-full"
+                                                            >
+                                                                Lihat Data
+                                                            </Link>
+                                                        ) : null}
+                                                        <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px]  rounded-md px-1 py-1 w-full ">
+                                                            Ubah Data
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
+                                })}
                             </tbody>
                         </table>
                         <div className=" mt-4 ">
