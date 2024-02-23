@@ -16,6 +16,7 @@ import {
     Input,
     Textarea,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
@@ -23,6 +24,16 @@ export default function DashboardAdmin() {
     const [rejectMessage, setRejectMessage] = useState("");
     const [currentTeamId, setCurrentTeamId] = useState(null);
     const token = Cookies.get("token");
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const isAdmin = Cookies.get("isAdmin");
+
+        if (isAdmin !== "true") {
+            router.push("/cia");
+        }
+    }, []);
 
     const handleRejectMessageChange: React.ChangeEventHandler<
         HTMLInputElement
