@@ -506,6 +506,7 @@ export function Form() {
                                 accept="application/pdf"
                                 required
                                 onChange={onFileChange("team")}
+                                value={teamData.team.payment_proof}
                             ></input>
                         </div>
                         <div className="flex flex-col gap-1 border-b-2 pb-2 border-[#18AB8E]">
