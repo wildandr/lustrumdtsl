@@ -65,14 +65,14 @@ export function Form() {
         },
     });
 
-    function validateTeamData(data: any): string[] {
+    function validateTeamData(data: any, inTeamsObject = false): string[] {
         let emptyFields: string[] = [];
         for (let key in data) {
-            if (key === "member2") {
+            if ((key === "member2") || (inTeamsObject && key === "payment_proof")) {
                 continue;
             }
             if (typeof data[key] === "object") {
-                const emptySubFields = validateTeamData(data[key]);
+                const emptySubFields = validateTeamData(data[key], key === "team");
                 emptyFields = emptyFields.concat(
                     emptySubFields.map((subField) => `${key}.${subField}`)
                 );
