@@ -12,7 +12,7 @@ const sbcRouter = require("./routes/sbc");
 const fcecRouter = require("./routes/fcec");
 const craftRouter = require("./routes/craft");
 
-app.use(cors());
+// app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

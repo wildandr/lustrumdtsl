@@ -210,4 +210,73 @@ router.delete(
     }
 );
 
+router.get("/fcec-participant", authenticateToken, async (req, res) => {
+    try {
+        const members = await sequelize.query(
+            `
+  SELECT 
+    members.full_name, teams.team_name, fcec.abstract_title, teams.institution_name, members.department, members.batch, members.nim, members.semester, members.phone_number, members.line_id, members.email, teams.email AS team_email, members.is_leader, members.twibbon_and_poster_link, fcec.abstract_video_link, teams.isVerified, teams.isRejected, teams.rejectMessage, fcec.originality_statement, fcec.abstract_file, members.ktm, members.photo, members.active_student_letter, teams.payment_proof, teams.voucher, teams.team_id
+  FROM 
+    teams
+  INNER JOIN
+    members
+  ON
+    teams.team_id = members.team_id
+  INNER JOIN
+    fcec
+  ON
+    teams.team_id = fcec.team_id
+  WHERE 
+    teams.event_id = 1
+`,
+            {
+                type: QueryTypes.SELECT,
+            }
+        );
+
+        if (members.length === 0) {
+            return res.status(404).json({
+                status: "error",
+                message: "No members found",
+            });
+        }
+
+        const modifiedMembers = members.map((member) => {
+            const {
+                voucher,
+                active_student_letter,
+                ktm,
+                photo,
+                abstract_file,
+                originality_statement,
+                team_name,
+                team_id,
+                ...otherData
+            } = member;
+            return {
+                data: { ...otherData, team_name, team_id },
+                download: {
+                    voucher,
+                    active_student_letter,
+                    ktm,
+                    photo,
+                    abstract_file,
+                    originality_statement,
+                },
+            };
+        });
+
+        res.status(200).json({
+            status: "success",
+            members: modifiedMembers,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            status: "error",
+            message: "An error occurred while retrieving the members",
+        });
+    }
+});
+
 module.exports = router;
