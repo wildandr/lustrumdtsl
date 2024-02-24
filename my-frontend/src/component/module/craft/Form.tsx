@@ -29,7 +29,7 @@ export function Form() {
         activity_choice: "online",
         whatsapp_number: "",
         isMahasiswaDTSL: false,
-        ktm: null,
+        ktm: "",
         payment_proof: "",
         email: "",
         isVerified: false,
@@ -307,7 +307,7 @@ export function Form() {
                                                 Offline{" "}
                                             </Radio>
                                         </RadioGroup>
-                                        {/* <RadioGroup
+                                        <RadioGroup
                                             classNames={{
                                                 base: "gap-2 text-black text-xs lg:text-sm  mb-5",
                                                 label: "text-xs lg:text-sm text-black",
@@ -340,7 +340,7 @@ export function Form() {
                                                 {" "}
                                                 Tidak{" "}
                                             </Radio>
-                                        </RadioGroup> */}
+                                        </RadioGroup>
                                         <Input
                                             isRequired
                                             label={`Nama Lengkap Peserta `}
@@ -456,12 +456,9 @@ export function Form() {
                                             }}
                                             placeholder={`Nomor Whatsapp`}
                                         />
-                                        {/* <div className="flex flex-col gap-1 border-b-2 mt-2 pb-2 border-[#18AB8E]">
+                                        <div className="flex flex-col gap-1 border-b-2 mt-2 pb-2 border-[#18AB8E]">
                                             <p className="text-black text-[0.7rem] lg:text-[12px] ml-1">
                                                 Kartu Tanda Mahasiswa{" "}
-                                                <span style={{ color: "red" }}>
-                                                    *
-                                                </span>{" "}
                                                 <span
                                                     style={{
                                                         color: "gray",
@@ -479,7 +476,7 @@ export function Form() {
                                                 required
                                                 onChange={onFileChange("ktm")}
                                             ></input>
-                                        </div> */}
+                                        </div>
                                         <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
                                             <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
                                                 Bukti Pembayaran{" "}
