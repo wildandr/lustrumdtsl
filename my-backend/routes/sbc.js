@@ -277,4 +277,89 @@ router.delete(
         }
     }
 );
+
+router.get("/sbc-participant", authenticateToken, async (req, res) => {
+    try {
+        const participants = await sequelize.query(
+            `
+  SELECT 
+    members.*, teams.*, sbc.bridge_name, dosbim.advisor_id AS dosbim_advisor_id, dosbim.team_id AS dosbim_team_id, dosbim.full_name AS dosbim_full_name, dosbim.nip AS dosbim_nip, dosbim.email AS dosbim_email, dosbim.phone_number AS dosbim_phone_number, dosbim.photo AS dosbim_photo
+  FROM 
+    members
+  INNER JOIN
+    teams
+  ON
+    members.team_id = teams.team_id
+  INNER JOIN
+    sbc
+  ON
+    teams.team_id = sbc.team_id
+  INNER JOIN
+    dosbim
+  ON
+    teams.team_id = dosbim.team_id
+  WHERE 
+    teams.event_id = 3
+`,
+            {
+                type: QueryTypes.SELECT,
+            }
+        );
+
+        if (participants.length === 0) {
+            return res.status(404).json({
+                status: "error",
+                message: "No participants found",
+            });
+        }
+
+        const modifiedParticipants = participants.map((participant) => {
+            const {
+                dosbim_advisor_id,
+                dosbim_team_id,
+                dosbim_full_name,
+                dosbim_nip,
+                dosbim_email,
+                dosbim_phone_number,
+                dosbim_photo,
+                ktm,
+                active_student_letter,
+                photo,
+                payment_proof,
+                voucher,
+                ...otherData
+            } = participant;
+            return {
+                ...otherData,
+                dosbim: {
+                    advisor_id: dosbim_advisor_id,
+                    team_id: dosbim_team_id,
+                    full_name: dosbim_full_name,
+                    nip: dosbim_nip,
+                    email: dosbim_email,
+                    phone_number: dosbim_phone_number,
+                    photo: dosbim_photo,
+                },
+                download: {
+                    ktm,
+                    active_student_letter,
+                    photo,
+                    payment_proof,
+                    voucher,
+                },
+            };
+        });
+
+        res.status(200).json({
+            status: "success",
+            participants: modifiedParticipants,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            status: "error",
+            message: "An error occurred while retrieving the participants",
+        });
+    }
+});
 module.exports = router;

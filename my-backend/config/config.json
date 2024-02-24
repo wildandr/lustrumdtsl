@@ -1,23 +1,23 @@
 {
     "development": {
-        "username": "root2",
-        "password": "Makanmakan3x*",
+        "username": "root",
+        "password": null,
         "database": "lustrumdtsl",
-        "host": "localhost",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "test": {
-        "username": "root2",
-        "password": "Makanmakan3x*",
+        "username": "root",
+        "password": null,
         "database": "lustrumdtsl",
-        "host": "localhost",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "production": {
-        "username": "root2",
-        "password": "Makanmakan3x*",
+        "username": "root",
+        "password": null,
         "database": "lustrumdtsl",
-        "host": "localhost",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     }
 }
