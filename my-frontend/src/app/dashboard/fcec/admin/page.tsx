@@ -16,9 +16,12 @@ import {
     Input,
     Textarea,
 } from "@nextui-org/react";
+import JSZip from "jszip";
+import { parse } from "json2csv";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
+    const [participant, setParticipant] = useState<any[]>([]);
     const token = Cookies.get("token");
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [rejectMessage, setRejectMessage] = useState("");
@@ -28,6 +31,22 @@ export default function DashboardAdmin() {
         HTMLInputElement
     > = (event) => {
         setRejectMessage(event.target.value);
+    };
+
+    const fetchParticipant = async () => {
+        try {
+            const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/fcec-participant`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            setParticipant(response.data.members);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
     const handleReject = async (team_id: number, rejectMessage: string) => {
@@ -74,7 +93,67 @@ export default function DashboardAdmin() {
 
     useEffect(() => {
         fetchData();
+        fetchParticipant();
     }, []);
+
+    async function downloadFile(url: string) {
+        const fullUrl = `${url}`;
+        try {
+            const response = await axios.get(fullUrl, {
+                responseType: 'arraybuffer' // this is important
+            });
+            return response.data;
+        } catch (error) {
+            console.error(`Error downloading file from ${fullUrl}:`, error);
+            return null; // return null or some default value
+        }
+    }
+
+    async function downloadFilesAsZip() {
+        const zip = new JSZip();
+
+        const data = participant.map((participant: any) => participant.data);
+        
+        const combinedCsv = parse(data, { fields: Object.keys(data[0]) });
+        zip.file('data_fcec.csv', combinedCsv);
+
+        
+        const downloadPath = participant.map((participant: any) => participant.download);
+       
+        for (const participant of downloadPath) {
+            const { voucher, active_student_letter, photo, ktm, abstract_file, originality_statement } = participant;
+
+            const ktmData = await downloadFile(ktm);
+            const activeStudentLetterData = await downloadFile(active_student_letter);
+            const photoData = await downloadFile(photo);
+            const voucherData = await downloadFile(voucher);
+            const abstractData = await downloadFile(abstract_file);
+            const originalityStatementData = await downloadFile(originality_statement);
+
+            const ktmFileName = ktm ? ktm.split('/').pop() : null;
+            const activeStudentLetterFileName = active_student_letter ? active_student_letter.split('/').pop() : null;
+            const photoFileName = photo ? photo.split('/').pop() : null;
+            const voucherFileName = voucher ? voucher.split('/').pop() : null;
+            const abstractFileName = abstract_file ? abstract_file.split('/').pop() : null;
+            const originalityStatementFileName = originality_statement ? originality_statement.split('/').pop() : null;
+
+            zip.file(ktmFileName, ktmData);
+            zip.file(activeStudentLetterFileName, activeStudentLetterData);
+            zip.file(photoFileName, photoData);
+            zip.file(abstractFileName, abstractData);
+            zip.file(voucherFileName, voucherData);
+            zip.file(originalityStatementFileName, originalityStatementData);
+        }
+    
+        zip.generateAsync({ type: "blob" }).then(function(content: Blob) {
+            const url = window.URL.createObjectURL(content);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'files.zip';
+            link.click();
+            window.URL.revokeObjectURL(url);
+        });
+    }
 
     const verifyTeam = async (teamId: string) => {
         try {
@@ -225,7 +304,7 @@ export default function DashboardAdmin() {
                     </div>
 
                     <div className="flex justify-end mt-10">
-                        <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
+                        <button onClick={downloadFilesAsZip} className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
                             Unduh Semua Data
                         </button>
                     </div>
