@@ -28,7 +28,7 @@ export function Form() {
         user_id: Number(userIdFromCookie),
         activity_choice: "online",
         whatsapp_number: "",
-        isMahasiswaDTSL: true,
+        isMahasiswaDTSL: false,
         ktm: "",
         payment_proof: "",
         email: "",
@@ -37,7 +37,11 @@ export function Form() {
 
     function validateCraftData(data: any): boolean {
         for (let key in data) {
-            if (typeof data[key] === "string" && data[key] === "") {
+            if (
+                key !== "ktm" &&
+                typeof data[key] === "string" &&
+                data[key] === ""
+            ) {
                 return false;
             }
         }
@@ -118,12 +122,6 @@ export function Form() {
     const backgroundHeading = {
         backgroundImage: `url(/craftBgHeading.png)`,
         backgroundSize: "cover",
-    };
-
-    const backgroundImage = {
-        backgroundImage: `url(/assets/sbc/bg_form_sbc.png)`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
     };
 
     const handleRegister = async (event: FormEvent) => {
@@ -461,9 +459,6 @@ export function Form() {
                                         <div className="flex flex-col gap-1 border-b-2 mt-2 pb-2 border-[#18AB8E]">
                                             <p className="text-black text-[0.7rem] lg:text-[12px] ml-1">
                                                 Kartu Tanda Mahasiswa{" "}
-                                                <span style={{ color: "red" }}>
-                                                    *
-                                                </span>{" "}
                                                 <span
                                                     style={{
                                                         color: "gray",

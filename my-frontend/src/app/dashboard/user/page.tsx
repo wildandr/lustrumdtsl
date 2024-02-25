@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 interface UserEvent {
     user_id: number | null;
     email: string | null;
@@ -15,7 +16,7 @@ interface UserEvent {
     updatedAt: string | null;
     isAdmin: number;
     eventId: number | null;
-    team_id: number | null;
+    team_id: number;
     event_id: number;
     team_name: string;
     institution_name: string | null;
@@ -54,41 +55,94 @@ export default function DashboardUser() {
     const [craftData, setCraftData] = useState<Craft | null>(null);
     const combinedData = [...eventsData, craftData].filter(Boolean);
 
+    const fetchData = async () => {
+        const user_Id = userIdFromLocalStorage;
+        try {
+            const responseEvents = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/user/${user_Id}/events`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            setEventsData(responseEvents.data.data);
+            console.log(responseEvents.data.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+        try {
+            const responseCraft = await axios.get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${user_Id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            setCraftData(responseCraft.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const user_Id = userIdFromLocalStorage;
-            try {
-                const responseEvents = await axios.get(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}/user/${user_Id}/events`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-
-                // const responseCraft = await axios.get(
-                //     `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/user/${user_Id}`,
-                //     {
-                //         headers: {
-                //             Authorization: `Bearer ${token}`,
-                //         },
-                //     }
-                // );
-
-                setEventsData(responseEvents.data.data);
-                // setCraftData(responseCraft.data);
-                console.log(responseEvents.data.data);
-                // console.log(responseCraft.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
         if (userIdFromLocalStorage) {
             fetchData();
         }
     }, []);
+
+    const deleteTeam = async (eventName: string, teamId: number) => {
+        try {
+            const response = await fetch(
+                `${
+                    process.env.NEXT_PUBLIC_BASE_URL
+                }/teams/${eventName.toLowerCase()}/delete/${teamId}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (response.ok) {
+                toast.success("Tim Berhasil Dihapus");
+                fetchData();
+            } else {
+                toast.error("Gagal menghapus tim");
+            }
+        } catch (error) {
+            console.error("Error deleting team:", error);
+        }
+    };
+
+    const removeTeam = async (participantId: number) => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/crafts/delete/${participantId}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            toast.success("Tim Berhasil Dihapus");
+            fetchData();
+        } catch (error) {
+            console.error("Error deleting team:", error);
+        }
+    };
 
     return (
         <div
@@ -288,8 +342,40 @@ export default function DashboardUser() {
                                                                 Lihat Data
                                                             </Link>
                                                         ) : null}
-                                                        <button className="bg-ciaGreen text-white text-[13px] lg:text-[16px]  rounded-md px-1 py-1 w-full ">
-                                                            Ubah Data
+                                                        <button
+                                                            className="bg-[#E25933] text-white text-[13px] lg:text-[16px] rounded-md px-1 py-1 w-full"
+                                                            onClick={() => {
+                                                                if (
+                                                                    "event_name" in
+                                                                        registration &&
+                                                                    "team_id" in
+                                                                        registration
+                                                                ) {
+                                                                    deleteTeam(
+                                                                        registration.event_name,
+                                                                        registration.team_id
+                                                                    );
+                                                                }
+                                                                if (
+                                                                    "participant_id" in
+                                                                    registration
+                                                                ) {
+                                                                    if (
+                                                                        registration.participant_id !==
+                                                                        null
+                                                                    ) {
+                                                                        removeTeam(
+                                                                            registration.participant_id
+                                                                        );
+                                                                    }
+                                                                } else {
+                                                                    console.error(
+                                                                        "Cannot delete team: registration is not a UserEvent"
+                                                                    );
+                                                                }
+                                                            }}
+                                                        >
+                                                            Hapus
                                                         </button>
                                                     </div>
                                                 </td>
@@ -319,4 +405,7 @@ export default function DashboardUser() {
             </div>
         </div>
     );
+}
+function fetchData() {
+    throw new Error("Function not implemented.");
 }
