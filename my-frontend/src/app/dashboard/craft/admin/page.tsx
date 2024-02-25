@@ -17,6 +17,8 @@ import {
     Textarea,
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import JSZip from "jszip";
+import { parse } from "json2csv";
 
 export default function DashboardAdmin() {
     const [registrations, setRegistrations] = useState<any[]>([]);
@@ -53,6 +55,52 @@ export default function DashboardAdmin() {
     useEffect(() => {
         fetchData();
     }, []);
+
+    async function downloadFile(url: string) {
+        const fullUrl = `${url}`;
+        try {
+            const response = await axios.get(fullUrl, {
+                responseType: 'arraybuffer' // this is important
+            });
+            return response.data;
+        } catch (error) {
+            console.error(`Error downloading file from ${fullUrl}:`, error);
+            return null; // return null or some default value
+        }
+    }
+
+    async function downloadFilesAsZip() {
+        const zip = new JSZip();
+
+        const data = registrations
+    
+        const combinedCsv = parse(data, { fields: Object.keys(data[0]) });
+    
+        zip.file('data_craft.csv', combinedCsv);
+    
+        // download and add files to zip
+        for (const participant of data) {
+            const { ktm, payment_proof } = participant;
+    
+            const ktmData = await downloadFile(ktm);
+            const paymentProofData = await downloadFile(payment_proof);
+    
+            const ktmFileName = ktm.split('/').pop();
+            const paymentProofFileName = payment_proof.split('/').pop();
+    
+            zip.file(ktmFileName, ktmData);
+            zip.file(paymentProofFileName, paymentProofData);
+        }
+    
+        zip.generateAsync({ type: "blob" }).then(function(content: Blob) {
+            const url = window.URL.createObjectURL(content);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'files.zip';
+            link.click();
+            window.URL.revokeObjectURL(url);
+        });
+    }
 
     const verifyTeam = async (participant_id: string) => {
         try {
@@ -231,7 +279,7 @@ export default function DashboardAdmin() {
                     </div>
 
                     <div className="flex justify-end mt-10">
-                        <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
+                        <button onClick={downloadFilesAsZip} className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
                             Unduh Semua Data
                         </button>
                     </div>

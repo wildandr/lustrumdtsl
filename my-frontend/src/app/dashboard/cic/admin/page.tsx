@@ -122,7 +122,7 @@ export default function DashboardAdmin() {
             fields: Object.keys(combinedData[0]),
         });
 
-        zip.file("combined.csv", combinedCsv);
+        zip.file('data_cic.csv', combinedCsv);
 
         // download and add files to zip
         for (const data of combinedData) {
@@ -137,23 +137,17 @@ export default function DashboardAdmin() {
                 active_student_letter
             );
             const photoData = await downloadFile(photo);
-            const twibbonAndPosterLinkData = await downloadFile(
-                twibbon_and_poster_link
-            );
+            // const twibbonAndPosterLinkData = await downloadFile(twibbon_and_poster_link);
 
-            const ktmFileName = ktm.split("/").pop();
-            const activeStudentLetterFileName = active_student_letter
-                .split("/")
-                .pop();
-            const photoFileName = photo.split("/").pop();
-            const twibbonAndPosterLinkFileName = twibbon_and_poster_link
-                .split("/")
-                .pop();
+            const ktmFileName = ktm.split('/').pop();
+            const activeStudentLetterFileName = active_student_letter.split('/').pop();
+            const photoFileName = photo.split('/').pop();
+            // const twibbonAndPosterLinkFileName = twibbon_and_poster_link.split('/').pop();
 
             zip.file(ktmFileName, ktmData);
             zip.file(activeStudentLetterFileName, activeStudentLetterData);
             zip.file(photoFileName, photoData);
-            zip.file(twibbonAndPosterLinkFileName, twibbonAndPosterLinkData);
+            // zip.file(twibbonAndPosterLinkFileName, twibbonAndPosterLinkData);
         }
 
         zip.generateAsync({ type: "blob" }).then(function (content) {
