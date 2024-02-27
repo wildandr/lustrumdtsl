@@ -166,7 +166,7 @@ export function Kegiatan() {
                                 width={1000}
                                 height={1000}
                                 alt=''
-                                className='w-full p-[0%] md:p-[0%]'/>
+                                className='p-[0%] md:p-[0%] object-contain scale-150'/>
                         </div>
                         <div className='flex w-full h-[10%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>CIA x CRAFT</p>
@@ -179,7 +179,7 @@ export function Kegiatan() {
                                 width={1000}
                                 height={1000}
                                 alt=''
-                                className='w-full p-[0%] md:p-[0%]'/>
+                                className='w-full scale-150'/>
                         </div>
                         <div className='flex w-full h-[10%] justify-center items-center'>
                             <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>Pentas Aksi Sipil</p>
