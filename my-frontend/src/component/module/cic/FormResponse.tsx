@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import JSZip from "jszip";
+import { parse } from "json2csv";
+import { useRouter } from "next/navigation";
 
 interface Member {
   member_id: number;
@@ -65,6 +68,11 @@ export default function DetailUser({ params }: { params: any }) {
     members: [],
   });
   const token = Cookies.get("token");
+  const isAdmin = Cookies.get("isAdmin");
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
 
   const fetchData = async () => {
     try {
@@ -87,6 +95,79 @@ export default function DetailUser({ params }: { params: any }) {
   useEffect(() => {
     fetchData();
   }, []);
+
+  async function downloadFile(url: string) {
+    const fullUrl = `${url}`;
+    try {
+      const response = await axios.get(fullUrl, {
+        responseType: "arraybuffer", // this is important
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Error downloading file from ${fullUrl}:`, error);
+      return null; // return null or some default value
+    }
+  }
+
+//   async function downloadFilesAsZip(teamData: TeamData) {
+//     try {
+//       const zip = new JSZip();
+        
+//       const leaderData = {
+//         Nama_Lengkap: teamData.leader.full_name || '',
+//         Departemen: teamData.leader.department || '',
+//         Batch: teamData.leader.batch || '',
+//         Nomor_Whatsapp: teamData.leader.phone_number || '',
+//         ID_Line: teamData.leader.line_id || '',
+//         Email: teamData.leader.email || '',
+//         KTM: teamData.leader.ktm || '',
+//         Nim : teamData.leader.nim || '',
+//         Semester : teamData.leader.semester || '',
+//         Surat_Keterangan_Mahasiswa_Aktif: teamData.leader.active_student_letter || '',
+//         Pas_Foto_3x4: teamData.leader.photo || '',
+//         Link_Bukti_Upload_Twibbon: teamData.leader.twibbon_and_poster_link || ''
+//     };
+//     const membersData = teamData.members.map((member: any) => ({
+//         Nama_Lengkap: member.full_name || '',
+//         Departemen: member.department || '',
+//         Batch: member.batch || '',
+//         Nomor_Whatsapp: member.phone_number || '',
+//         ID_Line: member.line_id || '',
+//         Email: member.email || '',
+//         KTM: member.ktm || '',
+//         Nim : member.nim || '',
+//         Semester : member.semester || '',
+//         Surat_Keterangan_Siswa_Aktif: member.active_student_letter || '',
+//         Pas_Foto_3x4: member.photo || '',
+//         Link_Bukti_Upload_Twibbon: member.twibbon_and_poster_link || ''
+//     }));
+  
+//       // Mengunduh file-file untuk ketua tim dan anggota
+//       const leaderPhoto = await downloadFile(leader.photo);
+//       const leaderActiveStudentLetter = await downloadFile(
+//         leader.active_student_letter
+//       );
+      
+//       // Menambahkan file-file ke dalam ZIP
+//       zip.file(`Ketua_${leader.full_name}_Photo.jpg`, leaderPhoto);
+//       zip.file(
+//         `Ketua_${leader.full_name}_Active_Student_Letter.pdf`,
+//         leaderActiveStudentLetter
+//       );
+//       zip.file
+  
+//       // Membuat file ZIP
+//       const content = await zip.generateAsync({ type: "blob" });
+  
+//       // Mendownload file ZIP
+//       const downloadLink = document.createElement("a");
+//       downloadLink.href = URL.createObjectURL(content);
+//       downloadLink.download = "Team_Files.zip";
+//       downloadLink.click();
+//     } catch (error) {
+//       console.error("Error downloading files as ZIP:", error);
+//     }
+//   }
 
   return (
     <div className="bg-[#058369] h-[430vh] font-LibreBaskerville">

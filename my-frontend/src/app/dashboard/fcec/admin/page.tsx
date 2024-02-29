@@ -31,11 +31,11 @@ export default function DashboardAdmin() {
     const router = useRouter();
 
     useEffect(() => {
-        const isAdmin = Cookies.get("isAdmin");
+        // const isAdmin = Cookies.get("isAdmin");
 
-        if (isAdmin !== "true") {
-            router.push("/cia");
-        }
+        // if (isAdmin !== "true") {
+        //     router.push("/cia");
+        // }
     }, []);
 
     const handleRejectMessageChange: React.ChangeEventHandler<
