@@ -68,7 +68,7 @@ export default function DetailUser({ params }: { params: any }) {
     members: [],
   });
   const token = Cookies.get("token");
-  const isAdmin = Cookies.get("isAdmin");
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); 
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -93,7 +93,12 @@ export default function DetailUser({ params }: { params: any }) {
   };
 
   useEffect(() => {
+    const checkAdmin = () => {
+        const adminCookie = Cookies.get("isAdmin");
+        setIsAdmin(adminCookie === "true"); // Set nilai isAdmin berdasarkan cookie
+      };
     fetchData();
+    checkAdmin();
   }, []);
 
   async function downloadFile(url: string) {

@@ -86,7 +86,7 @@ export default function DetailUser({ params }: { params: any }) {
     sbc: [],
   });
   const token = Cookies.get("token");
-  const isAdmin = Cookies.get("isAdmin");
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); 
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -109,7 +109,12 @@ export default function DetailUser({ params }: { params: any }) {
   };
 
   useEffect(() => {
+    const checkAdmin = () => {
+        const adminCookie = Cookies.get("isAdmin");
+        setIsAdmin(adminCookie === "true"); // Set nilai isAdmin berdasarkan cookie
+      };
     fetchData();
+    checkAdmin();
   }, []);
 
   async function downloadFile(url: string) {
@@ -222,8 +227,14 @@ export default function DetailUser({ params }: { params: any }) {
       
 }
   return (
-    <div className=" font-LibreBaskerville">
-    
+    <div className="bg-[#058369] h-[520vh] font-LibreBaskerville">
+     <Image
+        src="/bgcia.png"
+        alt="bgcia"
+        width={1000}
+        height={1000}
+        className="hidden sm:flex fixed w-full h-full object-cover z-10"
+      />
       <div className=" w-full h-[100vh] absolute z-40">
         <div className="bg-white p-4 rounded-xl  w-[90%] mx-auto mt-28 ">
           <div>
@@ -695,7 +706,7 @@ export default function DetailUser({ params }: { params: any }) {
           </div>
 
           <div className="flex justify-end mt-10">
-          {!isAdmin && (
+          {isAdmin && (
           <button
             onClick={downloadFilesAsZip}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
@@ -705,7 +716,7 @@ export default function DetailUser({ params }: { params: any }) {
         )}
 
         {/* Tombol untuk kembali jika isAdmin */}
-        {isAdmin && (
+        {!isAdmin && (
           <button
             onClick={handleBack}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
