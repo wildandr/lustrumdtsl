@@ -109,65 +109,85 @@ export default function DetailUser({ params }: { params: any }) {
     }
   }
 
-//   async function downloadFilesAsZip(teamData: TeamData) {
-//     try {
-//       const zip = new JSZip();
+  async function downloadFilesAsZip() {
+ 
+      const zip = new JSZip();
         
-//       const leaderData = {
-//         Nama_Lengkap: teamData.leader.full_name || '',
-//         Departemen: teamData.leader.department || '',
-//         Batch: teamData.leader.batch || '',
-//         Nomor_Whatsapp: teamData.leader.phone_number || '',
-//         ID_Line: teamData.leader.line_id || '',
-//         Email: teamData.leader.email || '',
-//         KTM: teamData.leader.ktm || '',
-//         Nim : teamData.leader.nim || '',
-//         Semester : teamData.leader.semester || '',
-//         Surat_Keterangan_Mahasiswa_Aktif: teamData.leader.active_student_letter || '',
-//         Pas_Foto_3x4: teamData.leader.photo || '',
-//         Link_Bukti_Upload_Twibbon: teamData.leader.twibbon_and_poster_link || ''
-//     };
-//     const membersData = teamData.members.map((member: any) => ({
-//         Nama_Lengkap: member.full_name || '',
-//         Departemen: member.department || '',
-//         Batch: member.batch || '',
-//         Nomor_Whatsapp: member.phone_number || '',
-//         ID_Line: member.line_id || '',
-//         Email: member.email || '',
-//         KTM: member.ktm || '',
-//         Nim : member.nim || '',
-//         Semester : member.semester || '',
-//         Surat_Keterangan_Siswa_Aktif: member.active_student_letter || '',
-//         Pas_Foto_3x4: member.photo || '',
-//         Link_Bukti_Upload_Twibbon: member.twibbon_and_poster_link || ''
-//     }));
+    const membersData = teamData.members.map((member: any) => ({
+        Nama_Lengkap: member.full_name || '',
+        Departemen: member.department || '',
+        Batch: member.batch || '',
+        Nomor_Whatsapp: member.phone_number || '',
+        ID_Line: member.line_id || '',
+        Email: member.email || '',
+        KTM: member.ktm || '',
+        Nim : member.nim || '',
+        Semester : member.semester || '',
+        Surat_Keterangan_Siswa_Aktif: member.active_student_letter || '',
+        Pas_Foto_3x4: member.photo || '',
+        Link_Bukti_Upload_Twibbon: member.twibbon_and_poster_link || ''
+    }));
+
+    const fieldsData = {
+        Nama_Tim : teamData.team[0]?.team_name,
+        Institusi: teamData.team[0]?.institution_name,
+        Nama_Lengkap: teamData.leader.full_name || '',
+        Departemen: teamData.leader.department || '',
+        Batch: teamData.leader.batch || '',
+        Nomor_Whatsapp: teamData.leader.phone_number || '',
+        ID_Line: teamData.leader.line_id || '',
+        Email: teamData.leader.email || '',
+        KTM: teamData.leader.ktm || '',
+        Surat_Keterangan_Siswa_Aktif: teamData.leader.active_student_letter || '',
+        Pas_Foto_3x4: teamData.leader.photo || '',
+        Link_Bukti_Upload_Twibbon: teamData.leader.twibbon_and_poster_link || '',
+        payment_proof: teamData.team[0]?.payment_proof,
+        voucher: teamData.team[0]?.voucher || '',
+        
+    };
+
+    const allData = [ fieldsData, ...membersData, ];
+    
+    // Convert data to CSV
+    const combinedCsv = parse(allData, { fields: Object.keys(fieldsData) });
+    zip.file('data_all.csv', combinedCsv);
   
-//       // Mengunduh file-file untuk ketua tim dan anggota
-//       const leaderPhoto = await downloadFile(leader.photo);
-//       const leaderActiveStudentLetter = await downloadFile(
-//         leader.active_student_letter
-//       );
+    const { ktm, active_student_letter, photo } = teamData.leader;
+    if (ktm && active_student_letter && photo) {
+        const ktmData = await downloadFile(ktm);
+        const activeStudentLetterData = await downloadFile(active_student_letter);
+        const photoData = await downloadFile(photo);
+
+        zip.file(ktm.split("/").pop() ?? "ktm_default_name", ktmData);
+        zip.file(active_student_letter.split("/").pop() ?? "active_student_letter_default_name", activeStudentLetterData);
+        zip.file(photo.split("/").pop() ?? "photo_default_name", photoData);
+    }
+
+    // For team members
+    for (const member of teamData.members) {
+        const { ktm, active_student_letter, photo } = member;
+
+        if (ktm && active_student_letter && photo) {
+            const ktmData = await downloadFile(ktm);
+            const activeStudentLetterData = await downloadFile(active_student_letter);
+            const photoData = await downloadFile(photo);
+
+            zip.file(ktm.split("/").pop() ?? "ktm_default_name", ktmData);
+            zip.file(active_student_letter.split("/").pop() ?? "active_student_letter_default_name", activeStudentLetterData);
+            zip.file(photo.split("/").pop() ?? "photo_default_name", photoData);
+        }
+    }
+    zip.generateAsync({ type: "blob" }).then(function (content: Blob) {
+        const url = window.URL.createObjectURL(content);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "files.zip";
+        link.click();
+        window.URL.revokeObjectURL(url);
+    }); 
       
-//       // Menambahkan file-file ke dalam ZIP
-//       zip.file(`Ketua_${leader.full_name}_Photo.jpg`, leaderPhoto);
-//       zip.file(
-//         `Ketua_${leader.full_name}_Active_Student_Letter.pdf`,
-//         leaderActiveStudentLetter
-//       );
-//       zip.file
-  
-//       // Membuat file ZIP
-//       const content = await zip.generateAsync({ type: "blob" });
-  
-//       // Mendownload file ZIP
-//       const downloadLink = document.createElement("a");
-//       downloadLink.href = URL.createObjectURL(content);
-//       downloadLink.download = "Team_Files.zip";
-//       downloadLink.click();
-//     } catch (error) {
-//       console.error("Error downloading files as ZIP:", error);
-//     }
-//   }
+}
+
 
   return (
     <div className="bg-[#058369] h-[430vh] font-LibreBaskerville">
@@ -677,9 +697,24 @@ export default function DetailUser({ params }: { params: any }) {
           )}
 
           <div className="flex justify-end mt-10">
-            <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
-              Unduh Data
-            </button>
+          {!isAdmin && (
+          <button
+            onClick={downloadFilesAsZip}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
+          >
+            Unduh Semua Data
+          </button>
+        )}
+
+        {/* Tombol untuk kembali jika isAdmin */}
+        {isAdmin && (
+          <button
+            onClick={handleBack}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
+          >
+            Kembali
+          </button>
+        )}
           </div>
         </div>
       </div>
