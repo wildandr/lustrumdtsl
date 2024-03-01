@@ -24,7 +24,7 @@ interface Participant {
 export default function DetailUser({ params }: { params: any }) {
   const [participant, setParticipant] = useState<Participant | null>(null);
   const token = Cookies.get("token");
-  const isAdmin = Cookies.get("isAdmin");
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); 
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -48,7 +48,12 @@ export default function DetailUser({ params }: { params: any }) {
   };
 
   useEffect(() => {
+    const checkAdmin = () => {
+        const adminCookie = Cookies.get("isAdmin");
+        setIsAdmin(adminCookie === "true"); // Set nilai isAdmin berdasarkan cookie
+      };
     fetchData();
+    checkAdmin();
   }, []);
 
   async function downloadFile(url: string) {
@@ -215,7 +220,7 @@ async function downloadFilesAsZip() {
           </div>
 
           <div className="flex justify-end mt-10">
-          {!isAdmin && (
+          {isAdmin && (
           <button
             onClick={downloadFilesAsZip}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
@@ -225,7 +230,7 @@ async function downloadFilesAsZip() {
         )}
 
         {/* Tombol untuk kembali jika isAdmin */}
-        {isAdmin && (
+        {!isAdmin && (
           <button
             onClick={handleBack}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
