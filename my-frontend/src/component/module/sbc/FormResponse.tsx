@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import JSZip from "jszip";
+import { parse } from "json2csv";
+import { useRouter } from "next/navigation";
 
 interface Team {
   team_id: number;
@@ -83,6 +86,11 @@ export default function DetailUser({ params }: { params: any }) {
     sbc: [],
   });
   const token = Cookies.get("token");
+  const isAdmin = Cookies.get("isAdmin");
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
 
   const fetchData = async () => {
     try {
@@ -103,6 +111,116 @@ export default function DetailUser({ params }: { params: any }) {
   useEffect(() => {
     fetchData();
   }, []);
+
+  async function downloadFile(url: string) {
+    const fullUrl = `${url}`;
+    try {
+      const response = await axios.get(fullUrl, {
+        responseType: "arraybuffer", // this is important
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Error downloading file from ${fullUrl}:`, error);
+      return null; // return null or some default value
+    }
+  }
+
+  async function downloadFilesAsZip() {
+ 
+      const zip = new JSZip();
+        
+    const membersData = teamData.members.map((member: any) => ({
+        Nama_Lengkap: member.full_name || '',
+        Departemen: member.department || '',
+        Batch: member.batch || '',
+        Nomor_Whatsapp: member.phone_number || '',
+        ID_Line: member.line_id || '',
+        Email: member.email || '',
+        KTM: member.ktm || '',
+        Nim : member.nim || '',
+        Semester : member.semester || '',
+        Surat_Keterangan_Siswa_Aktif: member.active_student_letter || '',
+        Pas_Foto_3x4: member.photo || '',
+        Link_Bukti_Upload_Twibbon: member.twibbon_and_poster_link || ''
+    }));
+    const advisorData = teamData.dosbim.map((advisor: any) => ({
+        Nama_Lengkap: advisor.full_name || '',
+        NIP: advisor.nip || '',
+        Email: advisor.email || '',
+        Nomor_Whatsapp: advisor.phone_number || '',
+        Pas_Foto_3x4: advisor.photo || ''
+    }));
+
+    const fieldsData = {
+        Nama_Tim : teamData.team[0]?.team_name,
+        Institusi: teamData.team[0]?.institution_name,
+        Nama_Lengkap: teamData.leader.full_name || '',
+        Nama_Jembatan: teamData.sbc[0]?.bridge_name || '',
+        Departemen: teamData.leader.department || '',
+        Batch: teamData.leader.batch || '',
+        Nomor_Whatsapp: teamData.leader.phone_number || '',
+        ID_Line: teamData.leader.line_id || '',
+        Email: teamData.leader.email || '',
+        KTM: teamData.leader.ktm || '',
+        Surat_Keterangan_Siswa_Aktif: teamData.leader.active_student_letter || '',
+        Pas_Foto_3x4: teamData.leader.photo || '',
+        Link_Bukti_Upload_Twibbon: teamData.leader.twibbon_and_poster_link || '',
+        payment_proof: teamData.team[0]?.payment_proof,
+        voucher: teamData.team[0]?.voucher || '',
+        
+    };
+
+    const allData = [ fieldsData, ...membersData, ...advisorData ];
+    
+    // Convert data to CSV
+    const combinedCsv = parse(allData, { fields: Object.keys(fieldsData) });
+    zip.file('data_all.csv', combinedCsv);
+  
+    const { ktm, active_student_letter, photo } = teamData.leader;
+    if (ktm && active_student_letter && photo) {
+        const ktmData = await downloadFile(ktm);
+        const activeStudentLetterData = await downloadFile(active_student_letter);
+        const photoData = await downloadFile(photo);
+
+        zip.file(ktm.split("/").pop() ?? "ktm_default_name", ktmData);
+        zip.file(active_student_letter.split("/").pop() ?? "active_student_letter_default_name", activeStudentLetterData);
+        zip.file(photo.split("/").pop() ?? "photo_default_name", photoData);
+    }
+
+    // For team members
+    for (const member of teamData.members) {
+        const { ktm, active_student_letter, photo } = member;
+
+        if (ktm && active_student_letter && photo) {
+            const ktmData = await downloadFile(ktm);
+            const activeStudentLetterData = await downloadFile(active_student_letter);
+            const photoData = await downloadFile(photo);
+
+            zip.file(ktm.split("/").pop() ?? "ktm_default_name", ktmData);
+            zip.file(active_student_letter.split("/").pop() ?? "active_student_letter_default_name", activeStudentLetterData);
+            zip.file(photo.split("/").pop() ?? "photo_default_name", photoData);
+        }
+    }
+
+    // For advisor
+    for (const advisor of teamData.dosbim) {
+        const { photo } = advisor;
+
+        if (photo) {
+            const photoData = await downloadFile(photo);
+            zip.file(photo.split("/").pop() ?? "photo_default_name", photoData);
+        }
+    }
+    zip.generateAsync({ type: "blob" }).then(function (content: Blob) {
+        const url = window.URL.createObjectURL(content);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "files.zip";
+        link.click();
+        window.URL.revokeObjectURL(url);
+    }); 
+      
+}
   return (
     <div className=" font-LibreBaskerville">
     
@@ -577,9 +695,24 @@ export default function DetailUser({ params }: { params: any }) {
           </div>
 
           <div className="flex justify-end mt-10">
-            <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
-              Unduh Data
-            </button>
+          {!isAdmin && (
+          <button
+            onClick={downloadFilesAsZip}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
+          >
+            Unduh Semua Data
+          </button>
+        )}
+
+        {/* Tombol untuk kembali jika isAdmin */}
+        {isAdmin && (
+          <button
+            onClick={handleBack}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
+          >
+            Kembali
+          </button>
+        )}
           </div>
         </div>
       </div>

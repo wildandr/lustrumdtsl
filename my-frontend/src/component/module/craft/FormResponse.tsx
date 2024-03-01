@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import JSZip from "jszip";
+import { parse } from "json2csv";
+import { useRouter } from "next/navigation";
 interface Participant {
   participant_id: number;
   user_id: number | null;
@@ -21,6 +24,11 @@ interface Participant {
 export default function DetailUser({ params }: { params: any }) {
   const [participant, setParticipant] = useState<Participant | null>(null);
   const token = Cookies.get("token");
+  const isAdmin = Cookies.get("isAdmin");
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
 
   const fetchData = async () => {
     try {
@@ -42,6 +50,74 @@ export default function DetailUser({ params }: { params: any }) {
   useEffect(() => {
     fetchData();
   }, []);
+
+  async function downloadFile(url: string) {
+    const fullUrl = `${url}`;
+    try {
+      const response = await axios.get(fullUrl, {
+        responseType: "arraybuffer", // this is important
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Error downloading file from ${fullUrl}:`, error);
+      return null; // return null or some default value
+    }
+  }
+
+async function downloadFilesAsZip() {
+    const zip = new JSZip();
+    
+    if (!participant) {
+        console.error('Participant data is null');
+        return;
+    }
+
+    // Prepare data for CSV
+    const participantData = [{
+        Nama_Lengkap: participant.full_name || '',
+        Institusi: participant.institution_name || '',
+        Pilihan_Kegiatan: participant.activity_choice || '',
+        Nomor_Whatsapp: participant.whatsapp_number || '',
+        Mahasiswa_DTSL: participant.isMahasiswaDTSL ? 'Ya' : 'Tidak',
+        KTM: participant.ktm || '',
+        Bukti_Pembayaran: participant.payment_proof || '',
+        Email: participant.email || '',
+        Status_Verifikasi: participant.isVerified ? 'Terverifikasi' : 'Belum Terverifikasi',
+        Tanggal_Pendaftaran: participant.createdAt || '',
+        Tanggal_Pembaruan: participant.updatedAt || ''
+    }];
+
+    // Convert data to CSV
+    const combinedCsv = parse(participantData, { fields: Object.keys(participantData[0]) });
+    zip.file('participant_data.csv', combinedCsv);
+
+    // Add KTM file to zip
+    if (participant.ktm) {
+        const ktmData = await downloadFile(participant.ktm);
+        zip.file(participant.ktm.split("/").pop() ?? "ktm_default_name", ktmData);
+    }
+
+    // Add Bukti Pembayaran file to zip
+    if (participant.payment_proof) {
+        const paymentProofData = await downloadFile(participant.payment_proof);
+        zip.file(participant.payment_proof.split("/").pop() ?? "payment_proof_default_name", paymentProofData);
+    }
+
+    // Generate ZIP and initiate download
+    zip.generateAsync({ type: "blob" }).then(function (content: Blob) {
+        const url = window.URL.createObjectURL(content);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "participant_files.zip";
+        link.click();
+        window.URL.revokeObjectURL(url);
+    });
+}
+
+
+
+
+
 
   return (
     <div className="bg-[#058369] h-[120vh] font-LibreBaskerville">
@@ -139,9 +215,24 @@ export default function DetailUser({ params }: { params: any }) {
           </div>
 
           <div className="flex justify-end mt-10">
-            <button className="bg-[#18AB8E] shadow-xl text-white  px-6 py-2 rounded-2xl  font-sans">
-              Unduh Data
-            </button>
+          {!isAdmin && (
+          <button
+            onClick={downloadFilesAsZip}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
+          >
+            Unduh Semua Data
+          </button>
+        )}
+
+        {/* Tombol untuk kembali jika isAdmin */}
+        {isAdmin && (
+          <button
+            onClick={handleBack}
+            className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
+          >
+            Kembali
+          </button>
+        )}
           </div>
         </div>
       </div>
