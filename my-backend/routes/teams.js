@@ -6,7 +6,7 @@ const authenticateToken = require("../middleware/authenticateToken");
 const { Team } = require("../models/team");
 
 // Ambil semua teams
-router.get("/teams", authenticateToken, async (req, res) => {
+router.get("/api/teams", authenticateToken, async (req, res) => {
     try {
         const teams = await sequelize.query(`SELECT * FROM teams`, {
             type: QueryTypes.SELECT,
@@ -49,7 +49,7 @@ router.get("/teams", authenticateToken, async (req, res) => {
 });
 
 // Verifikasi team
-router.put("/teams/:team_id/verify", async (req, res) => {
+router.put("/api/teams/:team_id/verify", async (req, res) => {
     try {
         const team = await sequelize.query(
             "SELECT * FROM teams WHERE team_id = :team_id",
@@ -88,7 +88,7 @@ router.put("/teams/:team_id/verify", async (req, res) => {
 });
 
 // Update data tim
-router.put("/teams/update", authenticateToken, async (req, res) => {
+router.put("/api/teams/update", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members } = req.body;
 
@@ -145,32 +145,36 @@ router.put("/teams/update", authenticateToken, async (req, res) => {
 });
 
 // Update rejection status of a team
-router.put("/teams/:team_id/reject", authenticateToken, async (req, res) => {
-    try {
-        const { rejectMessage } = req.body;
-        const { team_id } = req.params;
+router.put(
+    "/api/teams/:team_id/reject",
+    authenticateToken,
+    async (req, res) => {
+        try {
+            const { rejectMessage } = req.body;
+            const { team_id } = req.params;
 
-        await sequelize.query(
-            `UPDATE teams SET isRejected = :isRejected, rejectMessage = :rejectMessage WHERE team_id = :team_id`,
-            {
-                replacements: {
-                    isRejected: true,
-                    rejectMessage: rejectMessage,
-                    team_id: team_id,
-                },
-                type: QueryTypes.UPDATE,
-            }
-        );
+            await sequelize.query(
+                `UPDATE teams SET isRejected = :isRejected, rejectMessage = :rejectMessage WHERE team_id = :team_id`,
+                {
+                    replacements: {
+                        isRejected: true,
+                        rejectMessage: rejectMessage,
+                        team_id: team_id,
+                    },
+                    type: QueryTypes.UPDATE,
+                }
+            );
 
-        res.status(200).json({
-            message: "Team rejection status updated successfully",
-        });
-    } catch (error) {
-        res.status(500).json({
-            message: "An error occurred",
-            error: error.message,
-        });
+            res.status(200).json({
+                message: "Team rejection status updated successfully",
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: "An error occurred",
+                error: error.message,
+            });
+        }
     }
-});
+);
 
 module.exports = router;
