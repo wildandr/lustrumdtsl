@@ -5,7 +5,7 @@ const sequelize = require("../config/database");
 const authenticateToken = require("../middleware/authenticateToken");
 
 // Ambil semua teams di lomba FCEC
-router.get("/api/teams/fcec", authenticateToken, async (req, res) => {
+router.get("/teams/fcec", authenticateToken, async (req, res) => {
     try {
         const eventId = 1;
 
@@ -63,7 +63,7 @@ router.get("/api/teams/fcec", authenticateToken, async (req, res) => {
 });
 
 // Ambil team di lomba FCEC berdasarkan teamId
-router.get("/api/teams/fcec/:teamId", authenticateToken, async (req, res) => {
+router.get("/teams/fcec/:teamId", authenticateToken, async (req, res) => {
     try {
         const { teamId } = req.params;
         const eventId = 1;
@@ -118,7 +118,7 @@ router.get("/api/teams/fcec/:teamId", authenticateToken, async (req, res) => {
 });
 
 // Tambah team di lomba FCEC
-router.post("/api/teams/fcec/new", authenticateToken, async (req, res) => {
+router.post("/teams/fcec/new", authenticateToken, async (req, res) => {
     const { team, leader, members, fcec } = req.body;
     const eventId = 1;
     const userId = team.user_id; // get userId from team
@@ -168,7 +168,7 @@ router.post("/api/teams/fcec/new", authenticateToken, async (req, res) => {
 });
 
 router.delete(
-    "/api/teams/fcec/delete/:teamId",
+    "/teams/fcec/delete/:teamId",
     authenticateToken,
     async (req, res) => {
         const teamId = req.params.teamId;
@@ -210,7 +210,7 @@ router.delete(
     }
 );
 
-router.get("/api/fcec-participant", authenticateToken, async (req, res) => {
+router.get("/fcec-participant", authenticateToken, async (req, res) => {
     try {
         const members = await sequelize.query(
             `

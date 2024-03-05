@@ -22,12 +22,12 @@ app.get("/", (req, res) => {
     res.send("Hello from the backend!");
 });
 
-app.use("/", userRouter);
-app.use("/", cicRouter);
-app.use("/", teamRouter);
-app.use("/", sbcRouter);
-app.use("/", fcecRouter);
-app.use("/", craftRouter);
+app.use("/endpoint", userRouter);
+app.use("/endpoint", cicRouter);
+app.use("/endpoint", teamRouter);
+app.use("/endpoint", sbcRouter);
+app.use("/endpoint", fcecRouter);
+app.use("/endpoint", craftRouter);
 
 // Konfigurasi opsi untuk sertifikat SSL
 const options = {

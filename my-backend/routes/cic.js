@@ -7,7 +7,7 @@ const Team = require("../models/team");
 const Member = require("../models/member");
 
 // Ambil semua teams di lomba CIC
-router.get("/api/teams/cic", authenticateToken, async (req, res) => {
+router.get("/teams/cic", authenticateToken, async (req, res) => {
     try {
         const eventId = 4;
 
@@ -66,7 +66,7 @@ router.get("/api/teams/cic", authenticateToken, async (req, res) => {
 });
 
 // Ambil team tertentu di lomba CIC
-router.get("/api/teams/cic/:teamId", authenticateToken, async (req, res) => {
+router.get("/teams/cic/:teamId", authenticateToken, async (req, res) => {
     try {
         const { teamId } = req.params;
         const eventId = 4;
@@ -118,7 +118,7 @@ router.get("/api/teams/cic/:teamId", authenticateToken, async (req, res) => {
 });
 
 // Buat team baru di lomba CIC
-router.post("/api/teams/cic/new", authenticateToken, async (req, res) => {
+router.post("/teams/cic/new", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members } = req.body;
 
@@ -181,7 +181,7 @@ router.post("/api/teams/cic/new", authenticateToken, async (req, res) => {
     }
 });
 
-router.put("/api/teams/cic/update", authenticateToken, async (req, res) => {
+router.put("/teams/cic/update", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members } = req.body;
 
@@ -238,7 +238,7 @@ router.put("/api/teams/cic/update", authenticateToken, async (req, res) => {
 });
 
 router.delete(
-    "/api/teams/cic/delete/:teamId",
+    "/teams/cic/delete/:teamId",
     authenticateToken,
     async (req, res) => {
         const teamId = req.params.teamId;

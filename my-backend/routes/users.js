@@ -11,7 +11,7 @@ const { QueryTypes } = require("sequelize");
 const User = require("../models/user");
 
 // Ambil semua user
-router.get("/api/user", authenticateToken, async (req, res) => {
+router.get("/user", authenticateToken, async (req, res) => {
     try {
         const users = await User.findAll();
         if (users.length === 0) {
@@ -26,7 +26,7 @@ router.get("/api/user", authenticateToken, async (req, res) => {
 });
 
 // Ambil user berdasarkan id
-router.get("/api/user/:user_id", authenticateToken, async (req, res) => {
+router.get("/user/:user_id", authenticateToken, async (req, res) => {
     try {
         const user_id = req.params.user_id;
         const user = await User.findByPk(user_id);
@@ -44,7 +44,7 @@ router.get("/api/user/:user_id", authenticateToken, async (req, res) => {
 });
 
 // Add new user
-router.post("/api/user/register", async (req, res) => {
+router.post("/user/register", async (req, res) => {
     try {
         let { username, email, password, isAdmin, eventId } = req.body;
 
@@ -93,7 +93,7 @@ router.post("/api/user/register", async (req, res) => {
 });
 
 // Login user
-router.post("/api/user/login", async (req, res) => {
+router.post("/user/login", async (req, res) => {
     try {
         const { username, password } = req.body;
 
@@ -143,7 +143,7 @@ router.post("/api/user/login", async (req, res) => {
     }
 });
 
-router.get("/api/user/:user_id/events", authenticateToken, async (req, res) => {
+router.get("/user/:user_id/events", authenticateToken, async (req, res) => {
     try {
         const userEvents = await sequelize.query(
             `
