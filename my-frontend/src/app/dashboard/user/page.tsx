@@ -92,6 +92,9 @@ export default function DashboardUser() {
         if (userIdFromLocalStorage) {
             fetchData();
         }
+        else {
+            router.push("/cia/login");
+        }
     }, []);
 
     const deleteTeam = async (eventName: string, teamId: number) => {
