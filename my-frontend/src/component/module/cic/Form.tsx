@@ -28,6 +28,7 @@ export function Form() {
             payment_proof: "",
             user_id: Number(userIdFromLocalStorage),
             email: "",
+            voucher: null,
         },
         leader: {
             full_name: "",
@@ -214,6 +215,7 @@ export function Form() {
                 }
             }
         };
+
     const LeaderKtm = teamData.leader.ktm.split("/uploads/cic/");
     const LeaderSPSA =
         teamData.leader.active_student_letter.split("/uploads/cic/");
