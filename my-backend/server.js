@@ -32,7 +32,9 @@ app.use("/endpoint", craftRouter);
 // Konfigurasi opsi untuk sertifikat SSL
 const options = {
     key: fs.readFileSync("/home/wildandzakyramadhani/www.lustrumkmtsl.com.key"),
-    cert: fs.readFileSync("/home/wildandzakyramadhani/sectigo_lustrumkmtsl.com_crt.txt")
+    cert: fs.readFileSync(
+        "/home/wildandzakyramadhani/sectigo_lustrumkmtsl.com_crt.txt"
+    ),
 };
 
 // Buat server HTTPS

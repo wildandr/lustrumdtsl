@@ -123,7 +123,7 @@ router.post("/teams/cic/new", authenticateToken, async (req, res) => {
         const { team, leader, members } = req.body;
 
         await sequelize.query(
-            `INSERT INTO teams (team_name, institution_name, payment_proof, event_id, user_id, email) VALUES (:team_name, :institution_name, :payment_proof, :event_id, :user_id, :email)`,
+            `INSERT INTO teams (team_name, institution_name, payment_proof, event_id, user_id, email, voucher) VALUES (:team_name, :institution_name, :payment_proof, :event_id, :user_id, :email, :voucher)`,
             {
                 replacements: {
                     team_name: team.team_name,
@@ -132,6 +132,7 @@ router.post("/teams/cic/new", authenticateToken, async (req, res) => {
                     event_id: 4,
                     user_id: team.user_id,
                     email: team.email,
+                    voucher: team.voucher || null,
                 },
                 type: QueryTypes.INSERT,
             }

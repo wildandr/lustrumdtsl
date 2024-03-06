@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
@@ -70,7 +70,12 @@ export default function DashboardUser() {
             setEventsData(responseEvents.data.data);
             console.log(responseEvents.data.data);
         } catch (error) {
-            console.error("Error fetching data:", error);
+            const axiosError = error as AxiosError;
+            if (axiosError.response && axiosError.response.status === 404) {
+                console.error("Error 404: Not Found");
+            } else {
+                console.error("Error fetching data:", axiosError);
+            }
         }
         try {
             const responseCraft = await axios.get(
@@ -84,7 +89,12 @@ export default function DashboardUser() {
 
             setCraftData(responseCraft.data);
         } catch (error) {
-            console.error("Error fetching data:", error);
+            const axiosError = error as AxiosError;
+            if (axiosError.response && axiosError.response.status === 404) {
+                console.error("Error 404: Not Found");
+            } else {
+                console.error("Error fetching data:", axiosError);
+            }
         }
     };
 
