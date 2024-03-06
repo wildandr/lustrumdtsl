@@ -6,7 +6,7 @@ const authenticateToken = require("../middleware/authenticateToken");
 const { Team } = require("../models/team");
 
 // Ambil semua teams
-router.get("/api/teams", authenticateToken, async (req, res) => {
+router.get("/teams", authenticateToken, async (req, res) => {
     try {
         const teams = await sequelize.query(`SELECT * FROM teams`, {
             type: QueryTypes.SELECT,
@@ -49,7 +49,7 @@ router.get("/api/teams", authenticateToken, async (req, res) => {
 });
 
 // Verifikasi team
-router.put("/api/teams/:team_id/verify", async (req, res) => {
+router.put("/teams/:team_id/verify", async (req, res) => {
     try {
         const team = await sequelize.query(
             "SELECT * FROM teams WHERE team_id = :team_id",
@@ -88,7 +88,7 @@ router.put("/api/teams/:team_id/verify", async (req, res) => {
 });
 
 // Update data tim
-router.put("/api/teams/update", authenticateToken, async (req, res) => {
+router.put("/teams/update", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members } = req.body;
 
@@ -146,7 +146,7 @@ router.put("/api/teams/update", authenticateToken, async (req, res) => {
 
 // Update rejection status of a team
 router.put(
-    "/api/teams/:team_id/reject",
+    "/teams/:team_id/reject",
     authenticateToken,
     async (req, res) => {
         try {

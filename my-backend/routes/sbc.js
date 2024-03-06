@@ -5,7 +5,7 @@ const sequelize = require("../config/database");
 const authenticateToken = require("../middleware/authenticateToken");
 
 // Ambil semua teams di lomba SBC
-router.get("/api/teams/sbc", authenticateToken, async (req, res) => {
+router.get("/teams/sbc", authenticateToken, async (req, res) => {
     try {
         const eventId = 3;
 
@@ -81,7 +81,7 @@ router.get("/api/teams/sbc", authenticateToken, async (req, res) => {
 });
 
 // Ambil team di lomba SBC berdasarkan teamId
-router.get("/api/teams/sbc/:teamId", authenticateToken, async (req, res) => {
+router.get("/teams/sbc/:teamId", authenticateToken, async (req, res) => {
     try {
         const { teamId } = req.params;
         const eventId = 3;
@@ -145,20 +145,20 @@ router.get("/api/teams/sbc/:teamId", authenticateToken, async (req, res) => {
 });
 
 // Buat team baru di lomba SBC
-router.post("/api/teams/sbc/new", authenticateToken, async (req, res) => {
+router.post("/teams/sbc/new", authenticateToken, async (req, res) => {
     try {
         const { team, leader, members, dosbim, sbc } = req.body;
         const user_id = team.user_id; // get user_id from team object
 
         const createdTeam = await sequelize.query(
-            `INSERT INTO teams (team_name, institution_name, payment_proof, user_id, event_id) VALUES (:team_name, :institution_name, :payment_proof, :user_id, 3)`,
+            `INSERT INTO teams (team_name, institution_name, payment_proof, user_id, event_id, voucher) VALUES (:team_name, :institution_name, :payment_proof, :user_id, 3, :voucher)`,
             {
                 replacements: {
                     team_name: team.team_name,
                     institution_name: team.institution_name,
                     payment_proof: team.payment_proof,
-                    user_id: user_id, // add user_id here
-                    voucher: team.voucher,
+                    user_id: user_id,
+                    voucher: team.voucher || null,
                 },
                 type: QueryTypes.INSERT,
             }
@@ -231,7 +231,7 @@ router.post("/api/teams/sbc/new", authenticateToken, async (req, res) => {
 });
 
 router.delete(
-    "/api/teams/sbc/delete/:teamId",
+    "/teams/sbc/delete/:teamId",
     authenticateToken,
     async (req, res) => {
         try {
@@ -278,7 +278,7 @@ router.delete(
     }
 );
 
-router.get("/api/sbc-participant", authenticateToken, async (req, res) => {
+router.get("/sbc-participant", authenticateToken, async (req, res) => {
     try {
         const participants = await sequelize.query(
             `

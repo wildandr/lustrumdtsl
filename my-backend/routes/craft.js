@@ -5,7 +5,7 @@ const router = express.Router();
 const { ValidationError } = require("sequelize");
 
 // Ambil semua data peserta craft
-router.get("/api/crafts", authenticateToken, async (req, res) => {
+router.get("/crafts", authenticateToken, async (req, res) => {
     try {
         const crafts = await Craft.findAll();
         res.json(crafts);
@@ -16,7 +16,7 @@ router.get("/api/crafts", authenticateToken, async (req, res) => {
 
 // Ambil data peserta craft berdasarkan id
 router.get(
-    "/api/crafts/participant/:participant_id",
+    "/crafts/participant/:participant_id",
     authenticateToken,
     async (req, res) => {
         try {
@@ -36,7 +36,7 @@ router.get(
 );
 
 // Ambil data peserta craft berdasarkan id pengguna
-router.get("/api/crafts/user/:user_id", authenticateToken, async (req, res) => {
+router.get("/crafts/user/:user_id", authenticateToken, async (req, res) => {
     try {
         const craft = await Craft.findOne({
             where: { user_id: req.params.user_id },
@@ -53,7 +53,7 @@ router.get("/api/crafts/user/:user_id", authenticateToken, async (req, res) => {
 });
 
 // Buat data peserta craft baru
-router.post("/api/crafts/register", authenticateToken, async (req, res) => {
+router.post("/crafts/register", authenticateToken, async (req, res) => {
     try {
         const craft = await Craft.create({
             full_name: req.body.full_name,
@@ -83,7 +83,7 @@ router.post("/api/crafts/register", authenticateToken, async (req, res) => {
 
 // Update isVerified field to true
 router.put(
-    "/api/crafts/verify/:participant_id",
+    "/crafts/verify/:participant_id",
     authenticateToken,
     async (req, res) => {
         try {
@@ -107,7 +107,7 @@ router.put(
 
 // Update isRejected field to true
 router.put(
-    "/api/crafts/reject/:participant_id",
+    "/crafts/reject/:participant_id",
     authenticateToken,
     async (req, res) => {
         try {
@@ -132,7 +132,7 @@ router.put(
 
 // Update data peserta craft
 router.put(
-    "/api/crafts/edit/:participant_id",
+    "/crafts/edit/:participant_id",
     authenticateToken,
     async (req, res) => {
         try {
@@ -177,7 +177,7 @@ router.put(
 );
 
 router.delete(
-    "/api/crafts/delete/:participantId",
+    "/crafts/delete/:participantId",
     authenticateToken,
     async (req, res) => {
         const participantId = req.params.participantId;
