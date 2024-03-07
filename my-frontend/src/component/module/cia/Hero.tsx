@@ -51,21 +51,17 @@ export function Hero() {
 
     const isDeviceGreaterThanLg = windowWidth >= lg_width
 
+    
+
     const handleLoginClick = () => {
-        if (userIdFromLocalStorage || token) {
-            router.push('/dashboard/user');
-        } else {
-            router.push('/cia/login');
-        }
-    };
+        router.push('/cia/login')
+    }
 
     const handleRegisterClick = () => {
-        if (userIdFromLocalStorage || token) {
-            router.push('/dashboard/user');
-        } else {
-            router.push('/cia/register');
-        }
-    };
+        router.push('/cia/register')
+    }
+    
+    
 
     return (
         <>

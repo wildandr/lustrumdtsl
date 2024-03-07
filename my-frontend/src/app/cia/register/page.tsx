@@ -15,7 +15,7 @@ export default function Register() {
 
     useEffect(() => {
         if (userIdFromLocalStorage || token) {
-            router.push("/cia/");
+            router.push("/dashboard/user");
         }
     }, []);
 

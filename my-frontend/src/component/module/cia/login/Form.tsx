@@ -23,9 +23,10 @@ export function Form() {
     useEffect(() => {
         const token = Cookies.get("token");
         const userId = Cookies.get("user_Id");
+        const isAdmin = Cookies.get("isAdmin")
 
-        if (token && userId) {
-            router.push("/cia");
+        if (token && userId && !isAdmin) {
+            router.push("/dashboard/user/");
         }
     }, []);
 
@@ -46,6 +47,7 @@ export function Form() {
                 Cookies.set("isAdmin", response.data.user.isAdmin);
 
                 toast.success("Login Berhasil");
+                console.log(response.data)
 
                 if (response.data.user.isAdmin) {
                     if (response.data.user.eventId === 1) {
