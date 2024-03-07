@@ -702,7 +702,7 @@ export default function DetailUser({ params }: { params: any }) {
           )}
 
           <div className="flex justify-end mt-10">
-          {!isAdmin && (
+          {isAdmin && (
           <button
             onClick={downloadFilesAsZip}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans mr-4"
@@ -712,7 +712,7 @@ export default function DetailUser({ params }: { params: any }) {
         )}
 
         {/* Tombol untuk kembali jika isAdmin */}
-        {isAdmin && (
+        {!isAdmin && (
           <button
             onClick={handleBack}
             className="bg-[#18AB8E] shadow-xl text-white px-6 py-2 rounded-2xl font-sans"
