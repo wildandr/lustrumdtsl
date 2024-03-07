@@ -2,10 +2,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 export function Hero() {
     const [rotation, setRotation] = useState(0);
     const [direction, setDirection] = useState(1);
+    const userIdFromLocalStorage = Cookies.get("user_Id");
+    const token = Cookies.get("token");
+    const router = useRouter();
+    const isAdmin = Cookies.get("isAdmin");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -44,6 +50,22 @@ export function Hero() {
     const lg_width = 1024
 
     const isDeviceGreaterThanLg = windowWidth >= lg_width
+
+    const handleLoginClick = () => {
+        if (userIdFromLocalStorage || token) {
+            router.push('/dashboard/user');
+        } else {
+            router.push('/cia/login');
+        }
+    };
+
+    const handleRegisterClick = () => {
+        if (userIdFromLocalStorage || token) {
+            router.push('/dashboard/user');
+        } else {
+            router.push('/cia/register');
+        }
+    };
 
     return (
         <>
@@ -135,8 +157,8 @@ export function Hero() {
                             <p className='z-50 text-xs lg:text-base font-sfui'>Civil In Action adalah event tahunan yang diselenggarakan oleh mahasiswa Departemen Teknik Sipil dan Lingkungan (DTSL) Fakultas Teknik UGM yang bertujuan sebagai wadah untuk mengembangkan ilmu pengetahuan dan keprofesian di bidang teknik sipil dan lingkungan bagi semua pihak yang terlibat</p>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-4 w-full justify-center items-center font-sans'>
-                            <Link href={`/cia/login`} className='w-full lg:w-[20%] relative border border-white text-white px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Masuk</Link>
-                            <Link href={`/cia/register`} className='w-full lg:w-[20%] border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Daftar Sekarang !</Link>
+                            <button onClick={handleLoginClick} className='w-full lg:w-[20%] relative border border-white text-white px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Masuk</button>
+                            <button onClick={handleRegisterClick} className='w-full lg:w-[20%] border-r-[3px] border-b-[3px] border-gray-200 bg-white shadow-md shadow-gray-800 text-chiasGreen-500 px-4 py-2 rounded-md font-bold z-50 hover:opacity-50'>Daftar Sekarang !</button>
                         </div>
                     </div>
                 </div>
