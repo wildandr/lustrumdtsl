@@ -11,11 +11,14 @@ export default function Login() {
 
     const userIdFromLocalStorage = Cookies.get("user_Id");
     const token = Cookies.get("token");
+    const isAdmin = Cookies.get("isAdmin");
 
     useEffect(() => {
-        if (userIdFromLocalStorage || token) {
+        if (userIdFromLocalStorage || token ) {
             router.push("/cia/");
         }
+       
+        
     }, []);
 
     return (

@@ -53,7 +53,7 @@ export default function Nav() {
       // Setelah dropdown ditampilkan, atur timer untuk menutupnya setelah 3 detik
       const newTimerID = setTimeout(() => {
         setIsDropdownVisible(false);
-      }, 5000);
+      }, 3000);
       setTimerID(newTimerID);
     }
   };
