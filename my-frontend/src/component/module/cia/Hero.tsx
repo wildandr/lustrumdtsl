@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import e from 'express';
 
 export function Hero() {
     const [rotation, setRotation] = useState(0);
@@ -12,6 +13,7 @@ export function Hero() {
     const token = Cookies.get("token");
     const router = useRouter();
     const isAdmin = Cookies.get("isAdmin");
+    const eventId = Cookies.get("eventId");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -54,11 +56,35 @@ export function Hero() {
     
 
     const handleLoginClick = () => {
-        router.push('/cia/login')
+        if((userIdFromLocalStorage && isAdmin == 'false') || (token && isAdmin =='false')) {    
+        router.push('/dashboard/user')
+        }else if(isAdmin === 'true'){
+            if(eventId === '1'){
+                router.push('/dashboard/fcec/admin')
+            }else if(eventId === '2'){
+                router.push('/dashboard/craft/admin')
+            }else if(eventId === '3'){
+                router.push('/dashboard/sbc/admin')
+            }else if(eventId === '4'){
+                router.push('/dashboard/cic/admin')
+            }
+        }
     }
 
     const handleRegisterClick = () => {
-        router.push('/cia/register')
+        if((userIdFromLocalStorage && isAdmin == 'false') || (token && isAdmin =='false')) {    
+            router.push('/dashboard/user')
+            }else if(isAdmin === 'true'){
+                if(eventId === '1'){
+                    router.push('/dashboard/fcec/admin')
+                }else if(eventId === '2'){
+                    router.push('/dashboard/craft/admin')
+                }else if(eventId === '3'){
+                    router.push('/dashboard/sbc/admin')
+                }else if(eventId === '4'){
+                    router.push('/dashboard/cic/admin')
+                }
+            }
     }
     
     
