@@ -15,8 +15,9 @@ export default function Login() {
 
     useEffect(() => {
         if (userIdFromLocalStorage || token ) {
-            router.push("/cia/");
+            router.push("/dashboard/user");
         }
+       
        
         
     }, []);
