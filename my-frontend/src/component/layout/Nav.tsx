@@ -10,7 +10,6 @@ import Cookies from 'js-cookie';
 export default function Nav() {
   const [isVisible, setIsVisible] = useState(true);
   const [timerID, setTimerID] = useState<NodeJS.Timeout | undefined>(undefined);
-  const [hasUserId, setHasUserId] = useState(false);
   const router = useRouter();
   const logout = () => {
     // Remove the token from local storage or cookies
@@ -34,15 +33,12 @@ export default function Nav() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    const checkUser = () => {
-      const userCookie = Cookies.get("user_Id");
-      setHasUserId(userCookie !== undefined);
-    };
+    
    
     
 
     return () => {
-      checkUser();
+     
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timerID);
     };
@@ -57,7 +53,7 @@ export default function Nav() {
       // Setelah dropdown ditampilkan, atur timer untuk menutupnya setelah 3 detik
       const newTimerID = setTimeout(() => {
         setIsDropdownVisible(false);
-      }, 5000);
+      }, 3000);
       setTimerID(newTimerID);
     }
   };
@@ -331,7 +327,6 @@ export default function Nav() {
         
 
 <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-  {hasUserId ? (
     <Link href="/dashboard/user" className="flex items-center">
       <span className={`${
         activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
@@ -350,26 +345,7 @@ export default function Nav() {
         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
       </svg>
     </Link>
-  ) : (
-    <Link href="/cia/login" className="flex items-center">
-      <span className={`${
-        activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
-      }`}>Dashboard Pendaftaran</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0px"
-        y="0px"
-        width="12"
-        height="12"
-        viewBox="0 0 24 24"
-        className={`ml-3 ${
-          activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
-        }`}
-      >
-        <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
-      </svg>
-    </Link>
-  )}
+  
 </li>
       
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-red-700"}`}>
