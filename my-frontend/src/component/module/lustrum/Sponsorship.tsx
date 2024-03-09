@@ -173,7 +173,7 @@ export function Sponsorship() {
                             <div>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Rahma Putri Adila</p>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Email: rahmaputriadila@mail.ugm.ac.id</p>
-                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400 underline' href='https://wa.me/6287738526722'>081285398072</Link></p>
+                                <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Whatsapp: <Link className='hover:text-blue-400 underline' href='https://wa.me/6281285398072'>081285398072</Link></p>
                             </div>
                             <div>
                                 <p className='font-bold font-LibreBaskerville text-xs lg:text-base text-[#E5C039]'>Adi Arrasyid</p>
