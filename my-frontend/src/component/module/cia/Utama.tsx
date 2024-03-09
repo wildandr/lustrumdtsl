@@ -456,7 +456,7 @@ export function Utama() {
                     alt=""
                     className="w-full h-auto"
                 />
-                <div className="absolute flex flex-col px-[15%] top-[6%] md:top-[10%] font-LibreBaskerville font-bold text-xs md:text-xl text-chiasGreen-500 ">
+                <div className="absolute flex flex-col px-[15%] top-[6%] md:top-[10%] 2xl:top-[15%] font-LibreBaskerville font-bold text-xs md:text-xl 2xl:text-2xl text-chiasGreen-500 ">
                     <p>● SBC </p>
                     <p>
                         Tim beranggotakan tiga mahasiswa/i aktif D3, D4, atau S1
@@ -527,7 +527,7 @@ export function Utama() {
                         alt=""
                         className="absolute -top-[70%] right-[11%] w-auto h-12 md:h-24 lg:h-36"
                     />
-                    <p className="text-center w-full text-chiasGreen-500 font-LibreBaskerville lg:text-5xl">
+                    <p className="text-center w-full text-chiasGreen-500 font-LibreBaskerville lg:text-5xl 2xl:text-7xl">
                         Timeline Kegiatan
                     </p>
                     <p className="text-center w-full text-chiasGreen-500 font-LibreBaskerville text-[10px] lg:text-base">
@@ -536,16 +536,16 @@ export function Utama() {
                 </div>
                 <div className="absolute bg-chiasGreen-500 w-[80%] h-[0.2rem] md:h-[0.4rem] rounded-lg top-[5%] md:top-[8%] lg:top-[11%]"></div>
                 <div className="absolute bg-chiasGreen-500 w-[80%] h-[0.1rem] md:h-[0.2rem] top-[5.5%] md:top-[8.5%] lg:top-[11.5%]"></div>
-                <div className="w-[80%] justify-center items-center absolute text-black top-[9%] md:top-[14%] lg:top-[18%]">
+                <div className="w-[80%] justify-center items-center absolute text-black top-[9%] md:top-[14%] lg:top-[18%] 2xl:top-[20%]">
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
                         width={1000}
                         height={1000}
                         alt=""
-                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[23%] lg:-top-[30%]"
+                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[13%] md:-top-[23%] lg:-top-[30%] 2xl:top-[-40%]"
                     />
 
-                    <p className="absolute -top-[11%] md:-top-[18.5%] lg:-top-[23%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white">
+                    <p className="absolute -top-[11%] md:-top-[18.5%] lg:-top-[23%] 2xl:-top-[33%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl 2xl:text-3xl text-white">
                         Sustainable Bridge Competition (SBC)
                     </p>
 
@@ -644,16 +644,16 @@ export function Utama() {
                         </tbody>
                     </table>
                 </div>
-                <div className="w-[80%] justify-center items-center absolute text-black top-[32%] md:top-[35%] lg:top-[40%]">
+                <div className="w-[80%] justify-center items-center absolute text-black top-[32%] md:top-[35%] lg:top-[40%] 2xl:top-[42%]">
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
                         width={1000}
                         height={1000}
                         alt=""
-                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]"
+                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%] 2xl:-top-[40%]"
                     />
 
-                    <p className="absolute -top-[7.5%] md:-top-[18%] lg:-top-[19%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl text-white">
+                    <p className="absolute -top-[7.5%] md:-top-[18%] lg:-top-[19%] 2xl:-top-[33%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl 2xl:text-3xl text-white">
                         Civil Innovation Challenge (CIC)
                     </p>
 
@@ -757,16 +757,16 @@ export function Utama() {
                         </tbody>
                     </table>
                 </div>
-                <div className="w-[80%] justify-center items-center absolute text-black top-[58%] md:top-[56%] lg:top-[62.5%]">
+                <div className="w-[80%] justify-center items-center absolute text-black top-[58%] md:top-[56%] lg:top-[62.5%] 2xl:top-[64%]">
                     <Image
                         src={`/assets/cia/bg_title_tabel.png`}
                         width={1000}
                         height={1000}
                         alt=""
-                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%]"
+                        className="absolute w-full px-[8%] md:px-[15%] h-auto -top-[9%] md:-top-[20%] lg:-top-[25%] 2xl:-top-[33%]"
                     />
 
-                    <p className="absolute -top-[7%] md:-top-[18%] lg:-top-[20%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-xl text-white">
+                    <p className="absolute -top-[7%] md:-top-[18%] lg:-top-[20%] 2xl:-top-[26%] w-full text-center px-[10%] md:px-[20%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl 2xl:text-3xl text-white">
                         Future Civil Engineering Challenge
                     </p>
 
@@ -905,10 +905,10 @@ export function Utama() {
                         width={1000}
                         height={1000}
                         alt=""
-                        className="absolute w-full px-[5%] md:px-[10%] h-auto -top-[24%] md:-top-[45%] lg:-top-[60%]"
+                        className="absolute w-full px-[5%] md:px-[10%] h-auto -top-[24%] md:-top-[45%] lg:-top-[60%] 2xl:-top-[75%]"
                     />
 
-                    <p className="absolute -top-[20.5%] md:-top-[41%] lg:-top-[47%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg::text-2xl text-white">
+                    <p className="absolute -top-[20.5%] md:-top-[41%] lg:-top-[47%] 2xl:-top-[56%] w-full text-center px-[5%] md:px-[10%] font-LibreBaskerville font-bold text-[10px] md:text-lg lg:text-xl 2xl:text-3xl text-white">
                         Civil Engineering Advance Software Training
                     </p>
 

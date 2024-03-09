@@ -12,6 +12,9 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            screens: {
+                '16k': '1680',
+              },
             animationDelay: ["responsive", "hover", "focus"],
             animationDuration: ["responsive", "hover", "focus"],
             animation: {
