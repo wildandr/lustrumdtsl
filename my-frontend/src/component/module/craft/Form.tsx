@@ -33,6 +33,9 @@ export function Form() {
         payment_proof: "",
         email: "",
         isVerified: false,
+        bukti_follow_cia: "",
+        bukti_follow_pktsl: "",
+        bukti_story: "",
     });
 
     function validateCraftData(data: any): boolean {
@@ -84,7 +87,7 @@ export function Form() {
                     toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
-                    !/^SKMA_.*$|^ID_.*$|^Pas Foto_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM_.*$/.test(
+                    !/^SKMA_.*$|^ID_.*$|^Pas Foto_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM_.*$|^Bukti Story CRAFT_.*$|^Bukti Follow CIA_.*$|^Bukti Follow PKTSL_.*$/.test(
                         file.name
                     )
                 ) {
@@ -105,6 +108,18 @@ export function Form() {
                                 file.name.startsWith("Bukti Pembayaran")
                             ) {
                                 updatedField = "payment_proof";
+                            } else if (
+                                file.name.startsWith("Bukti Story CRAFT")
+                            ) {
+                                updatedField = "bukti_story";
+                            } else if (
+                                file.name.startsWith("Bukti Follow CIA")
+                            ) {
+                                updatedField = "bukti_follow_cia";
+                            } else if (
+                                file.name.startsWith("Bukti Follow PKTSL")
+                            ) {
+                                updatedField = "bukti_follow_pktsl";
                             }
 
                             const updatedCraftData = {
@@ -112,6 +127,7 @@ export function Form() {
                                 [updatedField]: response.path,
                             };
 
+                            console.log(updatedCraftData);
                             return updatedCraftData;
                         });
                     }
@@ -232,8 +248,39 @@ export function Form() {
                                 mendapatkan email balasan nantinya
                             </li>
                             <li className="mb-1">
+                                Peserta wajib share story feeds pendaftaran
+                                CRAFT melewati link{" "}
+                                <a
+                                    href="https://bit.ly/FeedsInstagramPendaftaranCRAFT"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {""}
+                                    https://bit.ly/FeedsInstagramPendaftaranCRAFT
+                                </a>{" "}
+                                di akun instagram pribadi peserta, serta tag
+                                akun instagram @pktsl_ugm dan @civilinaction
+                            </li>
+                            <li className="mb-1">
+                                Peserta wajib mem-follow akun instagram
+                                @pktsl_ugm dan @civilinaction
+                            </li>
+                            <li className="mb-1">
                                 Peserta dapat memilih 2 opsi kehadiran
                                 (offline/online)
+                            </li>
+                            <li className="mb-1">
+                                Peserta menyerahkan bukti tangkapan layar share
+                                story feeds pendaftaran CRAFT serta follow akun
+                                instagram @pktsl_ugm dan @civilinaction (PDF).
+                                <br />
+                                Format penamaan file : <br />
+                                Bukti story CRAFT_Nama Peserta Contoh : Bukti
+                                Story CRAFT_Dimas Apta <br />
+                                Bukti follow CIA_Nama Peserta Contoh : Bukti
+                                Follow CIA_Dimas Apta
+                                <br /> Bukti follow PKTSL_Nama Peserta Contoh :
+                                Bukti Follow PKTSL_Dimas Apta
                             </li>
                             <li className="mb-1">
                                 Peserta menyerahkan bukti pembayaran pada
@@ -490,6 +537,83 @@ export function Form() {
                                                 >
                                                     (Format Penamaan : Bukti
                                                     Pembayaran_Nama Peserta)
+                                                </span>
+                                            </p>
+                                            <input
+                                                type="file"
+                                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
+                                                accept="application/pdf"
+                                                required
+                                                onChange={onFileChange(
+                                                    "payment_proof"
+                                                )}
+                                            ></input>
+                                        </div>
+                                        <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
+                                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                Bukti Follow Instagram{" "}
+                                                <a
+                                                    href="https://www.instagram.com/pktsl_ugm/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    PKTSL
+                                                </a>{" "}
+                                                <span style={{ color: "red" }}>
+                                                    *
+                                                </span>{" "}
+                                                <span style={{ color: "gray" }}>
+                                                    (Format Penamaan : Bukti
+                                                    Follow PKTSL_Nama Peserta)
+                                                </span>
+                                            </p>
+                                            <input
+                                                type="file"
+                                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
+                                                accept="application/pdf"
+                                                required
+                                                onChange={onFileChange(
+                                                    "payment_proof"
+                                                )}
+                                            ></input>
+                                        </div>
+                                        <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
+                                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                Bukti Follow Instagram{" "}
+                                                <a
+                                                    href="https://www.instagram.com/civilinaction/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Civil In Action
+                                                </a>{" "}
+                                                <span style={{ color: "red" }}>
+                                                    *
+                                                </span>{" "}
+                                                <span style={{ color: "gray" }}>
+                                                    (Format Penamaan : Bukti
+                                                    Follow CIA_Nama Peserta)
+                                                </span>
+                                            </p>
+                                            <input
+                                                type="file"
+                                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
+                                                accept="application/pdf"
+                                                required
+                                                onChange={onFileChange(
+                                                    "payment_proof"
+                                                )}
+                                            ></input>
+                                        </div>
+                                        <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
+                                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                Bukti Story Instagram{" "}
+                                                <span style={{ color: "red" }}>
+                                                    *
+                                                </span>{" "}
+                                                <span style={{ color: "gray" }}>
+                                                    (Format Penamaan : Bukti
+                                                    Story CRAFT_Nama Peserta)
                                                 </span>
                                             </p>
                                             <input
