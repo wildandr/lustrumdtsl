@@ -7,6 +7,7 @@ import Mediapatner from "../../component/module/cia/Mediapatner";
 import Event from "../../component/module/cia/Event";
 import Galeri from "../../component/module/cia/Galeri";
 import Footer2 from "../../component/layout/Footer2";
+import Contact from "@/component/module/cia/Contact";
 
 export default function Home() {
     const backgroundImage = {
@@ -30,6 +31,7 @@ export default function Home() {
             <Event />
             <Utama />
             <Galeri />
+            <Contact />
             <Sponsorship />
             <Mediapatner />
             <Footer2 />
