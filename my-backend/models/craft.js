@@ -72,6 +72,18 @@ Craft.init(
             type: DataTypes.TEXT,
             allowNull: true,
         },
+        bukti_follow_cia: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        bukti_follow_pktsl: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        bukti_story: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
     {
         sequelize,

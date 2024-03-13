@@ -66,6 +66,9 @@ router.post("/crafts/register", authenticateToken, async (req, res) => {
             payment_proof: req.body.payment_proof,
             email: req.body.email,
             isVerified: req.body.isVerified,
+            bukti_follow_cia: req.body.bukti_follow_cia,
+            bukti_follow_pktsl: req.body.bukti_follow_pktsl,
+            bukti_story: req.body.bukti_story,
         });
         res.status(201).json({
             message: "Berhasil menambahkan peserta craft baru",
