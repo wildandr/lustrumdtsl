@@ -32,7 +32,7 @@ export function Contact() {
     };
 
     return (
-        <div id='contact-cia' className='w-full min-h-screen p-6 flex flex-col items-center justify-center relative overflow-x-clip'>
+        <div id='contact' className='w-full min-h-screen p-6 flex flex-col items-center justify-center relative overflow-x-clip'>
 
             <div className='flex justify-center w-full px-[7%]'>
                 <Image className='w-full h-auto' src={isDeviceGreaterThanMd ? `/assets/cia/bg_contact_cia.png` : `/assets/cia/bg_contact_cia_mobile.png`} alt='' width={1000} height={1000} />
