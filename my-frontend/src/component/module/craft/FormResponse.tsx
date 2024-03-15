@@ -20,6 +20,9 @@ interface Participant {
   email: string;
   createdAt: string;
   updatedAt: string;
+  bukti_follow_pktsl: string;
+  bukti_follow_cia: string;
+  bukti_story: string;
 }
 export default function DetailUser({ params }: { params: any }) {
   const [participant, setParticipant] = useState<Participant | null>(null);
@@ -89,7 +92,10 @@ async function downloadFilesAsZip() {
         Email: participant.email || '',
         Status_Verifikasi: participant.isVerified ? 'Terverifikasi' : 'Belum Terverifikasi',
         Tanggal_Pendaftaran: participant.createdAt || '',
-        Tanggal_Pembaruan: participant.updatedAt || ''
+        Tanggal_Pembaruan: participant.updatedAt || '',
+        Bukti_Follow_PKTS: participant.bukti_follow_pktsl || '',
+        Bukti_Follow_CIA: participant.bukti_follow_cia || '',
+        Bukti_Story: participant.bukti_story || '',
     }];
 
     // Convert data to CSV
@@ -214,6 +220,51 @@ async function downloadFilesAsZip() {
                   rel="noopener noreferrer"
                 >
                   {participant?.payment_proof || ""}
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col w-full ">
+              <p className="text-black text-left text-lg font-medium px-6 ">
+               Bukti Follow Instagram PKTSL
+              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold"
+                  href={`${participant?.bukti_follow_pktsl || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {participant?.bukti_follow_pktsl || ""}
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col w-full ">
+              <p className="text-black text-left text-lg font-medium px-6 ">
+              Bukti Follow Instagram CIA
+              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold"
+                  href={`${participant?.bukti_follow_cia || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {participant?.bukti_follow_cia|| ""}
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col w-full ">
+              <p className="text-black text-left text-lg font-medium px-6 ">
+               Bukti Story Instagram
+              </p>
+              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+                <a
+                  className="text-blue-500 underline text-left text-lg font-semibold"
+                  href={`${participant?.bukti_story || ""}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {participant?.bukti_story || ""}
                 </a>
               </div>
             </div>

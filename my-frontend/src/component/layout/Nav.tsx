@@ -375,7 +375,7 @@ export default function Nav() {
 
 
           </div>
-          // buat agar jika active segment == cia maka link akab berubah ke cia#contact
+          {/* // buat agar jika active segment == cia maka link akab berubah ke cia#contact */}
           <Link href={`/${activeSegment}#contact`} className="-ml-3">
             Contact
           </Link>
