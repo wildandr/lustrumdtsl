@@ -206,57 +206,57 @@ export function Form() {
         if (!validateTeamData(teamData)) {
             toast.error("Data tidak boleh kosong");
             return;
-        }
-
-        const data = {
-            team: {
-                ...teamData.team,
-                user_id: 1,
-            },
-            leader: {
-                ...teamData.leader,
-                semester: Number(teamData.leader.semester), // Convert to number here
-                is_leader: 1,
-                batch: null,
-            },
-            members: [
-                {
-                    ...teamData.member1,
-                    semester: Number(teamData.member1.semester), // Convert to number here
-                    is_leader: 0,
+        } else {
+            const data = {
+                team: {
+                    ...teamData.team,
+                    user_id: userIdFromLocalStorage,
+                },
+                leader: {
+                    ...teamData.leader,
+                    semester: Number(teamData.leader.semester),
+                    is_leader: 1,
                     batch: null,
                 },
-                {
-                    ...teamData.member2,
-                    semester: Number(teamData.member2.semester), // Convert to number here
-                    is_leader: 0,
-                    batch: null,
-                },
-            ],
-            dosbim: [
-                {
-                    ...teamData.dosbim,
-                },
-            ],
-            sbc: [teamData.sbc],
-        };
-
-        try {
-            const token = Cookies.get("token");
-
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/new`,
-                data,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
+                members: [
+                    {
+                        ...teamData.member1,
+                        semester: Number(teamData.member1.semester),
+                        is_leader: 0,
+                        batch: null,
                     },
-                }
-            );
-            toast.success("Pendaftaran berhasil");
-            router.push("/dashboard/user");
-        } catch (error) {
-            toast.error("Pendaftaran gagal");
+                    {
+                        ...teamData.member2,
+                        semester: Number(teamData.member2.semester),
+                        is_leader: 0,
+                        batch: null,
+                    },
+                ],
+                dosbim: [
+                    {
+                        ...teamData.dosbim,
+                    },
+                ],
+                sbc: [teamData.sbc],
+            };
+
+            try {
+                const token = Cookies.get("token");
+
+                const response = await axios.post(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/teams/sbc/new`,
+                    data,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                toast.success("Pendaftaran berhasil");
+                router.push("/dashboard/user");
+            } catch (error) {
+                toast.error("Pendaftaran gagal");
+            }
         }
     };
 
