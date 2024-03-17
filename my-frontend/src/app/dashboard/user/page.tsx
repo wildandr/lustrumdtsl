@@ -404,12 +404,12 @@ export default function DashboardUser() {
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}
                                     Untuk pendaftaran dapat dilakukan dengan
-                                    pengisian formulir yang ada pada menu{" "}
+                                    pengisian formulir yang ada pada menu Event diatas{" "}
                                 </p>
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}
-                                    jika ada pertanyaan lebih lanjut kontak kami
-                                    036973265324{" "}
+                                    jika ada pertanyaan lebih lanjut kontak kami melalui instagram
+                                    @civilinaction{" "}
                                 </p>
                             </div>
                         </div>
