@@ -98,7 +98,6 @@ export function Form() {
                                 },
                             };
 
-                            console.log(updatedTeamData);
                             return updatedTeamData;
                         });
                     }
