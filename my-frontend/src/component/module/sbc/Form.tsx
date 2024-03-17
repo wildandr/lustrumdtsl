@@ -98,6 +98,7 @@ export function Form() {
                                 },
                             };
 
+                            console.log(updatedTeamData);
                             return updatedTeamData;
                         });
                     }
@@ -164,7 +165,7 @@ export function Form() {
 
     function validateTeamData(data: any): boolean {
         for (let key in data) {
-            if (data[key] === null) {
+            if (data[key] === "" && key !== "voucher") {
                 return false;
             } else if (typeof data[key] === "object") {
                 if (!validateTeamData(data[key])) {
