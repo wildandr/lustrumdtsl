@@ -53,11 +53,7 @@ export function Form() {
             if (file) {
                 const fileSize = file.size / 1024 / 1024; // size in MB
 
-                if (
-                    (file.type === "application/pdf" ||
-                        file.type.startsWith("image/")) &&
-                    fileSize > 1
-                ) {
+                if (file.type.startsWith("image/") && fileSize > 1) {
                     toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
