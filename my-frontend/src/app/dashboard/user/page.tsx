@@ -401,10 +401,11 @@ export default function DashboardUser() {
                         <div className=" mt-4 ">
                             <p className="text-black mb-2">Pengumuman</p>
                             <div className="p-4 bg-[#B5E5DB] rounded-xl">
-                                <p className="text-[14px] text-ciaGreen text-left">
-                                    {" "}
-                                    Untuk pendaftaran dapat dilakukan dengan
-                                    pengisian formulir yang ada pada menu Event diatas{" "}
+                                <p className="text-[20px] text-ciaGreen text-left">
+                                    Untuk ToR SOAL CIC dapat diakses pada{" "}
+                                    <a href="https://drive.google.com/drive/folders/1ao2GBpO-OVcbg8kuXG8GrSfoCxkdMf7l?usp=drive_link"className="font-bold" target="_blank" rel="noopener noreferrer" >
+                                        Link ini.
+                                    </a>
                                 </p>
                                 <p className="text-[14px] text-ciaGreen text-left">
                                     {" "}

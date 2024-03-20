@@ -131,8 +131,9 @@ export default function DetailUser({ params }: { params: any }) {
   }
 
   async function downloadFilesAsZip() {
-    const zip = new JSZip();
 
+    const zip = new JSZip();
+    
     const membersData = teamData.members.map((member: any) => ({
       Nama_Lengkap: member.full_name || "",
       Departemen: member.department || "",
@@ -281,21 +282,33 @@ export default function DetailUser({ params }: { params: any }) {
               </p>
             </div>
             <div className="flex flex-col w-full mt-5">
-              <p className="text-black text-left text-lg font-medium px-6 ">
+              <p className="text-black text-left text-lg font-medium px-6">
                 Bukti Pembayaran
               </p>
-              <div className=" px-6 py-2 rounded-xl bg-[#B5E5DB] ">
+              <div className="px-6 py-2 rounded-xl bg-[#B5E5DB]">
                 {teamData.team[0]?.payment_proof && (
-                  <Image
-                    src={`${teamData.team[0]?.payment_proof}`}
-                    alt="foto"
-                    width={500}
-                    height={500}
-                    className="max-w-[1080px] z-10"
-                  />
+                  /\.(jpg|jpeg|png|gif)$/.test(teamData.team[0].payment_proof) ? (
+                    <Image
+                      src={`${teamData.team[0]?.payment_proof}`}
+                      alt="foto"
+                      width={500}
+                      height={500}
+                      className="max-w-[1080px] z-10"
+                    />
+                  ) : (
+                    <a
+                      href={`${teamData.team[0]?.payment_proof}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 underline text-lg font-semibold"
+                    >
+                      Lihat Bukti Pembayaran
+                    </a>
+                  )
                 )}
               </div>
             </div>
+
             <div className="flex flex-col w-full mt-5">
               <p className="text-black text-left text-lg font-medium px-6 ">
                 Bukti Voucher
