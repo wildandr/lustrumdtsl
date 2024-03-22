@@ -85,6 +85,11 @@ export default function Nav() {
           ? "bg-craft text-white"
           : ""
       }
+      ${
+        activeSegment === "claproyex"
+          ? "bg-clapBlue-500 text-white"
+          : ""
+      }
          w-full z-[9999] fixed  justify-between transition-transform  lg:flex lg:px-10 items-center font-LibreBaskerville ${
            isVisible
              ? "transition-transform"
@@ -93,7 +98,7 @@ export default function Nav() {
     >
       <div className="flex w-full flex-row  my-3 px-4 lg:px-16 justify-between items-center">
         <Link href="/lustrum">
-          {/* Tampilkan image pertama jika segment aktif adalah "lustrum", jika tidak, tampilkan image kedua */}
+          
           {activeSegment === "lustrum" ? (
             <Image
               className="h-10 w-auto"
@@ -102,7 +107,7 @@ export default function Nav() {
               width={100}
               height={100}
             />
-          ) : (
+          ) : ( activeSegment === "cia" ? (
             <div className="flex flex-row items-center">
               <Image
                 className="h-10 w-auto"
@@ -120,6 +125,26 @@ export default function Nav() {
                 height={100}
               />
             </div>
+          ) : (
+            <div className="flex flex-row items-center gap-3">
+              <Image
+                className="h-10 w-auto"
+                src="/assets/claproyex/logo_lustrum_putih.png"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+              
+              <Image
+                className="h-10 w-auto"
+                src="/assets/claproyex/logo_claproyex_putih.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+            </div>
+          )
+            
           )}
         </Link>
         <nav className="hidden lg:flex flex-row gap-1 justify-center items-center">
@@ -160,11 +185,9 @@ export default function Nav() {
               : "-translate-y-[300%] transition-transform"
           }`} >
            
-            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="/cia" className="flex items-center">
-              <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400 border-yellow-400" : "text-cia-green "
-        }`}>Civil in Action </span>
+              <span className={`${activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green"}`}>Civil in aAction </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +197,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -184,7 +207,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/craft" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Registrasi Peserta CRAFT </span>
                   <svg
          
@@ -195,7 +218,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -203,7 +226,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/cic" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Registrasi Peserta CIC </span>
                   <svg
          
@@ -214,7 +237,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -222,7 +245,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/sbc" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Registrasi Peserta SBC </span>
                   <svg
          
@@ -233,7 +256,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -241,7 +264,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/fcec" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Registrasi Peserta FCEC </span>
                   <svg
          
@@ -252,7 +275,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -260,10 +283,10 @@ export default function Nav() {
                 
               </ul>
             </li>
-            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="#" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Srawung Desa </span>
               <svg
          
@@ -274,17 +297,17 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg>
        </Link>
        </li>
-       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
-            <Link href="#" className="flex items-center">
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
+            <Link href="/claproyex" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Claproyex </span>
               <svg
          
@@ -295,17 +318,17 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg>
        </Link>
        </li>
-       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="#" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Ceremony </span>
               <svg
          
@@ -316,7 +339,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -326,10 +349,10 @@ export default function Nav() {
      
         
 
-<li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+<li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
     <Link href="/dashboard/user" className="flex items-center">
       <span className={`${
-        activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+        activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
       }`}>Dashboard Pendaftaran</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +362,7 @@ export default function Nav() {
         height="12"
         viewBox="0 0 24 24"
         className={`ml-3 ${
-          activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+          activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
         }`}
       >
         <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -401,11 +424,9 @@ export default function Nav() {
               : "-translate-y-[300%] transition-transform"
           }`} >
            
-            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="/cia" className="flex items-center">
-              <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400 border-yellow-400" : "text-cia-green "
-        }`}>Civil in Action </span>
+              <span className={`${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>Civil in Action </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +436,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -425,7 +446,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/craft" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Registrasi Peserta CRAFT </span>
                   <svg
          
@@ -436,7 +457,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -444,7 +465,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/cic" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Registrasi Peserta CIC </span>
                   <svg
          
@@ -455,7 +476,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -463,7 +484,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/sbc" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Registrasi Peserta SBC </span>
                   <svg
          
@@ -474,7 +495,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -482,7 +503,7 @@ export default function Nav() {
                 <li className="py-1 ">
                 <Link href="/fcec" className="flex justify-between items-center">
                   <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Registrasi Peserta FCEC </span>
                   <svg
          
@@ -493,7 +514,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={` ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
@@ -501,10 +522,10 @@ export default function Nav() {
                 
               </ul>
             </li>
-            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+            <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="#" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Srawung Desa </span>
               <svg
          
@@ -515,17 +536,17 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg>
        </Link>
        </li>
-       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="#" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Claproyex </span>
               <svg
          
@@ -536,17 +557,17 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
        </svg>
        </Link>
        </li>
-       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : "border-cia-green"}`}>
+       <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="#" className="flex items-center">
               <span className={`${
-          activeSegment === "lustrum" ? "text-yellow-400" : "text-cia-green "
+          activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`}>Ceremony </span>
               <svg
          
@@ -557,7 +578,7 @@ export default function Nav() {
          height="12"
          viewBox="0 0 24 24"
          className={`ml-3 ${
-           activeSegment === "lustrum" ? "fill-yellow-400" : "fill-cia-green"
+           activeSegment === "lustrum" ? "fill-yellow-400" : activeSegment == "claproyex" ? "fill-clapBlue-500" : "fill-cia-green"
          }`}
        >
          <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>

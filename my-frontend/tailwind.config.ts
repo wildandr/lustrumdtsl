@@ -13,7 +13,8 @@ const config: Config = {
     theme: {
         extend: {
             screens: {
-                '16k': '1680',
+                '16k': '1680px',
+                '1440': '1440px',
               },
             animationDelay: ["responsive", "hover", "focus"],
             animationDuration: ["responsive", "hover", "focus"],
@@ -49,11 +50,15 @@ const config: Config = {
                 chiasGreen: {
                     500: "#058369",
                 },
+                clapBlue: {
+                    500: "#4573A4",
+                },
                 gold: {
                     500: "#F2D87A",
                 },
             },
             fontFamily: {
+                LeagueSpartan: ["league-spartan"],
                 sfui: ["PlusJakartaSans"],
                 LibreBaskerville: ["LibreBaskerville-Regular"],
                 Poppins: ["Poppins-Regular"],
