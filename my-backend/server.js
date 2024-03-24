@@ -22,12 +22,21 @@ app.get("/", (req, res) => {
     res.send("Hello from the backend!");
 });
 
+<<<<<<< Updated upstream
 app.use("/endpoint", userRouter);
 app.use("/endpoint", cicRouter);
 app.use("/endpoint", teamRouter);
 app.use("/endpoint", sbcRouter);
 app.use("/endpoint", fcecRouter);
 app.use("/endpoint", craftRouter);
+=======
+app.use("/api", userRouter);
+app.use("/api", cicRouter);
+app.use("/api", teamRouter);
+app.use("/api", sbcRouter);
+app.use("/api", fcecRouter);
+app.use("/api", craftRouter);
+>>>>>>> Stashed changes
 
 // Konfigurasi opsi untuk sertifikat SSL
 const options = {
