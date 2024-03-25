@@ -47,12 +47,12 @@ export default function Footer() {
 
           <div className="flex-col  flex items-start gap-4 mt-4 ">
             <p
-              className={`  font-bold text-xl   text-[#233e61] z-30 text-transparent bg-gradient-to-b `}
+              className={`  font-bold text-xl   text-[#233e61] z-30 `}
             >
               Event
             </p>
             <Link href="/cia" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Civil in action
               </p>
               <svg
@@ -68,7 +68,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="#" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Srawung Desa
               </p>
               <svg
@@ -84,7 +84,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="#" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Claproyex
               </p>
               <svg
@@ -100,7 +100,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="#" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Ceremony
               </p>
               <svg
@@ -118,12 +118,12 @@ export default function Footer() {
           </div>
           <div className="flex-col flex items-start gap-4 mt-8  md:mt-4">
             <p
-              className={`  font-bold text-xl  text-[#233e61] z-30 text-transparent bg-gradient-to-b  `}
+              className={`  font-bold text-xl  text-[#233e61] z-30  `}
             >
               Formulir
             </p>
             <Link href="/craft" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Registrasi peserta CRAFT
               </p>
               <svg
@@ -139,7 +139,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="/cia" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Registrasi peserta CIC
               </p>
               <svg
@@ -155,7 +155,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="/sbc" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Registrasi peserta SBC
               </p>
               <svg
@@ -171,7 +171,7 @@ export default function Footer() {
               </svg>
             </Link>
             <Link href="/fcec" className="flex items-center gap-3">
-              <p className="text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+              <p className="text-[#233e61] z-30">
                 Registrasi peserta FCEC
               </p>
               <svg
@@ -241,7 +241,7 @@ export default function Footer() {
                 </svg>
               </Link>
             </div>
-            <p className="text-center font-bold w-full mt-4 lg:mt-0 lg:text-end text-sm lg:justify-end text-[#233e61] z-30 text-transparent bg-gradient-to-b">
+            <p className="text-center font-bold w-full mt-4 lg:mt-0 lg:text-end text-sm lg:justify-end text-[#233e61] z-30">
               Copyright Lustrum-XI KMTSL 2024
             </p>
           </div>

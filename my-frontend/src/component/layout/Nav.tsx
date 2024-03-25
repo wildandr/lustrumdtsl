@@ -125,7 +125,7 @@ export default function Nav() {
                 height={100}
               />
             </div>
-          ) : (
+          ) : activeSegment == "claproyex" ? (
             <div className="flex flex-row items-center gap-3">
               <Image
                 className="h-10 w-auto"
@@ -138,6 +138,24 @@ export default function Nav() {
               <Image
                 className="h-10 w-auto"
                 src="/assets/claproyex/logo_claproyex_putih.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+            </div>
+          ) : (
+            <div className="flex flex-row items-center">
+              <Image
+                className="h-10 w-auto"
+                src="/ciaLogo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+              
+              <Image
+                className="h-10 w-auto"
+                src="/assets/lustrum/logo_lustrum_vektor.svg"
                 alt="Logo"
                 width={100}
                 height={100}
