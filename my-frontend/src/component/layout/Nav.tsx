@@ -125,7 +125,7 @@ export default function Nav() {
                 height={100}
               />
             </div>
-          ) : (
+          ) : activeSegment == "claproyex" ? (
             <div className="flex flex-row items-center gap-3">
               <Image
                 className="h-10 w-auto"
@@ -138,6 +138,24 @@ export default function Nav() {
               <Image
                 className="h-10 w-auto"
                 src="/assets/claproyex/logo_claproyex_putih.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+            </div>
+          ) : (
+            <div className="flex flex-row items-center">
+              <Image
+                className="h-10 w-auto"
+                src="/ciaLogo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
+              
+              <Image
+                className="h-10 w-auto"
+                src="/assets/lustrum/logo_lustrum_vektor.svg"
                 alt="Logo"
                 width={100}
                 height={100}
@@ -187,7 +205,7 @@ export default function Nav() {
            
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="/cia" className="flex items-center">
-              <span className={`${activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green"}`}>Civil in aAction </span>
+              <span className={`${activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green"}`}>Civil in Action </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"
