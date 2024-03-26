@@ -444,7 +444,7 @@ export default function Nav() {
            
             <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
             <Link href="/cia" className="flex items-center">
-              <span className={`${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>Civil in Action </span>
+              <span className={`${activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green"}`}>Civil in Action </span>
               <svg
          
          xmlns="http://www.w3.org/2000/svg"
@@ -562,7 +562,7 @@ export default function Nav() {
        </Link>
        </li>
        <li className={`py-2 border-b ${activeSegment === "lustrum" ? "border-yellow-400" : activeSegment == "claproyex" ? "border-clapBlue-500" : "border-cia-green"}`}>
-            <Link href="#" className="flex items-center">
+            <Link href="/claproyex" className="flex items-center">
               <span className={`${
           activeSegment === "lustrum" ? "text-yellow-400" : activeSegment == "claproyex" ? "text-clapBlue-500" : "text-cia-green "
         }`} >Claproyex </span>

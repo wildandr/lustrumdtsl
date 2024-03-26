@@ -27,11 +27,11 @@ export default function Footer() {
       />
 
       <Image
-        src="/assets/claproyex/logo_kmtsl_clap.svg"
+        src="/assets/claproyex/logo_kmtsl_setengah.svg"
         width={1000}
         height={1000}
         alt="Lustrum Logo"
-        className="w-[30%] h-auto absolute bottom-0 right-[10%] lg:flex hidden"
+        className="w-[50%] h-auto absolute bottom-0 right-0 lg:flex hidden"
       />
 
       <div className="h-[100%] w-full z-20 absolute bottom-0 p-8 lg:px-32">

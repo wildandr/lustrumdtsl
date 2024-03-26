@@ -12,7 +12,7 @@ export function comingSoon() {
     };
 
     return (
-        <div className='lg:min-h-[70vh] relative flex flex-col items-center pb-[40%]  lg:pb-[10%] px-[10%] lg:px-[20%] text-center'>
+        <div id='contact' className='lg:min-h-[70vh] relative flex flex-col items-center pb-[40%]  lg:pb-[10%] px-[10%] lg:px-[20%] text-center'>
 
             <Image
              className='w-full h-auto absolute bottom-0' 
