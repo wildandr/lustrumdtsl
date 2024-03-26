@@ -18,7 +18,7 @@ export function Tema() {
     };
 
     return (
-        <div className='flex flex-col w-full'>
+        <div id="tema_claproyex" className='flex flex-col w-full'>
             <div className='hidden lg:flex flex-col items-end z-50' style={backgroundImage}>
                 <div className='w-[70%] pe-[20%] pt-[12%]'>
                     <p className='lg:text-lg xl:text-xl 2xl:text-2xl text-clapBlue-500 font-bold text-right'>Tema Umum</p>

@@ -39,10 +39,10 @@ export function Hero() {
                 <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className='text-4xl lg:text-5xl 2xl:text-7xl text-clapBlue-500 font-bold text-center'>Clapeyron Proyek dan Expo Ke-8</p>
                 <p className='text-xs md:text-lg 2xl:text-xl text-clapBlue-500 text-center px-[5%] lg:px-[10%]'>Claproyex merupakan rangkaian acara tahunan yang diadakan oleh Badan Pers Mahasiswa Teknik Sipil Clapeyron UGM diharapkan dapat meningkatkan pemahaman dan kesadaran masyarakat akan pentingnya sumber daya air. Rangkaian acara claproyex tahun ini terdiri dari Pameran dan Seminar Nasional.</p>
                 <div className='flex flex-col lg:flex-row w-[70%] gap-4 mt-5 justify-center items-center'>
-                    <Link href={`#`} className='flex flex-row w-full lg:w-[40%] justify-center bg-clapBlue-500 text-white px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center z-50'>
+                    <Link href={`/lustrum#sponsor_lustrum`} className='flex flex-row w-full lg:w-[40%] justify-center bg-clapBlue-500 text-white px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center z-50'>
                         Sponsorship 
                     </Link>
-                    <Link href={`#`} className='flex flex-row w-full lg:w-[40%] justify-center border border-clapBlue-500 text-clapBlue-500 px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center z-50'>Explore Event 
+                    <Link href={`#tema_claproyex`} className='flex flex-row w-full lg:w-[40%] justify-center border border-clapBlue-500 text-clapBlue-500 px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center z-50'>Explore Event 
                         <span>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="100" viewBox="0 0 24 24" className="fill-current text-clapBlue-500 h-5">
                             <path d="M11.109,3L11.109,3C9.78,3,8.988,4.481,9.725,5.587L14,12l-4.275,6.413C8.988,19.519,9.78,21,11.109,21h0 c0.556,0,1.076-0.278,1.385-0.741l4.766-7.15c0.448-0.672,0.448-1.547,0-2.219l-4.766-7.15C12.185,3.278,11.666,3,11.109,3z"></path>
