@@ -58,6 +58,8 @@ const config: Config = {
                 },
             },
             fontFamily: {
+                League_Spartan: ['var(--font-league-spartan)'],
+                
                 LeagueSpartan: ["league-spartan"],
                 sfui: ["PlusJakartaSans"],
                 LibreBaskerville: ["LibreBaskerville-Regular"],

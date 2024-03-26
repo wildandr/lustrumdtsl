@@ -2,6 +2,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { League_Spartan } from 'next/font/google';
+
+const league_spartan = League_Spartan({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-league-spartan',
+  })
+
 export function Hero() {
 
     return (
@@ -36,8 +44,8 @@ export function Hero() {
                         width={1000}
                         className='h-[5rem] md:h-[5.5rem] 2xl:h-[6rem] w-auto'/>
                 </div>
-                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className='text-4xl lg:text-5xl 2xl:text-7xl text-clapBlue-500 font-bold text-center'>Clapeyron Proyek dan Expo Ke-8</p>
-                <p className='text-xs md:text-lg 2xl:text-xl text-clapBlue-500 text-center px-[5%] lg:px-[10%]'>Claproyex merupakan rangkaian acara tahunan yang diadakan oleh Badan Pers Mahasiswa Teknik Sipil Clapeyron UGM diharapkan dapat meningkatkan pemahaman dan kesadaran masyarakat akan pentingnya sumber daya air. Rangkaian acara claproyex tahun ini terdiri dari Pameran dan Seminar Nasional.</p>
+                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className={`${league_spartan.className}  text-4xl lg:text-5xl 2xl:text-7xl text-clapBlue-500 font-bold text-center`}>Clapeyron Proyek dan Expo Ke-8</p>
+                <p className={`text-xs md:text-lg 2xl:text-xl text-clapBlue-500 text-center px-[5%] lg:px-[10%]`}>Claproyex merupakan rangkaian acara tahunan yang diadakan oleh Badan Pers Mahasiswa Teknik Sipil Clapeyron UGM diharapkan dapat meningkatkan pemahaman dan kesadaran masyarakat akan pentingnya sumber daya air. Rangkaian acara claproyex tahun ini terdiri dari Pameran dan Seminar Nasional.</p>
                 <div className='flex flex-col lg:flex-row w-[70%] gap-4 mt-5 justify-center items-center'>
                     <Link href={`/lustrum#sponsor_lustrum`} className='flex flex-row w-full lg:w-[40%] justify-center bg-clapBlue-500 text-white px-4 py-2 rounded-lg font-bold text-xs lg:text-base hover:opacity-50 items-center z-50'>
                         Sponsorship 
