@@ -32,7 +32,13 @@ Craft.init(
             allowNull: false,
         },
         activity_choice: {
-            type: DataTypes.ENUM("offline", "online"),
+            type: DataTypes.ENUM(
+                "offline",
+                "online",
+                "offline2peserta",
+                "offline3peserta",
+                "offline5peserta"
+            ),
             allowNull: false,
         },
         whatsapp_number: {
@@ -83,6 +89,10 @@ Craft.init(
         bukti_story: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        bundling_member: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
     },
     {

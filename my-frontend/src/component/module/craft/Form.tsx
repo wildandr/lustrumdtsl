@@ -36,6 +36,7 @@ export function Form() {
         bukti_follow_cia: "",
         bukti_follow_pktsl: "",
         bukti_story: "",
+        bundling_member: "",
     });
 
     function validateCraftData(data: any): boolean {
@@ -87,6 +88,7 @@ export function Form() {
                     toast.error("Ukuran file tidak boleh melebihi 1MB");
                     e.target.value = "";
                 } else if (
+                    field !== "bundling_member" &&
                     !/^SKMA_.*$|^ID_.*$|^Pas Foto_.*$|^Bukti Pembayaran_.*$|^Bukti Voucher_.*$|^SKSA_.*$|^Orisinalitas_.*$|^Abstrak_.*$|^KTM_.*$|^Bukti Story CRAFT_.*$|^Bukti Follow CIA_.*$|^Bukti Follow PKTSL_.*$/.test(
                         file.name
                     )
@@ -270,6 +272,24 @@ export function Form() {
                                 (offline/online)
                             </li>
                             <li className="mb-1">
+                                Peserta offline paket bundling menyerahkan
+                                daftar anggota pada formulir tersebut (PDF).
+                                <br />
+                                Lembar pernyataan dapat diakses melalui{" "}
+                                <a
+                                    href="https://bit.ly/GuidebookPendaftaranCRAFT"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    https://bit.ly/GuidebookPendaftaranCRAFT
+                                </a>
+                                <br />
+                                Format penamaan file : Daftar Anggota_Nama
+                                Peserta
+                                <br />
+                                Contoh : Daftar Anggota_Dimas Apta
+                            </li>
+                            <li className="mb-1">
                                 Peserta menyerahkan bukti tangkapan layar share
                                 story feeds pendaftaran CRAFT serta follow akun
                                 instagram @pktsl_ugm dan @civilinaction (PDF).
@@ -284,20 +304,49 @@ export function Form() {
                             </li>
                             <li className="mb-1">
                                 Peserta menyerahkan bukti pembayaran pada
-                                formulir (PDF).
-                                <br /> Format penamaan file : Bukti
-                                Pembayaran_Nama Peserta <br /> Contoh : Bukti
-                                Pembayaran_Dimas Apta <br /> Biaya pendaftaran
-                                yang harus dibayarkan sejumlah berikut : <br />{" "}
-                                Tiket Early Bird (18-24 Maret 2024) <br /> Umum
-                                offline : Rp 40.000 <br /> Umum online : Rp
-                                30.000 <br />
-                                Mahasiswa DTSL FT UGM (Coming Soon)
+                                formulir (PDF). Format penamaan file : Bukti
+                                Pembayaran_Nama Peserta
                                 <br />
+                                Contoh : Bukti Pembayaran_Dimas Apta
                                 <br />
+                                <ul
+                                    style={{ listStyleType: "disc" }}
+                                    className="ml-8"
+                                >
+                                    <li>
+                                        Reguler (25 Maret- 5 Mei 2024)
+                                        <br />
+                                        Umum offline : Rp 50.000
+                                        <br />
+                                        Umum online : Rp 40.000
+                                        <br />
+                                    </li>
+                                    <li>
+                                        Paket Bundling (Khusus peserta offline)
+                                        <br />
+                                        2 Peserta : Rp 95.000
+                                        <br />
+                                        3 Peserta : Rp 120.000
+                                        <br />
+                                        5 Peserta : Rp 150.000
+                                        <br />
+                                    </li>
+                                    <li>
+                                        Flash Sale (Khusus peserta online)
+                                        <br />
+                                        Biaya pendaftaran yang dibayarkan
+                                        sejumlah promosi yang sedang berlaku.
+                                        Untuk informasi lebih lanjut mengenai
+                                        promosi yang sedang berlangsung dapat
+                                        diakses melalui akun Instagram
+                                        @pktsl_ugm
+                                        <br />
+                                    </li>
+                                </ul>
                                 Pembayaran ditambah dengan kode unik (+Rp 233)
                                 <br />
-                                Contoh : Rp 40.233,00 <br />
+                                Contoh : Rp 50.233,00
+                                <br />
                                 Pembayaran dilakukan melalui rekening
                                 1800013302668 (Mandiri) a.n Balqis Sybil
                                 Buanawati
@@ -352,6 +401,27 @@ export function Form() {
                                             >
                                                 {" "}
                                                 Offline{" "}
+                                            </Radio>
+                                            <Radio
+                                                value="offline2peserta"
+                                                className="text-xs"
+                                            >
+                                                {" "}
+                                                Offline Bundling 2 Peserta{" "}
+                                            </Radio>
+                                            <Radio
+                                                value="offline3peserta"
+                                                className="text-xs"
+                                            >
+                                                {" "}
+                                                Offline Bundling 3 Peserta{" "}
+                                            </Radio>
+                                            <Radio
+                                                value="offline5peserta"
+                                                className="text-xs"
+                                            >
+                                                {" "}
+                                                Offline Bundling 5 Peserta{" "}
                                             </Radio>
                                         </RadioGroup>
                                         <RadioGroup
@@ -623,6 +693,23 @@ export function Form() {
                                                 required
                                                 onChange={onFileChange(
                                                     "payment_proof"
+                                                )}
+                                            ></input>
+                                        </div>
+                                        <div className="flex flex-col gap-1 border-b-2 pb-2 mt-2 border-[#18AB8E]">
+                                            <p className="text-black text-[0.7rem]  lg:text-[12px] ml-1">
+                                                Daftar nama anggota (khusus
+                                                bundling). Format pengisian
+                                                dapat di-download melalui tautan
+                                                berikut
+                                                bit.ly/DaftarNamaAnggotaCraft
+                                            </p>
+                                            <input
+                                                type="file"
+                                                className="text-[0.7rem] md:text-sm text-ciaGreen  xl:w-1/3"
+                                                accept="application/pdf"
+                                                onChange={onFileChange(
+                                                    "bundling_member"
                                                 )}
                                             ></input>
                                         </div>
