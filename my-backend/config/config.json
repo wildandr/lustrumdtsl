@@ -1,20 +1,20 @@
 {
     "development": {
-        "username": "root2",
+        "username": "test",
         "password": "Makanmakan3x*",
         "database": "lustrumdtsl",
         "host": "localhost",
         "dialect": "mysql"
     },
     "test": {
-        "username": "root2",
+        "username": "test",
         "password": "Makanmakan3x*",
         "database": "lustrumdtsl",
         "host": "localhost",
         "dialect": "mysql"
     },
     "production": {
-        "username": "root2",
+        "username": "test",
         "password": "Makanmakan3x*",
         "database": "lustrumdtsl",
         "host": "localhost",
