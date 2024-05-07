@@ -4,9 +4,7 @@ module.exports = {
             type: Sequelize.ENUM(
                 "offline2peserta",
                 "offline3peserta",
-                "offline5peserta",
-                "offline", // Added existing values
-                "online"
+                "offline5peserta"
             ),
         });
     },
