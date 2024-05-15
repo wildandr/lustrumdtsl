@@ -1,6 +1,13 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
+import { League_Spartan } from 'next/font/google';
+
+const league_spartan = League_Spartan({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-league-spartan',
+  })
 
 export function comingSoon() {
 
@@ -22,10 +29,10 @@ export function comingSoon() {
              height={1000} />
             
             <div className='flex flex-col lg:flex-row lg:gap-12 lg:py-5'>
-                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className='text-[42px] text-clapBlue-500 font-LeagueSpartan font-bold lg:text-6xl xl:text-7xl'>C O M I N G </p>
-                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className='text-[42px] text-clapBlue-500 font-LeagueSpartan font-bold lg:text-6xl xl:text-7xl'>S O O N </p>
+                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className={`${league_spartan.className} text-[42px] text-clapBlue-500 font-semibold lg:text-6xl xl:text-7xl`}>C O M I N G </p>
+                <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className={`${league_spartan.className} text-[42px] text-clapBlue-500 font-semibold lg:text-6xl xl:text-7xl`}>S O O N </p>
             </div>
-            <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className='font-bold text-clapBlue-500 text-6xl py-4'>Seminar Nasional</p>
+            <p style={{textShadow: '2.123px 3.538px 0px rgba(0, 0, 0, 0.25)'}} className={`${league_spartan.className} font-bold text-clapBlue-500 text-6xl py-4`}>Seminar Nasional</p>
             <p className='px-[10%] lg:px-[20%] font-semibold text-clapBlue-500 text-xl'>“Pemanfaatan Bendungan sebagai Pembangkit Tenaga Listrik Menuju Transisi Energi Bersih”</p>
 
         </div>

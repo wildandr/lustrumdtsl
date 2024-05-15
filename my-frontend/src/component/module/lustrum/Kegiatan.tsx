@@ -133,7 +133,7 @@ export function Kegiatan() {
                 <p className='text-2xl lg:text-5xl font-LibreBaskerville font-bold bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600'>Rangkaian Kegiatan & Timeline</p>
                 <div className='w-full h-[60%] gap-5 grid grid-cols-2 md:grid-cols-4 grid-rows-2 md:grid-rows-1 mt-[5%] px-[10%]'>
 
-                    <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                    <Link href={`/srawung-desa`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
                             <Image
                                 src={`/assets/lustrum/logo_srawung_desa.png`}
@@ -146,7 +146,7 @@ export function Kegiatan() {
                             <p className='text-center font-sfui text-xs md:text-base lg:text-lg bg-gradient-to-b text-transparent bg-clip-text from-yellow-300 to-yellow-600 font-bold'>Srawung Desa</p>
                         </div>
                     </Link>
-                    <Link href={`#`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
+                    <Link href={`/claproyex`} className="border border-gold-500 flex flex-col justify-center rounded-xl transition-transform duration-300 transform hover:scale-110">
                         <div className='w-full flex items-center justify-center h-[75%] rounded-xl p-[20%]'>
                             <Image
                                 src={`/assets/lustrum/logo_claproyex.png`}
