@@ -37,7 +37,8 @@
         "react-hot-toast": "^2.4.1",
         "react-responsive": "^9.0.2",
         "react-toastify": "^10.0.4",
-        "sharp": "^0.33.2",
+        "sharo": "^0.0.7",
+        "sharp": "^0.33.3",
         "tailwind-merge": "^2.2.1",
         "tailwindcss-animate": "^1.0.7"
     },

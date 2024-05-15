@@ -29,11 +29,12 @@ app.use("/endpoint", sbcRouter);
 app.use("/endpoint", fcecRouter);
 app.use("/endpoint", craftRouter);
 
+
 // Konfigurasi opsi untuk sertifikat SSL
 const options = {
-    key: fs.readFileSync("/home/wildandzakyramadhani/www.lustrumkmtsl.com.key"),
+    key: fs.readFileSync("/root/lustrumdtsl/backup/www.lustrumkmtsl.com.key"),
     cert: fs.readFileSync(
-        "/home/wildandzakyramadhani/sectigo_lustrumkmtsl.com_crt.txt"
+        "/root/lustrumdtsl/backup/sectigo_lustrumkmtsl.com_crt.txt"
     ),
 };
 
