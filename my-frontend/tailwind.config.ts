@@ -65,12 +65,19 @@ const config: Config = {
         creamSrawung: {
           500: "#FFEEBF",
         },
+        redCeremony: {
+          500: "#9E0000",
+        },
+        creamCeremony: {
+          500: "#EAD196",
+        },
       },
       fontFamily: {
         League_Spartan: ["var(--font-league-spartan)"],
         Jawa_Palsu: ["var(--font-jawa)"],
         Montserrat: ["var(--font-montserrat)"],
         sf_pro_display: ["var(--font-sf-pro-display)"],
+        mudstone: ["var(--font-mudstone)"],
 
         LeagueSpartan: ["league-spartan"],
         sfui: ["PlusJakartaSans"],

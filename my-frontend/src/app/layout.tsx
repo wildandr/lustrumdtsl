@@ -36,6 +36,16 @@ const jawa = localFont({
   variable: "--font-jawa",
 });
 
+const mudstone = localFont({
+  src: [
+    {
+      path: "../../public/assets/font/mudstone.otf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-mudstone",
+});
+
 const SF_Pro_Display = localFont({
   src: [
     {
@@ -62,6 +72,7 @@ export default function RootLayout({
          ${league_spartan.variable} 
          ${montserrat.variable} 
          ${SF_Pro_Display.variable}
+         ${mudstone.variable}
          `}
       lang="en"
     >
