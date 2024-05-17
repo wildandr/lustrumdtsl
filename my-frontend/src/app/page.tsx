@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
-    const { push } = useRouter();
-    useEffect(() => {
-        push("/lustrum");
-    }, [push]);
-    return <div />;
+  const { push } = useRouter();
+  useEffect(() => {
+    push("/lustrum");
+  }, [push]);
+  return <div />;
 }
