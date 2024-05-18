@@ -86,7 +86,7 @@ export default function Nav() {
       <div
         className={`flex w-full flex-row  my-3 px-4 lg:px-16 justify-between items-center ${
           activeSegment == "ceremony"
-            ? "border-b-0 lg:border-b-1 border-redCeremony-500 "
+            ? "border-b-1 border-redCeremony-500 "
             : undefined
         }`}
       >
