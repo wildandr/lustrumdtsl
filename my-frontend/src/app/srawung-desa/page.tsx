@@ -6,6 +6,13 @@ import Rangkaian from "@/component/module/srawung_desa/Rangkaian";
 import SedikitCerita from "@/component/module/srawung_desa/SedikitCerita";
 import Tema from "@/component/module/srawung_desa/Tema";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Srawung Desa",
+  description: "",
+};
+
 export default function SrawungDesa() {
   return (
     <div>

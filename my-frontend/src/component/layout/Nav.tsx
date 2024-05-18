@@ -180,7 +180,18 @@ export default function Nav() {
         <nav
           className={`hidden lg:flex flex-row gap-1 justify-center items-center`}
         >
-          <Link href="/lustrum">Home</Link>
+          <Link
+            className={
+              activeSegment === "lustrum"
+                ? "text-yellow-400"
+                : activeSegment == "ceremony"
+                ? "text-redCeremony-500"
+                : "text-white"
+            }
+            href="/lustrum"
+          >
+            Home
+          </Link>
 
           <div className={`group  menu1 `}>
             <button
@@ -688,7 +699,18 @@ export default function Nav() {
             </ul>
           </div>
           {/* // buat agar jika active segment == cia maka link akab berubah ke cia#contact */}
-          <Link href={`/${activeSegment}#contact`} className="-ml-3">
+          <Link
+            href={`/${activeSegment}#contact`}
+            className={`-ml-3
+              ${
+                activeSegment === "lustrum"
+                  ? "text-yellow-400"
+                  : activeSegment == "ceremony"
+                  ? "text-redCeremony-500"
+                  : "text-white"
+              }
+            `}
+          >
             Contact
           </Link>
         </nav>
