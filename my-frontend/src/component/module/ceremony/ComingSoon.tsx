@@ -16,13 +16,13 @@ export default function ComingSoon() {
         style={backgroundImage}
         className="min-h-screen relative flex flex-col justify-center items-center"
       >
-        <div className="flex absolute w-full top-0 h-[12%] lg:h-[18%] items-center justify-start overflow-clip py-4 ps-[10%] bg-creamCeremony-500 ">
+        <div className="flex absolute w-full top-0 h-[12%] lg:h-[18%] items-center justify-start overflow-clip py-4 md:ps-[10%] bg-creamCeremony-500 ">
           <Image
             src={`/assets/ceremony/logo_renjana.svg`}
             alt=""
             width={1000}
             height={1000}
-            className="w-[30%] bg-creamCeremony-500 h-auto z-[9999999999999999999]"
+            className="w-[40%] lg:w-[30%] ps-[5%] py-[6%] lg:py-0 lg:ps-0 bg-creamCeremony-500 h-auto z-[9999999999999999999]"
           />
         </div>
         <Image
@@ -35,7 +35,9 @@ export default function ComingSoon() {
 
         <div className="w-full bg-redCeremony-500 py-2 px-9 absolute bottom-[8%]">
           <Marquee gradient={false} speed={40} autoFill={true}>
-            <p className="font-mudstone text-white text-[2.5rem]">ENJANA - R</p>
+            <p className="font-mudstone text-white text-3xl lg:text-[2.5rem]">
+              ENJANA - R
+            </p>
           </Marquee>
         </div>
       </div>
