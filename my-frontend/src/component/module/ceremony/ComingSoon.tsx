@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 
 export default function ComingSoon() {
   const backgroundImage = {
-    backgroundImage: `url(/assets/ceremony/bg_renjana.png)`,
+    backgroundImage: `url(/assets/ceremony/bg_renjana1.png)`,
     backgroundSize: "cover",
     backgroundPosition: "25%",
     backgroundRepeat: "no-repeat",
