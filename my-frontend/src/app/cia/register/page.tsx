@@ -7,13 +7,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Civil In Action x CRAFT",
-  description: "",
-};
-
 export default function Register() {
   const router = useRouter();
 
