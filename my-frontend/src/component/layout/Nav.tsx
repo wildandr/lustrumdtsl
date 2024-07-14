@@ -84,11 +84,7 @@ export default function Nav() {
          }`}
     >
       <div
-        className={`flex w-full flex-row  my-3 px-4 lg:px-16 justify-between items-center ${
-          activeSegment == "ceremony"
-            ? "border-b-1 border-redCeremony-500 "
-            : undefined
-        }`}
+        className={`flex w-full flex-row  my-3 px-4 lg:px-16 justify-between items-center`}
       >
         <Link href="/lustrum">
           {activeSegment === "lustrum" ? (
@@ -154,8 +150,14 @@ export default function Nav() {
               />
             </div>
           ) : activeSegment == "ceremony" ? (
-            <div className="flex flex-row items-center gap-3 py-5 text-creamCeremony-500">
-              .
+            <div className="flex flex-row items-center gap-3 text-creamCeremony-500">
+              <Image
+                className="h-10 w-auto"
+                src="/assets/ceremony/logo_renjana.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
             </div>
           ) : (
             <div className="flex flex-row items-center">
