@@ -68,8 +68,17 @@ const config: Config = {
         redCeremony: {
           500: "#9E0000",
         },
+        darkRedCeremony: {
+          500: "#7D0A0A",
+        },
         creamCeremony: {
           500: "#EAD196",
+        },
+        lightCreamCeremony: {
+          500: "#F3EDC8",
+        },
+        darkGreyCeremony: {
+          500: "#2B2A4C",
         },
       },
       fontFamily: {
@@ -78,6 +87,8 @@ const config: Config = {
         Montserrat: ["var(--font-montserrat)"],
         sf_pro_display: ["var(--font-sf-pro-display)"],
         mudstone: ["var(--font-mudstone)"],
+        gilroy: ["var(--font-gilroy)"],
+        times_new_rowman: ["var(--font-times-new-rowman)"],
 
         LeagueSpartan: ["league-spartan"],
         sfui: ["PlusJakartaSans"],

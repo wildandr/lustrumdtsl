@@ -46,6 +46,20 @@ const mudstone = localFont({
   variable: "--font-mudstone",
 });
 
+const gilroy = localFont({
+  src: [
+    {
+      path: "../../public/assets/font/gilroy-regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../public/assets/font/gilroy-semiBold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-gilroy",
+});
+
 const SF_Pro_Display = localFont({
   src: [
     {
@@ -58,6 +72,20 @@ const SF_Pro_Display = localFont({
     },
   ],
   variable: "--font-sf-pro-display",
+});
+
+const times_new_rowman = localFont({
+  src: [
+    {
+      path: "../../public/assets/font/tnf-regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../public/assets/font/tnf-bold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-times-new-rowman",
 });
 
 export default function RootLayout({
@@ -73,6 +101,8 @@ export default function RootLayout({
          ${montserrat.variable} 
          ${SF_Pro_Display.variable}
          ${mudstone.variable}
+         ${gilroy.variable}
+         ${times_new_rowman.variable}
          `}
       lang="en"
     >
