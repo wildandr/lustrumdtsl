@@ -7,6 +7,8 @@
 
 ## Verification and remaining limitations
 
+Use Node.js 20.9 or newer (a supported LTS release is recommended); patched Sharp raises the minimum runtime version.
+
 The Next.js production build and TypeScript checks are run before pushing. The backend has only a placeholder `npm test` command, not a real test suite; dependency and API smoke checks provide scoped validation. No production database was accessed.
 
 The 233 originally reported GitHub alerts no longer match the new dependency versions. The current npm advisory database also flags tooling dependencies on `minimatch` below 11.0.1 (GHSA-g3hv-75wg-m249, moderate), newer glob cancellation behavior (GHSA-3g3m-2fjr-6pw4, moderate), and `deepmerge` 4.2.0–4.3.1 (GHSA-gcqx-w48m-w2h4, low; no patched release available). These require upstream-compatible tooling upgrades and remain visible; no scanner configuration or alert dismissal is used to suppress them.
