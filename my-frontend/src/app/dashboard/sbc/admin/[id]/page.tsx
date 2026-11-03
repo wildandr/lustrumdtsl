@@ -1,11 +1,12 @@
 import DetailUserSbc from "@/component/module/sbc/FormResponse";
 import Image from "next/image";
 
-export default function DetailDashboard({
+export default async function DetailDashboard({
     params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
+    const {id} = await params;
     return (
         <div className=" bg-[#058369] h-[600vh] ">
             <Image
@@ -15,7 +16,7 @@ export default function DetailDashboard({
                 height={1000}
                 className="hidden sm:flex fixed w-full h-full object-cover z-10"
             />
-            <DetailUserSbc params={{ id: params.id }} />
+            <DetailUserSbc params={{ id }} />
         </div>
     );
 }

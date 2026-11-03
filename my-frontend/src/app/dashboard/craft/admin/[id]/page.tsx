@@ -1,9 +1,10 @@
 import DetailUserCraft from '@/component/module/craft/FormResponse'
 
-export default function DetailDashboard({params} : {params: {id: string}}) {
+export default async function DetailDashboard({params} : {params: Promise<{id: string}>}) {
+    const {id} = await params;
     return (
         <div className=''>
-            <DetailUserCraft params={{ id: params.id }} />
+            <DetailUserCraft params={{ id }} />
         </div>
     );
 }

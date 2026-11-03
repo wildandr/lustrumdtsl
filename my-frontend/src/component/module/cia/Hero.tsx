@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import e from 'express';
 
 export function Hero() {
     const [rotation, setRotation] = useState(0);

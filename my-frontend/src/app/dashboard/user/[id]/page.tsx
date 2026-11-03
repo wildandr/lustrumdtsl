@@ -4,9 +4,10 @@ import DetailUserFcec from '@/component/module/fcec/FormResponse'
 import DetailUserSbc from '@/component/module/sbc/FormResponse'
 import DetailUserCraft from '@/component/module/craft/FormResponse'
 
-export default function DetailDashboard({params} : {params: {id: string}}) {
-    console.log(params.id);
-const separated = params.id.split("%26");
+export default async function DetailDashboard({params} : {params: Promise<{id: string}>}) {
+    const {id} = await params;
+    console.log(id);
+const separated = id.split("%26");
 
     let int1 = parseInt(separated[0]);
     let int2 = parseInt(separated[1]);
